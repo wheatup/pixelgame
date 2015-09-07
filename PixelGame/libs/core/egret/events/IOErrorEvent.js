@@ -32,7 +32,6 @@ var egret;
      * @class egret.IOErrorEvent
      * @classdesc IO流事件，当错误导致输入或输出操作失败时调度 IOErrorEvent 对象。
      * @extends egret.Event
-     * @includeExample egret/events/IOErrorEvent.ts
      */
     var IOErrorEvent = (function (_super) {
         __extends(IOErrorEvent, _super);

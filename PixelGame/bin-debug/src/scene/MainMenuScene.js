@@ -14,4 +14,3 @@ var MainMenuScene = (function (_super) {
     return MainMenuScene;
 })(Scene);
 MainMenuScene.prototype.__class__ = "MainMenuScene";
-//# sourceMappingURL=MainMenuScene.js.map

@@ -9452,11 +9452,6 @@ declare module egret.gui {
          */
         scrollBeginThreshold: number;
         /**
-         * 是否启用回弹，当启用回弹后，Scroller中内容在到达边界后允许继续拖动，在用户拖动操作结束后，再反弹回边界位置
-         * 默认值是 true
-         */
-        bounces: boolean;
-        /**
          * 滚动速度，这个值为需要的速度与默认速度的比值。
          * 取值范围为 scrollSpeed > 0 赋值为 2 时，速度是默认速度的 2 倍
          */
@@ -9765,7 +9760,8 @@ declare module egret.gui {
         private _restrict;
         private restrictChanged;
         /**
-         * @inheritDoc
+         * @deprecated
+         * TextFiled里还没实现这个接口，等实现之后再去掉废弃标志。目前暂时不要使用它。
          */
         restrict: string;
         styleChanged(styleProp: string): void;

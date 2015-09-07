@@ -32,7 +32,6 @@ var RES;
      * @class RES.ResourceLoader
      * @classdesc
      * @extends egret.EventDispatcher
-     * @private
      */
     var ResourceLoader = (function (_super) {
         __extends(ResourceLoader, _super);

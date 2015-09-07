@@ -39,19 +39,16 @@ var RES;
          * @param name {string} 加载项名称
          * @param url {string} 要加载的文件地址
          * @param type {string} 加载项文件类型
-         * @private
          */
         function ResourceItem(name, url, type) {
             /**
              * 所属组名
              * @member {string} RES.ResourceItem#groupName
-             * @private
              */
             this.groupName = "";
             /**
              * 被引用的原始数据对象
              * @member {any} RES.ResourceItem#data
-             * @private
              */
             this.data = null;
             this._loaded = false;
@@ -64,7 +61,6 @@ var RES;
             /**
              * 加载完成的标志
              * @member {boolean} RES.ResourceItem#loaded
-             * @private
              */
             get: function () {
                 return this.data ? this.data.loaded : this._loaded;
@@ -81,7 +77,6 @@ var RES;
          * 转成字符串
          * @method RES.ResourceItem#toString
          * @returns {string}
-         * @private
          */
         __egretProto__.toString = function () {
             return "[ResourceItem name=\"" + this.name + "\" url=\"" + this.url + "\" type=\"" + this.type + "\"]";

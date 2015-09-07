@@ -13,4 +13,3 @@ var Timer = (function () {
     return Timer;
 })();
 Timer.prototype.__class__ = "Timer";
-//# sourceMappingURL=Timer.js.map

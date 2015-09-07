@@ -36,7 +36,6 @@ var egret;
      * Texture类封装了这些底层实现的细节，开发者只需要关心接口即可
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=135&terms1_id=25&terms2_id=31 纹理集的使用
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=123&terms1_id=25&terms2_id=30 获取资源的几种方式
-     * @includeExample egret/display/Texture.ts
      */
     var Texture = (function (_super) {
         __extends(Texture, _super);
@@ -130,7 +129,8 @@ var egret;
          * @platform Web
          */
         __egretProto__.getPixel32 = function (x, y) {
-            throw new Error();
+            var result = this._bitmapData.getContext("2d").getImageData(x, y, 1, 1);
+            return result.data;
         };
         /**
          * 销毁纹理对象
@@ -152,29 +152,6 @@ var egret;
          */
         __egretProto__.draw = function (context, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, renderType) {
         };
-        /**
-         * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null。
-         * native只支持 "image/png" 和 "image/jpeg"；Web中由于各个浏览器的实现不一样，因此建议也只用这2种。
-         * @param type 转换的类型，如  "image/png"。
-         * @param rect 需要转换的区域
-         * @returns {any} base64字符串
-         * @version Egret 2.4
-         */
-        __egretProto__.toDataURL = function (type, rect) {
-            throw new Error();
-        };
-        /**
-         * 裁剪指定区域并保存成图片。
-         * native只支持 "image/png" 和 "image/jpeg"；Web中由于各个浏览器的实现不一样，因此建议也只用这2种。
-         * @param type 转换的类型，如  "image/png"
-         * @param filePath 图片的名称的路径（主目录为游戏的私有空间，路径中不能有 "../"，Web只支持传名称。）
-         * @param rect 需要转换的区域
-         * @version Egret 2.4
-         * @platform Native
-         */
-        __egretProto__.saveToFile = function (type, filePath, rect) {
-            throw new Error();
-        };
         __egretProto__._drawForCanvas = function (context, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, renderType) {
             var bitmapData = this._bitmapData;
             if (!bitmapData || !bitmapData["avaliable"]) {
@@ -192,10 +169,6 @@ var egret;
             if (!bitmapData || !bitmapData["avaliable"]) {
                 return;
             }
-            sourceX = Math.max(0, sourceX);
-            sourceY = Math.max(0, sourceY);
-            sourceWidth = Math.max(0, sourceWidth);
-            sourceHeight = Math.max(0, sourceHeight);
             if (renderType !== undefined) {
                 this._drawRepeatImageForNative(context, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, renderType);
             }
@@ -285,14 +258,7 @@ var egret;
                 callback(0, bitmapData);
                 return;
             }
-            if (!Texture.crossOrigin) {
-                if (bitmapData.hasAttribute("crossOrigin")) {
-                    bitmapData.removeAttribute("crossOrigin");
-                }
-            }
-            else {
-                bitmapData.setAttribute("crossOrigin", Texture.crossOrigin);
-            }
+            bitmapData.crossOrigin = Texture.crossOrigin;
             var winURL = window["URL"] || window["webkitURL"];
             if (Texture._bitmapCallbackMap[url] == null) {
                 Texture._addToCallbackList(url, callback);
@@ -300,9 +266,6 @@ var egret;
                     var xhr = new XMLHttpRequest();
                     xhr.open("get", url, true);
                     xhr.responseType = "blob";
-                    xhr.onerror = function () {
-                        Texture._onError(url, bitmapData);
-                    };
                     xhr.onload = function () {
                         if (this.status == 200) {
                             var blob = this.response;
@@ -316,7 +279,7 @@ var egret;
                             bitmapData.src = winURL.createObjectURL(blob);
                         }
                         else {
-                            Texture._onError(url, bitmapData);
+                            callback(1, null);
                         }
                     };
                     xhr.send();

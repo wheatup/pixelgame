@@ -28,9 +28,6 @@
 //////////////////////////////////////////////////////////////////////////////////////
 var RES;
 (function (RES) {
-    /**
-     * @private
-     */
     var XMLAnalyzer = (function (_super) {
         __extends(XMLAnalyzer, _super);
         function XMLAnalyzer() {

@@ -33,7 +33,6 @@ var egret;
      * @classdesc URLRequest 类可捕获单个 HTTP 请求中的所有信息。
      * @extends egret.HashObject
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=160&terms1_id=25&terms2_id=37 构建通信请求
-     * @includeExample egret/net/URLRequest.ts
      */
     var URLRequest = (function (_super) {
         __extends(URLRequest, _super);
@@ -68,13 +67,6 @@ var egret;
              * @member {string} egret.URLRequest#url
              */
             this.url = "";
-            /**
-             * 要追加到 HTTP 请求的 HTTP 请求标头的数组。该数组由 URLRequestHeader 对象组成。
-             * 数组中的每一对象必须是包含一个名称字符串和一个值字符串的 URLRequestHeader 对象。
-             * 由于浏览器兼容性原因，该属性在 html5 中并未实现
-             * @member {Array} egret.URLRequest#requestHeaders
-             */
-            this.requestHeaders = [];
             this.url = url;
         }
         var __egretProto__ = URLRequest.prototype;
