@@ -1,0 +1,10 @@
+[
+	"core/Scene.ts",
+	"skins/scene/LoadingSkin.exml",
+	"skins/scene/MainMenuSkin.exml",
+	"AssetAdapter.ts",
+	"core/Timer.ts",
+	"scene/LoadingScene.ts",
+	"scene/MainMenuScene.ts",
+	"Main.ts"
+]

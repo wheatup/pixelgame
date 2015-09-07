@@ -1,0 +1,13 @@
+{
+	"groups":[
+	{
+		"keys":"black",
+		"name":"preload"
+	}],
+	"resources":[
+	{
+		"name":"black",
+		"type":"image",
+		"url":"assets/black.png"
+	}]
+}
