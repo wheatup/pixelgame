@@ -33,6 +33,7 @@ var egret;
      * @classdesc
      * 声音相关事件。
      * 有事件：SoundEvent.SOUND_COMPLETE
+     * @includeExample egret/events/SoundEvent.ts
      */
     var SoundEvent = (function (_super) {
         __extends(SoundEvent, _super);

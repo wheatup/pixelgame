@@ -38,6 +38,7 @@ var egret;
      * @param delay {number} 延迟时间，以毫秒为单位
      * @param ...args {any} 参数列表
      * @returns {number} 返回索引，可以用于 clearTimeout
+     * @includeExample egret/utils/setTimeout.ts
      */
     function setTimeout(listener, thisObject, delay) {
         var args = [];
@@ -57,6 +58,7 @@ var egret;
      * 清除指定延迟后运行的函数。
      * @method egret.clearTimeout
      * @param key {number} egret.setTimeout所返回的索引
+     * @includeExample egret/utils/setTimeout.ts
      */
     function clearTimeout(key) {
         delete __setTimeout__cache[key];

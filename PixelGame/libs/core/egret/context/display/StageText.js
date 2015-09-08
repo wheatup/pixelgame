@@ -141,6 +141,12 @@ var egret;
         StageText.create = function () {
             return null;
         };
+        /**
+         * @private
+         *
+         */
+        __egretProto__.$onBlur = function () {
+        };
         return StageText;
     })(egret.EventDispatcher);
     egret.StageText = StageText;

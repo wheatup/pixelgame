@@ -33,6 +33,7 @@ var egret;
      * @classdesc
      * 提供混合模式可视效果的常量值的类。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=48 BlendMode实例代码
+     * @includeExample egret/display/BlendMode.ts
      */
     var BlendMode = (function () {
         function BlendMode() {
@@ -52,13 +53,13 @@ var egret;
         /**
          * 根据显示对象的 Alpha 值擦除背景。Alpha 值不为0的区域将被擦除。
          * @constant {string} egret.BlendMode.ERASE
-         * @private
          */
         BlendMode.ERASE = "erase";
         /**
          * 根据显示对象的 Alpha 值擦除背景。Alpha 值为0的区域将被擦除。
          * 注意：由于 CanvasAPI 的限制，只会保留 Alpha 值不为1的区域。
-         * @constant {string} egret.BlendMode.ERASE
+         * @constant {string} egret.BlendMode.ERASE_REVERSE
+         * @deprecated
          */
         BlendMode.ERASE_REVERSE = "eraseReverse";
         return BlendMode;

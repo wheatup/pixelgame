@@ -83,6 +83,10 @@ var egret;
             this._multiline = false;
             //换行是否按单词换行
             this._wordWrap = false;
+            //输入框匹配内
+            this._restrictAnd = null;
+            //输入框匹配外
+            this._restrictNot = null;
         }
         var __egretProto__ = TextFieldProperties.prototype;
         return TextFieldProperties;

@@ -24,12 +24,18 @@
 			{
 				"isFolder":false,
 				"key":"loading_bar",
-				"name":"loading_bar"
+				"name":"loading_bar",
+				"scale9grid":"1,1,6,6"
 			},
 			{
 				"isFolder":false,
 				"key":"loading_frame",
 				"name":"loading_frame"
+			},
+			{
+				"isFolder":false,
+				"key":"par_title",
+				"name":"par_title"
 			}]
 		}
 	},

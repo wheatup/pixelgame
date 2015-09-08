@@ -30,6 +30,7 @@ var RES;
 (function (RES) {
     /**
      * SpriteSheet解析器
+     * @private
      */
     var SheetAnalyzer = (function (_super) {
         __extends(SheetAnalyzer, _super);

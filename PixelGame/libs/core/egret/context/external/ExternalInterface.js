@@ -29,6 +29,7 @@
 var egret;
 (function (egret) {
     /**
+     * @includeExample egret/context/external/ExternalInterface.ts
      */
     var ExternalInterface = (function () {
         function ExternalInterface() {
@@ -39,8 +40,8 @@ var egret;
          * 如果该容器是 HTML 页，则此方法不可用。
          * 如果该容器是某个 App 容器，该容器将处理该事件。
          * @method egret.ExternalInterface#call
-         * @param functionName {string}
-         * @param value {string}
+         * @param functionName {string} 用于调用函数的名称
+         * @param value {string} 传递的函数的参数
          */
         ExternalInterface.call = function (functionName, value) {
         };
@@ -48,8 +49,8 @@ var egret;
          * 添加外层容器调用侦听，该容器将传递一个字符串给 Egret 容器
          * 如果该容器是 HTML 页，则此方法不可用。
          * @method egret.ExternalInterface#addCallBack
-         * @param functionName {string}
-         * @param listener {Function}
+         * @param functionName {string} 用于调用函数的名称
+         * @param listener {Function} 要调用的函数
          */
         ExternalInterface.addCallback = function (functionName, listener) {
         };

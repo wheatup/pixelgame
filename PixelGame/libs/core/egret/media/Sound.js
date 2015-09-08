@@ -33,6 +33,7 @@ var egret;
      * @classdesc Sound 类允许您在应用程序中使用声音。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=157&terms1_id=25&terms2_id=36 播放音频
      * @event egret.SoundEvent.SOUND_COMPLETE 在声音完成播放后调度。
+     * @includeExample egret/media/Sound.ts
      */
     var Sound = (function (_super) {
         __extends(Sound, _super);
@@ -146,7 +147,7 @@ var egret;
          * @param type 事件类型
          * @param listener 监听函数
          * @param thisObj 侦听函数绑定的this对象
-         * @platform Web
+         * @platform Web,Native
          */
         __egretProto__.addEventListener = function (type, listener, thisObject) {
             _super.prototype.addEventListener.call(this, type, listener, thisObject);
@@ -157,9 +158,10 @@ var egret;
             }
             if (this._eventsMap[type].length == 1) {
                 var func;
-                if (type == egret.SoundEvent.SOUND_COMPLETE) {
+                if (type == egret.SoundEvent.SOUND_COMPLETE || type == "ended") {
                     func = function (e) {
                         egret.Event._dispatchByTarget(egret.SoundEvent, self, egret.SoundEvent.SOUND_COMPLETE);
+                        egret.Event._dispatchByTarget(egret.Event, self, "ended");
                     };
                 }
                 else {
@@ -178,7 +180,7 @@ var egret;
          * @param type 事件类型
          * @param listener 监听函数
          * @param thisObj 侦听函数绑定的this对象
-         * @platform Web
+         * @platform Web,Native
          */
         __egretProto__.removeEventListener = function (type, listener, thisObject) {
             _super.prototype.removeEventListener.call(this, type, listener, thisObject);

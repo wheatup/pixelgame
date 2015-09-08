@@ -31,15 +31,18 @@ var egret;
     /**
      * 转换数字为颜色字符串
      * @method egret.toColorString
-     * @param value {number}
+     * @param value {number} 需要转换的颜色值
      * @returns {string} 颜色字符串，例如"#ffffff"。
+     * @includeExample egret/utils/toColorString.ts
      */
     function toColorString(value) {
-        if (isNaN(value) || value < 0)
+        if (isNaN(value) || value < 0) {
             value = 0;
-        if (value > 16777215)
-            value = 16777215;
+        }
         var color = value.toString(16).toUpperCase();
+        while (color.length > 6) {
+            color = color.slice(1, color.length);
+        }
         while (color.length < 6) {
             color = "0" + color;
         }

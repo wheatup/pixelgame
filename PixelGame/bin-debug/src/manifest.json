@@ -1,10 +1,14 @@
 [
 	"core/Scene.ts",
+	"skins/scene/BGSkin.exml",
 	"skins/scene/LoadingSkin.exml",
-	"skins/scene/MainMenuSkin.exml",
+	"util/Util.ts",
 	"AssetAdapter.ts",
+	"scene/BGScene.ts",
 	"scene/LoadingScene.ts",
 	"scene/MainMenuScene.ts",
+	"util/Debug.ts",
 	"util/Timer.ts",
-	"Main.ts"
+	"Main.ts",
+	"skins/scene/MainMenuSkin.exml"
 ]

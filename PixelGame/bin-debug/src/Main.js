@@ -10,8 +10,6 @@ var Main = (function (_super) {
         new Timer(this);
         egret.Injector.mapClass("egret.gui.IAssetAdapter", AssetAdapter);
         this.layers = new Array();
-        //游戏场景层，游戏场景相关内容可以放在这里面。
-        //Game scene layer, the game content related to the scene can be placed inside this layer.
         this.layers[Main.LAYER_BOTTOM] = new egret.DisplayObjectContainer();
         this.addChild(this.layers[Main.LAYER_BOTTOM]);
         this.layers[Main.LAYER_GAME] = new egret.DisplayObjectContainer();
@@ -60,15 +58,12 @@ var Main = (function (_super) {
         this.onPreloadResourceLoadComplete(event);
     };
     __egretProto__.onPreloadResourceLoadComplete = function (event) {
-        var _this = this;
         if (event.groupName == "preload") {
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onLoadingResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onPreloadResourceLoadError, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onPreloadResourceLoadProgress, this);
-            Timer.addTimer(1000, 1, function () {
-                Main.removeScene(Main.main.loadingScene);
-                _this.createScene();
-            }, this);
+            Main.removeScene(Main.main.loadingScene);
+            this.createScene();
         }
     };
     /**
@@ -90,9 +85,28 @@ var Main = (function (_super) {
                 return;
             }
         }
-        console.warn("unable to remove the scene");
+        Debug.log("unable to remove the scene");
     };
+    /**
+     * 添加粒子发射器
+     */
+    Main.addParticleEmitter = function (particle, layer) {
+        Main.main.layers[layer].addChild(particle);
+    };
+    /**
+    * 移除粒子发射器
+    */
+    Main.removeParticleEmitter = function (particle) {
+        for (var i = 0; i < Main.main.layers.length; i++) {
+            if (Main.main.layers[i].contains(particle)) {
+                Main.main.layers[i].removeChild(particle);
+                return;
+            }
+        }
+    };
+    //添加主菜单场景
     __egretProto__.createScene = function () {
+        Main.addScene(Main.LAYER_BOTTOM, new BGScene());
         Main.addScene(Main.LAYER_GAME, new MainMenuScene());
     };
     Main.LAYER_BOTTOM = 0;

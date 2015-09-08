@@ -185,10 +185,14 @@ egret.RenderTexture.prototype.init = function () {
 };
 egret.RenderTexture.prototype.setSize = function (width, height) {
     //todo 复用
-    this.dispose();
-    this._bitmapData = new egret_native.RenderTexture(width, height);
-    this._bitmapData["avaliable"] = true;
-    this.renderContext = new egret.NativeRendererContext();
+    if (!this._bitmapData || this.renderTextureWidth != width || this.renderTextureHeight != height) {
+        this.dispose();
+        this._bitmapData = new egret_native.RenderTexture(width, height);
+        this.renderTextureWidth = width;
+        this.renderTextureHeight = height;
+        this._bitmapData["avaliable"] = true;
+        this.renderContext = new egret.NativeRendererContext();
+    }
 };
 egret.RenderTexture.prototype.begin = function () {
     this._bitmapData.begin();

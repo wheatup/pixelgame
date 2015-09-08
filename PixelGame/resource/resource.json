@@ -1,13 +1,18 @@
 {
 	"groups":[
 	{
-		"keys":"black",
+		"keys":"par_title,par_title_json",
 		"name":"preload"
 	}],
 	"resources":[
 	{
-		"name":"black",
+		"name":"par_title",
 		"type":"image",
-		"url":"assets/black.png"
+		"url":"assets/particles/par_title.png"
+	},
+	{
+		"name":"par_title_json",
+		"type":"json",
+		"url":"assets/particles/par_title.json"
 	}]
 }

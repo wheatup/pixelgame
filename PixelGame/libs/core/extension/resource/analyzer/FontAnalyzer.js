@@ -28,6 +28,9 @@
 //////////////////////////////////////////////////////////////////////////////////////
 var RES;
 (function (RES) {
+    /**
+     * @private
+     */
     var FontAnalyzer = (function (_super) {
         __extends(FontAnalyzer, _super);
         function FontAnalyzer() {

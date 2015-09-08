@@ -283,7 +283,8 @@ var egret;
             else {
                 outline = properties._stroke;
             }
-            egret_native.Label.createLabel(egret.TextField.default_fontFamily, size, "", outline);
+            var font = egret.MainContext.instance.netContext.getVirtualUrl(egret.TextField.default_fontFamily);
+            egret_native.Label.createLabel(font, size, "", outline);
         };
         /**
          * 测量文本
@@ -324,7 +325,7 @@ var egret;
             }
             egret_native.Label.setTextColor(textColor);
             egret_native.Label.setStrokeColor(strokeColor);
-            egret_native.Label.drawText(text, x, y - 2);
+            egret_native.Label.drawText(text, x, y);
             _super.prototype.drawText.call(this, textField, text, x, y, maxWidth, style);
         };
         __egretProto__.pushMask = function (mask) {

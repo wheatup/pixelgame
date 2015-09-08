@@ -143,7 +143,8 @@ var egret;
         //全屏键盘
         __egretProto__.showScreenKeyboard = function () {
             var self = this;
-            self.dispatchEvent(new egret.Event("blur"));
+            self.dispatchEvent(new egret.Event("focus"));
+            egret.Event.dispatchEvent(self, "focus", false, { "showing": true });
             egret_native.EGT_TextInput = function (appendText) {
                 if (self._multiline) {
                     if (self.isFinishDown) {
@@ -159,6 +160,7 @@ var egret;
                     //关闭软键盘
                     egret_native.TextInputOp.setKeybordOpen(false);
                     self.dispatchEvent(new egret.Event("updateText"));
+                    self.dispatchEvent(new egret.Event("blur"));
                 }
             };
             //点击完成
@@ -166,14 +168,16 @@ var egret;
                 if (self._multiline) {
                     self.isFinishDown = true;
                 }
+                self.dispatchEvent(new egret.Event("blur"));
             };
         };
         __egretProto__.showPartKeyboard = function () {
+            var self = this;
+            self.dispatchEvent(new egret.Event("focus"));
             var container = this.container;
             var stage = egret.MainContext.instance.stage;
             stage.addChild(container);
             this.createText();
-            var self = this;
             egret_native.EGT_TextInput = function (appendText) {
                 if (self._multiline) {
                 }
@@ -221,8 +225,12 @@ var egret;
                 egret_native.EGT_keyboardDidShow = function () {
                 };
             };
-            egret_native.TextInputOp.setInputTextMaxLenght(self._maxChars > 0 ? self._maxChars : -1);
-            egret_native.TextInputOp.setKeybordOpen(true);
+            var textfield = this._textfield;
+            var inputMode = textfield.multiline ? 0 : 6;
+            var inputFlag = -1; //textfield.displayAsPassword ? 0 : -1;
+            var returnType = 1;
+            var maxLength = textfield.maxChars <= 0 ? -1 : textfield.maxChars;
+            egret_native.TextInputOp.setKeybordOpen(true, JSON.stringify({ "inputMode": inputMode, "inputFlag": inputFlag, "returnType": returnType, "maxLength": maxLength }));
         };
         __egretProto__._remove = function () {
             var container = this.container;

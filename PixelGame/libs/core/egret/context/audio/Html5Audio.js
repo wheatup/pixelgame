@@ -37,7 +37,15 @@ var egret;
          * @member {any} egret.Sound#audio
          */
         function Html5Audio() {
+            var _this = this;
             this._loop = false;
+            this.func = function (e) {
+                _this._audio.removeEventListener("ended", _this.func);
+                if (_this._onEndedCall) {
+                    _this._onEndedCall.call(null, e);
+                }
+                _this.clear();
+            };
             this.paused = true;
             this._listeners = [];
             this._onEndedCall = null;
@@ -59,15 +67,8 @@ var egret;
             this.paused = false;
             this._audio.autoplay = true;
             this._audio.volume = this._volume;
-            var self = this;
-            var func = function (e) {
-                self._audio.removeEventListener("ended", func);
-                if (self._onEndedCall) {
-                    self._onEndedCall.call(null, e);
-                }
-                self.clear();
-            };
-            this._audio.addEventListener("ended", func);
+            this._audio.removeEventListener("ended", this.func);
+            this._audio.addEventListener("ended", this.func);
             this.initStart();
             try {
                 this._audio.currentTime = this._startTime;

@@ -12,6 +12,10 @@
         },
 		{
             "name": "gui"
+        },
+		{
+            "name": "particle",
+			"path": "../libsrc/particle"
         }
     ],
     "native": {

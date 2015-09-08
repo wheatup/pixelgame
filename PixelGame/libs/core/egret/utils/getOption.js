@@ -36,7 +36,7 @@ var egret;
      * @private
      */
     function getOption(key) {
-        if (window.hasOwnProperty("location")) {
+        if (window.location) {
             var search = location.search;
             if (search == "") {
                 return "";

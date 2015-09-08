@@ -66,6 +66,13 @@ var egret;
                 }
                 WebAudio.isDecoding = false;
                 WebAudio.decodeAudios();
+            }, function () {
+                alert(egret.getString(1034, decodeInfo["url"]));
+                if (decodeInfo["callback"]) {
+                    decodeInfo["callback"]();
+                }
+                WebAudio.isDecoding = false;
+                WebAudio.decodeAudios();
             });
         };
         /**
@@ -183,12 +190,13 @@ var egret;
          * @method egret.Sound#load
          */
         __egretProto__._load = function () {
-            this._setArrayBuffer(this._arrayBuffer, null);
+            this._setArrayBuffer(this._arrayBuffer, this._url, null);
         };
-        __egretProto__._setArrayBuffer = function (buffer, callback) {
+        __egretProto__._setArrayBuffer = function (buffer, url, callback) {
+            this._url = url;
             var self = this;
             this._arrayBuffer = buffer;
-            WebAudio.decodeArr.push({ "buffer": buffer, "callback": callback, "self": self });
+            WebAudio.decodeArr.push({ "buffer": buffer, "callback": callback, "self": self, "url": url });
             WebAudio.decodeAudios();
         };
         __egretProto__._preload = function (type, callback, thisObj) {

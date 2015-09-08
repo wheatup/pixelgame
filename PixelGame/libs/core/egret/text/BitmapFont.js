@@ -35,13 +35,14 @@ var egret;
      * @see http://bbs.egret-labs.org/thread-918-1-1.html TextureMerger
      * @see http://bbs.egret-labs.org/forum.php?mod=viewthread&tid=251 文本(含位图字体具体用法)
      * @extends egret.SpriteSheet
+     * @includeExample egret/text/BitmapFont.ts
      */
     var BitmapFont = (function (_super) {
         __extends(BitmapFont, _super);
         /**
          * 创建一个 egret.BitmapFont 对象
-         * @param texture {egret.Texture} 纹理集
-         * @param config {any} 配置数据
+         * @param texture {egret.Texture} 使用TextureMerger生成的纹理集
+         * @param config {any} 使用TextureMerger生成的配置数据
          */
         function BitmapFont(texture, config) {
             _super.call(this, texture);

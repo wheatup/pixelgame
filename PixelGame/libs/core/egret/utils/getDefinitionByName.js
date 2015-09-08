@@ -38,6 +38,7 @@ var egret;
      * <pre>
      * egret.getDefinitionByName("egret.DisplayObject") //返回 DisplayObject类定义
      * </pre>
+     * @includeExample egret/utils/getDefinitionByName.ts
      */
     function getDefinitionByName(name) {
         if (!name)

@@ -31,6 +31,7 @@ var egret;
     /**
      * @classdesc 注入器
      * @class egret.Injector
+     * @includeExample egret/utils/Injector.ts
      */
     var Injector = (function () {
         function Injector() {

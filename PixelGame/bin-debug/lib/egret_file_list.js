@@ -113,6 +113,7 @@ var egret_file_list = [
 	"core/egret/context/audio/Html5Audio.js",
 	"core/egret/context/audio/WebAudio.js",
 	"core/egret/context/audio/QQAudio.js",
+	"core/egret/context/WebTexture.js",
 	"core/egret/context/Html5Capatibility.js",
 	"core/extension/version/DefaultLoadingView.js",
 	"core/extension/version/Html5VersionController.js",
@@ -182,5 +183,9 @@ var egret_file_list = [
 	"core/extension/gui/events/StateChangeEvent.js",
 	"core/extension/gui/events/EffectEvent.js",
 	"core/extension/gui/layouts/supportClasses/LayoutBase.js",
-	"core/extension/gui/layouts/BasicLayout.js"
+	"core/extension/gui/layouts/BasicLayout.js",
+	"particle/Particle.js",
+	"particle/ParticleSystem.js",
+	"particle/GravityParticle.js",
+	"particle/GravityParticleSystem.js"
 ];

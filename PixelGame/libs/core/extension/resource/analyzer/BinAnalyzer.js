@@ -28,6 +28,9 @@
 //////////////////////////////////////////////////////////////////////////////////////
 var RES;
 (function (RES) {
+    /**
+     * @private
+     */
     var BinAnalyzer = (function (_super) {
         __extends(BinAnalyzer, _super);
         /**

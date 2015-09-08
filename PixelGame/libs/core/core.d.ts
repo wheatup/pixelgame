@@ -6,6 +6,46 @@ declare module egret {
 }
 
 declare var __extends: any;
+declare module egret {
+    /**
+     * @language en_US
+     * Call setter properties of the parent class, instead of the other writing languages, such as super.alpha = 1;
+     * @param thisObj The current object. Always this
+     * @param type Setter property names need to call
+     * @param values Value passed to the parent class
+     *
+     * @exmaple egret.superSetter(this, "alpha", 1);
+     */
+    /**
+     * @language zh_CN
+     * 调用父类的setter属性，代替其他语言的写法，如 super.alpha = 1;
+     * @param thisObj 当前对象。永远都this
+     * @param type 需要调用的setter属性名称
+     * @param values 传给父类的值
+     *
+     * @exmaple egret.superSetter(this, "alpha", 1);
+     */
+    function superSetter(thisObj: any, type: string, ...values: any[]): any;
+    /**
+     * @language en_US
+     * Get getter property value of the parent class. Instead of writing in other languages, such as super.alpha;
+     * @param thisObj 当前对象。永远都this
+     * @param type 需要调用的setter属性名称
+     * @returns {any} The value returned by the parent
+     *
+     * @exmaple egret.superGetter(this, "alpha");
+     */
+    /**
+     * @language zh_CN
+     * 获取父类的getter属性值。代替其他语言的写法，如 super.alpha;
+     * @param thisObj 当前对象。永远都this
+     * @param type 需要调用的setter属性名称
+     * @returns {any} 父类返回的值
+     *
+     * @exmaple egret.superGetter(this, "alpha");
+     */
+    function superGetter(thisObj: any, type: string): any;
+}
 
 declare module egret {
     /**
@@ -127,6 +167,7 @@ declare module egret {
      * @classdesc
      * 对象缓存复用工具类，可用于构建对象池，一段时间后会自动回收对象。
      * @extends egret.HashObject
+     * @includeExample egret/utils/Recycler.ts
      */
     class Recycler extends HashObject {
         /**
@@ -175,6 +216,7 @@ declare module egret {
      * 用于计算相对时间。此方法返回自启动 Egret 引擎以来经过的毫秒数。
      * @method egret.getTimer
      * @returns {number} 启动 Egret 引擎以来经过的毫秒数。
+     * @includeExample egret/utils/getTimer.ts
      */
     function getTimer(): number;
 }
@@ -189,6 +231,7 @@ declare module egret {
      * @param method {Function} 要延迟执行的函数
      * @param thisObject {any} 回调函数的this引用
      * @param ...args {any} 函数参数列表
+     * @includeExample egret/utils/callLater.ts
      */
     function callLater(method: Function, thisObject: any, ...args: any[]): void;
     var __callAsyncFunctionList: Array<any>;
@@ -199,6 +242,7 @@ declare module egret {
      * @param method {Function} 要异步调用的函数
      * @param thisObject {any} 函数的this引用
      * @param ...args {any} 函数参数列表
+     * @includeExample egret/utils/callLater.ts
      */
     function __callAsync(method: Function, thisObject: any, ...args: any[]): void;
 }
@@ -260,6 +304,7 @@ declare module egret {
      * 某些事件有关联的默认行为，通过调用 preventDefault() 方法，您的事件侦听器可以取消此行为。
      * 可以通过调用 stopPropagation() 或 stopImmediatePropagation() 方法，将当前事件侦听器作为处理事件的最后一个事件侦听器。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=114&terms1_id=25&terms2_id=29 Event类
+     * @includeExample egret/events/Event.ts
      */
     class Event extends HashObject {
         /**
@@ -498,6 +543,7 @@ declare module egret {
      * @classdesc
      * 声音相关事件。
      * 有事件：SoundEvent.SOUND_COMPLETE
+     * @includeExample egret/events/SoundEvent.ts
      */
     class SoundEvent extends egret.Event {
         /**
@@ -550,6 +596,7 @@ declare module egret {
      * @class egret.IOErrorEvent
      * @classdesc IO流事件，当错误导致输入或输出操作失败时调度 IOErrorEvent 对象。
      * @extends egret.Event
+     * @includeExample egret/events/IOErrorEvent.ts
      */
     class IOErrorEvent extends Event {
         /**
@@ -583,6 +630,7 @@ declare module egret {
      * 使用此类中定义的事件类型创建事件侦听器。
      * 注意：当对象嵌套在显示列表中时，触摸事件的目标将是显示列表中可见的最深的可能嵌套对象。此对象称为目标节点。要使目标节点的祖代（祖代是一个包含显示列表中所有目标节点的对象，从舞台到目标节点的父节点均包括在内）接收触摸事件的通知，请对祖代节点使用 EventDispatcher.addEventListener() 并将 type 参数设置为要检测的特定触摸事件。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=117&terms1_id=25&terms2_id=29 触摸事件
+     * @includeExample egret/events/TouchEvent.ts
      */
     class TouchEvent extends Event {
         /**
@@ -720,6 +768,7 @@ declare module egret {
      * 每当 Timer 对象达到由 Timer.delay 属性指定的间隔时，Timer 对象即会调度 TimerEvent 对象。
      * @extends egret.Event
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=154&terms1_id=25&terms2_id=35 Timer计时器
+     * @includeExample egret/events/TimerEvent.ts
      */
     class TimerEvent extends Event {
         /**
@@ -753,6 +802,7 @@ declare module egret {
 declare module egret {
     /**
      * 用户在富文本中单击超链接时，对象将调度 TextEvent 对象。文本事件类型：TextEvent.LINK。
+     * @includeExample egret/events/TextEvent.ts
      */
     class TextEvent extends Event {
         /**
@@ -837,6 +887,7 @@ declare module egret {
      * @classdesc
      * EventPhase 类可为 Event 类的 eventPhase 属性提供值。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=113&terms1_id=25&terms2_id=29 事件的执行流程
+     * @includeExample egret/events/EventPhase.ts
      */
     class EventPhase {
         /**
@@ -863,9 +914,9 @@ declare module egret {
      * @class egret.IEventDispatcher
      * @interface
      * @classdesc IEventDispatcher 接口定义用于添加或删除事件侦听器的方法，检查是否已注册特定类型的事件侦听器，并调度事件。
-     事件目标是 Egret 事件模型的重要组成部分。事件目标是事件如何通过显示列表层次结构这一问题的焦点。当发生鼠标单击或按键等事件时，会将事件对象调度到从显示列表根开始的事件流中。事件对象进行到事件目标的往返行程，在概念上，此往返行程被划分为三个阶段：捕获阶段包括从根到事件目标节点之前的最后一个节点的行程，目标阶段仅包括事件目标节点，冒泡阶段包括到显示列表的根的回程上遇到的任何后续节点。
-
-     通常，使用户定义的类能够调度事件的最简单方法是扩展 EventDispatcher。如果无法扩展（即，如果该类已经扩展了另一个类），则可以实现 IEventDispatcher 接口，创建 EventDispatcher 成员，并编写一些简单的挂钩，将调用连接到聚合的 EventDispatcher 中。
+     * 事件目标是 Egret 事件模型的重要组成部分。事件目标是事件如何通过显示列表层次结构这一问题的焦点。当发生鼠标单击或按键等事件时，会将事件对象调度到从显示列表根开始的事件流中。事件对象进行到事件目标的往返行程，在概念上，此往返行程被划分为三个阶段：捕获阶段包括从根到事件目标节点之前的最后一个节点的行程，目标阶段仅包括事件目标节点，冒泡阶段包括到显示列表的根的回程上遇到的任何后续节点。
+     * 通常，使用户定义的类能够调度事件的最简单方法是扩展 EventDispatcher。如果无法扩展（即，如果该类已经扩展了另一个类），则可以实现 IEventDispatcher 接口，创建 EventDispatcher 成员，并编写一些简单的挂钩，将调用连接到聚合的 EventDispatcher 中。
+     * @includeExample egret/events/IEventDispatcher.ts
      */
     interface IEventDispatcher extends IHashObject {
         /**
@@ -928,6 +979,7 @@ declare module egret {
      * 然后从这一点开始其在显示列表中的回程。在概念上，到事件目标的此往返行程被划分为三个阶段：
      * 捕获阶段包括从根到事件目标节点之前的最后一个节点的行程，目标阶段仅包括事件目标节点，冒泡阶段包括回程上遇到的任何后续节点到显示列表的根。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=115&terms1_id=25&terms2_id=29 事件侦听器
+     * @includeExample egret/events/EventDispatcher.ts
      */
     class EventDispatcher extends HashObject implements IEventDispatcher {
         /**
@@ -1110,6 +1162,7 @@ declare module egret {
      * @classdesc
      * Profiler是egret的性能检测分析类
      * 请使用 egret.Profiler.getInstance().run();打开性能分析显示。
+     * @includeExample egret/utils/Profiler.ts
      */
     class Profiler {
         private static instance;
@@ -1169,6 +1222,7 @@ declare module egret {
 declare module egret {
     /**
      * Ticker是egret引擎的心跳控制器，是游戏唯一的时间处理入口。
+     * @includeExample egret/context/Ticker.ts
      */
     class Ticker extends EventDispatcher {
         /**
@@ -1336,6 +1390,8 @@ declare module egret {
      *
      * @event egret.TimerEvent.TIMER 每当 Timer 对象达到根据 Timer.delay 属性指定的间隔时调度。
      * @event egret.TimerEvent.TIMER_COMPLETE 每当它完成 Timer.repeatCount 设置的请求数后调度。
+     *
+     * @includeExample egret/utils/Timer.ts
      */
     class Timer extends EventDispatcher {
         /**
@@ -1398,6 +1454,7 @@ declare module egret {
      * <pre>
      *  egret.getQualifiedClassName(egret.DisplayObject) //返回 "egret.DisplayObject"
      * </pre>
+     * @includeExample egret/utils/getQualifiedClassName.ts
      */
     function getQualifiedClassName(value: any): string;
     /**
@@ -1423,6 +1480,7 @@ declare module egret {
      * <pre>
      * egret.getDefinitionByName("egret.DisplayObject") //返回 DisplayObject类定义
      * </pre>
+     * @includeExample egret/utils/getDefinitionByName.ts
      */
     function getDefinitionByName(name: string): any;
 }
@@ -1437,12 +1495,14 @@ declare module egret {
      * @param delay {number} 延迟时间，以毫秒为单位
      * @param ...args {any} 参数列表
      * @returns {number} 返回索引，可以用于 clearTimeout
+     * @includeExample egret/utils/setTimeout.ts
      */
     function setTimeout(listener: Function, thisObject: any, delay: number, ...args: any[]): number;
     /**
      * 清除指定延迟后运行的函数。
      * @method egret.clearTimeout
      * @param key {number} egret.setTimeout所返回的索引
+     * @includeExample egret/utils/setTimeout.ts
      */
     function clearTimeout(key: number): void;
 }
@@ -1456,12 +1516,14 @@ declare module egret {
      * @param delay {number} 延迟时间，以毫秒为单位
      * @param ...args {any} 参数列表
      * @returns {number} 返回索引，可以用于 clearInterval
+     * @includeExample egret/utils/setInterval.ts
      */
     function setInterval(listener: Function, thisObject: any, delay: number, ...args: any[]): number;
     /**
      * 清除指定延迟后运行的函数。
      * @method egret.clearInterval
      * @param key {number} egret.setInterval所返回的索引
+     * @includeExample egret/utils/setInterval.ts
      */
     function clearInterval(key: number): void;
 }
@@ -1476,6 +1538,7 @@ declare module egret {
      * <pre>
      *  egret.hasDefinition("egret.DisplayObject") //返回 true
      * </pre>
+     * @includeExample egret/utils/hasDefinition.ts
      */
     function hasDefinition(name: string): boolean;
 }
@@ -1484,8 +1547,9 @@ declare module egret {
     /**
      * 转换数字为颜色字符串
      * @method egret.toColorString
-     * @param value {number}
+     * @param value {number} 需要转换的颜色值
      * @returns {string} 颜色字符串，例如"#ffffff"。
+     * @includeExample egret/utils/toColorString.ts
      */
     function toColorString(value: number): string;
 }
@@ -1497,6 +1561,7 @@ declare module egret {
      * Matrix 类表示一个转换矩阵，它确定如何将点从一个坐标空间映射到另一个坐标空间。
      * 您可以对一个显示对象执行不同的图形转换，方法是设置 Matrix 对象的属性，将该 Matrix 对象应用于 Transform 对象的 matrix 属性，然后应用该 Transform 对象作为显示对象的 transform 属性。这些转换函数包括平移（x 和 y 重新定位）、旋转、缩放和倾斜。
      * @extends egret.HashObject
+     * @includeExample egret/geom/Matrix.ts
      */
     class Matrix extends HashObject {
         /**
@@ -1648,6 +1713,7 @@ declare module egret {
          * @method egret.Matrix#identityMatrix
          * @param matrix {egret.Matrix} 重置的目标矩阵
          * @returns {egret.Matrix}
+         * @deprecated
          */
         identityMatrix(matrix: Matrix): Matrix;
         /**
@@ -1665,6 +1731,7 @@ declare module egret {
          * @param y {number}
          * @returns {numberPoint}
          * @stable C 该方法以后可能删除
+         * @deprecated
          */
         static transformCoords(matrix: Matrix, x: number, y: number): Point;
         private array;
@@ -1752,6 +1819,7 @@ declare module egret {
      * @classdesc
      * Point 对象表示二维坐标系统中的某个位置，其中 x 表示水平轴，y 表示垂直轴。
      * @extends egret.HashObject
+     * @includeExample egret/geom/Point.ts
      */
     class Point extends HashObject {
         /**
@@ -1876,6 +1944,7 @@ declare module egret {
      * Rectangle 类的 x、y、width 和 height 属性相互独立；更改一个属性的值不会影响其他属性。
      * 但是，right 和 bottom 属性与这四个属性是整体相关的。例如，如果更改 right 属性的值，则 width 属性的值将发生变化；如果更改 bottom 属性，则 height 属性的值将发生变化。
      * @extends egret.HashObject
+     * @includeExample egret/geom/Rectangle.ts
      */
     class Rectangle extends HashObject {
         /**
@@ -1946,6 +2015,7 @@ declare module egret {
          * @param width {number} 矩形的宽度
          * @param height {number} 矩形的高度
          * @returns {egret.Rectangle}
+         * @deprecated
          */
         initialize(x: number, y: number, width: number, height: number): Rectangle;
         /**
@@ -2571,6 +2641,7 @@ declare module egret {
     /**
      * @classdesc 注入器
      * @class egret.Injector
+     * @includeExample egret/utils/Injector.ts
      */
     class Injector {
         /**
@@ -2770,6 +2841,7 @@ declare module egret {
      * @classdesc
      * 提供混合模式可视效果的常量值的类。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=48 BlendMode实例代码
+     * @includeExample egret/display/BlendMode.ts
      */
     class BlendMode {
         /**
@@ -2786,13 +2858,13 @@ declare module egret {
         /**
          * 根据显示对象的 Alpha 值擦除背景。Alpha 值不为0的区域将被擦除。
          * @constant {string} egret.BlendMode.ERASE
-         * @private
          */
         static ERASE: string;
         /**
          * 根据显示对象的 Alpha 值擦除背景。Alpha 值为0的区域将被擦除。
          * 注意：由于 CanvasAPI 的限制，只会保留 Alpha 值不为1的区域。
-         * @constant {string} egret.BlendMode.ERASE
+         * @constant {string} egret.BlendMode.ERASE_REVERSE
+         * @deprecated
          */
         static ERASE_REVERSE: string;
     }
@@ -2875,6 +2947,7 @@ declare module egret {
      * _draw();
      * getBounds();
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=102&terms1_id=25&terms2_id=27 显示对象的基本概念
+     * @includeExample egret/display/DisplayObject.ts
      *
      * @event egret.Event.ADDED 将显示对象添加到显示列表中时调度。
      * @event egret.Event.ADDED_TO_STAGE 在将显示对象直接添加到舞台显示列表或将包含显示对象的子树添加至舞台显示列表中时调度。
@@ -2882,6 +2955,10 @@ declare module egret {
      * @event egret.Event.REMOVED_FROM_STAGE 在从显示列表中直接删除显示对象或删除包含显示对象的子树时调度。
      * @event egret.Event.ENTER_FRAME [广播事件] 播放头进入新帧时调度。
      * @event egret.Event.RENDER [广播事件] 将要更新和呈现显示列表时调度。
+     * @event egret.Event.TOUCH_BEGIN [触摸事件] 触摸开始时调度。
+     * @event egret.Event.TOUCH_MOVE [触摸事件] 触摸移动时调度。
+     * @event egret.Event.TOUCH_END [触摸事件] 触摸结束时调度。
+     * @event egret.Event.TOUCH_TAP [触摸事件] 单击时调度。
      */
     class DisplayObject extends EventDispatcher implements RenderData {
         _DO_Props_: DisplayObjectProperties;
@@ -2964,6 +3041,7 @@ declare module egret {
          * 表示从对象相对锚点X。
          * @member {number} egret.DisplayObject#anchorX
          * @default 0
+         * @deprecated
          */
         anchorX: number;
         _setAnchorX(value: number): void;
@@ -2971,6 +3049,7 @@ declare module egret {
          * 表示从对象相对锚点Y。
          * @member {number} egret.DisplayObject#anchorY
          * @default 0
+         * @deprecated
          */
         anchorY: number;
         _setAnchorY(value: number): void;
@@ -3166,7 +3245,7 @@ declare module egret {
         hitTest(x: number, y: number, ignoreTouchEnabled?: boolean): DisplayObject;
         /**
          * 计算显示对象，以确定它是否与 x 和 y 参数指定的点重叠或相交。x 和 y 参数指定舞台的坐标空间中的点，而不是包含显示对象的显示对象容器中的点（除非显示对象容器是舞台）。
-         * 注意，不要在大量物体中使用精确碰撞像素检测，这回带来巨大的性能开销
+         * 注意，不要在大量物体中使用精确碰撞像素检测，这会带来巨大的性能开销
          * @method egret.DisplayObject#hitTestPoint
          * @param x {number}  要测试的此对象的 x 坐标。
          * @param y {number}  要测试的此对象的 y 坐标。
@@ -3254,6 +3333,7 @@ declare module egret {
      * DisplayObjectContainer 类是可用作显示列表中显示对象容器的所有对象的基类。
      * 该显示列表管理运行时中显示的所有对象。使用 DisplayObjectContainer 类排列显示列表中的显示对象。每个 DisplayObjectContainer 对象都有自己的子级列表，用于组织对象的 Z 轴顺序。Z 轴顺序是由前至后的顺序，可确定哪个对象绘制在前，哪个对象绘制在后等。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=108&terms1_id=25&terms2_id=28 显示容器的概念与实现
+     * @includeExample egret/display/DisplayObjectContainer.ts
      */
     class DisplayObjectContainer extends DisplayObject {
         static __EVENT__ADD_TO_STAGE_LIST: Array<DisplayObject>;
@@ -3390,6 +3470,7 @@ declare module egret {
      * @classdesc
      * StageScaleMode 类为 Stage.scaleMode 属性提供值。
      * @class egret.StageScaleMode
+     * @includeExample egret/display/StageScaleMode.ts
      */
     class StageScaleMode {
         /**
@@ -3423,6 +3504,7 @@ declare module egret {
      * 可以以全局方式访问 Stage 对象(egret.MainContext.instance.stage)。也可以利用 DisplayObject 实例的 stage 属性进行访问。
      * Stage 类具有多个祖代类 -- DisplayObjectContainer、DisplayObject 和 EventDispatcher，属性和方法便是从这些类继承而来的。从这些继承的许多属性和方法不适用于 Stage 对象。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=202&terms1_id=59&terms2_id=69 深入了解屏幕适配
+     * @includeExample egret/display/Stage.ts
      */
     class Stage extends DisplayObjectContainer {
         static _invalidateRenderFlag: boolean;
@@ -3543,6 +3625,7 @@ declare module egret {
         _isVTweenPlaying: boolean;
         _hScrollTween: Tween;
         _vScrollTween: Tween;
+        _bounces: boolean;
     }
 }
 
@@ -3552,6 +3635,7 @@ declare module egret {
      * @classdesc
      * ScrollView 是用于滑动的辅助类，将一个显示对象传入构造函数即可。可以在指定的尺寸范围内显示超过该范围的显示对象。并可以在此范围内随意拖动。
      * @extends egret.DisplayObjectContainer
+     * @includeExample egret/display/ScrollView.ts
      */
     class ScrollView extends DisplayObjectContainer {
         _ScrV_Props_: ScrollViewProperties;
@@ -3566,6 +3650,12 @@ declare module egret {
          * @member {number} egret.ScrollView#scrollSpeed
          */
         scrollSpeed: number;
+        /**
+         * 是否启用回弹，当启用回弹后，ScrollView中内容在到达边界后允许继续拖动，在用户拖动操作结束后，再反弹回边界位置
+         * @default true
+         * @version Egret 2.4
+         */
+        bounces: boolean;
         /**
          * 创建一个 egret.ScrollView 对象
          * @method egret.ScrollView#constructor
@@ -3614,7 +3704,6 @@ declare module egret {
          * @param isOffset {boolean} 可选参数，默认是false，是否是滚动增加量，如 top=1 代表往上滚动1像素
          */
         setScrollPosition(top: number, left: number, isOffset?: boolean): void;
-        private _isOnTheEdge(isVertical?);
         private _validatePosition(top?, left?);
         /**
          * @inheritDoc
@@ -3740,6 +3829,7 @@ declare module egret {
      * BitmapFillMode 类定义Bitmap的图像填充方式。
      * BitmapFillMode 类定义了调整大小模式的一个枚举，这些模式确定 Bitmap 如何填充由布局系统指定的尺寸。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=134&terms1_id=25&terms2_id=31 纹理的填充方式
+     * @includeExample egret/display/BitmapFillMode.ts
      */
     class BitmapFillMode {
         /**
@@ -3764,6 +3854,7 @@ declare module egret {
      * 一个 Bitmap 对象可在若干 Bitmap 对象之中共享其 Texture 引用，与转换属性或旋转属性无关。由于能够创建引用相同 Texture 对象的多个 Bitmap 对象，因此，多个显示对象可以使用相同的复杂 Texture 对象，而不会因为每个显示对象实例使用一个 Texture 对象而产生内存开销。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=132&terms1_id=25&terms2_id=31&t3_id=132 创建位图
      * @extends egret.DisplayObject
+     * @includeExample egret/display/Bitmap.ts
      */
     class Bitmap extends DisplayObject {
         private static renderFilter;
@@ -3816,6 +3907,7 @@ declare module egret {
      * @class egret.BitmapText
      * 位图字体采用了Bitmap+SpriteSheet的方式来渲染文字。
      * @extends egret.DisplayObject
+     * @includeExample egret/text/BitmapText.ts
      */
     class BitmapText extends DisplayObject {
         /**
@@ -3899,6 +3991,7 @@ declare module egret {
      * Graphics 类包含一组可用来创建矢量形状的方法。支持绘制的显示对象包括 Sprite 和 Shape 对象。这些类中的每一个类都包括 graphics 属性，该属性是一个 Graphics 对象。
      * 以下是为便于使用而提供的一些辅助函数：drawRect()、drawRoundRect()、drawCircle() 和 drawEllipse()。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=136&terms1_id=25&terms2_id=32&t3_id=136  绘制矩形
+     * @includeExample egret/display/Graphics.ts
      */
     class Graphics {
         /**
@@ -4065,6 +4158,7 @@ declare module egret {
      * @class egret.Shape
      * @classdesc 此类用于使用 Egret 绘图应用程序编程接口 (API) 创建简单形状。Shape 类包括 graphics 属性，该属性使您可以从 Graphics 类访问方法。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=136&terms1_id=25&terms2_id=32 Shape绘制矢量图
+     * @includeExample egret/display/Shape.ts
      */
     class Shape extends egret.DisplayObject {
         /**
@@ -4089,6 +4183,7 @@ declare module egret {
      * @class egret.Sprite
      * @classdesc Sprite 类是基本显示列表构造块：一个可显示图形并且也可包含子项的显示列表节点。Sprite 对象与影片剪辑类似，但没有时间轴。Sprite 是不需要时间轴的对象的相应基类。例如，Sprite 将是通常不使用时间轴的用户界面 (UI) 组件的逻辑基类。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=102&terms1_id=25&terms2_id=27 显示对象的基本概念
+     * @includeExample egret/display/Sprite.ts
      */
     class Sprite extends DisplayObjectContainer {
         /**
@@ -4198,6 +4293,8 @@ declare module egret {
         _numLines: number;
         _multiline: boolean;
         _wordWrap: boolean;
+        _restrictAnd: string;
+        _restrictNot: string;
         constructor();
     }
 }
@@ -4279,8 +4376,8 @@ declare module egret {
      * 如果开发者希望所有平台完全无差异，请使用BitmapText
      * @extends egret.DisplayObject
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=141&terms1_id=25&terms2_id=33 创建文本
-     *
      * @event egret.TextEvent.LINK 点击链接后调度。
+     * @includeExample egret/text/TextField.ts
      */
     class TextField extends DisplayObject {
         /**
@@ -4447,6 +4544,37 @@ declare module egret {
          */
         multiline: boolean;
         _setMultiline(value: boolean): void;
+        /**
+         * @language en_US
+         * Indicates a user can enter into the text field character set. If you restrict property is null, you can enter any character. If you restrict property is an empty string, you can not enter any character. If you restrict property is a string of characters, you can enter only characters in the string in the text field. The string is scanned from left to right. You can use a hyphen (-) to specify a range. Only restricts user interaction; a script may put any text into the text field. <br/>
+         * If the string of characters caret (^) at the beginning, all characters are initially accepted, then the string are excluded from receiving ^ character. If the string does not begin with a caret (^) to, any characters are initially accepted and then a string of characters included in the set of accepted characters. <br/>
+         * The following example allows only uppercase characters, spaces, and numbers in the text field: <br/>
+         * My_txt.restrict = "A-Z 0-9"; <br/>
+         * The following example includes all characters except lowercase letters: <br/>
+         * My_txt.restrict = "^ a-z"; <br/>
+         * If you need to enter characters \ ^, use two backslash "\\ -" "\\ ^": <br/>
+         * Can be used anywhere in the string ^ to rule out including characters and switch between characters, but can only be used to exclude a ^. The following code includes only uppercase letters except uppercase Q: <br/>
+         * My_txt.restrict = "A-Z ^ Q"; <br/>
+         * @version Egret 2.4
+         * @platform Web,Native
+         * @default null
+         */
+        /**
+         * @language zh_CN
+         * 表示用户可输入到文本字段中的字符集。如果 restrict 属性的值为 null，则可以输入任何字符。如果 restrict 属性的值为空字符串，则不能输入任何字符。如果 restrict 属性的值为一串字符，则只能在文本字段中输入该字符串中的字符。从左向右扫描该字符串。可以使用连字符 (-) 指定一个范围。只限制用户交互；脚本可将任何文本放入文本字段中。<br/>
+         * 如果字符串以尖号 (^) 开头，则先接受所有字符，然后从接受字符集中排除字符串中 ^ 之后的字符。如果字符串不以尖号 (^) 开头，则最初不接受任何字符，然后将字符串中的字符包括在接受字符集中。<br/>
+         * 下例仅允许在文本字段中输入大写字符、空格和数字：<br/>
+         * my_txt.restrict = "A-Z 0-9";<br/>
+         * 下例包含除小写字母之外的所有字符：<br/>
+         * my_txt.restrict = "^a-z";<br/>
+         * 如果需要输入字符 \ ^，请使用2个反斜杠 "\\-" "\\^" ：<br/>
+         * 可在字符串中的任何位置使用 ^，以在包含字符与排除字符之间进行切换，但是最多只能有一个 ^ 用来排除。下面的代码只包含除大写字母 Q 之外的大写字母：<br/>
+         * my_txt.restrict = "A-Z^Q";<br/>
+         * @version Egret 2.4
+         * @platform Web,Native
+         * @default null
+         */
+        restrict: string;
         _setWidth(value: number): void;
         _setHeight(value: number): void;
         private _bgGraphics;
@@ -4506,6 +4634,7 @@ declare module egret {
         /**
          * 设置富文本
          * @param textArr 富文本数据
+         * @see http://edn.egret.com/cn/index.php/article/index/id/146
          */
         textFlow: Array<egret.ITextElement>;
         private changeToPassText(text);
@@ -4561,6 +4690,7 @@ declare module egret {
      * @class egret.HtmlTextParser
      * @classdesc 将html格式文本转换为可赋值给 egret.TextField#textFlow 属性的对象
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=146&terms1_id=25&terms2_id=33&t3_id=146 多种样式文本混合
+     * @includeExample egret/text/HtmlTextParser.ts
      */
     class HtmlTextParser {
         /**
@@ -4616,6 +4746,7 @@ declare module egret {
      * 同时，SpriteSheet可以很方便的进行素材整合，降低HTTP请求数量
      * SpriteSheet 格式的具体规范可以参见此文档  https://github.com/egret-labs/egret-core/wiki/Egret-SpriteSheet-Specification
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=135&terms1_id=25&terms2_id=31 纹理集的使用
+     * @includeExample egret/display/SpriteSheet.ts
      */
     class SpriteSheet extends HashObject {
         /**
@@ -4711,12 +4842,13 @@ declare module egret {
      * @see http://bbs.egret-labs.org/thread-918-1-1.html TextureMerger
      * @see http://bbs.egret-labs.org/forum.php?mod=viewthread&tid=251 文本(含位图字体具体用法)
      * @extends egret.SpriteSheet
+     * @includeExample egret/text/BitmapFont.ts
      */
     class BitmapFont extends SpriteSheet {
         /**
          * 创建一个 egret.BitmapFont 对象
-         * @param texture {egret.Texture} 纹理集
-         * @param config {any} 配置数据
+         * @param texture {egret.Texture} 使用TextureMerger生成的纹理集
+         * @param config {any} 使用TextureMerger生成的配置数据
          */
         constructor(texture: Texture, config: any);
         private charList;
@@ -4739,7 +4871,10 @@ declare module egret {
      * @class egret.MovieClip
      * @classdesc 影片剪辑，可以通过影片剪辑播放序列帧动画。MovieClip 类从以下类继承而来：DisplayObject 和 EventDispatcher。不同于 DisplayObject 对象，MovieClip 对象拥有一个时间轴。
      * @extends egret.DisplayObject
+     * @event egret.Event.COMPLETE 动画播放完成。
+     * @event egret.Event.LOOP_COMPLETE 动画循环播放完成。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=151&terms1_id=25&terms2_id=34 MovieClip序列帧动画
+     * @includeExample egret/display/MovieClip.ts
      */
     class MovieClip extends DisplayObject {
         private _isAddedToStage;
@@ -5088,6 +5223,11 @@ declare module egret {
         _initElement(x: number, y: number, cX: number, cY: number): void;
         _removeInput(): void;
         static create(): StageText;
+        /**
+         * @private
+         *
+         */
+        $onBlur(): void;
     }
 }
 
@@ -5097,6 +5237,7 @@ declare module egret {
      * @classdesc URLRequestMethod 类提供了一些值，这些值可指定在将数据发送到服务器时，
      * URLRequest 对象应使用 POST 方法还是 GET 方法。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=162&terms1_id=25&terms2_id=37 POST与GET
+     * @includeExample egret/net/URLRequestMethod.ts
      */
     class URLRequestMethod {
         /**
@@ -5117,6 +5258,7 @@ declare module egret {
      * @class egret.URLLoaderDataFormat
      * @classdesc URLLoaderDataFormat 类提供了一些用于指定如何接收已下载数据的值。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=161&terms1_id=25&terms2_id=37 读取不同数据格式
+     * @includeExample egret/net/URLLoaderDataFormat.ts
      */
     class URLLoaderDataFormat {
         /**
@@ -5155,6 +5297,7 @@ declare module egret {
      * 使用 URLVariables 类可以在应用程序和服务器之间传输变量。
      * 将 URLVariables 对象与 URLLoader 类的方法、URLRequest 类的 data 属性一起使用。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=163&terms1_id=25&terms2_id=37 发送带参数的请求
+     * @includeExample egret/net/URLVariables.ts
      */
     class URLVariables extends HashObject {
         /**
@@ -5190,6 +5333,7 @@ declare module egret {
      * @classdesc
      * URLRequestHeader 对象封装了一个 HTTP 请求标头并由一个名称/值对组成。URLRequestHeader 对象在 URLRequest 类的 requestHeaders 属性中使用。
      * 注意：由于浏览器兼容性原因，在 html5 中并未实现
+     * @includeExample egret/net/URLRequestHeader.ts
      */
     class URLRequestHeader {
         /**
@@ -5217,6 +5361,7 @@ declare module egret {
      * @classdesc URLRequest 类可捕获单个 HTTP 请求中的所有信息。
      * @extends egret.HashObject
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=160&terms1_id=25&terms2_id=37 构建通信请求
+     * @includeExample egret/net/URLRequest.ts
      */
     class URLRequest extends HashObject {
         /**
@@ -5263,11 +5408,12 @@ declare module egret {
      * @class egret.URLLoader
      * @classdesc
      * URLLoader 类以文本、二进制数据或 URL 编码变量的形式从 URL 下载数据。在下载文本文件、XML 或其他用于动态数据驱动应用程序的信息时，它很有用。
-     * URLLoader 对象会先从 URL 中下载所有数据，然后才将数据用于应用程序中的代码。它会发出有关下载进度的通知，
-     * 通过 bytesLoaded 和 bytesTotal 属性以及已调度的事件，可以监视下载进度。
+     * URLLoader 对象会先从 URL 中下载所有数据，然后才将数据用于应用程序中的代码。
      * @extends egret.EventDispatcher
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=160&terms1_id=25&terms2_id=37 构建通信请求
      * @event egret.Event.COMPLETE 加载完成后调度。
+     * @event egret.IOErrorEvent.IO_ERROR 加载错误后调度。
+     * @includeExample egret/net/URLLoader.ts
      */
     class URLLoader extends EventDispatcher {
         /**
@@ -5318,6 +5464,7 @@ declare module egret {
      * Texture类封装了这些底层实现的细节，开发者只需要关心接口即可
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=135&terms1_id=25&terms2_id=31 纹理集的使用
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=123&terms1_id=25&terms2_id=30 获取资源的几种方式
+     * @includeExample egret/display/Texture.ts
      */
     class Texture extends HashObject {
         /**
@@ -5395,6 +5542,25 @@ declare module egret {
          * @private
          */
         draw(context: any, sourceX: any, sourceY: any, sourceWidth: any, sourceHeight: any, destX: any, destY: any, destWidth: any, destHeight: any, renderType: any): void;
+        /**
+         * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null。
+         * native只支持 "image/png" 和 "image/jpeg"；Web中由于各个浏览器的实现不一样，因此建议也只用这2种。
+         * @param type 转换的类型，如  "image/png"。
+         * @param rect 需要转换的区域
+         * @returns {any} base64字符串
+         * @version Egret 2.4
+         */
+        toDataURL(type: string, rect?: egret.Rectangle): string;
+        /**
+         * 裁剪指定区域并保存成图片。
+         * native只支持 "image/png" 和 "image/jpeg"；Web中由于各个浏览器的实现不一样，因此建议也只用这2种。
+         * @param type 转换的类型，如  "image/png"
+         * @param filePath 图片的名称的路径（主目录为游戏的私有空间，路径中不能有 "../"，Web只支持传名称。）
+         * @param rect 需要转换的区域
+         * @version Egret 2.4
+         * @platform Native
+         */
+        saveToFile(type: string, filePath: string, rect?: egret.Rectangle): void;
         _drawForCanvas(context: CanvasRenderingContext2D, sourceX: any, sourceY: any, sourceWidth: any, sourceHeight: any, destX: any, destY: any, destWidth: any, destHeight: any, renderType: any): void;
         _drawForNative(context: any, sourceX: any, sourceY: any, sourceWidth: any, sourceHeight: any, destX: any, destY: any, destWidth: any, destHeight: any, renderType: any): void;
         _drawRepeatImageForNative(context: any, sourceX: any, sourceY: any, sourceWidth: any, sourceHeight: any, destX: any, destY: any, destWidth: any, destHeight: any, repeat: any): void;
@@ -5438,6 +5604,7 @@ declare module egret {
      * @classdesc
      * RenderTexture 是动态纹理类，他实现了将显示对象及其子对象绘制成为一个纹理的功能
      * @extends egret.Texture
+     * @includeExample egret/display/RenderTexture.ts
      */
     class RenderTexture extends Texture {
         /**
@@ -5696,6 +5863,12 @@ declare module egret {
         proceed(loader: URLLoader): void;
         static _getUrl(request: URLRequest): string;
         getChangeList(): Array<any>;
+        /**
+         * 获取虚拟url
+         * @param url
+         * @returns {string}
+         */
+        getVirtualUrl(url: string): string;
     }
 }
 
@@ -5714,6 +5887,7 @@ declare module egret {
 
 declare module egret {
     /**
+     * @includeExample egret/context/external/ExternalInterface.ts
      */
     class ExternalInterface {
         /**
@@ -5721,16 +5895,16 @@ declare module egret {
          * 如果该容器是 HTML 页，则此方法不可用。
          * 如果该容器是某个 App 容器，该容器将处理该事件。
          * @method egret.ExternalInterface#call
-         * @param functionName {string}
-         * @param value {string}
+         * @param functionName {string} 用于调用函数的名称
+         * @param value {string} 传递的函数的参数
          */
         static call(functionName: string, value: string): void;
         /**
          * 添加外层容器调用侦听，该容器将传递一个字符串给 Egret 容器
          * 如果该容器是 HTML 页，则此方法不可用。
          * @method egret.ExternalInterface#addCallBack
-         * @param functionName {string}
-         * @param listener {Function}
+         * @param functionName {string} 用于调用函数的名称
+         * @param listener {Function} 要调用的函数
          */
         static addCallback(functionName: string, listener: Function): void;
     }
@@ -5746,6 +5920,7 @@ declare module egret {
         private trans;
         private ua;
         static getInstance(): Browser;
+        webPSupport: boolean;
         /**
          * @deprecated
          * @returns {boolean}
@@ -5783,32 +5958,37 @@ declare module egret {
     }
 }
 
-declare module egret.localStorage {
+declare module egret {
     /**
-     * 读取数据
-     * @method egret.localStorage.getItem
-     * @param key {string} 要读取的键名称
+     * @includeExample egret/context/localStorage/localStorage.ts
      */
-    function getItem(key: string): string;
-    /**
-     * 保存数据
-     * @method egret.localStorage.setItem
-     * @param key {string} 要保存的键名称
-     * @param value {string} 要保存的值
-     * @returns {boolean} 数据保存是否成功
-     */
-    function setItem(key: string, value: string): boolean;
-    /**
-     * 删除数据
-     * @method egret.localStorage.removeItem
-     * @param key {string} 要删除的键名称
-     */
-    function removeItem(key: string): void;
-    /**
-     * 将所有数据清空
-     * @method egret.localStorage.clear
-     */
-    function clear(): void;
+    class localStorage {
+        /**
+         * 读取数据
+         * @method egret.localStorage.getItem
+         * @param key {string} 要读取的键名称
+         */
+        static getItem(key: string): string;
+        /**
+         * 保存数据
+         * @method egret.localStorage.setItem
+         * @param key {string} 要保存的键名称
+         * @param value {string} 要保存的值
+         * @returns {boolean} 数据保存是否成功
+         */
+        static setItem(key: string, value: string): boolean;
+        /**
+         * 删除数据
+         * @method egret.localStorage.removeItem
+         * @param key {string} 要删除的键名称
+         */
+        static removeItem(key: string): void;
+        /**
+         * 将所有数据清空
+         * @method egret.localStorage.clear
+         */
+        static clear(): void;
+    }
 }
 
 declare module egret {
@@ -5818,11 +5998,14 @@ declare module egret {
      * XML文件解析工具，它将XML文件解析为标准的JSON对象返回。
      * 用法类似JSON.parse(),传入一个XML字符串给XML.parse()，将能得到一个标准JSON对象。
      * 示例：
+     * <pre>
      *      <root value="abc">
      *          <item value="item0"/>
      *          <item value="item1"/>
      *      </root>
+     * </pre>
      * 将解析为:
+     * <pre>
      *      {
      *          "name": "root",
      *          "$value": "abc",
@@ -5831,7 +6014,9 @@ declare module egret {
      *              {"name": "item", "$value": "item1"}
      *          ]
      *      }
+     * </pre>
      * 其中XML上的属性节点都使用$+"属性名"的方式表示,子节点都存放在children属性的列表里，name表示节点名称。
+     * @includeExample egret/utils/XML.ts
      */
     class XML {
         /**
@@ -5901,6 +6086,7 @@ declare module egret {
      * @classdesc
      * ByteArray 类提供用于优化读取、写入以及处理二进制数据的方法和属性。
      * 注意：ByteArray 类适用于需要在字节层访问数据的高级 开发人员。
+     * @includeExample egret/utils/ByteArray.ts
      */
     class ByteArray {
         private static SIZE_OF_BOOLEAN;
@@ -6163,6 +6349,7 @@ declare module egret {
      * Tween是Egret的动画缓动类
      * @extends egret.EventDispatcher
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=150&terms1_id=25&terms2_id=34 Tween缓动动画
+     * @includeExample egret/tween/Tween.ts
      */
     class Tween extends EventDispatcher {
         /**
@@ -6206,7 +6393,7 @@ declare module egret {
         /**
          * 激活一个对象，对其添加 Tween 动画
          * @param target {any} 要激活 Tween 的对象
-         * @param props {any} 参数
+         * @param props {any} 参数，支持loop(循环播放) onChange(变化函数) onChangeObj(变化函数作用域)
          * @param pluginData {any} 暂未实现
          * @param override {boolean} 是否移除对象之前添加的tween，默认值false
          */
@@ -6386,6 +6573,7 @@ declare module egret {
      * @classdesc Sound 类允许您在应用程序中使用声音。
      * @see http://edn.egret.com/cn/index.php?g=&m=article&a=index&id=157&terms1_id=25&terms2_id=36 播放音频
      * @event egret.SoundEvent.SOUND_COMPLETE 在声音完成播放后调度。
+     * @includeExample egret/media/Sound.ts
      */
     class Sound extends egret.EventDispatcher {
         /**
@@ -6460,7 +6648,7 @@ declare module egret {
          * @param type 事件类型
          * @param listener 监听函数
          * @param thisObj 侦听函数绑定的this对象
-         * @platform Web
+         * @platform Web,Native
          */
         addEventListener(type: string, listener: Function, thisObject: any): void;
         /**
@@ -6469,7 +6657,7 @@ declare module egret {
          * @param type 事件类型
          * @param listener 监听函数
          * @param thisObj 侦听函数绑定的this对象
-         * @platform Web
+         * @platform Web,Native
          */
         removeEventListener(type: string, listener: Function, thisObject: any): void;
         private getVirtualType(type);

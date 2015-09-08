@@ -33,6 +33,7 @@ var egret;
      * @class egret.BitmapText
      * 位图字体采用了Bitmap+SpriteSheet的方式来渲染文字。
      * @extends egret.DisplayObject
+     * @includeExample egret/text/BitmapText.ts
      */
     var BitmapText = (function (_super) {
         __extends(BitmapText, _super);

@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>HelloWorld</title>
+    <title>Pixel</title>
     <meta name="viewport"
           content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no,target-densitydpi=device-dpi"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-
+	<meta name="screen-orientation" content="landscape">
     <meta name="full-screen" content="true"/>
     <meta name="screen-orientation" content="portrait"/>
     <meta name="x5-fullscreen" content="true"/>
@@ -43,7 +43,7 @@
         }
     </style>
 </head>
-<body>
+<body oncontextmenu = self.event.returnvalue = false>
 <div style="position:relative;" id="gameDiv"></div>
 <script>var document_class = "Main";</script>
 <!--这部分内容在编译时会被替换，要修改文档类，请到工程目录下的egretProperties.json内编辑。-->

@@ -13,13 +13,11 @@ class Main extends egret.DisplayObjectContainer {
         Main.main = this;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
-
+    
     private onAddToStage(event:egret.Event) {
         new Timer(this);
         egret.Injector.mapClass("egret.gui.IAssetAdapter", AssetAdapter);
         this.layers = new Array<egret.DisplayObjectContainer>();
-        //游戏场景层，游戏场景相关内容可以放在这里面。
-        //Game scene layer, the game content related to the scene can be placed inside this layer.
         this.layers[Main.LAYER_BOTTOM] = new egret.DisplayObjectContainer();
         this.addChild(this.layers[Main.LAYER_BOTTOM]);
         this.layers[Main.LAYER_GAME] = new egret.DisplayObjectContainer();
@@ -28,7 +26,6 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(this.layers[Main.LAYER_GUI]);
         this.layers[Main.LAYER_TOP] = new egret.DisplayObjectContainer();
         this.addChild(this.layers[Main.LAYER_TOP]);
-        
         
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onLoadingConfigComplete, this);
         RES.loadConfig("resource/loading.json", "resource/");
@@ -40,12 +37,12 @@ class Main extends egret.DisplayObjectContainer {
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onLoadingResourceLoadError, this);
         RES.loadGroup("loading");
     }
-    
+        
     private onLoadingResourceLoadError(event:RES.ResourceEvent):void {
         console.warn("Group:" + event.groupName + " has failed to load");
         this.onLoadingResourceLoadComplete(event);
     }
-
+    
     private onLoadingResourceLoadComplete(event: RES.ResourceEvent): void {
         if(event.groupName == "loading") {
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onLoadingResourceLoadComplete, this);
@@ -75,15 +72,14 @@ class Main extends egret.DisplayObjectContainer {
         console.warn("Group:" + event.groupName + " has failed to load");
         this.onPreloadResourceLoadComplete(event);
     }
+            
     private onPreloadResourceLoadComplete(event: RES.ResourceEvent): void {
         if(event.groupName == "preload"){
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onLoadingResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onPreloadResourceLoadError, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onPreloadResourceLoadProgress, this);
-            Timer.addTimer(1000,1,() => {
-                Main.removeScene(Main.main.loadingScene);
-                this.createScene();
-            }, this);
+            Main.removeScene(Main.main.loadingScene);
+            this.createScene();
         }
     }
     
@@ -107,10 +103,31 @@ class Main extends egret.DisplayObjectContainer {
                 return;
             }
         }
-        console.warn("unable to remove the scene");
+        Debug.log("unable to remove the scene");
+    }
+    
+    /**
+     * 添加粒子发射器
+     */ 
+    public static addParticleEmitter(particle: any, layer:number): void{
+        Main.main.layers[layer].addChild(particle);
+    }
+    
+    /**
+    * 移除粒子发射器
+    */ 
+    public static removeParticleEmitter(particle: any): void{
+        for(var i: number = 0;i < Main.main.layers.length; i++){
+            if(Main.main.layers[i].contains(particle)){
+                Main.main.layers[i].removeChild(particle);
+                return;
+            }
+        }
     }
 
+    //添加主菜单场景
     private createScene():void {
+        Main.addScene(Main.LAYER_BOTTOM,new BGScene());
         Main.addScene(Main.LAYER_GAME, new MainMenuScene());
     }
 }

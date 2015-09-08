@@ -41,6 +41,7 @@ var RES;
          * @param type {string}
          * @param bubbles {boolean}
          * @param cancelable {boolean}
+         * @private
          */
         function ResourceEvent(type, bubbles, cancelable) {
             if (bubbles === void 0) { bubbles = false; }
@@ -77,6 +78,7 @@ var RES;
          * @param resItem {egret.ResourceItem}
          * @param itemsLoaded {number}
          * @param itemsTotal {number}
+         * @private
          */
         ResourceEvent.dispatchResourceEvent = function (target, type, groupName, resItem, itemsLoaded, itemsTotal) {
             if (groupName === void 0) { groupName = ""; }
