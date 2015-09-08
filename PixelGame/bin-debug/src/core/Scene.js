@@ -16,8 +16,13 @@ var Scene = (function (_super) {
     __egretProto__.childrenCreated = function () {
         this.init();
     };
+    __egretProto__.start = function () {
+    };
+    __egretProto__.update = function () {
+    };
     __egretProto__.init = function () {
     };
     return Scene;
 })(egret.gui.Panel);
 Scene.prototype.__class__ = "Scene";
+//# sourceMappingURL=Scene.js.map

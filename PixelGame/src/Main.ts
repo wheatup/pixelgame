@@ -1,19 +1,35 @@
 class Main extends egret.DisplayObjectContainer {
-    private bottomLayer:egret.DisplayObjectContainer;
-    private gameLayer:egret.DisplayObjectContainer;
-    private guiLayer:egret.DisplayObjectContainer;
-    private topLayer:egret.DisplayObjectContainer;
+    private static main: Main;
+    public static LAYER_BOTTOM: number = 0;
+    public static LAYER_GAME: number = 1;
+    public static LAYER_GUI: number = 2;
+    public static LAYER_TOP: number = 3;
     
-    private loadingView:LoadingScene;
-
+    private layers: Array<egret.DisplayObjectContainer>;
+    private loadingScene:LoadingScene;
+    
     public constructor() {
         super();
+        Main.main = this;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
 
     private onAddToStage(event:egret.Event) {
+        new Timer(this);
         egret.Injector.mapClass("egret.gui.IAssetAdapter", AssetAdapter);
-        //egret.gui.Theme.load("resource/theme.thm");
+        this.layers = new Array<egret.DisplayObjectContainer>();
+        //游戏场景层，游戏场景相关内容可以放在这里面。
+        //Game scene layer, the game content related to the scene can be placed inside this layer.
+        this.layers[Main.LAYER_BOTTOM] = new egret.DisplayObjectContainer();
+        this.addChild(this.layers[Main.LAYER_BOTTOM]);
+        this.layers[Main.LAYER_GAME] = new egret.DisplayObjectContainer();
+        this.addChild(this.layers[Main.LAYER_GAME]);
+        this.layers[Main.LAYER_GUI] = new egret.DisplayObjectContainer();
+        this.addChild(this.layers[Main.LAYER_GUI]);
+        this.layers[Main.LAYER_TOP] = new egret.DisplayObjectContainer();
+        this.addChild(this.layers[Main.LAYER_TOP]);
+        
+        
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onLoadingConfigComplete, this);
         RES.loadConfig("resource/loading.json", "resource/");
     }
@@ -40,8 +56,8 @@ class Main extends egret.DisplayObjectContainer {
     }
     
     private onPreloadConfigComplete(event:RES.ResourceEvent):void {
-        this.loadingView = new LoadingScene();
-        this.stage.addChild(this.loadingView);
+        this.loadingScene = new LoadingScene();
+        Main.addScene(Main.LAYER_GUI, this.loadingScene);
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onPreloadConfigComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onPreloadResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onPreloadResourceLoadError, this);
@@ -51,7 +67,7 @@ class Main extends egret.DisplayObjectContainer {
 
     private onPreloadResourceLoadProgress(event:RES.ResourceEvent):void {
         if (event.groupName == "preload") {
-            this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
+            this.loadingScene.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     }
     
@@ -64,36 +80,39 @@ class Main extends egret.DisplayObjectContainer {
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onLoadingResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onPreloadResourceLoadError, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onPreloadResourceLoadProgress, this);
-            Timer.addTimer(2000,(data:any) => {
-                alert(data);
-                this.stage.removeChild(this.loadingView);
+            Timer.addTimer(1000,1,() => {
+                Main.removeScene(Main.main.loadingScene);
                 this.createScene();
-            },"998");
-            
+            }, this);
         }
+    }
+    
+    /**
+     * 在指定层添加场景
+     */ 
+    public static addScene(layer: number, scene: Scene):void{
+        Main.main.layers[layer].addChild(scene);
+        scene.start();
+        Main.main.addEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
+    }
+    
+    /**
+    * 移除场景
+    */ 
+    public static removeScene(scene: Scene): void{
+        for(var i: number = 0;i < Main.main.layers.length; i++){
+            if(Main.main.layers[i].contains(scene)){
+                Main.main.layers[i].removeChild(scene);
+                Main.main.removeEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
+                return;
+            }
+        }
+        console.warn("unable to remove the scene");
     }
 
     private createScene():void {
-
-        //游戏场景层，游戏场景相关内容可以放在这里面。
-        //Game scene layer, the game content related to the scene can be placed inside this layer.
-        this.bottomLayer = new egret.DisplayObjectContainer();
-        this.addChild(this.bottomLayer);
-        
-        this.gameLayer = new egret.DisplayObjectContainer();
-        this.addChild(this.gameLayer);
-        
-        this.guiLayer = new egret.DisplayObjectContainer();
-        this.addChild(this.guiLayer);
-        
-        this.topLayer = new egret.DisplayObjectContainer();
-        this.addChild(this.topLayer);
-
-        var mainMenu: MainMenuScene = new MainMenuScene();
-        this.gameLayer.addChild(mainMenu);
+        Main.addScene(Main.LAYER_GAME, new MainMenuScene());
     }
-
-
 }
 
 

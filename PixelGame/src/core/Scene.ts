@@ -20,5 +20,7 @@ class Scene extends egret.gui.Panel{
         this.init();
     }
     
+    public start(): void{}
+    public update(): void{}
     public init(): void{}
 }

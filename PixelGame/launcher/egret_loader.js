@@ -43,6 +43,7 @@ egret_h5.startGame = function () {
     //WebGL is a Egret's beta property. It's off by default.
     //WebGL是egret的Beta特性，默认关闭
     var rendererType = 0;
+	egret.RendererContext.imageSmoothingEnabled = false;
     if (rendererType == 1) {// egret.WebGLUtils.checkCanUseWebGL()) {
         console.log("Use WebGL mode");
         context.rendererContext = new egret.WebGLRenderer();
@@ -50,7 +51,7 @@ egret_h5.startGame = function () {
     else {
         context.rendererContext = new egret.HTML5CanvasRenderer();
     }
-
+	
     egret.MainContext.instance.rendererContext.texture_scale_factor = 1;
     context.run();
 

@@ -12,13 +12,13 @@
 	},
 	{
 		"name":"loading_bar",
-		"scale9grid":"4,4,24,24",
+		"scale9grid":"1,1,6,6",
 		"type":"image",
 		"url":"assets/loading/loading_bar.png"
 	},
 	{
 		"name":"loading_frame",
-		"scale9grid":"4,4,24,24",
+		"scale9grid":"2,2,4,4",
 		"type":"image",
 		"url":"assets/loading/loading_frame.png"
 	}]

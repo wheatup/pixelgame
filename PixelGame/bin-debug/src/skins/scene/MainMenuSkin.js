@@ -47,3 +47,4 @@ var skins;
         MainMenuSkin.prototype.__class__ = "skins.scene.MainMenuSkin";
     })(scene = skins.scene || (skins.scene = {}));
 })(skins || (skins = {}));
+//# sourceMappingURL=MainMenuSkin.js.map
