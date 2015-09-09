@@ -1,6 +1,7 @@
 /**
  *
- * @author 
+ * @author wheatup
+ * 用于输出Debug信息
  *
  */
 class Debug {

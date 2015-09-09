@@ -67,8 +67,8 @@ var Main = (function (_super) {
         }
     };
     /**
-     * 在指定层添加场景
-     */
+    * 在指定层添加场景
+    */
     Main.addScene = function (layer, scene) {
         Main.main.layers[layer].addChild(scene);
         scene.start();
@@ -80,6 +80,7 @@ var Main = (function (_super) {
     Main.removeScene = function (scene) {
         for (var i = 0; i < Main.main.layers.length; i++) {
             if (Main.main.layers[i].contains(scene)) {
+                scene.onRemove();
                 Main.main.layers[i].removeChild(scene);
                 Main.main.removeEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
                 return;
@@ -88,8 +89,8 @@ var Main = (function (_super) {
         Debug.log("unable to remove the scene");
     };
     /**
-     * 添加粒子发射器
-     */
+    * 添加粒子发射器
+    */
     Main.addParticleEmitter = function (particle, layer) {
         Main.main.layers[layer].addChild(particle);
     };
@@ -116,4 +117,3 @@ var Main = (function (_super) {
     return Main;
 })(egret.DisplayObjectContainer);
 Main.prototype.__class__ = "Main";
-//# sourceMappingURL=Main.js.map

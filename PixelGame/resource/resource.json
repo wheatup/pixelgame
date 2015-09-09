@@ -1,7 +1,7 @@
 {
 	"groups":[
 	{
-		"keys":"par_title,par_title_json",
+		"keys":"par_title,par_title_json,white",
 		"name":"preload"
 	}],
 	"resources":[
@@ -14,5 +14,10 @@
 		"name":"par_title_json",
 		"type":"json",
 		"url":"assets/particles/par_title.json"
+	},
+	{
+		"name":"white",
+		"type":"image",
+		"url":"assets/white.png"
 	}]
 }

@@ -1,7 +1,8 @@
 /**
  *
- * @author 
- *
+ * @author wheatup
+ * 游戏场景
+ * 
  */
 class GameScene extends Scene{
     public constructor(){

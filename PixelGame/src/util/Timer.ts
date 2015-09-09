@@ -1,6 +1,7 @@
 /**
  *
- * @author 
+ * @author wheatup
+ * 时间控制系统，用语循环、延时调用
  *
  */
 class Timer {
@@ -12,6 +13,16 @@ class Timer {
         container.addEventListener(egret.Event.ENTER_FRAME, this.update, this);
     }
     
+    /**
+     * 创建定时器
+     * @params:
+     * time:延时时间
+     * count:调用次数，小于0则无限调用
+     * backFun:调用函数
+     * thisObject:调用对象
+     * data:传参
+     * 
+     */ 
     public static addTimer(time: number, count: number, backFun: Function, thisObject: any, data?:any): TimerVO {
         var vo: TimerVO = new TimerVO();
         vo.nextTime = egret.getTimer() + time;
@@ -25,6 +36,9 @@ class Timer {
         return vo;
     }
 	
+    /**
+     * 游戏循环调用的方法
+     */ 
 	private update(): void{
         if(this.arr.length > 0) {
             var time: number = egret.getTimer();
@@ -44,12 +58,18 @@ class Timer {
         }
 	}
 	
+    /**
+     * 移除一个定时器
+     */ 
     public static removeTimer(vo: TimerVO): void {
         if(Timer.instance.arr.indexOf(vo) >= 0)
             Timer.instance.arr.splice(Timer.instance.arr.indexOf(vo),1);
     }
 }
 
+/**
+ * 定时器类
+ */ 
 class TimerVO {
     public interval: number;
     public nextTime: number;

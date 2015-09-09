@@ -1,8 +1,4 @@
-/**
- * 场景类
- */
 class Scene extends egret.gui.Panel{
-    //所有UI对象
     public ui: Object;
     
 	public constructor(skinName: string){
@@ -20,6 +16,7 @@ class Scene extends egret.gui.Panel{
         this.init();
     }
     
+    public onRemove():void{}
     public start(): void{}
     public update(): void{}
     public init(): void{}

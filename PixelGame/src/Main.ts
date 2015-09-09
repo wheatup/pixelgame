@@ -14,9 +14,13 @@ class Main extends egret.DisplayObjectContainer {
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
     
+    //
     private onAddToStage(event:egret.Event) {
+        //初始化时间管理器
         new Timer(this);
+        //初始化素材解析器
         egret.Injector.mapClass("egret.gui.IAssetAdapter", AssetAdapter);
+        //初始化所有显示层
         this.layers = new Array<egret.DisplayObjectContainer>();
         this.layers[Main.LAYER_BOTTOM] = new egret.DisplayObjectContainer();
         this.addChild(this.layers[Main.LAYER_BOTTOM]);
@@ -27,10 +31,12 @@ class Main extends egret.DisplayObjectContainer {
         this.layers[Main.LAYER_TOP] = new egret.DisplayObjectContainer();
         this.addChild(this.layers[Main.LAYER_TOP]);
         
+        //加载载入界面资源
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onLoadingConfigComplete, this);
         RES.loadConfig("resource/loading.json", "resource/");
     }
 
+    
     private onLoadingConfigComplete(event:RES.ResourceEvent):void {
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onLoadingConfigComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onLoadingResourceLoadComplete, this);
@@ -79,25 +85,26 @@ class Main extends egret.DisplayObjectContainer {
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onPreloadResourceLoadError, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onPreloadResourceLoadProgress, this);
             Main.removeScene(Main.main.loadingScene);
-            this.createScene();
+            this.start();
         }
     }
     
     /**
-     * 在指定层添加场景
-     */ 
+    * 在指定层添加场景
+    */ 
     public static addScene(layer: number, scene: Scene):void{
         Main.main.layers[layer].addChild(scene);
         scene.start();
         Main.main.addEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
     }
-    
+        
     /**
     * 移除场景
     */ 
     public static removeScene(scene: Scene): void{
         for(var i: number = 0;i < Main.main.layers.length; i++){
             if(Main.main.layers[i].contains(scene)){
+                scene.onRemove();
                 Main.main.layers[i].removeChild(scene);
                 Main.main.removeEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
                 return;
@@ -105,14 +112,14 @@ class Main extends egret.DisplayObjectContainer {
         }
         Debug.log("unable to remove the scene");
     }
-    
+        
     /**
-     * 添加粒子发射器
-     */ 
+    * 添加粒子发射器
+    */ 
     public static addParticleEmitter(particle: any, layer:number): void{
         Main.main.layers[layer].addChild(particle);
     }
-    
+	
     /**
     * 移除粒子发射器
     */ 
@@ -124,10 +131,12 @@ class Main extends egret.DisplayObjectContainer {
             }
         }
     }
-
-    //添加主菜单场景
-    private createScene():void {
+    
+    //游戏开始
+    private start():void {
+        //添加背景层
         Main.addScene(Main.LAYER_BOTTOM,new BGScene());
+        //添加主菜单层
         Main.addScene(Main.LAYER_GAME, new MainMenuScene());
     }
 }

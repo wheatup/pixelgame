@@ -1,4 +1,10 @@
-class MyEvent {
+/**
+*
+* @author wheatup
+* 自定义事件系统
+*
+*/
+class WheatupEvent {
     
     public static arr: Array<EventObject>;
     
@@ -6,36 +12,36 @@ class MyEvent {
     * 绑定事件到指定信号
     */
     public static bind(triggerName: string, target: Function, thisObject: any, replace: boolean = false): void {
-        if (!MyEvent.arr) {
-            MyEvent.arr = [];
+        if (!WheatupEvent.arr) {
+            WheatupEvent.arr = [];
         }
         
         if(replace){
-            MyEvent.unbindAll(triggerName);
+            WheatupEvent.unbindAll(triggerName);
         }
         
         var eo = new EventObject(triggerName, target, thisObject);
-        MyEvent.arr.push(eo);
+        WheatupEvent.arr.push(eo);
     }
     
     /**
     * 解绑事件
     */
     public static unbind(triggerName: string, target:Function = null): void{
-        if (!MyEvent.arr) {
+        if (!WheatupEvent.arr) {
             return;
         }
         if (target) {
-            for (var i = 0; i < MyEvent.arr.length; i++) {
-                if (MyEvent.arr[i].triggerName == triggerName && MyEvent.arr[i].target == target) {
-                    MyEvent.arr.splice(i, 1);
+            for (var i = 0; i < WheatupEvent.arr.length; i++) {
+                if (WheatupEvent.arr[i].triggerName == triggerName && WheatupEvent.arr[i].target == target) {
+                    WheatupEvent.arr.splice(i, 1);
                     break;
                 }
             }
         } else {
-            for (var i = 0; i < MyEvent.arr.length; i++) {
-                if (MyEvent.arr[i].triggerName == triggerName) {
-                    MyEvent.arr.splice(i, 1);
+            for (var i = 0; i < WheatupEvent.arr.length; i++) {
+                if (WheatupEvent.arr[i].triggerName == triggerName) {
+                    WheatupEvent.arr.splice(i, 1);
                     break;
                 }
             }
@@ -46,21 +52,21 @@ class MyEvent {
     * 解绑信号所有事件
     */
     public static unbindAll(triggerName: string, target: Function = null): void{
-        if (!MyEvent.arr) {
+        if (!WheatupEvent.arr) {
             return;
         }
         
         if (target) {
-            for (var i = 0; i < MyEvent.arr.length; i++) {
-                if (MyEvent.arr[i].triggerName == triggerName && MyEvent.arr[i].target == target) {
-                    MyEvent.arr.splice(i, 1);
+            for (var i = 0; i < WheatupEvent.arr.length; i++) {
+                if (WheatupEvent.arr[i].triggerName == triggerName && WheatupEvent.arr[i].target == target) {
+                    WheatupEvent.arr.splice(i, 1);
                     i--;
                 }
             }
         } else {
-            for (var i = 0; i < MyEvent.arr.length; i++) {
-                if (MyEvent.arr[i].triggerName == triggerName) {
-                    MyEvent.arr.splice(i, 1);
+            for (var i = 0; i < WheatupEvent.arr.length; i++) {
+                if (WheatupEvent.arr[i].triggerName == triggerName) {
+                    WheatupEvent.arr.splice(i, 1);
                     i--;
                 }
             }
@@ -71,14 +77,17 @@ class MyEvent {
     * 调用事件
     */
     public static call(triggerName: string, data:any = null) : void{
-        for (var i = 0; i < MyEvent.arr.length; i++) {
-            if (MyEvent.arr[i].triggerName == triggerName) {
-                MyEvent.arr[i].target.call(MyEvent.arr[i].thisObject,data);
+        for (var i = 0; i < WheatupEvent.arr.length; i++) {
+            if (WheatupEvent.arr[i].triggerName == triggerName) {
+                WheatupEvent.arr[i].target.call(WheatupEvent.arr[i].thisObject,data);
             }
         }
     }
 }
 
+/**
+ * 事件对象
+ */ 
 class EventObject {
     public triggerName: string;
     public target: Function;

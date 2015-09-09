@@ -1,6 +1,3 @@
-/**
- * 场景类
- */
 var Scene = (function (_super) {
     __extends(Scene, _super);
     function Scene(skinName) {
@@ -16,6 +13,8 @@ var Scene = (function (_super) {
     __egretProto__.childrenCreated = function () {
         this.init();
     };
+    __egretProto__.onRemove = function () {
+    };
     __egretProto__.start = function () {
     };
     __egretProto__.update = function () {
@@ -25,4 +24,3 @@ var Scene = (function (_super) {
     return Scene;
 })(egret.gui.Panel);
 Scene.prototype.__class__ = "Scene";
-//# sourceMappingURL=Scene.js.map

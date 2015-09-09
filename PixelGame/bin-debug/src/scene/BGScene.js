@@ -12,4 +12,3 @@ var BGScene = (function (_super) {
     return BGScene;
 })(Scene);
 BGScene.prototype.__class__ = "BGScene";
-//# sourceMappingURL=BGScene.js.map

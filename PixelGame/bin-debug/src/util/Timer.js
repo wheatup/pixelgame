@@ -55,4 +55,3 @@ var TimerVO = (function () {
     return TimerVO;
 })();
 TimerVO.prototype.__class__ = "TimerVO";
-//# sourceMappingURL=Timer.js.map

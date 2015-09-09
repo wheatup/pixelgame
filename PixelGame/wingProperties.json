@@ -36,6 +36,11 @@
 				"isFolder":false,
 				"key":"par_title",
 				"name":"par_title"
+			},
+			{
+				"isFolder":false,
+				"key":"white",
+				"name":"white"
 			}]
 		}
 	},
