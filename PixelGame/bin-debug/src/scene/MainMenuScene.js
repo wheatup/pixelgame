@@ -18,7 +18,9 @@ var MainMenuScene = (function (_super) {
         //初始化界面
         this.ui["bg"].alpha = 0;
         this.grp = this.ui["grp"];
+        this.grp_particle = this.ui["grp_particle"];
         this.img_title = this.ui["img_title"];
+        this.lbl_start = this.ui["lbl_start"];
         //添加标题缓动
         var that = this;
         document.getElementById("egretCanvas").addEventListener("mousemove", this.onMouseMove);
@@ -30,8 +32,11 @@ var MainMenuScene = (function (_super) {
         this.particle = new particle.GravityParticleSystem(texture, config);
         this.particle.emitterX = -50;
         this.particle.emitterY = 240;
-        Main.addParticleEmitter(this.particle, Main.LAYER_BOTTOM);
+        this.grp_particle.blendMode = egret.BlendMode.ADD;
+        this.grp_particle.addElement(this.particle);
         this.particle.start();
+        //添加事件
+        this.lbl_start.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickStart, this);
     };
     //鼠标移动的UI缓动事件
     __egretProto__.onMouseMove = function (evt) {
@@ -40,10 +45,8 @@ var MainMenuScene = (function (_super) {
     };
     __egretProto__.blink = function () {
         var _this = this;
-        Debug.log("1");
         if (this.removed)
             return;
-        Debug.log("2");
         Timer.addTimer(100 + Math.floor(Math.random() * 10000), 1, this.blink, this);
         this.offsetX = Math.round(Math.random() * 20 - 10);
         this.offsetY = Math.round(Math.random() * 20 - 10);
@@ -56,11 +59,14 @@ var MainMenuScene = (function (_super) {
             _this.img_title.y += _this.offsetY;
         }, this);
     };
-    //开始方法
-    __egretProto__.start = function () {
+    //点击开始按钮
+    __egretProto__.onClickStart = function () {
+        Main.removeScene(this);
+        Main.addScene(Main.LAYER_GAME, new TestScenario());
     };
     //移除事件，移除跟本页面相关的所有监听
     __egretProto__.onRemove = function () {
+        this.lbl_start.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickStart, this);
         document.getElementById("egretCanvas").removeEventListener("mousemove", this.onMouseMove);
     };
     return MainMenuScene;

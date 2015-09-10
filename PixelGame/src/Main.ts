@@ -8,7 +8,7 @@ class Main extends egret.DisplayObjectContainer {
     
     public static TRANSTION_TIME: number = 2000;
     
-    private layers: Array<egret.DisplayObjectContainer>;
+    public static layers: Array<egret.DisplayObjectContainer>;
     private loadingScene:LoadingScene;
     
     private curtain: BGScene;
@@ -25,17 +25,17 @@ class Main extends egret.DisplayObjectContainer {
         //初始化素材解析器
         egret.Injector.mapClass("egret.gui.IAssetAdapter", AssetAdapter);
         //初始化所有显示层
-        this.layers = new Array<egret.DisplayObjectContainer>();
-        this.layers[Main.LAYER_BOTTOM] = new egret.DisplayObjectContainer();
-        this.addChild(this.layers[Main.LAYER_BOTTOM]);
-        this.layers[Main.LAYER_GAME] = new egret.DisplayObjectContainer();
-        this.addChild(this.layers[Main.LAYER_GAME]);
-        this.layers[Main.LAYER_GUI] = new egret.DisplayObjectContainer();
-        this.addChild(this.layers[Main.LAYER_GUI]);
-        this.layers[Main.LAYER_TOP] = new egret.DisplayObjectContainer();
-        this.addChild(this.layers[Main.LAYER_TOP]);
-        this.layers[Main.LAYER_MASK] = new egret.DisplayObjectContainer();
-        this.addChild(this.layers[Main.LAYER_MASK]);
+        Main.layers = new Array<egret.DisplayObjectContainer>();
+        Main.layers[Main.LAYER_BOTTOM] = new egret.DisplayObjectContainer();
+        this.addChild(Main.layers[Main.LAYER_BOTTOM]);
+        Main.layers[Main.LAYER_GAME] = new egret.DisplayObjectContainer();
+        this.addChild(Main.layers[Main.LAYER_GAME]);
+        Main.layers[Main.LAYER_GUI] = new egret.DisplayObjectContainer();
+        this.addChild(Main.layers[Main.LAYER_GUI]);
+        Main.layers[Main.LAYER_TOP] = new egret.DisplayObjectContainer();
+        this.addChild(Main.layers[Main.LAYER_TOP]);
+        Main.layers[Main.LAYER_MASK] = new egret.DisplayObjectContainer();
+        this.addChild(Main.layers[Main.LAYER_MASK]);
         
         //加载载入界面资源
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onLoadingConfigComplete, this);
@@ -68,7 +68,7 @@ class Main extends egret.DisplayObjectContainer {
         this.loadingScene = new LoadingScene();
         Main.addScene(Main.LAYER_GUI, this.loadingScene, true);
         this.curtain = new BGScene();
-        Main.main.layers[Main.LAYER_MASK].addChild(this.curtain);
+        Main.layers[Main.LAYER_MASK].addChild(this.curtain);
         this.curtain.bg.alpha = 0;
         
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onPreloadConfigComplete, this);
@@ -103,14 +103,19 @@ class Main extends egret.DisplayObjectContainer {
     * 在指定层添加场景
     */ 
     public static addScene(layer: number, scene: Scene, immediate: boolean = false):void{
+        if(scene.added){
+            return;
+        }
+        
+        scene.added = true;
         if(immediate) {
-            Main.main.layers[layer].addChild(scene);
+            Main.layers[layer].addChild(scene);
             scene.start();
             Main.main.addEventListener(egret.Event.ENTER_FRAME,scene.update,scene);
         } else {
             Main.main.curtain.transit();
             Timer.addTimer(Main.TRANSTION_TIME * 0.5,1,() => {
-                Main.main.layers[layer].addChild(scene);
+                Main.layers[layer].addChild(scene);
                 scene.start();
                 Main.main.addEventListener(egret.Event.ENTER_FRAME,scene.update,scene);
             },this);
@@ -121,37 +126,22 @@ class Main extends egret.DisplayObjectContainer {
     * 移除场景
     */ 
     public static removeScene(scene: Scene): void{
-        for(var i: number = 0;i < Main.main.layers.length; i++){
-            if(Main.main.layers[i].contains(scene)){
+        if(scene.removed)
+            return;
+        scene.removed = true;
+        
+        for(var i: number = 0;i < Main.layers.length; i++){
+            if(Main.layers[i].contains(scene)){
+                scene.onRemove();
                 Timer.addTimer(Main.TRANSTION_TIME * 0.5,1,() => {
-                    scene.removed = true;
-                    Main.main.layers[i].removeChild(scene);
-                    scene.onRemove();
+                    scene.onDestroy();
+                    Main.layers[i].removeChild(scene);
                     Main.main.removeEventListener(egret.Event.ENTER_FRAME,scene.update,scene);
                 },this);
                 return;
             }
         }
         Debug.log("unable to remove the scene");
-    }
-        
-    /**
-    * 添加粒子发射器
-    */ 
-    public static addParticleEmitter(particle: any, layer:number): void{
-        Main.main.layers[layer].addChild(particle);
-    }
-	
-    /**
-    * 移除粒子发射器
-    */ 
-    public static removeParticleEmitter(particle: any): void{
-        for(var i: number = 0;i < Main.main.layers.length; i++){
-            if(Main.main.layers[i].contains(particle)){
-                Main.main.layers[i].removeChild(particle);
-                return;
-            }
-        }
     }
     
     //游戏开始

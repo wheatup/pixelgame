@@ -3,6 +3,7 @@ var Scene = (function (_super) {
     function Scene(skinName) {
         _super.call(this);
         this.removed = false;
+        this.added = false;
         this.skinName = skinName;
         this.ui = new Object();
     }
@@ -15,6 +16,8 @@ var Scene = (function (_super) {
         this.init();
     };
     __egretProto__.onRemove = function () {
+    };
+    __egretProto__.onDestroy = function () {
     };
     __egretProto__.start = function () {
     };

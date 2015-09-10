@@ -1,6 +1,7 @@
 class Scene extends egret.gui.Panel{
     public ui: Object;
     public removed: boolean = false;
+    public added: boolean = false;
     
 	public constructor(skinName: string){
         super();
@@ -18,6 +19,7 @@ class Scene extends egret.gui.Panel{
     }
     
     public onRemove():void{}
+    public onDestroy():void{}
     public start(): void{}
     public update(): void{}
     public init(): void{}
