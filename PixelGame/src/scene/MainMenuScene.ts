@@ -9,6 +9,7 @@ class MainMenuScene extends Scene{
 	private grp: egret.gui.Group;
     private grp_particle: egret.gui.Group;
     private img_title: egret.gui.UIAsset;
+    private bg: egret.gui.UIAsset;
     private lbl_start: egret.gui.Label;
     private static instance: MainMenuScene;
 	
@@ -20,7 +21,7 @@ class MainMenuScene extends Scene{
 	//初始化
 	public init():void{
     	//初始化界面
-		this.ui["bg"].alpha = 0;
+        this.bg = this.ui["bg"];
 		this.grp = this.ui["grp"];
         this.grp_particle = this.ui["grp_particle"];
         this.img_title = this.ui["img_title"];
@@ -51,6 +52,8 @@ class MainMenuScene extends Scene{
 	private onMouseMove(evt: MouseEvent):void{
         MainMenuScene.instance.grp.x = (400 - evt.x) / 32;
         MainMenuScene.instance.grp.y = (240 - evt.y) / 32;
+        MainMenuScene.instance.bg.x = (400 - evt.x) / 16 - 20;
+        MainMenuScene.instance.bg.y = (240 - evt.y) / 16 - 20;
 	}
 	
     private offsetX: number = 0;

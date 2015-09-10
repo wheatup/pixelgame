@@ -6,7 +6,7 @@
 		<e:State name="normal"/>
 		<e:State name="disabled"/>
 	</e:states>
-	<e:UIAsset id="bg" height="480" width="800" x="0" y="0" source="black"/>
+	<e:UIAsset id="bg" height="520" width="840" source="title_bg" x="-20" y="-20"/>
 	<e:Group id="grp_particle" width="800" height="480" x="0" y="0">
 	</e:Group>
 	<e:Group id="grp" height="480" width="800" x="0" y="0">

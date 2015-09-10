@@ -16,7 +16,7 @@ var MainMenuScene = (function (_super) {
     //初始化
     __egretProto__.init = function () {
         //初始化界面
-        this.ui["bg"].alpha = 0;
+        this.bg = this.ui["bg"];
         this.grp = this.ui["grp"];
         this.grp_particle = this.ui["grp_particle"];
         this.img_title = this.ui["img_title"];
@@ -42,6 +42,8 @@ var MainMenuScene = (function (_super) {
     __egretProto__.onMouseMove = function (evt) {
         MainMenuScene.instance.grp.x = (400 - evt.x) / 32;
         MainMenuScene.instance.grp.y = (240 - evt.y) / 32;
+        MainMenuScene.instance.bg.x = (400 - evt.x) / 16 - 20;
+        MainMenuScene.instance.bg.y = (240 - evt.y) / 16 - 20;
     };
     __egretProto__.blink = function () {
         var _this = this;

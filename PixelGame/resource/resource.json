@@ -1,7 +1,7 @@
 {
 	"groups":[
 	{
-		"keys":"par_title,par_title_json,white,ui_loading,title_title_1,title_title_2",
+		"keys":"par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg",
 		"name":"preload"
 	}],
 	"resources":[
@@ -34,5 +34,10 @@
 		"name":"title_title_2",
 		"type":"image",
 		"url":"assets/title/title_title_2.png"
+	},
+	{
+		"name":"title_bg",
+		"type":"image",
+		"url":"assets/title/title_bg.png"
 	}]
 }

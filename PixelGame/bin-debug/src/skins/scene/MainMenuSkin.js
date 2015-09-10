@@ -30,7 +30,7 @@ var skins;
             __egretProto__.bg_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.bg = t;
-                this.__s(t, ["height", "source", "width", "x", "y"], [480, "black", 800, 0, 0]);
+                this.__s(t, ["height", "source", "width", "x", "y"], [520, "title_bg", 840, -20, -20]);
                 return t;
             };
             __egretProto__.grp_i = function () {

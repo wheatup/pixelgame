@@ -56,6 +56,11 @@
 				"isFolder":false,
 				"key":"title_title_2",
 				"name":"title_title_2"
+			},
+			{
+				"isFolder":false,
+				"key":"title_bg",
+				"name":"title_bg"
 			}]
 		}
 	},
