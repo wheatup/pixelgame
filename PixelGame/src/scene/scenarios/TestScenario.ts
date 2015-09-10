@@ -1,6 +1,7 @@
 /**
  *
- * @author 
+ * @author wheatup
+ * 测试游戏场景
  *
  */
 class TestScenario extends Scenario{

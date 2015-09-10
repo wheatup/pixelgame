@@ -1,6 +1,7 @@
 /**
  *
- * @author
+ * @author wheatup
+ * 测试游戏场景
  *
  */
 var TestScenario = (function (_super) {

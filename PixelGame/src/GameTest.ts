@@ -1,6 +1,6 @@
 /**
  *
- * @author 
+ * @author Unknow
  *
  */
 class GameTest extends egret.DisplayObjectContainer {

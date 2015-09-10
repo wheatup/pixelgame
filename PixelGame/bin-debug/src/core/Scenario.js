@@ -10,6 +10,7 @@ var Scenario = (function (_super) {
         _super.call(this, skinName);
     }
     var __egretProto__ = Scenario.prototype;
+    //绘制A星Grid(Debug用)
     __egretProto__.drawGrid = function () {
         var _gridArr = new Array();
         for (var i = 0; i < this.terrain.grid.numCols; i++) {
@@ -29,6 +30,7 @@ var Scenario = (function (_super) {
             }
         }
     };
+    //获取grid颜色
     __egretProto__.getColor = function (node) {
         if (!node.walkable)
             return 0x000000;

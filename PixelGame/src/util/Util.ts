@@ -15,3 +15,8 @@ class Util {
         return str;
     }
 }
+
+interface DeviceOrientationEvent extends Event {
+    webkitCompassHeading:number;
+    webkitCompassAccuracy:number;
+}

@@ -9,7 +9,9 @@ class MainMenuScene extends Scene{
 	private grp: egret.gui.Group;
     private grp_particle: egret.gui.Group;
     private img_title: egret.gui.UIAsset;
-    private bg: egret.gui.UIAsset;
+    private bg1: egret.gui.UIAsset;
+    private bg2: egret.gui.UIAsset;
+    private bg3: egret.gui.UIAsset;
     private lbl_start: egret.gui.Label;
     private static instance: MainMenuScene;
 	
@@ -21,7 +23,9 @@ class MainMenuScene extends Scene{
 	//初始化
 	public init():void{
     	//初始化界面
-        this.bg = this.ui["bg"];
+        this.bg1 = this.ui["bg1"];
+        this.bg2 = this.ui["bg2"];
+        this.bg3 = this.ui["bg3"];
 		this.grp = this.ui["grp"];
         this.grp_particle = this.ui["grp_particle"];
         this.img_title = this.ui["img_title"];
@@ -29,7 +33,12 @@ class MainMenuScene extends Scene{
 		
 		//添加标题缓动
 		var that = this;
-		document.getElementById("egretCanvas").addEventListener("mousemove", this.onMouseMove);
+        if(egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
+            this.onOrientation();
+        } else {
+            document.getElementById("egretCanvas").addEventListener("mousemove",this.onMouseMove);
+        }
+        
 		
 		//添加标题闪烁
         this.blink();
@@ -50,12 +59,54 @@ class MainMenuScene extends Scene{
 	
 	//鼠标移动的UI缓动事件
 	private onMouseMove(evt: MouseEvent):void{
-        MainMenuScene.instance.grp.x = (400 - evt.x) / 32;
+        MainMenuScene.instance.grp.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 32;
         MainMenuScene.instance.grp.y = (240 - evt.y) / 32;
-        MainMenuScene.instance.bg.x = (400 - evt.x) / 16 - 20;
-        MainMenuScene.instance.bg.y = (240 - evt.y) / 16 - 20;
+        MainMenuScene.instance.bg1.x = (400 - evt.x+ (window.innerWidth - 800) / 2) / 200 - 20;
+        MainMenuScene.instance.bg1.y = (240 - evt.y) / 200 - 20;
+        MainMenuScene.instance.bg2.x = (400 - evt.x+ (window.innerWidth - 800) / 2) / 60 - 20;
+        MainMenuScene.instance.bg2.y = (240 - evt.y) / 60 - 20;
+        MainMenuScene.instance.bg3.x = (400 - evt.x+ (window.innerWidth - 800) / 2) / 20 - 20;
+        MainMenuScene.instance.bg3.y = (240 - evt.y) / 20 - 20;
 	}
 	
+	private onOrientation():void{
+        if(window) {
+            if(window["DeviceOrientationEvent"]) {
+                window.addEventListener("deviceorientation",(e) => {
+                    var x = e.gamma;
+                    var y = e.beta;
+                    if((<any>window).orientation==0){
+                        
+                        
+                    }else if((<any>window).orientation==180){
+                        x = -x;
+                        y = -y;
+                    }else if((<any>window).orientation==90){
+                        var temp = x;
+                        x = y;
+                        y = temp;
+                    }else if((<any>window).orientation==-90){
+                        var temp = x;
+                        x = -y;
+                        y = -temp;
+                    }
+                    
+                    
+                    MainMenuScene.instance.grp.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 32;
+                    MainMenuScene.instance.grp.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 32;
+                    MainMenuScene.instance.bg1.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 200 - 40;
+                    MainMenuScene.instance.bg1.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 200 - 40;
+                    MainMenuScene.instance.bg2.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 60 - 40;
+                    MainMenuScene.instance.bg2.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 60 - 40;
+                    MainMenuScene.instance.bg3.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 20 - 40;
+                    MainMenuScene.instance.bg3.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 20 - 40;
+                },false);
+            }
+        }
+        
+	}
+	
+	//标题闪烁
     private offsetX: number = 0;
     private offsetY: number = 0;
 	private blink():void{

@@ -10,6 +10,7 @@ class Scenario extends Scene{
         super(skinName);
     }
     
+    //绘制A星Grid(Debug用)
     public drawGrid(): void {
         var _gridArr = new Array();
         for(var i: number = 0;i < this.terrain.grid.numCols;i++) {
@@ -30,6 +31,7 @@ class Scenario extends Scene{
         }
     }
     
+    //获取grid颜色
     private getColor(node: NodePoint): number {
         if(!node.walkable) return 0x000000;
         if(node == this.terrain.grid.startNode) return 0x999900;

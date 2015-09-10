@@ -8,6 +8,7 @@ var MainMenuScene = (function (_super) {
     __extends(MainMenuScene, _super);
     function MainMenuScene() {
         _super.call(this, "skins.scene.MainMenuSkin");
+        //标题闪烁
         this.offsetX = 0;
         this.offsetY = 0;
         MainMenuScene.instance = this;
@@ -16,14 +17,21 @@ var MainMenuScene = (function (_super) {
     //初始化
     __egretProto__.init = function () {
         //初始化界面
-        this.bg = this.ui["bg"];
+        this.bg1 = this.ui["bg1"];
+        this.bg2 = this.ui["bg2"];
+        this.bg3 = this.ui["bg3"];
         this.grp = this.ui["grp"];
         this.grp_particle = this.ui["grp_particle"];
         this.img_title = this.ui["img_title"];
         this.lbl_start = this.ui["lbl_start"];
         //添加标题缓动
         var that = this;
-        document.getElementById("egretCanvas").addEventListener("mousemove", this.onMouseMove);
+        if (egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
+            this.onOrientation();
+        }
+        else {
+            document.getElementById("egretCanvas").addEventListener("mousemove", this.onMouseMove);
+        }
         //添加标题闪烁
         this.blink();
         //添加粒子
@@ -40,10 +48,48 @@ var MainMenuScene = (function (_super) {
     };
     //鼠标移动的UI缓动事件
     __egretProto__.onMouseMove = function (evt) {
-        MainMenuScene.instance.grp.x = (400 - evt.x) / 32;
+        MainMenuScene.instance.grp.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 32;
         MainMenuScene.instance.grp.y = (240 - evt.y) / 32;
-        MainMenuScene.instance.bg.x = (400 - evt.x) / 16 - 20;
-        MainMenuScene.instance.bg.y = (240 - evt.y) / 16 - 20;
+        MainMenuScene.instance.bg1.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 200 - 20;
+        MainMenuScene.instance.bg1.y = (240 - evt.y) / 200 - 20;
+        MainMenuScene.instance.bg2.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 60 - 20;
+        MainMenuScene.instance.bg2.y = (240 - evt.y) / 60 - 20;
+        MainMenuScene.instance.bg3.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 20 - 20;
+        MainMenuScene.instance.bg3.y = (240 - evt.y) / 20 - 20;
+    };
+    __egretProto__.onOrientation = function () {
+        if (window) {
+            if (window["DeviceOrientationEvent"]) {
+                window.addEventListener("deviceorientation", function (e) {
+                    var x = e.gamma;
+                    var y = e.beta;
+                    if (window.orientation == 0) {
+                    }
+                    else if (window.orientation == 180) {
+                        x = -x;
+                        y = -y;
+                    }
+                    else if (window.orientation == 90) {
+                        var temp = x;
+                        x = y;
+                        y = temp;
+                    }
+                    else if (window.orientation == -90) {
+                        var temp = x;
+                        x = -y;
+                        y = -temp;
+                    }
+                    MainMenuScene.instance.grp.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 32;
+                    MainMenuScene.instance.grp.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 32;
+                    MainMenuScene.instance.bg1.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 200 - 40;
+                    MainMenuScene.instance.bg1.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 200 - 40;
+                    MainMenuScene.instance.bg2.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 60 - 40;
+                    MainMenuScene.instance.bg2.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 60 - 40;
+                    MainMenuScene.instance.bg3.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 20 - 40;
+                    MainMenuScene.instance.bg3.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 20 - 40;
+                }, false);
+            }
+        }
     };
     __egretProto__.blink = function () {
         var _this = this;

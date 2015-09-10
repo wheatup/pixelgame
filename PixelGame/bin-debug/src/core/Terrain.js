@@ -13,6 +13,7 @@ var Terrain = (function () {
         this.buildGrid(polygons);
     }
     var __egretProto__ = Terrain.prototype;
+    //通过多边形数据建立Grid
     __egretProto__.buildGrid = function (polygons) {
         var p = new Polygon(polygons);
         for (var y = 0; y < this.grid.numRows; y++) {

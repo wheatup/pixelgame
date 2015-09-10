@@ -8,7 +8,7 @@ var skins;
                 _super.call(this);
                 this.__s = egret.gui.setProperties;
                 this.__s(this, ["height", "width"], [480, 800]);
-                this.elementsContent = [this.bg_i(), this.grp_particle_i(), this.grp_i()];
+                this.elementsContent = [this.bg1_i(), this.bg2_i(), this.grp_particle_i(), this.bg3_i(), this.grp_i()];
                 this.states = [
                     new egret.gui.State("normal", []),
                     new egret.gui.State("disabled", [])
@@ -27,10 +27,22 @@ var skins;
                 this.__s(t, ["fontFamily", "size", "text", "x", "y"], ["Gabriola", 40, "Quit", 618, 371]);
                 return t;
             };
-            __egretProto__.bg_i = function () {
+            __egretProto__.bg1_i = function () {
                 var t = new egret.gui.UIAsset();
-                this.bg = t;
-                this.__s(t, ["height", "source", "width", "x", "y"], [520, "title_bg", 840, -20, -20]);
+                this.bg1 = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [520, "title_bg1", 840, -20, -20]);
+                return t;
+            };
+            __egretProto__.bg2_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.bg2 = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [520, "title_bg2", 840, -20, -20]);
+                return t;
+            };
+            __egretProto__.bg3_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.bg3 = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [520, "title_bg3", 840, -20, -20]);
                 return t;
             };
             __egretProto__.grp_i = function () {
@@ -63,7 +75,7 @@ var skins;
                 this.__s(t, ["fontFamily", "size", "text", "x", "y"], ["Gabriola", 40, "Options", 598, 321]);
                 return t;
             };
-            MainMenuSkin._skinParts = ["bg", "grp_particle", "lbl_start", "img_title", "grp"];
+            MainMenuSkin._skinParts = ["bg1", "bg2", "grp_particle", "bg3", "lbl_start", "img_title", "grp"];
             return MainMenuSkin;
         })(egret.gui.Skin);
         scene.MainMenuSkin = MainMenuSkin;

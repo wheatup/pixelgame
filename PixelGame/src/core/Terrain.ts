@@ -16,6 +16,7 @@ class Terrain {
         this.buildGrid(polygons);
     }
     
+    //通过多边形数据建立Grid
     public buildGrid(polygons: string): void{
         var p: Polygon = new Polygon(polygons);
         

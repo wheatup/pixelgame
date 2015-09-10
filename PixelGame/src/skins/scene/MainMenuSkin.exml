@@ -6,9 +6,11 @@
 		<e:State name="normal"/>
 		<e:State name="disabled"/>
 	</e:states>
-	<e:UIAsset id="bg" height="520" width="840" source="title_bg" x="-20" y="-20"/>
+	<e:UIAsset id="bg1" height="520" width="840" x="-20" y="-20" source="title_bg1"/>
+	<e:UIAsset id="bg2" width="840" height="520" x="-20" y="-20" source="title_bg2"/>
 	<e:Group id="grp_particle" width="800" height="480" x="0" y="0">
 	</e:Group>
+	<e:UIAsset id="bg3" width="840" height="520" x="-20" y="-20" source="title_bg3"/>
 	<e:Group id="grp" height="480" width="800" x="0" y="0">
 		<e:Label id="lbl_start" x="588" y="271" fontFamily="Gabriola" text="Start" size="40"/>
 		<e:Label size="40" fontFamily="Gabriola" x="598" y="321" text="Options"/>
