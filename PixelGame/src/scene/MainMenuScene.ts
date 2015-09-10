@@ -34,7 +34,9 @@ class MainMenuScene extends Scene{
 		//添加标题缓动
 		var that = this;
         if(egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
-            this.onOrientation();
+            if(window["DeviceOrientationEvent"]) {
+                window.addEventListener("deviceorientation",this.onOrientation);
+            }
         } else {
             document.getElementById("egretCanvas").addEventListener("mousemove",this.onMouseMove);
         }
@@ -69,41 +71,32 @@ class MainMenuScene extends Scene{
         MainMenuScene.instance.bg3.y = (240 - evt.y) / 20 - 20;
 	}
 	
-	private onOrientation():void{
-        if(window) {
-            if(window["DeviceOrientationEvent"]) {
-                window.addEventListener("deviceorientation",(e) => {
-                    var x = e.gamma;
-                    var y = e.beta;
-                    if((<any>window).orientation==0){
-                        
-                        
-                    }else if((<any>window).orientation==180){
-                        x = -x;
-                        y = -y;
-                    }else if((<any>window).orientation==90){
-                        var temp = x;
-                        x = y;
-                        y = temp;
-                    }else if((<any>window).orientation==-90){
-                        var temp = x;
-                        x = -y;
-                        y = -temp;
-                    }
-                    
-                    
-                    MainMenuScene.instance.grp.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 32;
-                    MainMenuScene.instance.grp.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 32;
-                    MainMenuScene.instance.bg1.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 200 - 40;
-                    MainMenuScene.instance.bg1.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 200 - 40;
-                    MainMenuScene.instance.bg2.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 60 - 40;
-                    MainMenuScene.instance.bg2.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 60 - 40;
-                    MainMenuScene.instance.bg3.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 20 - 40;
-                    MainMenuScene.instance.bg3.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 20 - 40;
-                },false);
-            }
+	private onOrientation(e):void{
+        var x: number = parseFloat(e.gamma + "") / 90;
+        var y: number = parseFloat(e.beta + "") / 90;
+        if(isNaN(x) || isNaN(y)) return;
+        
+        if((<any>window).orientation==180){
+            x = -x;
+            y = -y;
+        }else if((<any>window).orientation==90){
+            var temp = x;
+            x = y;
+            y = temp;
+        }else if((<any>window).orientation==-90){
+            var temp = x;
+            x = -y;
+            y = -temp;
         }
         
+        MainMenuScene.instance.grp.x = x * 30;
+        MainMenuScene.instance.grp.y = y * 30;
+        MainMenuScene.instance.bg1.x = x * 7 - 20;
+        MainMenuScene.instance.bg1.y = y * 8 - 20;
+        MainMenuScene.instance.bg2.x = x * 16 - 20;
+        MainMenuScene.instance.bg2.y = y * 20 - 20;
+        MainMenuScene.instance.bg3.x = x * 35 - 20;
+        MainMenuScene.instance.bg3.y = y * 40 - 20;
 	}
 	
 	//标题闪烁
@@ -133,6 +126,12 @@ class MainMenuScene extends Scene{
 	//移除事件，移除跟本页面相关的所有监听
 	public onRemove(): void{
         this.lbl_start.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onClickStart,this);
-        document.getElementById("egretCanvas").removeEventListener("mousemove", this.onMouseMove);
+        if(egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
+            if(window["DeviceOrientationEvent"]) {
+                window.removeEventListener("deviceorientation",this.onOrientation);
+            }
+        }else{
+            document.getElementById("egretCanvas").removeEventListener("mousemove",this.onMouseMove);
+        }
 	}
 }

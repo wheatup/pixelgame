@@ -27,7 +27,9 @@ var MainMenuScene = (function (_super) {
         //添加标题缓动
         var that = this;
         if (egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
-            this.onOrientation();
+            if (window["DeviceOrientationEvent"]) {
+                window.addEventListener("deviceorientation", this.onOrientation);
+            }
         }
         else {
             document.getElementById("egretCanvas").addEventListener("mousemove", this.onMouseMove);
@@ -57,39 +59,33 @@ var MainMenuScene = (function (_super) {
         MainMenuScene.instance.bg3.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 20 - 20;
         MainMenuScene.instance.bg3.y = (240 - evt.y) / 20 - 20;
     };
-    __egretProto__.onOrientation = function () {
-        if (window) {
-            if (window["DeviceOrientationEvent"]) {
-                window.addEventListener("deviceorientation", function (e) {
-                    var x = e.gamma;
-                    var y = e.beta;
-                    if (window.orientation == 0) {
-                    }
-                    else if (window.orientation == 180) {
-                        x = -x;
-                        y = -y;
-                    }
-                    else if (window.orientation == 90) {
-                        var temp = x;
-                        x = y;
-                        y = temp;
-                    }
-                    else if (window.orientation == -90) {
-                        var temp = x;
-                        x = -y;
-                        y = -temp;
-                    }
-                    MainMenuScene.instance.grp.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 32;
-                    MainMenuScene.instance.grp.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 32;
-                    MainMenuScene.instance.bg1.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 200 - 40;
-                    MainMenuScene.instance.bg1.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 200 - 40;
-                    MainMenuScene.instance.bg2.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 60 - 40;
-                    MainMenuScene.instance.bg2.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 60 - 40;
-                    MainMenuScene.instance.bg3.x = (400 - Math.floor(parseFloat(String(x || 0))) * 10) / 20 - 40;
-                    MainMenuScene.instance.bg3.y = (240 - Math.floor(parseFloat(String(y || 0))) * 10) / 20 - 40;
-                }, false);
-            }
+    __egretProto__.onOrientation = function (e) {
+        var x = parseFloat(e.gamma + "") / 90;
+        var y = parseFloat(e.beta + "") / 90;
+        if (isNaN(x) || isNaN(y))
+            return;
+        if (window.orientation == 180) {
+            x = -x;
+            y = -y;
         }
+        else if (window.orientation == 90) {
+            var temp = x;
+            x = y;
+            y = temp;
+        }
+        else if (window.orientation == -90) {
+            var temp = x;
+            x = -y;
+            y = -temp;
+        }
+        MainMenuScene.instance.grp.x = x * 30;
+        MainMenuScene.instance.grp.y = y * 30;
+        MainMenuScene.instance.bg1.x = x * 7 - 20;
+        MainMenuScene.instance.bg1.y = y * 8 - 20;
+        MainMenuScene.instance.bg2.x = x * 16 - 20;
+        MainMenuScene.instance.bg2.y = y * 20 - 20;
+        MainMenuScene.instance.bg3.x = x * 35 - 20;
+        MainMenuScene.instance.bg3.y = y * 40 - 20;
     };
     __egretProto__.blink = function () {
         var _this = this;
@@ -115,7 +111,14 @@ var MainMenuScene = (function (_super) {
     //移除事件，移除跟本页面相关的所有监听
     __egretProto__.onRemove = function () {
         this.lbl_start.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickStart, this);
-        document.getElementById("egretCanvas").removeEventListener("mousemove", this.onMouseMove);
+        if (egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
+            if (window["DeviceOrientationEvent"]) {
+                window.removeEventListener("deviceorientation", this.onOrientation);
+            }
+        }
+        else {
+            document.getElementById("egretCanvas").removeEventListener("mousemove", this.onMouseMove);
+        }
     };
     return MainMenuScene;
 })(Scene);
