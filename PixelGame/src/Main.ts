@@ -4,9 +4,14 @@ class Main extends egret.DisplayObjectContainer {
     public static LAYER_GAME: number = 1;
     public static LAYER_GUI: number = 2;
     public static LAYER_TOP: number = 3;
+    public static LAYER_MASK: number = 4;
+    
+    public static TRANSTION_TIME: number = 2000;
     
     private layers: Array<egret.DisplayObjectContainer>;
     private loadingScene:LoadingScene;
+    
+    private curtain: BGScene;
     
     public constructor() {
         super();
@@ -14,7 +19,6 @@ class Main extends egret.DisplayObjectContainer {
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
     
-    //
     private onAddToStage(event:egret.Event) {
         //初始化时间管理器
         new Timer(this);
@@ -30,6 +34,8 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(this.layers[Main.LAYER_GUI]);
         this.layers[Main.LAYER_TOP] = new egret.DisplayObjectContainer();
         this.addChild(this.layers[Main.LAYER_TOP]);
+        this.layers[Main.LAYER_MASK] = new egret.DisplayObjectContainer();
+        this.addChild(this.layers[Main.LAYER_MASK]);
         
         //加载载入界面资源
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onLoadingConfigComplete, this);
@@ -60,7 +66,11 @@ class Main extends egret.DisplayObjectContainer {
     
     private onPreloadConfigComplete(event:RES.ResourceEvent):void {
         this.loadingScene = new LoadingScene();
-        Main.addScene(Main.LAYER_GUI, this.loadingScene);
+        Main.addScene(Main.LAYER_GUI, this.loadingScene, true);
+        this.curtain = new BGScene();
+        Main.main.layers[Main.LAYER_MASK].addChild(this.curtain);
+        this.curtain.bg.alpha = 0;
+        
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onPreloadConfigComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onPreloadResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onPreloadResourceLoadError, this);
@@ -92,10 +102,19 @@ class Main extends egret.DisplayObjectContainer {
     /**
     * 在指定层添加场景
     */ 
-    public static addScene(layer: number, scene: Scene):void{
-        Main.main.layers[layer].addChild(scene);
-        scene.start();
-        Main.main.addEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
+    public static addScene(layer: number, scene: Scene, immediate: boolean = false):void{
+        if(immediate) {
+            Main.main.layers[layer].addChild(scene);
+            scene.start();
+            Main.main.addEventListener(egret.Event.ENTER_FRAME,scene.update,scene);
+        } else {
+            Main.main.curtain.transit();
+            Timer.addTimer(Main.TRANSTION_TIME * 0.5,1,() => {
+                Main.main.layers[layer].addChild(scene);
+                scene.start();
+                Main.main.addEventListener(egret.Event.ENTER_FRAME,scene.update,scene);
+            },this);
+        }
     }
         
     /**
@@ -104,9 +123,12 @@ class Main extends egret.DisplayObjectContainer {
     public static removeScene(scene: Scene): void{
         for(var i: number = 0;i < Main.main.layers.length; i++){
             if(Main.main.layers[i].contains(scene)){
-                scene.onRemove();
-                Main.main.layers[i].removeChild(scene);
-                Main.main.removeEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
+                Timer.addTimer(Main.TRANSTION_TIME * 0.5,1,() => {
+                    scene.removed = true;
+                    Main.main.layers[i].removeChild(scene);
+                    scene.onRemove();
+                    Main.main.removeEventListener(egret.Event.ENTER_FRAME,scene.update,scene);
+                },this);
                 return;
             }
         }
@@ -135,9 +157,10 @@ class Main extends egret.DisplayObjectContainer {
     //游戏开始
     private start():void {
         //添加背景层
-        Main.addScene(Main.LAYER_BOTTOM,new BGScene());
-        //添加主菜单层
-        Main.addScene(Main.LAYER_GAME, new MainMenuScene());
+        Main.addScene(Main.LAYER_BOTTOM,new BGScene(),true);
+        //添加警告层
+        var warningScene: WarningScene = new WarningScene();
+        Main.addScene(Main.LAYER_GAME, warningScene);
     }
 }
 

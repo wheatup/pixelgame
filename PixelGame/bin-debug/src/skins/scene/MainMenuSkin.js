@@ -24,15 +24,10 @@ var skins;
             });
             __egretProto__.__4_i = function () {
                 var t = new egret.gui.Label();
-                this.__s(t, ["fontFamily", "size", "text", "x", "y"], ["Gabriola", 40, "Start", 588, 271]);
-                return t;
-            };
-            __egretProto__.__5_i = function () {
-                var t = new egret.gui.Label();
                 this.__s(t, ["fontFamily", "size", "text", "x", "y"], ["Gabriola", 40, "Options", 598, 321]);
                 return t;
             };
-            __egretProto__.__6_i = function () {
+            __egretProto__.__5_i = function () {
                 var t = new egret.gui.Label();
                 this.__s(t, ["fontFamily", "size", "text", "x", "y"], ["Gabriola", 40, "Quit", 618, 371]);
                 return t;
@@ -47,18 +42,25 @@ var skins;
                 var t = new egret.gui.Group();
                 this.grp = t;
                 this.__s(t, ["height", "width", "x", "y"], [480, 800, 0, 0]);
-                t.elementsContent = [this.__3_i(), this.__4_i(), this.__5_i(), this.__6_i()];
+                t.elementsContent = [this.__3_i(), this.__4_i(), this.__5_i(), this.img_title_i()];
+                return t;
+            };
+            __egretProto__.img_title_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.img_title = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [128, "title_title_1", 360, 99, 81]);
                 return t;
             };
             __egretProto__.__3_i = function () {
                 var t = new egret.gui.Label();
-                this.__s(t, ["fontFamily", "size", "text", "textColor", "x", "y"], ["Chiller", 80, "The Evil Within", 0xFFFFFF, 146, 89]);
+                this.__s(t, ["fontFamily", "size", "text", "x", "y"], ["Gabriola", 40, "Start", 588, 271]);
                 return t;
             };
-            MainMenuSkin._skinParts = ["bg", "grp"];
+            MainMenuSkin._skinParts = ["bg", "img_title", "grp"];
             return MainMenuSkin;
         })(egret.gui.Skin);
         scene.MainMenuSkin = MainMenuSkin;
         MainMenuSkin.prototype.__class__ = "skins.scene.MainMenuSkin";
     })(scene = skins.scene || (skins.scene = {}));
 })(skins || (skins = {}));
+//# sourceMappingURL=MainMenuSkin.js.map

@@ -1,6 +1,7 @@
 /**
  *
- * @author
+ * @author wheatup
+ * 加载资源界面场景
  *
  */
 var LoadingScene = (function (_super) {
@@ -9,8 +10,7 @@ var LoadingScene = (function (_super) {
         _super.call(this, "skins.scene.LoadingSkin");
     }
     var __egretProto__ = LoadingScene.prototype;
-    __egretProto__.init = function () {
-    };
+    //更新加载资源数
     __egretProto__.setProgress = function (cur, tol) {
         this.ui["bar"].width = 400 * (cur / tol);
         this.ui["lbl_prog"].text = Math.round(100 * (cur / tol)) + "%";
@@ -18,3 +18,4 @@ var LoadingScene = (function (_super) {
     return LoadingScene;
 })(Scene);
 LoadingScene.prototype.__class__ = "LoadingScene";
+//# sourceMappingURL=LoadingScene.js.map

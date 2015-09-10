@@ -41,6 +41,21 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
+			},
+			{
+				"isFolder":false,
+				"key":"ui_loading",
+				"name":"ui_loading"
+			},
+			{
+				"isFolder":false,
+				"key":"title_title_1",
+				"name":"title_title_1"
+			},
+			{
+				"isFolder":false,
+				"key":"title_title_2",
+				"name":"title_title_2"
 			}]
 		}
 	},

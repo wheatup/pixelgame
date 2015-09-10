@@ -1,14 +1,16 @@
 [
 	"core/Scene.ts",
-	"skins/scene/BGSkin.exml",
-	"skins/scene/LoadingSkin.exml",
 	"util/Util.ts",
+	"util/Debug.ts",
+	"util/Timer.ts",
+	"scene/MainMenuScene.ts",
+	"skins/scene/LoadingSkin.exml",
 	"AssetAdapter.ts",
 	"scene/BGScene.ts",
 	"scene/LoadingScene.ts",
-	"scene/MainMenuScene.ts",
-	"util/Debug.ts",
-	"util/Timer.ts",
+	"scene/WarningScene.ts",
 	"Main.ts",
-	"skins/scene/MainMenuSkin.exml"
+	"skins/scene/BGSkin.exml",
+	"skins/scene/MainMenuSkin.exml",
+	"skins/scene/WarningSkin.exml"
 ]

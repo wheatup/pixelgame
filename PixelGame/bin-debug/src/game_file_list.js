@@ -1,14 +1,16 @@
 var game_file_list = [
 	"core/Scene.js",
-	"skins/scene/BGSkin.js",
-	"skins/scene/LoadingSkin.js",
 	"util/Util.js",
+	"util/Debug.js",
+	"util/Timer.js",
+	"scene/MainMenuScene.js",
+	"skins/scene/LoadingSkin.js",
 	"AssetAdapter.js",
 	"scene/BGScene.js",
 	"scene/LoadingScene.js",
-	"scene/MainMenuScene.js",
-	"util/Debug.js",
-	"util/Timer.js",
+	"scene/WarningScene.js",
 	"Main.js",
-	"skins/scene/MainMenuSkin.js"
+	"skins/scene/BGSkin.js",
+	"skins/scene/MainMenuSkin.js",
+	"skins/scene/WarningSkin.js"
 ];

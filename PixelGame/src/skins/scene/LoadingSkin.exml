@@ -7,7 +7,8 @@
 		<e:State name="disabled"/>
 	</e:states>
 	<e:UIAsset id="bg" height="480" width="800" x="0" y="0" source="black"/>
-	<e:UIAsset id="bar" width="400" height="40" x="200" y="220" source="loading_bar" fillMode="repeat" scale9Grid="1,1,6,6"/>
-	<e:UIAsset id="frame" width="400" height="40" source="loading_frame" x="200" y="220" scale9Grid="2,2,4,4"/>
-	<e:Label id="lbl_prog" text="0%" width="400" height="40" textAlign="center" verticalAlign="middle" y="220" x="200" fontFamily="Segoe UI" size="24"/>
+	<e:UIAsset id="bar" width="400" height="40" x="200" source="loading_bar" fillMode="repeat" scale9Grid="1,1,6,6" y="220"/>
+	<e:UIAsset id="frame" width="400" height="40" source="loading_frame" x="200" scale9Grid="2,2,4,4" y="220"/>
+	<e:Label id="lbl_prog" text="0%" width="400" height="40" textAlign="center" verticalAlign="middle" x="200" size="24" y="220" fontFamily="微软雅黑" bold="true"/>
+	<e:Label id="lbl_title" verticalAlign="middle" height="40" textAlign="center" width="400" size="24" x="200" y="260" text="载入中" fontFamily="微软雅黑" bold="true"/>
 </e:Skin>

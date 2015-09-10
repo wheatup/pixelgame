@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="800" height="480" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:UIAsset id="bg" height="480" width="800" x="0" y="0" source="black"/>
+	<e:Group id="grp" height="480" width="800" x="0" y="0">
+		<e:Label id="lbl_title_cn1" verticalAlign="middle" textAlign="center" width="400" x="200" fontFamily="微软雅黑" bold="true" text="警告" size="30" textColor="0xFF3838" y="120"/>
+		<e:Label id="lbl_title_en1" verticalAlign="middle" textColor="0xFF3838" fontFamily="微软雅黑" textAlign="center" bold="true" width="400" x="200" text="WARNING" size="24" y="159"/>
+		<e:Label id="lbl_title_en2" verticalAlign="middle" fontFamily="微软雅黑" textAlign="center" bold="true" width="698" x="51" text="Some parts of this game are disturbing or cruel.\nMay contains violent situations and jump scares." y="260" textColor="0xFFFFFF" size="18"/>
+		<e:Label id="lbl_title_cn2" verticalAlign="middle" fontFamily="微软雅黑" textAlign="center" bold="true" width="698" x="51" text="本游戏可能包含血腥、恐怖、震你一下要素" textColor="0xFFFFFF" size="20" y="228"/>
+		<e:Label id="lbl_title_en3" textColor="0xFFFFFF" fontFamily="微软雅黑" bold="true" width="698" text="This game will save automatically. Do NOT close your browser when the simbol above appears." size="14" verticalAlign="top" y="446" horizontalCenter="0" textAlign="center"/>
+		<e:Label id="lbl_title_cn3" textColor="0xFFFFFF" fontFamily="微软雅黑" bold="true" width="698" size="16" text="本游戏采用自动存档机制，当出现         符号时请勿关闭您的浏览器" verticalAlign="top" y="420" horizontalCenter="0" textAlign="center"/>
+		<e:UIAsset id="img_loading" width="32" height="32" source="ui_loading" x="408" y="414"/>
+	</e:Group>
+</e:Skin>

@@ -1,7 +1,7 @@
 {
 	"groups":[
 	{
-		"keys":"par_title,par_title_json,white",
+		"keys":"par_title,par_title_json,white,ui_loading,title_title_1,title_title_2",
 		"name":"preload"
 	}],
 	"resources":[
@@ -19,5 +19,20 @@
 		"name":"white",
 		"type":"image",
 		"url":"assets/white.png"
+	},
+	{
+		"name":"ui_loading",
+		"type":"image",
+		"url":"assets/ui/ui_loading.png"
+	},
+	{
+		"name":"title_title_1",
+		"type":"image",
+		"url":"assets/title/title_title_1.png"
+	},
+	{
+		"name":"title_title_2",
+		"type":"image",
+		"url":"assets/title/title_title_2.png"
 	}]
 }
