@@ -22,6 +22,8 @@ class Main extends egret.DisplayObjectContainer {
     private onAddToStage(event:egret.Event) {
         //初始化时间管理器
         new Timer(this);
+        //初始化音频播放器
+        Sound.init();
         //初始化素材解析器
         egret.Injector.mapClass("egret.gui.IAssetAdapter", AssetAdapter);
         //初始化所有显示层
@@ -146,6 +148,8 @@ class Main extends egret.DisplayObjectContainer {
     
     //游戏开始
     private start():void {
+        //手机端无法支持最开始播放BGM，已移动到
+        //Sound.playBGM("sound_dance");
         //添加背景层
         Main.addScene(Main.LAYER_BOTTOM,new BGScene(),true);
         //添加警告层

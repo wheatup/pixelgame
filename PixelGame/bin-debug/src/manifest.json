@@ -9,6 +9,7 @@
 	"util/Polygon.ts",
 	"core/Terrain.ts",
 	"skins/scenario/TestScenarioSkin.exml",
+	"core/Sound.ts",
 	"scene/scenarios/TestScenario.ts",
 	"scene/MainMenuScene.ts",
 	"skins/scene/LoadingSkin.exml",

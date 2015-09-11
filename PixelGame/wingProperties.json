@@ -38,6 +38,21 @@
 			},
 			{
 				"isFolder":false,
+				"key":"title_bg1",
+				"name":"title_bg1"
+			},
+			{
+				"isFolder":false,
+				"key":"title_bg2",
+				"name":"title_bg2"
+			},
+			{
+				"isFolder":false,
+				"key":"title_bg3",
+				"name":"title_bg3"
+			},
+			{
+				"isFolder":false,
 				"key":"title_title_1",
 				"name":"title_title_1"
 			},
@@ -55,21 +70,6 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
-			},
-			{
-				"isFolder":false,
-				"key":"title_bg1",
-				"name":"title_bg1"
-			},
-			{
-				"isFolder":false,
-				"key":"title_bg2",
-				"name":"title_bg2"
-			},
-			{
-				"isFolder":false,
-				"key":"title_bg3",
-				"name":"title_bg3"
 			}]
 		}
 	},

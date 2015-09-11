@@ -119,6 +119,9 @@ class MainMenuScene extends Scene{
 	
 	//点击开始按钮
 	private onClickStart(): void{
+        Main.TRANSTION_TIME = 6000;
+        Sound.stop("sound_dance");
+        Sound.playSFX("sound_piano_break");
         Main.removeScene(this);
         Main.addScene(Main.LAYER_GAME, new TestScenario());
 	}
