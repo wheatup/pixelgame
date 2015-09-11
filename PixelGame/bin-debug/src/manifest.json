@@ -9,8 +9,9 @@
 	"util/Polygon.ts",
 	"core/Terrain.ts",
 	"skins/scenario/TestScenarioSkin.exml",
-	"core/Sound.ts",
 	"scene/scenarios/TestScenario.ts",
+	"core/Sound.ts",
+	"scene/StudioScene.ts",
 	"scene/MainMenuScene.ts",
 	"skins/scene/LoadingSkin.exml",
 	"AssetAdapter.ts",
@@ -21,5 +22,6 @@
 	"Main.ts",
 	"skins/scene/BGSkin.exml",
 	"skins/scene/MainMenuSkin.exml",
+	"skins/scene/StudioSkin.exml",
 	"skins/scene/WarningSkin.exml"
 ]

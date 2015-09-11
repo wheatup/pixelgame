@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="800" height="480" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:Group id="grp" height="480" width="800" x="0" y="0">
+		<e:UIAsset id="img" width="580" height="240" source="shroomgames" horizontalCenter="0" verticalCenter="0"/>
+	</e:Group>
+</e:Skin>

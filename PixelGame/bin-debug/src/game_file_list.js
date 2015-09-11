@@ -9,8 +9,9 @@ var game_file_list = [
 	"util/Polygon.js",
 	"core/Terrain.js",
 	"skins/scenario/TestScenarioSkin.js",
-	"core/Sound.js",
 	"scene/scenarios/TestScenario.js",
+	"core/Sound.js",
+	"scene/StudioScene.js",
 	"scene/MainMenuScene.js",
 	"skins/scene/LoadingSkin.js",
 	"AssetAdapter.js",
@@ -21,5 +22,6 @@ var game_file_list = [
 	"Main.js",
 	"skins/scene/BGSkin.js",
 	"skins/scene/MainMenuSkin.js",
+	"skins/scene/StudioSkin.js",
 	"skins/scene/WarningSkin.js"
 ];

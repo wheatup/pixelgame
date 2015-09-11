@@ -1,10 +1,15 @@
 {
 	"groups":[
 	{
-		"keys":"par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,title_start,title_continue_0,title_continue_1,sound_dance,sound_piano_break",
+		"keys":"shroomgames,par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,title_start,title_continue_0,title_continue_1,sound_dance,sound_piano_break",
 		"name":"preload"
 	}],
 	"resources":[
+	{
+		"name":"shroomgames",
+		"type":"image",
+		"url":"assets/shroomgames.png"
+	},
 	{
 		"name":"par_title",
 		"type":"image",
