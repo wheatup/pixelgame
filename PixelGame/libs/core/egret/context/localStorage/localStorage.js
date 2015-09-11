@@ -28,21 +28,17 @@
 //////////////////////////////////////////////////////////////////////////////////////
 var egret;
 (function (egret) {
-    /**
-     * @includeExample egret/context/localStorage/localStorage.ts
-     */
-    var localStorage = (function () {
-        function localStorage() {
-        }
-        var __egretProto__ = localStorage.prototype;
+    var localStorage;
+    (function (localStorage) {
         /**
          * 读取数据
          * @method egret.localStorage.getItem
          * @param key {string} 要读取的键名称
          */
-        localStorage.getItem = function (key) {
+        function getItem(key) {
             return null;
-        };
+        }
+        localStorage.getItem = getItem;
         /**
          * 保存数据
          * @method egret.localStorage.setItem
@@ -50,24 +46,24 @@ var egret;
          * @param value {string} 要保存的值
          * @returns {boolean} 数据保存是否成功
          */
-        localStorage.setItem = function (key, value) {
+        function setItem(key, value) {
             return false;
-        };
+        }
+        localStorage.setItem = setItem;
         /**
          * 删除数据
          * @method egret.localStorage.removeItem
          * @param key {string} 要删除的键名称
          */
-        localStorage.removeItem = function (key) {
-        };
+        function removeItem(key) {
+        }
+        localStorage.removeItem = removeItem;
         /**
          * 将所有数据清空
          * @method egret.localStorage.clear
          */
-        localStorage.clear = function () {
-        };
-        return localStorage;
-    })();
-    egret.localStorage = localStorage;
-    localStorage.prototype.__class__ = "egret.localStorage";
+        function clear() {
+        }
+        localStorage.clear = clear;
+    })(localStorage = egret.localStorage || (egret.localStorage = {}));
 })(egret || (egret = {}));

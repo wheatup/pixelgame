@@ -29,6 +29,7 @@ var WarningScene = (function (_super) {
         this.title2x = this.ui["lbl_title_en1"].x;
         this.title2y = this.ui["lbl_title_en1"].y;
         this.viberateTimerVO = Timer.addTimer(50, -1, this.viberate, this);
+        //为了音频支持，让玩家点击方可进入游戏
         //		this.autoTimerVO = Timer.addTimer(20000,1,() => {
         //			if(!this.interupted) {
         //				this.stepToNext();
@@ -71,4 +72,3 @@ var WarningScene = (function (_super) {
     return WarningScene;
 })(Scene);
 WarningScene.prototype.__class__ = "WarningScene";
-//# sourceMappingURL=WarningScene.js.map

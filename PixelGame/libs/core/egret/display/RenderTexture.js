@@ -33,7 +33,6 @@ var egret;
      * @classdesc
      * RenderTexture 是动态纹理类，他实现了将显示对象及其子对象绘制成为一个纹理的功能
      * @extends egret.Texture
-     * @includeExample egret/display/RenderTexture.ts
      */
     var RenderTexture = (function (_super) {
         __extends(RenderTexture, _super);

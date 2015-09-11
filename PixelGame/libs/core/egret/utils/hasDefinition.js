@@ -37,7 +37,6 @@ var egret;
      * <pre>
      *  egret.hasDefinition("egret.DisplayObject") //返回 true
      * </pre>
-     * @includeExample egret/utils/hasDefinition.ts
      */
     function hasDefinition(name) {
         var definition = egret.getDefinitionByName(name);

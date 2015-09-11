@@ -58,6 +58,7 @@ var egret;
             this.worldAlpha = 1;
             this.maskList = [];
             this.maskDataFreeList = [];
+            this.colorTransformMatrix = null;
             this.filterType = null;
             this.graphicsPoints = null;
             this.graphicsIndices = null;
@@ -839,15 +840,18 @@ var egret;
             gl.scissor(x, -y + egret.MainContext.instance.stage.stageHeight - h, w, h);
         };
         __egretProto__.setGlobalColorTransform = function (colorTransformMatrix) {
-            this._drawWebGL();
-            if (colorTransformMatrix) {
-                var colorTransformMatrix = colorTransformMatrix.concat();
-                var shader = this.shaderManager.colorTransformShader;
-                shader.uniforms.colorAdd.value.w = colorTransformMatrix.splice(19, 1)[0] / 255.0;
-                shader.uniforms.colorAdd.value.z = colorTransformMatrix.splice(14, 1)[0] / 255.0;
-                shader.uniforms.colorAdd.value.y = colorTransformMatrix.splice(9, 1)[0] / 255.0;
-                shader.uniforms.colorAdd.value.x = colorTransformMatrix.splice(4, 1)[0] / 255.0;
-                shader.uniforms.matrix.value = colorTransformMatrix;
+            if (this.colorTransformMatrix != colorTransformMatrix) {
+                this._drawWebGL();
+                this.colorTransformMatrix = colorTransformMatrix;
+                if (colorTransformMatrix) {
+                    var colorTransformMatrix = colorTransformMatrix.concat();
+                    var shader = this.shaderManager.colorTransformShader;
+                    shader.uniforms.colorAdd.value.w = colorTransformMatrix.splice(19, 1)[0] / 255.0;
+                    shader.uniforms.colorAdd.value.z = colorTransformMatrix.splice(14, 1)[0] / 255.0;
+                    shader.uniforms.colorAdd.value.y = colorTransformMatrix.splice(9, 1)[0] / 255.0;
+                    shader.uniforms.colorAdd.value.x = colorTransformMatrix.splice(4, 1)[0] / 255.0;
+                    shader.uniforms.matrix.value = colorTransformMatrix;
+                }
             }
         };
         __egretProto__.setBlurData = function (blurX, blurY) {

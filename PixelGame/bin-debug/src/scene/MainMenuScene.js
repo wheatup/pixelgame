@@ -12,6 +12,8 @@ var MainMenuScene = (function (_super) {
         this.offsetX = 0;
         this.offsetY = 0;
         MainMenuScene.instance = this;
+        new ConversationManager();
+        ConversationManager.Init();
     }
     var __egretProto__ = MainMenuScene.prototype;
     //初始化
@@ -105,11 +107,13 @@ var MainMenuScene = (function (_super) {
     };
     //点击开始按钮
     __egretProto__.onClickStart = function () {
+        /*
         Main.TRANSTION_TIME = 6000;
         Sound.stop("sound_dance");
         Sound.playSFX("sound_piano_break");
         Main.removeScene(this);
         Main.addScene(Main.LAYER_GAME, new TestScenario());
+        */
     };
     //移除事件，移除跟本页面相关的所有监听
     __egretProto__.onRemove = function () {
@@ -126,4 +130,3 @@ var MainMenuScene = (function (_super) {
     return MainMenuScene;
 })(Scene);
 MainMenuScene.prototype.__class__ = "MainMenuScene";
-//# sourceMappingURL=MainMenuScene.js.map

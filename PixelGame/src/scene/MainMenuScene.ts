@@ -18,6 +18,11 @@ class MainMenuScene extends Scene{
 	public constructor(){
 		super("skins.scene.MainMenuSkin");
         MainMenuScene.instance = this;
+        
+        new ConversationManager();
+        ConversationManager.Init();
+      
+        
 	}
 	
 	//初始化
@@ -57,6 +62,10 @@ class MainMenuScene extends Scene{
         
         //添加事件
         this.lbl_start.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onClickStart,this);
+    
+
+        
+
 	}
 	
 	//鼠标移动的UI缓动事件
@@ -119,11 +128,20 @@ class MainMenuScene extends Scene{
 	
 	//点击开始按钮
 	private onClickStart(): void{
+    	
+    	/*
         Main.TRANSTION_TIME = 6000;
         Sound.stop("sound_dance");
         Sound.playSFX("sound_piano_break");
         Main.removeScene(this);
         Main.addScene(Main.LAYER_GAME, new TestScenario());
+        */
+        
+
+        var shp: egret.Shap = new egret.Shape();
+        
+
+       
 	}
 	
 	//移除事件，移除跟本页面相关的所有监听
