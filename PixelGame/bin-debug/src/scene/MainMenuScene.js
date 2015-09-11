@@ -110,7 +110,7 @@ var MainMenuScene = (function (_super) {
         Sound.stop("sound_dance");
         Sound.playSFX("sound_piano_break");
         Main.removeScene(this);
-        Main.addScene(Main.LAYER_GAME, new StudioScene());
+        Main.addScene(Main.LAYER_GAME, new ScenarioIntro());
     };
     //移除事件，移除跟本页面相关的所有监听
     __egretProto__.onRemove = function () {

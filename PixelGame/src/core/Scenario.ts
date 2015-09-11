@@ -5,9 +5,11 @@
  * 
  */
 class Scenario extends Scene{
+    public cameraPosition: Point;
     public terrain: Terrain;
     public constructor(skinName: string){
         super(skinName);
+        this.cameraPosition = new Point(0,0);
     }
     
     //绘制A星Grid(Debug用)

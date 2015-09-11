@@ -11,9 +11,13 @@ class StudioScene extends Scene{
 	
 	//初始化UI
 	public init():void{
-        Timer.addTimer(4000,1,() => {
-            Main.removeScene(this);
-            Main.addScene(Main.LAYER_GAME, new TestScenario());
+        Timer.addTimer(2000,1,() => {
+            Main.addScene(Main.LAYER_GAME, new ScenarioIntro());
+            Timer.addTimer(2000,1,() => {
+                Main.removeScene(this);
+            },this);
         },this);
+        
+        
 	}
 }

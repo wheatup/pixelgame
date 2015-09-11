@@ -13,9 +13,11 @@ var StudioScene = (function (_super) {
     //初始化UI
     __egretProto__.init = function () {
         var _this = this;
-        Timer.addTimer(4000, 1, function () {
-            Main.removeScene(_this);
-            Main.addScene(Main.LAYER_GAME, new TestScenario());
+        Timer.addTimer(2000, 1, function () {
+            Main.addScene(Main.LAYER_GAME, new ScenarioIntro());
+            Timer.addTimer(2000, 1, function () {
+                Main.removeScene(_this);
+            }, _this);
         }, this);
     };
     return StudioScene;

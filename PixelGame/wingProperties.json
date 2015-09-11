@@ -33,8 +33,33 @@
 			},
 			{
 				"isFolder":false,
+				"key":"game_car",
+				"name":"game_car"
+			},
+			{
+				"isFolder":false,
 				"key":"par_title",
 				"name":"par_title"
+			},
+			{
+				"isFolder":false,
+				"key":"scene1_bg_1",
+				"name":"scene1_bg_1"
+			},
+			{
+				"isFolder":false,
+				"key":"scene1_bg_2",
+				"name":"scene1_bg_2"
+			},
+			{
+				"isFolder":false,
+				"key":"scene1_bg_3",
+				"name":"scene1_bg_3"
+			},
+			{
+				"isFolder":false,
+				"key":"shroomgames",
+				"name":"shroomgames"
 			},
 			{
 				"isFolder":false,
@@ -85,11 +110,6 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
-			},
-			{
-				"isFolder":false,
-				"key":"shroomgames",
-				"name":"shroomgames"
 			}]
 		}
 	},
