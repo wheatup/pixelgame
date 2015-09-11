@@ -24,6 +24,7 @@ class WarningScene extends Scene{
 		this.img_loading = this.ui["img_loading"];
 		this.grp = this.ui["grp"];
 		
+		//只在手机浏览器中显示声音提示
         if(egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
             this.ui["lbl_title_cn4"].visible = false;
             this.ui["lbl_title_en4"].visible = false;
@@ -40,12 +41,13 @@ class WarningScene extends Scene{
 		this.title2y = this.ui["lbl_title_en1"].y;
 		this.viberateTimerVO = Timer.addTimer(50,-1,this.viberate,this);
 		
-		//为了音频支持，让玩家点击方可进入游戏
-//		this.autoTimerVO = Timer.addTimer(20000,1,() => {
-//			if(!this.interupted) {
-//				this.stepToNext();
-//			}
-//		},this);
+        if(egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
+    		this.autoTimerVO = Timer.addTimer(20000,1,() => {
+    			if(!this.interupted) {
+    				this.stepToNext();
+    			}
+    		},this);
+        }
 	}
 	
 	//旋转存档图标
@@ -72,7 +74,9 @@ class WarningScene extends Scene{
 	
 	//切换至下一个场景
 	private stepToNext(): void{
-        Sound.playBGM("sound_dance");
+        if(egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
+            Sound.playBGM("sound_dance");
+        }
 		this.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.rush,this);
 		Main.addScene(Main.LAYER_GAME,new MainMenuScene());
 		Main.removeScene(this);

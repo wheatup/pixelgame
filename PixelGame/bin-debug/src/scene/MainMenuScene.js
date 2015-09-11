@@ -20,10 +20,11 @@ var MainMenuScene = (function (_super) {
         this.bg1 = this.ui["bg1"];
         this.bg2 = this.ui["bg2"];
         this.bg3 = this.ui["bg3"];
+        this.bg3.touchEnabled = false;
         this.grp = this.ui["grp"];
         this.grp_particle = this.ui["grp_particle"];
         this.img_title = this.ui["img_title"];
-        this.lbl_start = this.ui["lbl_start"];
+        this.img_start = this.ui["img_start"];
         //添加标题缓动
         var that = this;
         if (egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
@@ -46,7 +47,7 @@ var MainMenuScene = (function (_super) {
         this.grp_particle.addElement(this.particle);
         this.particle.start();
         //添加事件
-        this.lbl_start.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickStart, this);
+        this.img_start.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickStart, this);
     };
     //鼠标移动的UI缓动事件
     __egretProto__.onMouseMove = function (evt) {
@@ -113,7 +114,7 @@ var MainMenuScene = (function (_super) {
     };
     //移除事件，移除跟本页面相关的所有监听
     __egretProto__.onRemove = function () {
-        this.lbl_start.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickStart, this);
+        this.img_start.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.onClickStart, this);
         if (egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
             if (window["DeviceOrientationEvent"]) {
                 window.removeEventListener("deviceorientation", this.onOrientation);

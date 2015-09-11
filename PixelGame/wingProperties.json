@@ -70,6 +70,21 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
+			},
+			{
+				"isFolder":false,
+				"key":"title_continue_0",
+				"name":"title_continue_0"
+			},
+			{
+				"isFolder":false,
+				"key":"title_continue_1",
+				"name":"title_continue_1"
+			},
+			{
+				"isFolder":false,
+				"key":"title_start",
+				"name":"title_start"
 			}]
 		}
 	},

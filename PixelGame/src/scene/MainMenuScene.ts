@@ -12,7 +12,7 @@ class MainMenuScene extends Scene{
     private bg1: egret.gui.UIAsset;
     private bg2: egret.gui.UIAsset;
     private bg3: egret.gui.UIAsset;
-    private lbl_start: egret.gui.Label;
+    private img_start: egret.gui.UIAsset;
     private static instance: MainMenuScene;
 	
 	public constructor(){
@@ -26,10 +26,11 @@ class MainMenuScene extends Scene{
         this.bg1 = this.ui["bg1"];
         this.bg2 = this.ui["bg2"];
         this.bg3 = this.ui["bg3"];
+        this.bg3.touchEnabled = false;
 		this.grp = this.ui["grp"];
         this.grp_particle = this.ui["grp_particle"];
         this.img_title = this.ui["img_title"];
-        this.lbl_start = this.ui["lbl_start"];
+        this.img_start = this.ui["img_start"];
 		
 		//添加标题缓动
 		var that = this;
@@ -56,7 +57,7 @@ class MainMenuScene extends Scene{
         this.particle.start();
         
         //添加事件
-        this.lbl_start.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onClickStart,this);
+        this.img_start.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onClickStart,this);
 	}
 	
 	//鼠标移动的UI缓动事件
@@ -128,7 +129,7 @@ class MainMenuScene extends Scene{
 	
 	//移除事件，移除跟本页面相关的所有监听
 	public onRemove(): void{
-        this.lbl_start.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onClickStart,this);
+        this.img_start.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.onClickStart,this);
         if(egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
             if(window["DeviceOrientationEvent"]) {
                 window.removeEventListener("deviceorientation",this.onOrientation);
