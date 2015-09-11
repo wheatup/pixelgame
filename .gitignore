@@ -106,6 +106,7 @@ hs_err_pid*
 
 /bin-debug/
 /libs/
+/release/
 build.bat
 build_engine.bat
 egretProperties.json
