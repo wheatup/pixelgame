@@ -1,6 +1,7 @@
 /**
  *
- * @author
+ * @author wheatup
+ * 用于输出Debug信息
  *
  */
 var Debug = (function () {
@@ -31,3 +32,4 @@ var Debug = (function () {
     return Debug;
 })();
 Debug.prototype.__class__ = "Debug";
+//# sourceMappingURL=Debug.js.map

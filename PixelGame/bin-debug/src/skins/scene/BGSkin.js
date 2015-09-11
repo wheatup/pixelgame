@@ -35,3 +35,4 @@ var skins;
         BGSkin.prototype.__class__ = "skins.scene.BGSkin";
     })(scene = skins.scene || (skins.scene = {}));
 })(skins || (skins = {}));
+//# sourceMappingURL=BGSkin.js.map

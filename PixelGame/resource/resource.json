@@ -1,7 +1,7 @@
 {
 	"groups":[
 	{
-		"keys":"par_title,par_title_json,white",
+		"keys":"par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,sound_dance,sound_piano_break",
 		"name":"preload"
 	}],
 	"resources":[
@@ -19,5 +19,45 @@
 		"name":"white",
 		"type":"image",
 		"url":"assets/white.png"
+	},
+	{
+		"name":"ui_loading",
+		"type":"image",
+		"url":"assets/ui/ui_loading.png"
+	},
+	{
+		"name":"title_title_1",
+		"type":"image",
+		"url":"assets/title/title_title_1.png"
+	},
+	{
+		"name":"title_title_2",
+		"type":"image",
+		"url":"assets/title/title_title_2.png"
+	},
+	{
+		"name":"title_bg1",
+		"type":"image",
+		"url":"assets/title/title_bg1.png"
+	},
+	{
+		"name":"title_bg2",
+		"type":"image",
+		"url":"assets/title/title_bg2.png"
+	},
+	{
+		"name":"title_bg3",
+		"type":"image",
+		"url":"assets/title/title_bg3.png"
+	},
+	{
+		"name":"sound_dance",
+		"type":"sound",
+		"url":"assets/audio/sound_dance.mp3"
+	},
+	{
+		"name":"sound_piano_break",
+		"type":"sound",
+		"url":"assets/audio/sound_piano_break.mp3"
 	}]
 }

@@ -24,8 +24,7 @@
 			{
 				"isFolder":false,
 				"key":"loading_bar",
-				"name":"loading_bar",
-				"scale9grid":"1,1,6,6"
+				"name":"loading_bar"
 			},
 			{
 				"isFolder":false,
@@ -36,6 +35,36 @@
 				"isFolder":false,
 				"key":"par_title",
 				"name":"par_title"
+			},
+			{
+				"isFolder":false,
+				"key":"title_bg1",
+				"name":"title_bg1"
+			},
+			{
+				"isFolder":false,
+				"key":"title_bg2",
+				"name":"title_bg2"
+			},
+			{
+				"isFolder":false,
+				"key":"title_bg3",
+				"name":"title_bg3"
+			},
+			{
+				"isFolder":false,
+				"key":"title_title_1",
+				"name":"title_title_1"
+			},
+			{
+				"isFolder":false,
+				"key":"title_title_2",
+				"name":"title_title_2"
+			},
+			{
+				"isFolder":false,
+				"key":"ui_loading",
+				"name":"ui_loading"
 			},
 			{
 				"isFolder":false,

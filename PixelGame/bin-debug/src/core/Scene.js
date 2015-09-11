@@ -2,6 +2,8 @@ var Scene = (function (_super) {
     __extends(Scene, _super);
     function Scene(skinName) {
         _super.call(this);
+        this.removed = false;
+        this.added = false;
         this.skinName = skinName;
         this.ui = new Object();
     }
@@ -15,6 +17,8 @@ var Scene = (function (_super) {
     };
     __egretProto__.onRemove = function () {
     };
+    __egretProto__.onDestroy = function () {
+    };
     __egretProto__.start = function () {
     };
     __egretProto__.update = function () {
@@ -24,3 +28,4 @@ var Scene = (function (_super) {
     return Scene;
 })(egret.gui.Panel);
 Scene.prototype.__class__ = "Scene";
+//# sourceMappingURL=Scene.js.map
