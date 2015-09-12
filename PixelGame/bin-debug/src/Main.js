@@ -134,8 +134,9 @@ var Main = (function (_super) {
         //添加警告层
         var warningScene = new WarningScene();
         Main.addScene(Main.LAYER_GAME, warningScene);
+        //测试
+        //Main.addScene(Main.LAYER_GAME, new ScenarioRoad());
         Main.transit();
-        //Main.addScene(Main.LAYER_GAME, new ScenarioIntro());
         //添加对话层
         var dialogueScene = new DialogueScene();
         Main.addScene(Main.LAYER_GUI, dialogueScene, true);

@@ -2,6 +2,10 @@ declare module skins.scenario{
 	class ScenarioIntroSkin extends egret.gui.Skin{
 	}
 }
+declare module skins.scenario{
+	class ScenarioRoadSkin extends egret.gui.Skin{
+	}
+}
 declare module skins.scene{
 	class BGSkin extends egret.gui.Skin{
 	}

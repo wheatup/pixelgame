@@ -1,7 +1,7 @@
 /**
  *
  * @author wheatup
- * 测试游戏场景
+ * 开场游戏场景
  *
  */
 class ScenarioIntro extends Scenario{
@@ -11,7 +11,7 @@ class ScenarioIntro extends Scenario{
     
 	public constructor() {
         super("skins.scenario.ScenarioIntroSkin");
-        this.terrain = new Terrain(this, "73,239 26,392 207,468 363,389 325,294 427,181 590,256 456,389 483,453 759,449 729,152 496,22 205,124 205,354 144,260");
+        this.terrain = new Terrain(this, "");
 	}
 	
 	public init():void{
@@ -42,6 +42,7 @@ class ScenarioIntro extends Scenario{
     public nextScene():void{
         Main.TRANSTION_TIME = 2000;
         Main.removeScene(this);
+        Main.addScene(Main.LAYER_GAME, new ScenarioRoad());
         Main.transit();
     }
 	

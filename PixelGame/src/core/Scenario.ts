@@ -7,9 +7,20 @@
 class Scenario extends Scene{
     public cameraPosition: Point;
     public terrain: Terrain;
+    public player: Player;
+    public floatGroup: egret.gui.Group;
+    public floaters: Array<any>;
+    
     public constructor(skinName: string){
         super(skinName);
         this.cameraPosition = new Point(0,0);
+        this.floaters = new Array<any>();
+    }
+    
+    public createPlayer(x: number, y:number, grp:egret.gui.Group):void{
+        this.player = new Player(this);
+        grp.addElement(this.player);
+        this.player.setPosition(x, y);
     }
     
     //绘制A星Grid(Debug用)

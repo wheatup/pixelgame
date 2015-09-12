@@ -9,8 +9,14 @@ var Scenario = (function (_super) {
     function Scenario(skinName) {
         _super.call(this, skinName);
         this.cameraPosition = new Point(0, 0);
+        this.floaters = new Array();
     }
     var __egretProto__ = Scenario.prototype;
+    __egretProto__.createPlayer = function (x, y, grp) {
+        this.player = new Player(this);
+        grp.addElement(this.player);
+        this.player.setPosition(x, y);
+    };
     //绘制A星Grid(Debug用)
     __egretProto__.drawGrid = function () {
         var _gridArr = new Array();

@@ -1,10 +1,20 @@
 {
 	"groups":[
 	{
-		"keys":"ui_arrow_down,dialogue_box,game_car,scene1_bg_1,scene1_bg_2,scene1_bg_3,shroomgames,par_title,par_title_json,white,blank,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,title_start,title_continue_0,title_continue_1,sound_dance,sound_piano_break",
+		"keys":"char_temp,blank,ui_arrow_down,dialogue_box,game_car,scene1_bg_1,scene1_bg_2,scene1_bg_2a,scene1_bg_3,shroomgames,par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,title_start,title_continue_0,title_continue_1,sound_dance,sound_piano_break",
 		"name":"preload"
 	}],
 	"resources":[
+	{
+		"name":"char_temp",
+		"type":"image",
+		"url":"assets/character/char_temp.png"
+	},
+	{
+		"name":"blank",
+		"type":"image",
+		"url":"assets/ui/blank.png"
+	},
 	{
 		"name":"ui_arrow_down",
 		"type":"image",
@@ -25,6 +35,11 @@
 		"name":"scene1_bg_2",
 		"type":"image",
 		"url":"assets/scenarios/scene1/scene1_bg_2.png"
+	},
+	{
+		"name":"scene1_bg_2a",
+		"type":"image",
+		"url":"assets/scenarios/scene1/scene1_bg_2a.png"
 	},
 	{
 		"name":"scene1_bg_3",
@@ -55,11 +70,6 @@
 		"name":"white",
 		"type":"image",
 		"url":"assets/white.png"
-	},
-	{
-		"name":"blank",
-		"type":"image",
-		"url":"assets/blank.png"
 	},
 	{
 		"name":"ui_loading",

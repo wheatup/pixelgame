@@ -5,22 +5,47 @@
  *
  */
 var Terrain = (function () {
-    function Terrain(scenario, polygons, cellSize) {
-        if (cellSize === void 0) { cellSize = 20; }
+    function Terrain(scenario, polygons, holes) {
         this.scenario = scenario;
-        this.cellSize = cellSize;
-        this.grid = new Grid(800 / cellSize, 480 / cellSize, cellSize);
-        this.buildGrid(polygons);
+        this.cellSize = Settings.CELL_SIZE;
+        this.grid = new Grid(800 / Settings.CELL_SIZE, 480 / Settings.CELL_SIZE, Settings.CELL_SIZE);
+        this.buildGrid(polygons, holes);
     }
     var __egretProto__ = Terrain.prototype;
     //通过多边形数据建立Grid
-    __egretProto__.buildGrid = function (polygons) {
+    __egretProto__.buildGrid = function (polygons, holes) {
         var p = new Polygon(polygons);
-        for (var y = 0; y < this.grid.numRows; y++) {
-            for (var x = 0; x < this.grid.numCols; x++) {
-                this.grid.setWalkable(x, y, p.isInside(x * this.cellSize + 0.5 * this.cellSize, y * this.cellSize + 0.5 * this.cellSize));
+        this.polygon = p;
+        this.holes = new Array();
+        if (holes) {
+            for (var i = 0; i < holes.length; i++) {
+                var h = new Polygon(holes[i]);
+                this.holes[i] = h;
             }
         }
+        for (var y = 0; y < this.grid.numRows; y++) {
+            for (var x = 0; x < this.grid.numCols; x++) {
+                if (this.isInHoles(x * this.cellSize + 0.5 * this.cellSize, y * this.cellSize + 0.5 * this.cellSize)) {
+                    this.grid.setWalkable(x, y, false);
+                }
+                else {
+                    this.grid.setWalkable(x, y, p.isInside(x * this.cellSize + 0.5 * this.cellSize, y * this.cellSize + 0.5 * this.cellSize));
+                }
+            }
+        }
+    };
+    __egretProto__.isInPolygon = function (x, y) {
+        return this.polygon.isInside(x, y);
+    };
+    __egretProto__.isInHoles = function (x, y) {
+        var flag = false;
+        for (var i = 0; i < this.holes.length; i++) {
+            if (this.holes[i].isInside(x, y)) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     };
     return Terrain;
 })();

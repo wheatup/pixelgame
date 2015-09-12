@@ -8,22 +8,53 @@ class Terrain {
     public grid: Grid;
     public scenario: Scenario;
     public cellSize: number;
+    private polygon: Polygon;
+    private holes: Polygon[];
     
-    public constructor(scenario: Scenario, polygons: string, cellSize:number = 20) {
+    public constructor(scenario: Scenario, polygons: string, holes?:string[]) {
         this.scenario = scenario;
-        this.cellSize = cellSize;
-        this.grid = new Grid(800/cellSize,480/cellSize,cellSize);
-        this.buildGrid(polygons);
+        this.cellSize = Settings.CELL_SIZE;
+        this.grid = new Grid(800/Settings.CELL_SIZE,480/Settings.CELL_SIZE,Settings.CELL_SIZE);
+        this.buildGrid(polygons,holes);
     }
     
     //通过多边形数据建立Grid
-    public buildGrid(polygons: string): void{
+    public buildGrid(polygons: string, holes?:string[]): void{
         var p: Polygon = new Polygon(polygons);
+        this.polygon = p;
+        
+        this.holes = new Array<Polygon>();
+        
+        if(holes){
+            for(var i: number = 0;i < holes.length; i++){
+                var h: Polygon = new Polygon(holes[i]);
+                this.holes[i] = h;
+            }
+        }
         
         for(var y: number = 0; y < this.grid.numRows; y++){
             for(var x: number = 0; x < this.grid.numCols; x++){
-                this.grid.setWalkable(x, y, p.isInside(x * this.cellSize + 0.5 * this.cellSize, y * this.cellSize + 0.5 * this.cellSize));
+                if(this.isInHoles(x * this.cellSize + 0.5 * this.cellSize, y * this.cellSize + 0.5 * this.cellSize)) {
+                    this.grid.setWalkable(x, y, false);
+                } else {
+                    this.grid.setWalkable(x, y, p.isInside(x * this.cellSize + 0.5 * this.cellSize, y * this.cellSize + 0.5 * this.cellSize));
+                }
             }
         }
+    }
+    
+    public isInPolygon(x: number, y: number):boolean{
+        return this.polygon.isInside(x, y);
+    }
+    
+    public isInHoles(x: number, y:number):boolean{
+        var flag: boolean = false;
+        for(var i: number = 0;i < this.holes.length; i++){
+            if(this.holes[i].isInside(x, y)){
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 }

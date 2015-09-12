@@ -1,5 +1,5 @@
 class Main extends egret.DisplayObjectContainer {
-    private static main: Main;
+    public static main: Main;
     public static LAYER_BOTTOM: number = 0;
     public static LAYER_GAME: number = 1;
     public static LAYER_GUI: number = 2;
@@ -163,8 +163,9 @@ class Main extends egret.DisplayObjectContainer {
         //添加警告层
         var warningScene: WarningScene = new WarningScene();
         Main.addScene(Main.LAYER_GAME, warningScene);
+        //测试
+        //Main.addScene(Main.LAYER_GAME, new ScenarioRoad());
         Main.transit();
-        //Main.addScene(Main.LAYER_GAME, new ScenarioIntro());
         
         //添加对话层
         var dialogueScene: DialogueScene = new DialogueScene();

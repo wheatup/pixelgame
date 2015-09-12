@@ -11,4 +11,12 @@ var EventType = (function () {
     return EventType;
 })();
 EventType.prototype.__class__ = "EventType";
+var Settings = (function () {
+    function Settings() {
+    }
+    var __egretProto__ = Settings.prototype;
+    Settings.CELL_SIZE = 20;
+    return Settings;
+})();
+Settings.prototype.__class__ = "Settings";
 //# sourceMappingURL=Consts.js.map

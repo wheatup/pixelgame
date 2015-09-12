@@ -126,6 +126,16 @@
 				"isFolder":false,
 				"key":"blank",
 				"name":"blank"
+			},
+			{
+				"isFolder":false,
+				"key":"scene1_bg_2a",
+				"name":"scene1_bg_2a"
+			},
+			{
+				"isFolder":false,
+				"key":"char_temp",
+				"name":"char_temp"
 			}]
 		}
 	},
