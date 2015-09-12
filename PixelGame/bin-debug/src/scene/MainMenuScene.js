@@ -51,14 +51,14 @@ var MainMenuScene = (function (_super) {
     };
     //鼠标移动的UI缓动事件
     __egretProto__.onMouseMove = function (evt) {
-        MainMenuScene.instance.grp.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 32;
-        MainMenuScene.instance.grp.y = (240 - evt.y) / 32;
-        MainMenuScene.instance.bg1.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 200 - 20;
-        MainMenuScene.instance.bg1.y = (240 - evt.y) / 200 - 20;
-        MainMenuScene.instance.bg2.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 60 - 20;
-        MainMenuScene.instance.bg2.y = (240 - evt.y) / 60 - 20;
-        MainMenuScene.instance.bg3.x = (400 - evt.x + (window.innerWidth - 800) / 2) / 20 - 20;
-        MainMenuScene.instance.bg3.y = (240 - evt.y) / 20 - 20;
+        MainMenuScene.instance.grp.x = Util.clip((400 - evt.x + (window.innerWidth - 800) / 2), -20, 20) / 32;
+        MainMenuScene.instance.grp.y = Util.clip((240 - evt.y), -20, 20) / 32;
+        MainMenuScene.instance.bg1.x = Util.clip((400 - evt.x + (window.innerWidth - 800) / 2) / 200, -20, 20) - 20;
+        MainMenuScene.instance.bg1.y = Util.clip((240 - evt.y) / 200, -20, 20) - 20;
+        MainMenuScene.instance.bg2.x = Util.clip((400 - evt.x + (window.innerWidth - 800) / 2) / 60, -20, 20) - 20;
+        MainMenuScene.instance.bg2.y = Util.clip((240 - evt.y) / 60, -20, 20) - 20;
+        MainMenuScene.instance.bg3.x = Util.clip((400 - evt.x + (window.innerWidth - 800) / 2) / 20, -20, 20) - 20;
+        MainMenuScene.instance.bg3.y = Util.clip((240 - evt.y) / 20, -20, 20) - 20;
     };
     __egretProto__.onOrientation = function (e) {
         var x = parseFloat(e.gamma + "") / 90;
@@ -79,14 +79,14 @@ var MainMenuScene = (function (_super) {
             x = -y;
             y = -temp;
         }
-        MainMenuScene.instance.grp.x = x * 30;
-        MainMenuScene.instance.grp.y = y * 30;
-        MainMenuScene.instance.bg1.x = x * 7 - 20;
-        MainMenuScene.instance.bg1.y = y * 8 - 20;
-        MainMenuScene.instance.bg2.x = x * 16 - 20;
-        MainMenuScene.instance.bg2.y = y * 20 - 20;
-        MainMenuScene.instance.bg3.x = x * 35 - 20;
-        MainMenuScene.instance.bg3.y = y * 40 - 20;
+        MainMenuScene.instance.grp.x = Util.clip(x, -20, 20) * 30;
+        MainMenuScene.instance.grp.y = Util.clip(y, -20, 20) * 30;
+        MainMenuScene.instance.bg1.x = Util.clip(x * 7, -20, 20) - 20;
+        MainMenuScene.instance.bg1.y = Util.clip(y * 8, -20, 20) - 20;
+        MainMenuScene.instance.bg2.x = Util.clip(x * 16, -20, 20) - 20;
+        MainMenuScene.instance.bg2.y = Util.clip(y * 20, -20, 20) - 20;
+        MainMenuScene.instance.bg3.x = Util.clip(x * 35, -20, 20) - 20;
+        MainMenuScene.instance.bg3.y = Util.clip(y * 40, -20, 20) - 20;
     };
     __egretProto__.blink = function () {
         var _this = this;

@@ -14,6 +14,13 @@ class Util {
             + (date.getSeconds() < 10 ? "0" : "") + date.getSeconds();
         return str;
     }
+    
+    /**
+     * 取最大和最小值之间
+     */ 
+    public static clip(value: number, min:number, max:number): number{
+        return value < min ? min : (value > max ? max : value);
+    }
 }
 
 interface DeviceOrientationEvent extends Event {
