@@ -74,6 +74,7 @@ var WarningScene = (function (_super) {
         this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.rush, this);
         Main.addScene(Main.LAYER_GAME, new MainMenuScene());
         Main.removeScene(this);
+        Main.transit();
     };
     //移除场景事件
     __egretProto__.onDestroy = function () {

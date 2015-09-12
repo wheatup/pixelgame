@@ -76,6 +76,7 @@ class DialogueScene extends Scene{
         }
     }
     
+    //点击后的反应
     private rush():void{
         if(this.tickingText){
             Timer.removeTimer(this.tickingTimerVO);
@@ -87,6 +88,7 @@ class DialogueScene extends Scene{
             DialogueScene.getDialogue(DialogueScene.currentKey);
         }else{
             DialogueScene.hideDialogue();
+            WheatupEvent.call(EventType.DIALOGUE_END, DialogueScene.currentKey);
         }
     }
     

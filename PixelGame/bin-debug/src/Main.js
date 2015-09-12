@@ -92,13 +92,15 @@ var Main = (function (_super) {
             Main.main.addEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
         }
         else {
-            Main.main.curtain.transit();
             Timer.addTimer(Main.TRANSTION_TIME * 0.5, 1, function () {
                 Main.layers[layer].addChild(scene);
                 scene.start();
                 Main.main.addEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
             }, this);
         }
+    };
+    Main.transit = function () {
+        Main.main.curtain.transit();
     };
     /**
     * 移除场景
@@ -130,9 +132,10 @@ var Main = (function (_super) {
         //添加背景层
         Main.addScene(Main.LAYER_BOTTOM, new BGScene(), true);
         //添加警告层
-        //        var warningScene: WarningScene = new WarningScene();
-        //        Main.addScene(Main.LAYER_GAME, warningScene);
-        Main.addScene(Main.LAYER_GAME, new ScenarioIntro());
+        var warningScene = new WarningScene();
+        Main.addScene(Main.LAYER_GAME, warningScene);
+        Main.transit();
+        //Main.addScene(Main.LAYER_GAME, new ScenarioIntro());
         //添加对话层
         var dialogueScene = new DialogueScene();
         Main.addScene(Main.LAYER_GUI, dialogueScene, true);

@@ -16,7 +16,29 @@ var ScenarioIntro = (function (_super) {
     __egretProto__.init = function () {
         this.ui["grp_game"].touchChildren = false;
         this.grp_touch = this.ui["grp_touch"];
+        this.bindEvents();
+    };
+    __egretProto__.bindEvents = function () {
         this.grp_touch.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touch, this);
+        WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
+    };
+    __egretProto__.unbindEvents = function () {
+        this.grp_touch.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touch, this);
+        WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
+    };
+    __egretProto__.onDialogueEnd = function (data) {
+        var _this = this;
+        if (data == "intro") {
+            Timer.addTimer(1000, 1, function () {
+                egret.Tween.get(_this.ui["img_car"]).to({ x: 900 }, 4000, egret.Ease.quadIn);
+                Timer.addTimer(4000, 1, _this.nextScene, _this);
+            }, this);
+        }
+    };
+    __egretProto__.nextScene = function () {
+        Main.TRANSTION_TIME = 2000;
+        Main.removeScene(this);
+        Main.transit();
     };
     __egretProto__.start = function () {
         var _this = this;
@@ -58,6 +80,9 @@ var ScenarioIntro = (function (_super) {
         if (DialogueScene.showing) {
             DialogueScene.interupt();
         }
+    };
+    __egretProto__.onRemove = function () {
+        this.unbindEvents();
     };
     return ScenarioIntro;
 })(Scenario);

@@ -97,7 +97,7 @@ var skins;
             __egretProto__.img_car_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.img_car = t;
-                this.__s(t, ["height", "source", "width", "x", "y"], [160, "game_car", 320, 450, 200]);
+                this.__s(t, ["height", "source", "width", "x", "y"], [160, "game_car", 320, 300, 200]);
                 return t;
             };
             __egretProto__.img_logo_i = function () {

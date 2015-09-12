@@ -58,6 +58,7 @@ var DialogueScene = (function (_super) {
             this.tickingTimerVO = null;
         }
     };
+    //点击后的反应
     __egretProto__.rush = function () {
         if (this.tickingText) {
             Timer.removeTimer(this.tickingTimerVO);
@@ -71,6 +72,7 @@ var DialogueScene = (function (_super) {
         }
         else {
             DialogueScene.hideDialogue();
+            WheatupEvent.call(EventType.DIALOGUE_END, DialogueScene.currentKey);
         }
     };
     //显示对话
