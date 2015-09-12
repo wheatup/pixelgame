@@ -156,6 +156,9 @@ class Main extends egret.DisplayObjectContainer {
         //添加警告层
         var warningScene: WarningScene = new WarningScene();
         Main.addScene(Main.LAYER_GAME, warningScene);
+        //添加对话层
+        var dialogueScene: DialogueScene = new DialogueScene();
+        Main.addScene(Main.LAYER_GUI, dialogueScene, true);
     }
 }
 

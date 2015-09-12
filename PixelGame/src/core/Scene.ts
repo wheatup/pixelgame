@@ -2,6 +2,7 @@ class Scene extends egret.gui.Panel{
     public ui: Object;
     public removed: boolean = false;
     public added: boolean = false;
+    public currentTime: number = 0;
     
 	public constructor(skinName: string){
         super();
@@ -23,4 +24,12 @@ class Scene extends egret.gui.Panel{
     public start(): void{}
     public update(): void{}
     public init(): void{}
+    
+    public delay(value: number): void{
+        this.currentTime += value;
+    }
+    
+    public addEvent(func: Function, thisObject: any, data?:any):void{
+        Timer.addTimer(this.currentTime, 1, func, thisObject, data);
+    }
 }

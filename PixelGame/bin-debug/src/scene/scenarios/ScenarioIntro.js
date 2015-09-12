@@ -16,12 +16,22 @@ var ScenarioIntro = (function (_super) {
     __egretProto__.start = function () {
         var _this = this;
         //this.drawGrid();
+        //车震时间点
         this.nextBumpTick = Math.round(Math.random() * 100 + 1);
-        Timer.addTimer(3000, 1, function () {
+        this.delay(3000);
+        //隐藏遮罩
+        this.addEvent(function () {
             egret.Tween.get(_this.ui["img_mask"]).to({ alpha: 0 }, 2000);
         }, this);
-        Timer.addTimer(6000, 1, function () {
+        this.delay(3000);
+        //隐藏LOGO
+        this.addEvent(function () {
             egret.Tween.get(_this.ui["img_logo"]).to({ alpha: 0 }, 2000);
+        }, this);
+        this.delay(3000);
+        //出现对话
+        this.addEvent(function () {
+            DialogueScene.setDialogue("江蛤蛤", "真没想到这件事就这么结束了。");
         }, this);
     };
     __egretProto__.update = function () {

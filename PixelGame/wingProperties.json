@@ -110,6 +110,17 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
+			},
+			{
+				"isFolder":false,
+				"key":"dialogue_box",
+				"name":"dialogue_box",
+				"scale9grid":"12,12,56,56"
+			},
+			{
+				"isFolder":false,
+				"key":"ui_arrow_down",
+				"name":"ui_arrow_down"
 			}]
 		}
 	},

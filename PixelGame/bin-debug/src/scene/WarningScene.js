@@ -20,6 +20,14 @@ var WarningScene = (function (_super) {
             this.ui["lbl_title_cn4"].visible = false;
             this.ui["lbl_title_en4"].visible = false;
         }
+        this.ui["lbl_title_cn1"].fontFamily = "font_pixel";
+        this.ui["lbl_title_cn2"].fontFamily = "font_pixel";
+        this.ui["lbl_title_cn3"].fontFamily = "font_pixel";
+        this.ui["lbl_title_cn4"].fontFamily = "font_pixel";
+        this.ui["lbl_title_en1"].fontFamily = "font_pixel";
+        this.ui["lbl_title_en2"].fontFamily = "font_pixel";
+        this.ui["lbl_title_en3"].fontFamily = "font_pixel";
+        this.ui["lbl_title_en4"].fontFamily = "font_pixel";
     };
     //启动警告界面
     __egretProto__.start = function () {

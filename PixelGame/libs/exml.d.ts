@@ -11,6 +11,10 @@ declare module skins.scene{
 	}
 }
 declare module skins.scene{
+	class DialogueSkin extends egret.gui.Skin{
+	}
+}
+declare module skins.scene{
 	class GameSkin extends egret.gui.Skin{
 	}
 }
@@ -20,10 +24,6 @@ declare module skins.scene{
 }
 declare module skins.scene{
 	class MainMenuSkin extends egret.gui.Skin{
-	}
-}
-declare module skins.scene{
-	class StudioSkin extends egret.gui.Skin{
 	}
 }
 declare module skins.scene{

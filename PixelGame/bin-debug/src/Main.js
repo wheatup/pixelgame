@@ -130,6 +130,9 @@ var Main = (function (_super) {
         //添加警告层
         var warningScene = new WarningScene();
         Main.addScene(Main.LAYER_GAME, warningScene);
+        //添加对话层
+        var dialogueScene = new DialogueScene();
+        Main.addScene(Main.LAYER_GUI, dialogueScene, true);
     };
     Main.LAYER_BOTTOM = 0;
     Main.LAYER_GAME = 1;

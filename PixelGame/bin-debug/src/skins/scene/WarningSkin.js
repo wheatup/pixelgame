@@ -44,13 +44,13 @@ var skins;
             __egretProto__.lbl_title_cn2_i = function () {
                 var t = new egret.gui.Label();
                 this.lbl_title_cn2 = t;
-                this.__s(t, ["bold", "fontFamily", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, "微软雅黑", 20, "本游戏可能包含血腥、恐怖要素", "center", 0xFFFFFF, "middle", 698, 51, 158]);
+                this.__s(t, ["bold", "fontFamily", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, "微软雅黑", 24, "本游戏可能包含血腥、恐怖要素", "center", 0xFFFFFF, "middle", 698, 51, 158]);
                 return t;
             };
             __egretProto__.lbl_title_cn3_i = function () {
                 var t = new egret.gui.Label();
                 this.lbl_title_cn3 = t;
-                this.__s(t, ["bold", "fontFamily", "horizontalCenter", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "y"], [true, "微软雅黑", 0, 16, "本游戏采用自动存档机制，当出现         符号时请勿关闭您的浏览器", "center", 0xFFFFFF, "top", 698, 370]);
+                this.__s(t, ["bold", "fontFamily", "horizontalCenter", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "y"], [true, "微软雅黑", 0, 18, "本游戏采用自动存档机制，当出现         符号时请勿关闭您的浏览器", "center", 0xFFFFFF, "top", 698, 370]);
                 return t;
             };
             __egretProto__.lbl_title_cn4_i = function () {
@@ -68,19 +68,19 @@ var skins;
             __egretProto__.lbl_title_en2_i = function () {
                 var t = new egret.gui.Label();
                 this.lbl_title_en2 = t;
-                this.__s(t, ["bold", "fontFamily", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, "微软雅黑", 18, "Some parts of this game are disturbing or cruel.\nMay contains violent situations and jump scares.", "center", 0xFFFFFF, "middle", 698, 51, 190]);
+                this.__s(t, ["bold", "fontFamily", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, "微软雅黑", 24, "Some parts of this game are disturbing or cruel.\nMay contains violent situations and jump scares.", "center", 0xFFFFFF, "middle", 698, 51, 190]);
                 return t;
             };
             __egretProto__.lbl_title_en3_i = function () {
                 var t = new egret.gui.Label();
                 this.lbl_title_en3 = t;
-                this.__s(t, ["bold", "fontFamily", "horizontalCenter", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "y"], [true, "微软雅黑", 0, 14, "This game will save automatically. Do NOT close your browser when the simbol above appears.", "center", 0xFFFFFF, "top", 698, 396]);
+                this.__s(t, ["bold", "fontFamily", "horizontalCenter", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "y"], [true, "微软雅黑", 0, 18, "This game will save automatically. Do NOT close your browser when the simbol above appears.", "center", 0xFFFFFF, "top", 698, 398]);
                 return t;
             };
             __egretProto__.lbl_title_en4_i = function () {
                 var t = new egret.gui.Label();
                 this.lbl_title_en4 = t;
-                this.__s(t, ["bold", "fontFamily", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, "微软雅黑", 16, "Android OS has a poor web audio support.\nfor better experience, please use iOS or PC browser.", "center", 0xFFFFFF, "middle", 698, 51, 300]);
+                this.__s(t, ["bold", "fontFamily", "size", "text", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, "微软雅黑", 18, "Android OS has a poor web audio support.\nfor better experience, please use iOS or PC browser.", "center", 0xFFFFFF, "middle", 698, 51, 300]);
                 return t;
             };
             __egretProto__.bg_i = function () {
