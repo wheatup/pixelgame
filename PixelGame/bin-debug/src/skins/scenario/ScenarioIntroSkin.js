@@ -8,7 +8,7 @@ var skins;
                 _super.call(this);
                 this.__s = egret.gui.setProperties;
                 this.__s(this, ["height", "width"], [480, 800]);
-                this.elementsContent = [this.grp_game_i(), this.img_mask_i(), this.img_logo_i()];
+                this.elementsContent = [this.grp_game_i(), this.grp_touch_i()];
                 this.states = [
                     new egret.gui.State("normal", []),
                     new egret.gui.State("disabled", [])
@@ -77,7 +77,7 @@ var skins;
                 var t = new egret.gui.Group();
                 this.grp_game = t;
                 this.__s(t, ["height", "width", "x", "y"], [480, 800, 0, 0]);
-                t.elementsContent = [this.grp_bg1_i(), this.grp_bg2_i(), this.grp_playground_i(), this.grp_bg3_i()];
+                t.elementsContent = [this.grp_bg1_i(), this.grp_bg2_i(), this.grp_playground_i(), this.grp_bg3_i(), this.img_mask_i(), this.img_logo_i()];
                 return t;
             };
             __egretProto__.grp_playground_i = function () {
@@ -85,6 +85,13 @@ var skins;
                 this.grp_playground = t;
                 this.__s(t, ["height", "width", "x", "y"], [480, 800, 0, 0]);
                 t.elementsContent = [this.img_car_i()];
+                return t;
+            };
+            __egretProto__.grp_touch_i = function () {
+                var t = new egret.gui.Group();
+                this.grp_touch = t;
+                this.__s(t, ["height", "width", "x", "y"], [480, 800, 0, 0]);
+                t.elementsContent = [this.img_play_i()];
                 return t;
             };
             __egretProto__.img_car_i = function () {
@@ -105,13 +112,19 @@ var skins;
                 this.__s(t, ["height", "source", "width", "x", "y"], [480, "black", 800, 0, 0]);
                 return t;
             };
+            __egretProto__.img_play_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.img_play = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [480, "blank", 800, 0, 0]);
+                return t;
+            };
             __egretProto__.bg1_1_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.bg1_1 = t;
                 this.__s(t, ["height", "source", "width", "x", "y"], [480, "scene1_bg_1", 800, -800, 0]);
                 return t;
             };
-            ScenarioIntroSkin._skinParts = ["bg1", "bg1_1", "grp_bg1", "bg2", "bg2_1", "grp_bg2", "img_car", "grp_playground", "bg3", "bg3_1", "grp_bg3", "grp_game", "img_mask", "img_logo"];
+            ScenarioIntroSkin._skinParts = ["bg1", "bg1_1", "grp_bg1", "bg2", "bg2_1", "grp_bg2", "img_car", "grp_playground", "bg3", "bg3_1", "grp_bg3", "img_mask", "img_logo", "grp_game", "img_play", "grp_touch"];
             return ScenarioIntroSkin;
         })(egret.gui.Skin);
         scenario.ScenarioIntroSkin = ScenarioIntroSkin;

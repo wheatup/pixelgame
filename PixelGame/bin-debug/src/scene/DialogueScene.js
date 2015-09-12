@@ -9,7 +9,6 @@ var DialogueScene = (function (_super) {
     function DialogueScene() {
         _super.call(this, "skins.scene.DialogueSkin");
         this.normalPosY = 280;
-        this.showing = false;
         this.tickingText = false;
         this.showTime = 500;
         this.tickSpeed = 50;
@@ -19,6 +18,8 @@ var DialogueScene = (function (_super) {
     }
     var __egretProto__ = DialogueScene.prototype;
     __egretProto__.init = function () {
+        this.touchChildren = false;
+        this.touchEnabled = false;
         this.grp = this.ui["grp"];
         this.grp.visible = false;
         this.grp.y = this.normalPosY + this.height;
@@ -62,7 +63,14 @@ var DialogueScene = (function (_super) {
             Timer.removeTimer(this.tickingTimerVO);
             this.tickingTimerVO = null;
             this.ui["lbl_text"].text = this.currentText;
+            this.tickingText = false;
             DialogueScene.instance.showArrow();
+        }
+        else if (DialogueScene.hasNext) {
+            DialogueScene.getDialogue(DialogueScene.currentKey);
+        }
+        else {
+            DialogueScene.hideDialogue();
         }
     };
     //显示对话
@@ -80,11 +88,11 @@ var DialogueScene = (function (_super) {
             DialogueScene.instance.ui["lbl_name"].text = name;
         }
         DialogueScene.instance.ui["lbl_text"].text = "";
-        if (!DialogueScene.instance.showing) {
+        if (!DialogueScene.showing) {
             DialogueScene.instance.show();
             time = DialogueScene.instance.showTime;
         }
-        DialogueScene.instance.showing = true;
+        DialogueScene.showing = true;
         Timer.addTimer(time, 1, DialogueScene.instance.showText, DialogueScene.instance, text);
     };
     //对话框受到交互
@@ -94,7 +102,18 @@ var DialogueScene = (function (_super) {
     //隐藏对话框
     DialogueScene.hideDialogue = function () {
         DialogueScene.instance.hide();
+        DialogueScene.showing = false;
     };
+    //获取对话并显示
+    DialogueScene.getDialogue = function (key) {
+        DialogueScene.currentKey = key;
+        var dias = Dialogue.getDialogue(key);
+        DialogueScene.setDialogue(dias.name, dias.text);
+        DialogueScene.hasNext = dias.stream;
+    };
+    DialogueScene.showing = false;
+    DialogueScene.currentKey = "";
+    DialogueScene.hasNext = false;
     return DialogueScene;
 })(Scene);
 DialogueScene.prototype.__class__ = "DialogueScene";

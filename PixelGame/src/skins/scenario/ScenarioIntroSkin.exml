@@ -22,7 +22,10 @@
 			<e:UIAsset id="bg3" width="800" height="480" x="0" y="0" source="scene1_bg_3"/>
 			<e:UIAsset id="bg3_1" source="scene1_bg_3" width="800" height="480" y="0" x="-800"/>
 		</e:Group>
+		<e:UIAsset id="img_mask" width="800" height="480" x="0" y="0" source="black"/>
+		<e:UIAsset id="img_logo" source="shroomgames" horizontalCenter="0" verticalCenter="0" width="580" height="240" x="20" y="20"/>
 	</e:Group>
-	<e:UIAsset id="img_mask" width="800" height="480" x="0" y="0" source="black"/>
-	<e:UIAsset id="img_logo" source="shroomgames" horizontalCenter="0" verticalCenter="0" width="580" height="240" x="20" y="20"/>
+	<e:Group id="grp_touch" width="800" height="480" x="0" y="0">
+		<e:UIAsset id="img_play" width="800" height="480" x="0" y="0" source="blank"/>
+	</e:Group>
 </e:Skin>

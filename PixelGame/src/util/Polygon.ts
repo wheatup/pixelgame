@@ -13,9 +13,7 @@ class Polygon {
     //传入类似于"0,0 0,28 46,135 238,169 785,153 791,-7 664,-61 338,-75 199,-56"这样的参数
 	public constructor(points: string){
         this.points = new Array<Point>();
-        Debug.log(points);
         var pointsRaw: string[] = points.split(" ");
-        Debug.log(pointsRaw);
         for(var i: number = 0;i < pointsRaw.length; i++){
             var pointRaw: string[] = pointsRaw[i].split(",");
             var x: number = parseInt(pointRaw[0]);

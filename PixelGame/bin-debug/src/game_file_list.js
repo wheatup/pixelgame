@@ -1,10 +1,9 @@
 var game_file_list = [
 	"core/Scene.js",
 	"core/Scenario.js",
-	"util/Util.js",
 	"util/AStar/MathUtil.js",
 	"util/AStar/NodePoint.js",
-	"util/Debug.js",
+	"core/Dialogue.js",
 	"skins/scene/DialogueSkin.js",
 	"util/AStar/Grid.js",
 	"util/Polygon.js",
@@ -12,16 +11,14 @@ var game_file_list = [
 	"core/Terrain.js",
 	"scene/DialogueScene.js",
 	"skins/scenario/ScenarioIntroSkin.js",
-	"core/Sound.js",
-	"scene/scenarios/ScenarioIntro.js",
-	"scene/MainMenuScene.js",
 	"skins/scene/LoadingSkin.js",
+	"util/Util.js",
 	"AssetAdapter.js",
+	"core/Sound.js",
 	"scene/BGScene.js",
 	"scene/LoadingScene.js",
-	"scene/WarningScene.js",
+	"scene/scenarios/ScenarioIntro.js",
+	"util/Debug.js",
 	"Main.js",
-	"skins/scene/BGSkin.js",
-	"skins/scene/MainMenuSkin.js",
-	"skins/scene/WarningSkin.js"
+	"skins/scene/BGSkin.js"
 ];

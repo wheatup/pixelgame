@@ -121,6 +121,11 @@
 				"isFolder":false,
 				"key":"ui_arrow_down",
 				"name":"ui_arrow_down"
+			},
+			{
+				"isFolder":false,
+				"key":"blank",
+				"name":"blank"
 			}]
 		}
 	},

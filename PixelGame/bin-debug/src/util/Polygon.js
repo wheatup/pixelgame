@@ -10,9 +10,7 @@ var Polygon = (function () {
     //传入类似于"0,0 0,28 46,135 238,169 785,153 791,-7 664,-61 338,-75 199,-56"这样的参数
     function Polygon(points) {
         this.points = new Array();
-        Debug.log(points);
         var pointsRaw = points.split(" ");
-        Debug.log(pointsRaw);
         for (var i = 0; i < pointsRaw.length; i++) {
             var pointRaw = pointsRaw[i].split(",");
             var x = parseInt(pointRaw[0]);

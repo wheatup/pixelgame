@@ -13,6 +13,11 @@ var ScenarioIntro = (function (_super) {
         this.terrain = new Terrain(this, "73,239 26,392 207,468 363,389 325,294 427,181 590,256 456,389 483,453 759,449 729,152 496,22 205,124 205,354 144,260");
     }
     var __egretProto__ = ScenarioIntro.prototype;
+    __egretProto__.init = function () {
+        this.ui["grp_game"].touchChildren = false;
+        this.grp_touch = this.ui["grp_touch"];
+        this.grp_touch.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touch, this);
+    };
     __egretProto__.start = function () {
         var _this = this;
         //this.drawGrid();
@@ -31,7 +36,7 @@ var ScenarioIntro = (function (_super) {
         this.delay(3000);
         //出现对话
         this.addEvent(function () {
-            DialogueScene.setDialogue("江蛤蛤", "真没想到这件事就这么结束了。");
+            DialogueScene.getDialogue("intro");
         }, this);
     };
     __egretProto__.update = function () {
@@ -47,6 +52,11 @@ var ScenarioIntro = (function (_super) {
                 _this.ui["img_car"].y += 2;
             }, this);
             this.nextBumpTick += Math.round(Math.random() * 20 + 10);
+        }
+    };
+    __egretProto__.touch = function (event) {
+        if (DialogueScene.showing) {
+            DialogueScene.interupt();
         }
     };
     return ScenarioIntro;

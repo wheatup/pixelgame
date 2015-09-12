@@ -148,14 +148,19 @@ class Main extends egret.DisplayObjectContainer {
     
     //游戏开始
     private start():void {
+        //初始化对话
+        Dialogue.init();
+        
         if(egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
             Sound.playBGM("sound_dance");
         }
         //添加背景层
         Main.addScene(Main.LAYER_BOTTOM,new BGScene(),true);
         //添加警告层
-        var warningScene: WarningScene = new WarningScene();
-        Main.addScene(Main.LAYER_GAME, warningScene);
+//        var warningScene: WarningScene = new WarningScene();
+//        Main.addScene(Main.LAYER_GAME, warningScene);
+        Main.addScene(Main.LAYER_GAME, new ScenarioIntro());
+        
         //添加对话层
         var dialogueScene: DialogueScene = new DialogueScene();
         Main.addScene(Main.LAYER_GUI, dialogueScene, true);

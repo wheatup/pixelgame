@@ -1,10 +1,9 @@
 [
 	"core/Scene.ts",
 	"core/Scenario.ts",
-	"util/Util.ts",
 	"util/AStar/MathUtil.ts",
 	"util/AStar/NodePoint.ts",
-	"util/Debug.ts",
+	"core/Dialogue.ts",
 	"skins/scene/DialogueSkin.exml",
 	"util/AStar/Grid.ts",
 	"util/Polygon.ts",
@@ -12,16 +11,14 @@
 	"core/Terrain.ts",
 	"scene/DialogueScene.ts",
 	"skins/scenario/ScenarioIntroSkin.exml",
-	"core/Sound.ts",
-	"scene/scenarios/ScenarioIntro.ts",
-	"scene/MainMenuScene.ts",
 	"skins/scene/LoadingSkin.exml",
+	"util/Util.ts",
 	"AssetAdapter.ts",
+	"core/Sound.ts",
 	"scene/BGScene.ts",
 	"scene/LoadingScene.ts",
-	"scene/WarningScene.ts",
+	"scene/scenarios/ScenarioIntro.ts",
+	"util/Debug.ts",
 	"Main.ts",
-	"skins/scene/BGSkin.exml",
-	"skins/scene/MainMenuSkin.exml",
-	"skins/scene/WarningSkin.exml"
+	"skins/scene/BGSkin.exml"
 ]
