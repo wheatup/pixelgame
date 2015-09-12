@@ -8,6 +8,7 @@ var Scenario = (function (_super) {
     __extends(Scenario, _super);
     function Scenario(skinName) {
         _super.call(this, skinName);
+        this.cameraPosition = new Point(0, 0);
     }
     var __egretProto__ = Scenario.prototype;
     //绘制A星Grid(Debug用)

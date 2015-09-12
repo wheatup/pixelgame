@@ -15,6 +15,12 @@ var Util = (function () {
         var str = (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes() + ":" + (date.getSeconds() < 10 ? "0" : "") + date.getSeconds();
         return str;
     };
+    /**
+     * 取最大和最小值之间
+     */
+    Util.clip = function (value, min, max) {
+        return value < min ? min : (value > max ? max : value);
+    };
     return Util;
 })();
 Util.prototype.__class__ = "Util";

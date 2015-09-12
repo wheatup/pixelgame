@@ -15,13 +15,23 @@ var WarningScene = (function (_super) {
     __egretProto__.init = function () {
         this.img_loading = this.ui["img_loading"];
         this.grp = this.ui["grp"];
+        //只在手机浏览器中显示声音提示
         if (egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
             this.ui["lbl_title_cn4"].visible = false;
             this.ui["lbl_title_en4"].visible = false;
         }
+        this.ui["lbl_title_cn1"].fontFamily = "font_pixel";
+        this.ui["lbl_title_cn2"].fontFamily = "font_pixel";
+        this.ui["lbl_title_cn3"].fontFamily = "font_pixel";
+        this.ui["lbl_title_cn4"].fontFamily = "font_pixel";
+        this.ui["lbl_title_en1"].fontFamily = "font_pixel";
+        this.ui["lbl_title_en2"].fontFamily = "font_pixel";
+        this.ui["lbl_title_en3"].fontFamily = "font_pixel";
+        this.ui["lbl_title_en4"].fontFamily = "font_pixel";
     };
     //启动警告界面
     __egretProto__.start = function () {
+        var _this = this;
         this.spinSimbol();
         this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.rush, this);
         this.title1x = this.ui["lbl_title_cn1"].x;
@@ -29,12 +39,13 @@ var WarningScene = (function (_super) {
         this.title2x = this.ui["lbl_title_en1"].x;
         this.title2y = this.ui["lbl_title_en1"].y;
         this.viberateTimerVO = Timer.addTimer(50, -1, this.viberate, this);
-        //为了音频支持，让玩家点击方可进入游戏
-        //		this.autoTimerVO = Timer.addTimer(20000,1,() => {
-        //			if(!this.interupted) {
-        //				this.stepToNext();
-        //			}
-        //		},this);
+        if (egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
+            this.autoTimerVO = Timer.addTimer(20000, 1, function () {
+                if (!_this.interupted) {
+                    _this.stepToNext();
+                }
+            }, this);
+        }
     };
     //旋转存档图标
     __egretProto__.spinSimbol = function () {
@@ -57,7 +68,9 @@ var WarningScene = (function (_super) {
     };
     //切换至下一个场景
     __egretProto__.stepToNext = function () {
-        Sound.playBGM("sound_dance");
+        if (egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
+            Sound.playBGM("sound_dance");
+        }
         this.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.rush, this);
         Main.addScene(Main.LAYER_GAME, new MainMenuScene());
         Main.removeScene(this);
@@ -72,3 +85,4 @@ var WarningScene = (function (_super) {
     return WarningScene;
 })(Scene);
 WarningScene.prototype.__class__ = "WarningScene";
+//# sourceMappingURL=WarningScene.js.map

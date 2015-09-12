@@ -4,6 +4,7 @@ var Scene = (function (_super) {
         _super.call(this);
         this.removed = false;
         this.added = false;
+        this.currentTime = 0;
         this.skinName = skinName;
         this.ui = new Object();
     }
@@ -24,6 +25,12 @@ var Scene = (function (_super) {
     __egretProto__.update = function () {
     };
     __egretProto__.init = function () {
+    };
+    __egretProto__.delay = function (value) {
+        this.currentTime += value;
+    };
+    __egretProto__.addEvent = function (func, thisObject, data) {
+        Timer.addTimer(this.currentTime, 1, func, thisObject, data);
     };
     return Scene;
 })(egret.gui.Panel);

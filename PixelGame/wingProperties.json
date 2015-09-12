@@ -33,8 +33,33 @@
 			},
 			{
 				"isFolder":false,
+				"key":"game_car",
+				"name":"game_car"
+			},
+			{
+				"isFolder":false,
 				"key":"par_title",
 				"name":"par_title"
+			},
+			{
+				"isFolder":false,
+				"key":"scene1_bg_1",
+				"name":"scene1_bg_1"
+			},
+			{
+				"isFolder":false,
+				"key":"scene1_bg_2",
+				"name":"scene1_bg_2"
+			},
+			{
+				"isFolder":false,
+				"key":"scene1_bg_3",
+				"name":"scene1_bg_3"
+			},
+			{
+				"isFolder":false,
+				"key":"shroomgames",
+				"name":"shroomgames"
 			},
 			{
 				"isFolder":false,
@@ -50,6 +75,21 @@
 				"isFolder":false,
 				"key":"title_bg3",
 				"name":"title_bg3"
+			},
+			{
+				"isFolder":false,
+				"key":"title_continue_0",
+				"name":"title_continue_0"
+			},
+			{
+				"isFolder":false,
+				"key":"title_continue_1",
+				"name":"title_continue_1"
+			},
+			{
+				"isFolder":false,
+				"key":"title_start",
+				"name":"title_start"
 			},
 			{
 				"isFolder":false,
@@ -70,6 +110,17 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
+			},
+			{
+				"isFolder":false,
+				"key":"dialogue_box",
+				"name":"dialogue_box",
+				"scale9grid":"12,12,56,56"
+			},
+			{
+				"isFolder":false,
+				"key":"ui_arrow_down",
+				"name":"ui_arrow_down"
 			}]
 		}
 	},

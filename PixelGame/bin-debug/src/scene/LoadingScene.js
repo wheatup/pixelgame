@@ -13,6 +13,8 @@ var LoadingScene = (function (_super) {
     //更新加载资源数
     __egretProto__.setProgress = function (cur, tol) {
         this.ui["bar"].width = 400 * (cur / tol);
+        this.ui["lbl_prog"].fontFamily = "font_pixel";
+        this.ui["lbl_title"].fontFamily = "font_pixel";
         this.ui["lbl_prog"].text = Math.round(100 * (cur / tol)) + "%";
     };
     return LoadingScene;

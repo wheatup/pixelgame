@@ -1,10 +1,46 @@
 {
 	"groups":[
 	{
-		"keys":"par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,sound_dance,sound_piano_break",
+		"keys":"ui_arrow_down,dialogue_box,game_car,scene1_bg_1,scene1_bg_2,scene1_bg_3,shroomgames,par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,title_start,title_continue_0,title_continue_1,sound_dance,sound_piano_break",
 		"name":"preload"
 	}],
 	"resources":[
+	{
+		"name":"ui_arrow_down",
+		"type":"image",
+		"url":"assets/ui/ui_arrow_down.png"
+	},
+	{
+		"name":"dialogue_box",
+		"scale9grid":"12,12,56,56",
+		"type":"image",
+		"url":"assets/ui/dialogue_box.png"
+	},
+	{
+		"name":"scene1_bg_1",
+		"type":"image",
+		"url":"assets/scenarios/scene1/scene1_bg_1.png"
+	},
+	{
+		"name":"scene1_bg_2",
+		"type":"image",
+		"url":"assets/scenarios/scene1/scene1_bg_2.png"
+	},
+	{
+		"name":"scene1_bg_3",
+		"type":"image",
+		"url":"assets/scenarios/scene1/scene1_bg_3.png"
+	},
+	{
+		"name":"game_car",
+		"type":"image",
+		"url":"assets/scenarios/game_car.png"
+	},
+	{
+		"name":"shroomgames",
+		"type":"image",
+		"url":"assets/shroomgames.png"
+	},
 	{
 		"name":"par_title",
 		"type":"image",
@@ -49,6 +85,21 @@
 		"name":"title_bg3",
 		"type":"image",
 		"url":"assets/title/title_bg3.png"
+	},
+	{
+		"name":"title_start",
+		"type":"image",
+		"url":"assets/title/title_start.png"
+	},
+	{
+		"name":"title_continue_0",
+		"type":"image",
+		"url":"assets/title/title_continue_0.png"
+	},
+	{
+		"name":"title_continue_1",
+		"type":"image",
+		"url":"assets/title/title_continue_1.png"
 	},
 	{
 		"name":"sound_dance",

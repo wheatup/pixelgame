@@ -148,13 +148,17 @@ class Main extends egret.DisplayObjectContainer {
     
     //游戏开始
     private start():void {
-        //手机端无法支持最开始播放BGM，已移动到
-        //Sound.playBGM("sound_dance");
+        if(egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
+            Sound.playBGM("sound_dance");
+        }
         //添加背景层
         Main.addScene(Main.LAYER_BOTTOM,new BGScene(),true);
         //添加警告层
         var warningScene: WarningScene = new WarningScene();
         Main.addScene(Main.LAYER_GAME, warningScene);
+        //添加对话层
+        var dialogueScene: DialogueScene = new DialogueScene();
+        Main.addScene(Main.LAYER_GUI, dialogueScene, true);
     }
 }
 
