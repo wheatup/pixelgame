@@ -37,7 +37,6 @@ var egret;
      * <pre>
      *  egret.getQualifiedClassName(egret.DisplayObject) //返回 "egret.DisplayObject"
      * </pre>
-     * @includeExample egret/utils/getQualifiedClassName.ts
      */
     function getQualifiedClassName(value) {
         var prototype = value.prototype ? value.prototype : Object.getPrototypeOf(value);

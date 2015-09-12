@@ -28,9 +28,6 @@
 //////////////////////////////////////////////////////////////////////////////////////
 var RES;
 (function (RES) {
-    /**
-     * @private
-     */
     var ImageAnalyzer = (function (_super) {
         __extends(ImageAnalyzer, _super);
         function ImageAnalyzer() {

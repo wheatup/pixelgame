@@ -20,4 +20,3 @@ var LoadingScene = (function (_super) {
     return LoadingScene;
 })(Scene);
 LoadingScene.prototype.__class__ = "LoadingScene";
-//# sourceMappingURL=LoadingScene.js.map

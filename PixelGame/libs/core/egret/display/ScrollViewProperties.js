@@ -49,7 +49,6 @@ var egret;
             this._isVTweenPlaying = false;
             this._hScrollTween = null;
             this._vScrollTween = null;
-            this._bounces = true;
         }
         var __egretProto__ = ScrollViewProperties.prototype;
         return ScrollViewProperties;

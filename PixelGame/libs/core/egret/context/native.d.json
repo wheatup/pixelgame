@@ -6,8 +6,6 @@
 		"net/NativeNetContext.ts",
 		"display/NativeStageText.ts",
 		"net/NativeResourceLoader.ts",
-		"audio/NativeAudio.ts",
-		"audio/NaAudio.ts",
-		"NativeTexture.ts"
+		"audio/NativeAudio.ts"
 	]
 }

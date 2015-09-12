@@ -28,9 +28,6 @@
 //////////////////////////////////////////////////////////////////////////////////////
 var RES;
 (function (RES) {
-    /**
-     * @private
-     */
     var JsonAnalyzer = (function (_super) {
         __extends(JsonAnalyzer, _super);
         function JsonAnalyzer() {

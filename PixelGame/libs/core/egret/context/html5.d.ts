@@ -156,6 +156,7 @@ declare module egret {
         private getScissorRect(mask);
         popMask(): void;
         private scissor(x, y, w, h);
+        private colorTransformMatrix;
         private setGlobalColorTransform(colorTransformMatrix);
         private setBlurData(blurX, blurY);
         setGlobalFilters(filtersData: Array<Filter>): void;
@@ -347,7 +348,7 @@ declare module egret {
          * @param url
          * @returns {string}
          */
-        getVirtualUrl(url: string): string;
+        private getVirtualUrl(url);
     }
 }
 
@@ -395,9 +396,7 @@ declare module egret {
         _getText(): string;
         _setText(value: string): void;
         private resetText();
-        $onBlur(): void;
         _onInput(): void;
-        private setAreaHeight();
         _onClickHandler(e: any): void;
         _onDisconnect(): void;
         private _styleInfoes;
@@ -451,7 +450,6 @@ declare module egret {
          * @param loop {boolean} 是否循环播放，默认为false
          */
         _play(type?: string): void;
-        private func;
         private clear();
         private paused;
         /**
@@ -552,8 +550,7 @@ declare module egret {
          * @method egret.Sound#load
          */
         _load(): void;
-        private _url;
-        _setArrayBuffer(buffer: ArrayBuffer, url: string, callback: Function): void;
+        _setArrayBuffer(buffer: ArrayBuffer, callback: Function): void;
         _preload(type: string, callback?: Function, thisObj?: any): void;
         private _volume;
         /**
@@ -578,7 +575,7 @@ interface AudioBuffer {
 /**
  * @private
  */
-interface AudioBufferSourceNodeEgret {
+interface AudioBufferSourceNode {
     buffer: any;
     context: any;
     onended: Function;
@@ -647,9 +644,6 @@ declare module egret {
         _setCurrentTime(value: number): void;
         _destroy(): void;
     }
-}
-
-declare module egret.web {
 }
 
 declare module egret {

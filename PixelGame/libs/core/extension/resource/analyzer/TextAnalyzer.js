@@ -28,9 +28,6 @@
 //////////////////////////////////////////////////////////////////////////////////////
 var RES;
 (function (RES) {
-    /**
-     * @private
-     */
     var TextAnalyzer = (function (_super) {
         __extends(TextAnalyzer, _super);
         function TextAnalyzer() {

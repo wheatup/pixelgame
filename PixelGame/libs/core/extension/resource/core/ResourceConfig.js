@@ -31,7 +31,6 @@ var RES;
     /**
      * @class RES.ResourceConfig
      * @classdesc
-     * @private
      */
     var ResourceConfig = (function () {
         function ResourceConfig() {

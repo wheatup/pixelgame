@@ -30,7 +30,6 @@ var egret;
 (function (egret) {
     /**
      * Ticker是egret引擎的心跳控制器，是游戏唯一的时间处理入口。
-     * @includeExample egret/context/Ticker.ts
      */
     var Ticker = (function (_super) {
         __extends(Ticker, _super);
