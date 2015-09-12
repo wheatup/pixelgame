@@ -96,3 +96,4 @@ var skins;
         WarningSkin.prototype.__class__ = "skins.scene.WarningSkin";
     })(scene = skins.scene || (skins.scene = {}));
 })(skins || (skins = {}));
+//# sourceMappingURL=WarningSkin.js.map

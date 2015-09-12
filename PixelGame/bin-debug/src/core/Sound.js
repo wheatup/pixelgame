@@ -117,3 +117,4 @@ var Sound = (function () {
     return Sound;
 })();
 Sound.prototype.__class__ = "Sound";
+//# sourceMappingURL=Sound.js.map

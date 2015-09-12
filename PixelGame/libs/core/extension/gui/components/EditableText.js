@@ -45,7 +45,7 @@ var egret;
                 this.editableChanged = false;
                 this._maxChars = 0;
                 this.maxCharsChanged = false;
-                this._multiline = true;
+                this._multiline = false;
                 this.multilineChanged = false;
                 this._restrict = null;
                 this.restrictChanged = false;
@@ -191,8 +191,7 @@ var egret;
             });
             Object.defineProperty(__egretProto__, "restrict", {
                 /**
-                 * @deprecated
-                 * TextFiled里还没实现这个接口，等实现之后再去掉废弃标志。目前暂时不要使用它。
+                 * @inheritDoc
                  */
                 get: function () {
                     return this._restrict;

@@ -32,3 +32,4 @@ var Debug = (function () {
     return Debug;
 })();
 Debug.prototype.__class__ = "Debug";
+//# sourceMappingURL=Debug.js.map

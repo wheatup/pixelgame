@@ -15,6 +15,7 @@
 		"audio/Html5Audio.ts",
 		"audio/WebAudio.ts",
 		"audio/QQAudio.ts",
+		"WebTexture.ts",
 		"Html5Capatibility.ts"
 	]
 }

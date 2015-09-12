@@ -427,6 +427,7 @@
 		],
 		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/Texture.ts": [
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/MainContext.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/geom/Rectangle.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/PromiseObject.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/HashObject.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Browser.ts"
@@ -507,6 +508,7 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/getTimer.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/MainContext.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/localStorage/localStorage.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/devices/DeviceContext.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/events/Event.ts"
 		],
@@ -606,7 +608,8 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/Html5Audio.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/media/Sound.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/QQAudio.ts",
-			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/WebAudio.ts"
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/WebAudio.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Browser.ts"
 		],
 		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/interactive/HTML5TouchContext.ts": [
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Browser.ts",
@@ -626,6 +629,9 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/MainContext.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/callLater.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/display/StageText.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Html5Capatibility.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Html5Capatibility.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/text/TextFieldUtils.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/geom/Rectangle.ts"
 		],
 		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/Html5Audio.ts": [
@@ -634,6 +640,7 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Html5Capatibility.ts"
 		],
 		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/WebAudio.ts": [
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/callLater.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/media/IAudio.ts"
 		],
@@ -641,6 +648,13 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/media/Sound.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/callLater.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/media/IAudio.ts"
+		],
+		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/WebTexture.ts": [
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/Texture.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/geom/Rectangle.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/renderer/RendererContext.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/MainContext.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts"
 		],
 		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Html5Capatibility.ts": [
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/Html5Audio.ts",
@@ -651,6 +665,7 @@
 		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/devices/NativeDeviceContext.ts": [
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/external/ExternalInterface.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/localStorage/localStorage.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/StageDelegate.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/StageDelegate.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/StageDelegate.ts",
@@ -677,6 +692,7 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/filters/Filter.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/filters/DropShadowFilter.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/RenderTexture.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/net/NativeNetContext.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/geom/Rectangle.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/filters/ColorMatrixFilter.ts"
 		],
@@ -689,6 +705,7 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/PromiseObject.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/net/URLRequestHeader.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/events/IOErrorEvent.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/getDefinitionByName.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/media/Sound.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/callLater.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/Texture.ts",
@@ -701,7 +718,8 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/net/URLVariables.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/callLater.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts",
-			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/NativeAudio.ts"
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/NativeAudio.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/NaAudio.ts"
 		],
 		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/display/NativeStageText.ts": [
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/text/TextField.ts",
@@ -726,6 +744,19 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/net/NativeNetContext.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/PromiseObject.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/media/IAudio.ts"
+		],
+		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/NaAudio.ts": [
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/callLater.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/media/IAudio.ts"
+		],
+		"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/NativeTexture.ts": [
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/Texture.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/geom/Rectangle.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/renderer/NativeRendererContext.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/MainContext.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/BlendMode.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/geom/Matrix.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts"
 		],
 		"D:/Program Files/Egret/EgretEngine/win/egret/src/extension/version/DefaultLoadingView.ts": [
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/text/TextField.ts",
@@ -840,6 +871,8 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Injector.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/callLater.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/extension/resource/analyzer/AnalyzerBase.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/callLater.ts",
+			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/extension/resource/core/ResourceItem.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/extension/resource/core/ResourceLoader.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/extension/resource/analyzer/BinAnalyzer.ts",
@@ -1660,8 +1693,8 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/extension/gui/core/IVisualElement.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/extension/gui/events/PopUpEvent.ts"
 		],
-		"D:/DemoProject/pixelgame/libsrc/particle/Particle.ts": [],
-		"D:/DemoProject/pixelgame/libsrc/particle/ParticleSystem.ts": [
+		"D:/Projects/Egret/Game/libsrc/particle/Particle.ts": [],
+		"D:/Projects/Egret/Game/libsrc/particle/ParticleSystem.ts": [
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/DisplayObject.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/Texture.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Ticker.ts",
@@ -1670,22 +1703,24 @@
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/renderer/RendererContext.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/renderer/RenderFilter.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/BlendMode.ts",
-			"D:/DemoProject/pixelgame/libsrc/particle/Particle.ts"
+			"D:/Projects/Egret/Game/libsrc/particle/Particle.ts"
 		],
-		"D:/DemoProject/pixelgame/libsrc/particle/GravityParticle.ts": [
-			"D:/DemoProject/pixelgame/libsrc/particle/Particle.ts"
+		"D:/Projects/Egret/Game/libsrc/particle/GravityParticle.ts": [
+			"D:/Projects/Egret/Game/libsrc/particle/Particle.ts"
 		],
-		"D:/DemoProject/pixelgame/libsrc/particle/GravityParticleSystem.ts": [
+		"D:/Projects/Egret/Game/libsrc/particle/GravityParticleSystem.ts": [
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/egret/display/Texture.ts",
 			"D:/Program Files/Egret/EgretEngine/win/egret/src/jslib/NumberUtils.ts",
-			"D:/DemoProject/pixelgame/libsrc/particle/ParticleSystem.ts",
-			"D:/DemoProject/pixelgame/libsrc/particle/GravityParticle.ts",
-			"D:/DemoProject/pixelgame/libsrc/particle/Particle.ts"
+			"D:/Projects/Egret/Game/libsrc/particle/ParticleSystem.ts",
+			"D:/Projects/Egret/Game/libsrc/particle/GravityParticle.ts",
+			"D:/Projects/Egret/Game/libsrc/particle/Particle.ts"
 		]
 	},
 	"classNameToPath": {
 		"egret.egret_string_code": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/i18n/cn.ts",
 		"__extends": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/extends.ts",
+		"egret.superSetter": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/extends.ts",
+		"egret.superGetter": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/extends.ts",
 		"egret.Logger": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts",
 		"egret.getString": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts",
 		"egret.$error": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/Logger.ts",
@@ -1810,10 +1845,7 @@
 		"egret.DeviceContext": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/devices/DeviceContext.ts",
 		"egret.ExternalInterface": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/external/ExternalInterface.ts",
 		"egret.Browser": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Browser.ts",
-		"egret.localStorage.getItem": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/localStorage/localStorage.ts",
-		"egret.localStorage.setItem": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/localStorage/localStorage.ts",
-		"egret.localStorage.removeItem": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/localStorage/localStorage.ts",
-		"egret.localStorage.clear": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/localStorage/localStorage.ts",
+		"egret.localStorage": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/localStorage/localStorage.ts",
 		"egret.XML": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/XML.ts",
 		"egret.Endian": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/ByteArray.ts",
 		"egret.ByteArray": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/utils/ByteArray.ts",
@@ -1869,7 +1901,7 @@
 		"egret.Html5Audio": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/Html5Audio.ts",
 		"egret.WebAudio": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/WebAudio.ts",
 		"AudioBuffer": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/WebAudio.ts",
-		"AudioBufferSourceNode": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/WebAudio.ts",
+		"AudioBufferSourceNodeEgret": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/WebAudio.ts",
 		"egret.QQAudio": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/QQAudio.ts",
 		"egret.AudioType": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Html5Capatibility.ts",
 		"egret.SystemOSType": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/Html5Capatibility.ts",
@@ -1900,6 +1932,7 @@
 		"egret.NativeResourceLoader": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/net/NativeResourceLoader.ts",
 		"egret.NativeAudio": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/NativeAudio.ts",
 		"egret_native_sound.currentPath": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/NativeAudio.ts",
+		"egret.NaAudio": "D:/Program Files/Egret/EgretEngine/win/egret/src/egret/context/audio/NaAudio.ts",
 		"egret.DefaultLoadingView": "D:/Program Files/Egret/EgretEngine/win/egret/src/extension/version/DefaultLoadingView.ts",
 		"egret.ILoadingView": "D:/Program Files/Egret/EgretEngine/win/egret/src/extension/version/ILoadingView.ts",
 		"egret.Html5VersionController": "D:/Program Files/Egret/EgretEngine/win/egret/src/extension/version/Html5VersionController.ts",
@@ -2104,9 +2137,9 @@
 		"egret.gui.PopUpManagerImpl": "D:/Program Files/Egret/EgretEngine/win/egret/src/extension/gui/managers/impl/PopUpManagerImpl.ts",
 		"egret.gui.PopUpData": "D:/Program Files/Egret/EgretEngine/win/egret/src/extension/gui/managers/impl/PopUpManagerImpl.ts",
 		"egret.gui.PopUpManager": "D:/Program Files/Egret/EgretEngine/win/egret/src/extension/gui/managers/PopUpManager.ts",
-		"particle.Particle": "D:/DemoProject/pixelgame/libsrc/particle/Particle.ts",
-		"particle.ParticleSystem": "D:/DemoProject/pixelgame/libsrc/particle/ParticleSystem.ts",
-		"particle.GravityParticle": "D:/DemoProject/pixelgame/libsrc/particle/GravityParticle.ts",
-		"particle.GravityParticleSystem": "D:/DemoProject/pixelgame/libsrc/particle/GravityParticleSystem.ts"
+		"particle.Particle": "D:/Projects/Egret/Game/libsrc/particle/Particle.ts",
+		"particle.ParticleSystem": "D:/Projects/Egret/Game/libsrc/particle/ParticleSystem.ts",
+		"particle.GravityParticle": "D:/Projects/Egret/Game/libsrc/particle/GravityParticle.ts",
+		"particle.GravityParticleSystem": "D:/Projects/Egret/Game/libsrc/particle/GravityParticleSystem.ts"
 	}
 }

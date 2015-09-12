@@ -53,6 +53,14 @@ var egret;
         __egretProto__.getChangeList = function () {
             return [];
         };
+        /**
+         * 获取虚拟url
+         * @param url
+         * @returns {string}
+         */
+        __egretProto__.getVirtualUrl = function (url) {
+            return url;
+        };
         return NetContext;
     })(egret.HashObject);
     egret.NetContext = NetContext;

@@ -30,6 +30,7 @@ var RES;
 (function (RES) {
     /**
      * @classic
+     * @private
      */
     var AnalyzerBase = (function (_super) {
         __extends(AnalyzerBase, _super);

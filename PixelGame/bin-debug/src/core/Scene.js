@@ -35,3 +35,4 @@ var Scene = (function (_super) {
     return Scene;
 })(egret.gui.Panel);
 Scene.prototype.__class__ = "Scene";
+//# sourceMappingURL=Scene.js.map

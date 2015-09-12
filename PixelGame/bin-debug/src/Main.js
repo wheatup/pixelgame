@@ -143,3 +143,4 @@ var Main = (function (_super) {
     return Main;
 })(egret.DisplayObjectContainer);
 Main.prototype.__class__ = "Main";
+//# sourceMappingURL=Main.js.map

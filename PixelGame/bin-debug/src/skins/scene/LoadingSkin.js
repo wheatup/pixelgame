@@ -59,3 +59,4 @@ var skins;
         LoadingSkin.prototype.__class__ = "skins.scene.LoadingSkin";
     })(scene = skins.scene || (skins.scene = {}));
 })(skins || (skins = {}));
+//# sourceMappingURL=LoadingSkin.js.map

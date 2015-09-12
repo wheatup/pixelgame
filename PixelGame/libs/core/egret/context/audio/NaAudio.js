@@ -31,12 +31,12 @@ var egret;
     /**
      * @private
      */
-    var Html5Audio = (function () {
+    var NaAudio = (function () {
         /**
          * audio音频对象
          * @member {any} egret.Sound#audio
          */
-        function Html5Audio() {
+        function NaAudio() {
             var _this = this;
             this._loop = false;
             this.func = function (e) {
@@ -52,7 +52,7 @@ var egret;
             this._volume = 1;
             this._startTime = 0;
         }
-        var __egretProto__ = Html5Audio.prototype;
+        var __egretProto__ = NaAudio.prototype;
         /**
          * 播放声音
          * @method egret.Sound#play
@@ -60,36 +60,20 @@ var egret;
          */
         __egretProto__._play = function (type) {
             this.removeListeners();
-            if (egret.Html5Capatibility._audioMustLoad) {
-                //this._audio = this._audio.cloneNode();
-                this._audio.load();
-            }
             this.paused = false;
             this._audio.autoplay = true;
-            this._audio.volume = this._volume;
+            this._audio.volume = this._volume * 100;
             this._audio.removeEventListener("ended", this.func);
             this._audio.addEventListener("ended", this.func);
             this.initStart();
-            try {
-                this._audio.currentTime = this._startTime;
-            }
-            catch (e) {
-            }
-            finally {
-                this._audio.play();
-            }
+            this._audio.currentTime = this._startTime;
+            this._audio.play();
         };
         __egretProto__.clear = function () {
-            try {
-                this._audio.pause();
-            }
-            catch (e) {
-            }
-            finally {
-                this.removeListeners();
-                if (this._loop && !this.paused)
-                    this._play();
-            }
+            this._audio.pause();
+            this.removeListeners();
+            if (this._loop && !this.paused)
+                this._play();
         };
         /**
          * 暂停声音
@@ -180,7 +164,7 @@ var egret;
         };
         __egretProto__._setVolume = function (value) {
             this._volume = Math.max(0, Math.min(value, 1));
-            this._audio.volume = this._volume;
+            this._audio.volume = this._volume * 100;
         };
         __egretProto__._setLoop = function (value) {
             this._loop = value;
@@ -191,8 +175,8 @@ var egret;
         __egretProto__._setCurrentTime = function (value) {
             this._startTime = value;
         };
-        return Html5Audio;
+        return NaAudio;
     })();
-    egret.Html5Audio = Html5Audio;
-    Html5Audio.prototype.__class__ = "egret.Html5Audio";
+    egret.NaAudio = NaAudio;
+    NaAudio.prototype.__class__ = "egret.NaAudio";
 })(egret || (egret = {}));

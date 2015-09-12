@@ -28,6 +28,9 @@
 //////////////////////////////////////////////////////////////////////////////////////
 var RES;
 (function (RES) {
+    /**
+     * @private
+     */
     var SoundAnalyzer = (function (_super) {
         __extends(SoundAnalyzer, _super);
         function SoundAnalyzer() {

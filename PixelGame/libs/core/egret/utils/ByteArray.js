@@ -59,6 +59,7 @@ var egret;
      * @classdesc
      * ByteArray 类提供用于优化读取、写入以及处理二进制数据的方法和属性。
      * 注意：ByteArray 类适用于需要在字节层访问数据的高级 开发人员。
+     * @includeExample egret/utils/ByteArray.ts
      */
     var ByteArray = (function () {
         /**
@@ -124,11 +125,11 @@ var egret;
                 return this._position;
             },
             set: function (value) {
-                if (this._position < value) {
-                    if (!this.validate(value - this._position)) {
-                        return;
-                    }
-                }
+                //if (this._position < value) {
+                //    if (!this.validate(value - this._position)) {
+                //        return;
+                //    }
+                //}
                 this._position = value;
                 this.write_position = value > this.write_position ? value : this.write_position;
             },
@@ -146,7 +147,15 @@ var egret;
                 return this.write_position;
             },
             set: function (value) {
-                this.validateBuffer(value, true);
+                this.write_position = value;
+                var tmp = new Uint8Array(new ArrayBuffer(value));
+                var byteLength = this.data.buffer.byteLength;
+                if (byteLength > value) {
+                    this._position = value;
+                }
+                var length = Math.min(byteLength, value);
+                tmp.set(new Uint8Array(this.data.buffer, 0, length));
+                this.buffer = tmp.buffer;
             },
             enumerable: true,
             configurable: true

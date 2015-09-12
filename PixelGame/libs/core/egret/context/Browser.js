@@ -37,6 +37,7 @@ var egret;
         function Browser() {
             _super.call(this);
             this.trans = null;
+            this.webPSupport = false;
             this.header = null;
             this.ua = navigator.userAgent.toLowerCase();
             this.trans = this.getTrans("transform");

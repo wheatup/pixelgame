@@ -90,12 +90,12 @@ var egret;
          */
         TextFieldUtils._getValign = function (textfield) {
             var textHeight = TextFieldUtils._getTextHeight(textfield);
-            if (textfield._TF_Props_._type == egret.TextFieldType.INPUT) {
-                if (textfield._TF_Props_._multiline) {
-                    return 0;
-                }
-                return 0.5;
-            }
+            //if (textfield._TF_Props_._type == egret.TextFieldType.INPUT) {
+            //    if (textfield._TF_Props_._multiline) {
+            //        return 0;
+            //    }
+            //    return 0.5;
+            //}
             if (textfield._DO_Props_._hasHeightSet) {
                 if (textHeight < textfield._DO_Props_._explicitHeight) {
                     var valign = 0;
