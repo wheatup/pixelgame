@@ -9,6 +9,15 @@ class Mob extends egret.gui.UIAsset{
     public static DIR_DOWN_RIGHT:number = 2;
     public static DIR_DOWN_LEFT:number = 3;
     
+    public static ANIM_STAND_FRONT: number = 0;
+    public static ANIM_STAND_BACK: number = 1;
+    public static ANIM_WALK_FRONT: number = 2;
+    public static ANIM_WALK_BACK: number = 3;
+    
+    public static ACTION_STAND: number = 0;
+    public static ACTION_WALK: number = 1;
+    
+    public animSpeed: number = 10;
     public pivotX: number;
     public pivotY: number;
     public moveSpeed: number = 7;
@@ -17,6 +26,9 @@ class Mob extends egret.gui.UIAsset{
     private _index: number;
     private scenario: Scenario;
     private lastDir: number = 0;
+    
+    public dir: number;
+    public action: number;
         
     public constructor(asset: string, width: number, height: number, scenario: Scenario) {
         super(asset);
@@ -44,11 +56,21 @@ class Mob extends egret.gui.UIAsset{
     }
         
     public run(direction: number):void{
+        this.action = Mob.ACTION_WALK;
+        this.dir = direction;
         this.lastDir = direction;
+        this.onActionChange();
     }
         
     public still(direction: number):void{
+        this.action = Mob.ACTION_STAND;
+        this.dir = direction;
         this.lastDir = direction;
+        this.onActionChange();
+    }
+    
+    public onActionChange():void{
+        
     }
     
     /**
@@ -100,20 +122,8 @@ class Mob extends egret.gui.UIAsset{
             if(this._path[this._index]) {
                 var targetX: number = this._path[this._index].x * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
                 var targetY: number = this._path[this._index].y * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
-                if(this.getX() < targetX) {
-                    if(this.getY() < targetY) {
-                        this.run(Mob.DIR_UP_LEFT);
-                    } else {
-                        this.run(Mob.DIR_DOWN_LEFT);
-                    }
-                } else {
-                    if(this.getY() < targetY) {
-                        this.run(Mob.DIR_UP_RIGHT);
-                    } else {
-                        this.run(Mob.DIR_DOWN_RIGHT);
-                    }
-                }
             }
+            this.calcAnimation();
         }
     }
         
@@ -131,7 +141,7 @@ class Mob extends egret.gui.UIAsset{
             var dist: number = Math.sqrt(dx * dx + dy * dy);
             if(dist < 1) {
                 this._index++;
-                this.still(this.lastDir);
+                this.calcAnimation();
             } else {
                 var x:number = this.getX() + (dx / dist) * this.moveSpeed;
                 var y:number = this.getY() + (dy / dist) * this.moveSpeed;
@@ -159,6 +169,28 @@ class Mob extends egret.gui.UIAsset{
                     }
                 }
             }
+        }
+    }
+    
+    public calcAnimation():void{
+        if(this._path && this._path[this._index]) {
+            var targetX: number = this._path[this._index].x * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
+            var targetY: number = this._path[this._index].y * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
+            if(this.getX() < targetX) {
+                if(this.getY() <= targetY) {
+                    this.run(Mob.DIR_DOWN_RIGHT);
+                } else {
+                    this.run(Mob.DIR_UP_RIGHT);
+                }
+            } else {
+                if(this.getY() <= targetY) {
+                    this.run(Mob.DIR_DOWN_LEFT);
+                } else {
+                    this.run(Mob.DIR_UP_LEFT);
+                }
+            }
+        }else{
+            this.still(this.lastDir);
         }
     }
 }

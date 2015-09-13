@@ -25,6 +25,9 @@ var Main = (function (_super) {
         this.addChild(Main.layers[Main.LAYER_TOP]);
         Main.layers[Main.LAYER_MASK] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_MASK]);
+        Main.main.addEventListener(egret.Event.ENTER_FRAME, function () {
+            Main.tick++;
+        }, this);
         //加载载入界面资源
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onLoadingConfigComplete, this);
         RES.loadConfig("resource/loading.json", "resource/");
@@ -135,7 +138,7 @@ var Main = (function (_super) {
         var warningScene = new WarningScene();
         Main.addScene(Main.LAYER_GAME, warningScene);
         //测试
-        //Main.addScene(Main.LAYER_GAME, new ScenarioRoad());
+        //        Main.addScene(Main.LAYER_GAME, new ScenarioRoad());
         Main.transit();
         //添加对话层
         var dialogueScene = new DialogueScene();
@@ -146,6 +149,7 @@ var Main = (function (_super) {
     Main.LAYER_GUI = 2;
     Main.LAYER_TOP = 3;
     Main.LAYER_MASK = 4;
+    Main.tick = 0;
     Main.TRANSTION_TIME = 2000;
     return Main;
 })(egret.DisplayObjectContainer);

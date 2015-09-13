@@ -23,23 +23,42 @@ var ScenarioRoad = (function (_super) {
         this.ui["img_car"].x += this.ui["img_car"].width * this.ui["img_car"].anchorX;
         this.ui["img_car"].y += this.ui["img_car"].height * this.ui["img_car"].anchorY;
         this.floaters.push(this.ui["img_car"]);
+        //添加粒子
+        this.grp_particle = this.ui["grp_particle"];
+        this.grp_particle.anchorY = 5;
+        this.grp_particle.y += this.grp_particle.height * 5;
+        this.floaters.push(this.grp_particle);
+        var texture = RES.getRes("par_steam");
+        var config = RES.getRes("par_steam_json");
+        this.particle = new particle.GravityParticleSystem(texture, config);
+        //        this.particle.emitterX = -50;
+        //        this.particle.emitterY = 240;
+        this.grp_particle.blendMode = egret.BlendMode.ADD;
+        this.grp_particle.addElement(this.particle);
+        this.particle.start();
+        //创建玩家
+        this.createPlayer(450, 350, this.ui["grp_playground"]);
     };
     __egretProto__.bindEvents = function () {
         this.grp_touch.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touch, this);
-        //WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
+        WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
     };
     __egretProto__.unbindEvents = function () {
         this.grp_touch.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touch, this);
-        //WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
+        WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
     };
     __egretProto__.start = function () {
-        this.createPlayer(400, 400, this.ui["grp_playground"]);
+        this.delay(2000);
+        this.addEvent(function () {
+            DialogueScene.getDialogue("scene1");
+        }, this);
     };
     __egretProto__.touch = function (event) {
         if (DialogueScene.showing) {
             DialogueScene.interupt();
+            return;
         }
-        else {
+        if (this.free) {
             var x = event.stageX;
             var y = event.stageY;
             if (this.terrain.isInPolygon(x, y)) {
@@ -47,6 +66,11 @@ var ScenarioRoad = (function (_super) {
             }
             else {
             }
+        }
+    };
+    __egretProto__.onDialogueEnd = function (data) {
+        if (data == "scene1") {
+            this.free = true;
         }
     };
     __egretProto__.onRemove = function () {

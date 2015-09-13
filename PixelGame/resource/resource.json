@@ -1,10 +1,70 @@
 {
 	"groups":[
 	{
-		"keys":"char_temp,blank,ui_arrow_down,dialogue_box,game_car,scene1_bg_1,scene1_bg_2,scene1_bg_2a,scene1_bg_3,shroomgames,par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,title_start,title_continue_0,title_continue_1,sound_dance,sound_piano_break",
+		"keys":"me_anim_standb_0,me_anim_walkb_0,me_anim_walkb_1,me_anim_walkb_2,me_anim_walkb_3,me_anim_standf_0,me_anim_walkf_0,me_anim_walkf_1,me_anim_walkf_2,me_anim_walkf_3,par_steam,par_steam_json,char_temp,blank,ui_arrow_down,dialogue_box,game_car,scene1_bg_1,scene1_bg_2,scene1_bg_2a,scene1_bg_3,shroomgames,par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,title_start,title_continue_0,title_continue_1,sound_dance,sound_piano_break",
 		"name":"preload"
 	}],
 	"resources":[
+	{
+		"name":"me_anim_walkf_0",
+		"type":"image",
+		"url":"assets/animations/me_anim_walkf_0.png"
+	},
+	{
+		"name":"me_anim_walkf_1",
+		"type":"image",
+		"url":"assets/animations/me_anim_walkf_1.png"
+	},
+	{
+		"name":"me_anim_walkf_2",
+		"type":"image",
+		"url":"assets/animations/me_anim_walkf_2.png"
+	},
+	{
+		"name":"me_anim_walkf_3",
+		"type":"image",
+		"url":"assets/animations/me_anim_walkf_3.png"
+	},
+	{
+		"name":"me_anim_standf_0",
+		"type":"image",
+		"url":"assets/animations/me_anim_standf_0.png"
+	},
+	{
+		"name":"me_anim_walkb_0",
+		"type":"image",
+		"url":"assets/animations/me_anim_walkb_0.png"
+	},
+	{
+		"name":"me_anim_walkb_1",
+		"type":"image",
+		"url":"assets/animations/me_anim_walkb_1.png"
+	},
+	{
+		"name":"me_anim_walkb_2",
+		"type":"image",
+		"url":"assets/animations/me_anim_walkb_2.png"
+	},
+	{
+		"name":"me_anim_walkb_3",
+		"type":"image",
+		"url":"assets/animations/me_anim_walkb_3.png"
+	},
+	{
+		"name":"me_anim_standb_0",
+		"type":"image",
+		"url":"assets/animations/me_anim_standb_0.png"
+	},
+	{
+		"name":"par_steam",
+		"type":"image",
+		"url":"assets/particles/par_steam.png"
+	},
+	{
+		"name":"par_steam_json",
+		"type":"json",
+		"url":"assets/particles/par_steam.json"
+	},
 	{
 		"name":"char_temp",
 		"type":"image",

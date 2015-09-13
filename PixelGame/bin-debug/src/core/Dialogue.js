@@ -11,9 +11,11 @@ var Dialogue = (function () {
     Dialogue.init = function () {
         Dialogue.dialogueMap = new Object();
         Dialogue.indices = new Object();
-        Dialogue.pushDialogue("intro", "江蛤蛤", "真没想到这件事就这么结束了。");
-        Dialogue.pushDialogue("intro", "江蛤蛤", "真想赶紧回家。");
-        Dialogue.pushDialogue("intro", "江蛤蛤", "？！");
+        Dialogue.pushDialogue("intro", "费蓝德", "真没想到这件事就这么结束了。");
+        Dialogue.pushDialogue("intro", "费蓝德", "真想赶紧回家。");
+        Dialogue.pushDialogue("intro", "费蓝德", "？！");
+        Dialogue.pushDialogue("scene1", "费蓝德", "该死！");
+        Dialogue.pushDialogue("scene1", "费蓝德", "居然在这种时候……");
     };
     Dialogue.getDialogue = function (stream, next) {
         if (next === void 0) { next = false; }

@@ -5,6 +5,7 @@ class Main extends egret.DisplayObjectContainer {
     public static LAYER_GUI: number = 2;
     public static LAYER_TOP: number = 3;
     public static LAYER_MASK: number = 4;
+    public static tick: number = 0;
     
     public static TRANSTION_TIME: number = 2000;
     
@@ -38,6 +39,8 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(Main.layers[Main.LAYER_TOP]);
         Main.layers[Main.LAYER_MASK] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_MASK]);
+        
+        Main.main.addEventListener(egret.Event.ENTER_FRAME, () => { Main.tick++;}, this);
         
         //加载载入界面资源
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onLoadingConfigComplete, this);
@@ -164,7 +167,7 @@ class Main extends egret.DisplayObjectContainer {
         var warningScene: WarningScene = new WarningScene();
         Main.addScene(Main.LAYER_GAME, warningScene);
         //测试
-        //Main.addScene(Main.LAYER_GAME, new ScenarioRoad());
+//        Main.addScene(Main.LAYER_GAME, new ScenarioRoad());
         Main.transit();
         
         //添加对话层

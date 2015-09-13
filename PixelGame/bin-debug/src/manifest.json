@@ -24,12 +24,13 @@
 	"scene/BGScene.ts",
 	"scene/LoadingScene.ts",
 	"scene/WarningScene.ts",
-	"util/AStar/AStar2.ts",
 	"util/Debug.ts",
 	"Main.ts",
+	"entity/Animation.ts",
 	"entity/Player.ts",
 	"skins/scenario/ScenarioIntroSkin.exml",
 	"skins/scene/BGSkin.exml",
 	"skins/scene/MainMenuSkin.exml",
-	"skins/scene/WarningSkin.exml"
+	"skins/scene/WarningSkin.exml",
+	"util/AStar/AStar2.ts"
 ]

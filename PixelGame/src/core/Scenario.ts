@@ -10,6 +10,7 @@ class Scenario extends Scene{
     public player: Player;
     public floatGroup: egret.gui.Group;
     public floaters: Array<any>;
+    public free: boolean = false;
     
     public constructor(skinName: string){
         super(skinName);

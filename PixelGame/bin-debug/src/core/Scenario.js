@@ -8,6 +8,7 @@ var Scenario = (function (_super) {
     __extends(Scenario, _super);
     function Scenario(skinName) {
         _super.call(this, skinName);
+        this.free = false;
         this.cameraPosition = new Point(0, 0);
         this.floaters = new Array();
     }

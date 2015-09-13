@@ -8,6 +8,7 @@ var EventType = (function () {
     }
     var __egretProto__ = EventType.prototype;
     EventType.DIALOGUE_END = "DIALOGUE_END";
+    EventType.ANIMATION_DONE = "ANIMATION_DONE";
     return EventType;
 })();
 EventType.prototype.__class__ = "EventType";

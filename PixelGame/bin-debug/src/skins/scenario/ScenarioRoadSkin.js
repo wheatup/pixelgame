@@ -80,11 +80,17 @@ var skins;
                 t.elementsContent = [this.grp_bg1_i(), this.grp_bg2_i(), this.grp_playground_i(), this.grp_bg3_i()];
                 return t;
             };
+            __egretProto__.grp_particle_i = function () {
+                var t = new egret.gui.Group();
+                this.grp_particle = t;
+                this.__s(t, ["height", "width", "x", "y"], [10, 10, 360, 250]);
+                return t;
+            };
             __egretProto__.grp_playground_i = function () {
                 var t = new egret.gui.Group();
                 this.grp_playground = t;
                 this.__s(t, ["height", "width", "x", "y"], [480, 800, 0, 0]);
-                t.elementsContent = [this.img_car_i()];
+                t.elementsContent = [this.grp_particle_i(), this.img_car_i()];
                 return t;
             };
             __egretProto__.grp_touch_i = function () {
@@ -112,7 +118,7 @@ var skins;
                 this.__s(t, ["height", "source", "width", "x", "y"], [480, "scene1_bg_1", 800, -800, 0]);
                 return t;
             };
-            ScenarioRoadSkin._skinParts = ["bg1", "bg1_1", "grp_bg1", "bg2", "bg2_1", "grp_bg2", "img_car", "grp_playground", "bg3", "bg3_1", "grp_bg3", "grp_game", "img_play", "grp_touch"];
+            ScenarioRoadSkin._skinParts = ["bg1", "bg1_1", "grp_bg1", "bg2", "bg2_1", "grp_bg2", "grp_particle", "img_car", "grp_playground", "bg3", "bg3_1", "grp_bg3", "grp_game", "img_play", "grp_touch"];
             return ScenarioRoadSkin;
         })(egret.gui.Skin);
         scenario.ScenarioRoadSkin = ScenarioRoadSkin;

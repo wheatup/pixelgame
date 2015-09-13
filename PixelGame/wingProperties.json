@@ -136,6 +136,61 @@
 				"isFolder":false,
 				"key":"char_temp",
 				"name":"char_temp"
+			},
+			{
+				"isFolder":false,
+				"key":"par_steam",
+				"name":"par_steam"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_standb_0",
+				"name":"me_anim_standb_0"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_standf_0",
+				"name":"me_anim_standf_0"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkb_0",
+				"name":"me_anim_walkb_0"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkb_1",
+				"name":"me_anim_walkb_1"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkb_2",
+				"name":"me_anim_walkb_2"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkb_3",
+				"name":"me_anim_walkb_3"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkf_0",
+				"name":"me_anim_walkf_0"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkf_1",
+				"name":"me_anim_walkf_1"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkf_2",
+				"name":"me_anim_walkf_2"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkf_3",
+				"name":"me_anim_walkf_3"
 			}]
 		}
 	},

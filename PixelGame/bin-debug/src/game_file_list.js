@@ -24,12 +24,13 @@ var game_file_list = [
 	"scene/BGScene.js",
 	"scene/LoadingScene.js",
 	"scene/WarningScene.js",
-	"util/AStar/AStar2.js",
 	"util/Debug.js",
 	"Main.js",
+	"entity/Animation.js",
 	"entity/Player.js",
 	"skins/scenario/ScenarioIntroSkin.js",
 	"skins/scene/BGSkin.js",
 	"skins/scene/MainMenuSkin.js",
-	"skins/scene/WarningSkin.js"
+	"skins/scene/WarningSkin.js",
+	"util/AStar/AStar2.js"
 ];

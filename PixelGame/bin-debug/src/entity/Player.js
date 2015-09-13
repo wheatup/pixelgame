@@ -6,9 +6,44 @@
 var Player = (function (_super) {
     __extends(Player, _super);
     function Player(scenario) {
-        _super.call(this, "char_temp", 44, 104, scenario);
+        _super.call(this, "me_anim_standf_0", 80, 120, scenario);
+        this.animations = [];
+        this.animIndex = 0;
+        //添加动画
+        this.animations[Mob.ANIM_STAND_FRONT] = new Animation("me_anim_standf", 1, this, 0);
+        this.animations[Mob.ANIM_STAND_BACK] = new Animation("me_anim_standb", 1, this, 0);
+        this.animations[Mob.ANIM_WALK_FRONT] = new Animation("me_anim_walkf", 4, this, 7);
+        this.animations[Mob.ANIM_WALK_BACK] = new Animation("me_anim_walkb", 4, this, 7);
+        this.currentAnimation = this.animations[Mob.ANIM_STAND_FRONT];
     }
     var __egretProto__ = Player.prototype;
+    __egretProto__.update = function () {
+        _super.prototype.update.call(this);
+        this.currentAnimation.update();
+    };
+    __egretProto__.onActionChange = function () {
+        this.scaleX = ((this.dir == Mob.DIR_UP_LEFT || this.dir == Mob.DIR_DOWN_LEFT) ? 1 : -1);
+        this.animIndex = 0;
+        switch (this.action) {
+            case Mob.ACTION_WALK:
+                if (this.dir == Mob.DIR_DOWN_RIGHT || this.dir == Mob.DIR_DOWN_LEFT) {
+                    this.currentAnimation = this.animations[Mob.ANIM_WALK_FRONT];
+                }
+                else {
+                    this.currentAnimation = this.animations[Mob.ANIM_WALK_BACK];
+                }
+                break;
+            case Mob.ACTION_STAND:
+                if (this.dir == Mob.DIR_DOWN_RIGHT || this.dir == Mob.DIR_DOWN_LEFT) {
+                    this.currentAnimation = this.animations[Mob.ANIM_STAND_FRONT];
+                }
+                else {
+                    this.currentAnimation = this.animations[Mob.ANIM_STAND_BACK];
+                }
+                break;
+        }
+        this.currentAnimation.play();
+    };
     return Player;
 })(Mob);
 Player.prototype.__class__ = "Player";
