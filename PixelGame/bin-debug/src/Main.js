@@ -11,6 +11,8 @@ var Main = (function (_super) {
         Main.scenarioIntro = new ScenarioIntro();
         Main.scenarioRoad = new ScenarioRoad();
         Main.trunkScene = new TrunkScene();
+        Main.cellphoneScene = new CellphoneScene();
+        Main.uiScene = new UIScene();
     }
     var __egretProto__ = Main.prototype;
     __egretProto__.onAddToStage = function (event) {
@@ -150,6 +152,7 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_GAME, Main.warningScene);
         //测试
         //Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
+        //Main.addScene(Main.LAYER_GAME, Main.cellphoneScene);
         Main.transit();
         //添加对话层
         Main.addScene(Main.LAYER_GUI, Main.dialogueScene, true);
@@ -160,6 +163,7 @@ var Main = (function (_super) {
     Main.LAYER_TOP = 3;
     Main.LAYER_MASK = 4;
     Main.tick = 0;
+    Main.free = false;
     Main.TRANSTION_TIME = 2000;
     return Main;
 })(egret.DisplayObjectContainer);

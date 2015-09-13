@@ -71,6 +71,8 @@ class ScenarioRoad extends Scenario{
         //创建玩家
         this.createPlayer(1250, 350, this.ui["grp_playground"]);
         
+        //创建GUI
+        Main.addScene(Main.LAYER_GUI, Main.uiScene);
         //this.drawGrid();
 	}
 	
@@ -144,7 +146,7 @@ class ScenarioRoad extends Scenario{
     private touchScene(event: egret.TouchEvent):void{
         if(DialogueScene.showing) {
             DialogueScene.interupt();
-        }else if(this.free && !DialogueScene.showing){
+        }else if(Main.free){
             this.clearForFlag();
             var x = event.localX;
             var y = event.localY;
@@ -160,7 +162,7 @@ class ScenarioRoad extends Scenario{
     private touchEngine(event: egret.TouchEvent):void{
         if(DialogueScene.showing) {
             DialogueScene.interupt();
-        }else if(this.free && !DialogueScene.showing){
+        }else if(Main.free){
             this.forEngine = true;
             this.player.onGridClick(1150, 350);
         }
@@ -170,7 +172,7 @@ class ScenarioRoad extends Scenario{
     private touchTrunk(event: egret.TouchEvent):void{
         if(DialogueScene.showing) {
             DialogueScene.interupt();
-        }else if(this.free && !DialogueScene.showing){
+        }else if(Main.free){
             this.clearForFlag();
             this.forTrunk = true;
             this.player.onGridClick(1400, 300);
@@ -181,7 +183,7 @@ class ScenarioRoad extends Scenario{
     public touchEnd1(event: egret.TouchEvent): void{
         if(DialogueScene.showing) {
             DialogueScene.interupt();
-        }else if(this.free && !DialogueScene.showing){
+        }else if(Main.free && !DialogueScene.showing){
             this.clearForFlag();
             this.forEnd1 = true;
             this.player.onGridClick(25, 300);
@@ -192,7 +194,7 @@ class ScenarioRoad extends Scenario{
     public touchEnd2(event: egret.TouchEvent): void{
         if(DialogueScene.showing) {
             DialogueScene.interupt();
-        }else if(this.free && !DialogueScene.showing){
+        }else if(Main.free){
             this.clearForFlag();
             this.forEnd2 = true;
             this.player.onGridClick(1575, 300);
@@ -203,7 +205,7 @@ class ScenarioRoad extends Scenario{
     public touchBush(event: egret.TouchEvent): void{
         if(DialogueScene.showing) {
             DialogueScene.interupt();
-        }else if(this.free && !DialogueScene.showing){
+        }else if(Main.free){
             this.clearForFlag();
             this.forBush = true;
             this.player.onGridClick(470, 230);
@@ -213,7 +215,7 @@ class ScenarioRoad extends Scenario{
     
     private onDialogueEnd(data: any): void{
         if(data == "scene1"){
-            this.free = true;
+            Main.free = true;
         }
     }
     

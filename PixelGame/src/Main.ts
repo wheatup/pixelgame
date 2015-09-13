@@ -6,6 +6,7 @@ class Main extends egret.DisplayObjectContainer {
     public static LAYER_TOP: number = 3;
     public static LAYER_MASK: number = 4;
     public static tick: number = 0;
+    public static free: boolean = false;
     
     public static TRANSTION_TIME: number = 2000;
     
@@ -21,12 +22,13 @@ class Main extends egret.DisplayObjectContainer {
     public static scenarioIntro: ScenarioIntro;
     public static scenarioRoad: ScenarioRoad;
     public static trunkScene: TrunkScene;
+    public static cellphoneScene: CellphoneScene;
+    public static uiScene: UIScene;
     
     public constructor() {
         super();
         Main.main = this;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-        
         Main.bgScene = new BGScene();
         Main.dialogueScene = new DialogueScene();
         Main.warningScene = new WarningScene();
@@ -34,6 +36,8 @@ class Main extends egret.DisplayObjectContainer {
         Main.scenarioIntro = new ScenarioIntro();
         Main.scenarioRoad = new ScenarioRoad();
         Main.trunkScene = new TrunkScene();
+        Main.cellphoneScene = new CellphoneScene();
+        Main.uiScene = new UIScene();
     }
     
     private onAddToStage(event:egret.Event) {
@@ -187,6 +191,7 @@ class Main extends egret.DisplayObjectContainer {
         Main.addScene(Main.LAYER_GAME, Main.warningScene);
         //测试
         //Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
+        //Main.addScene(Main.LAYER_GAME, Main.cellphoneScene);
         Main.transit();
         
         //添加对话层

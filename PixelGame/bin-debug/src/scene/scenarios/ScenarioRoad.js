@@ -55,6 +55,8 @@ var ScenarioRoad = (function (_super) {
         this.particle.start();
         //创建玩家
         this.createPlayer(1250, 350, this.ui["grp_playground"]);
+        //创建GUI
+        Main.addScene(Main.LAYER_GUI, Main.uiScene);
         //this.drawGrid();
     };
     __egretProto__.clearForFlag = function () {
@@ -115,7 +117,7 @@ var ScenarioRoad = (function (_super) {
         if (DialogueScene.showing) {
             DialogueScene.interupt();
         }
-        else if (this.free && !DialogueScene.showing) {
+        else if (Main.free) {
             this.clearForFlag();
             var x = event.localX;
             var y = event.localY;
@@ -129,7 +131,7 @@ var ScenarioRoad = (function (_super) {
         if (DialogueScene.showing) {
             DialogueScene.interupt();
         }
-        else if (this.free && !DialogueScene.showing) {
+        else if (Main.free) {
             this.forEngine = true;
             this.player.onGridClick(1150, 350);
         }
@@ -139,7 +141,7 @@ var ScenarioRoad = (function (_super) {
         if (DialogueScene.showing) {
             DialogueScene.interupt();
         }
-        else if (this.free && !DialogueScene.showing) {
+        else if (Main.free) {
             this.clearForFlag();
             this.forTrunk = true;
             this.player.onGridClick(1400, 300);
@@ -150,7 +152,7 @@ var ScenarioRoad = (function (_super) {
         if (DialogueScene.showing) {
             DialogueScene.interupt();
         }
-        else if (this.free && !DialogueScene.showing) {
+        else if (Main.free && !DialogueScene.showing) {
             this.clearForFlag();
             this.forEnd1 = true;
             this.player.onGridClick(25, 300);
@@ -161,7 +163,7 @@ var ScenarioRoad = (function (_super) {
         if (DialogueScene.showing) {
             DialogueScene.interupt();
         }
-        else if (this.free && !DialogueScene.showing) {
+        else if (Main.free) {
             this.clearForFlag();
             this.forEnd2 = true;
             this.player.onGridClick(1575, 300);
@@ -172,7 +174,7 @@ var ScenarioRoad = (function (_super) {
         if (DialogueScene.showing) {
             DialogueScene.interupt();
         }
-        else if (this.free && !DialogueScene.showing) {
+        else if (Main.free) {
             this.clearForFlag();
             this.forBush = true;
             this.player.onGridClick(470, 230);
@@ -181,7 +183,7 @@ var ScenarioRoad = (function (_super) {
     };
     __egretProto__.onDialogueEnd = function (data) {
         if (data == "scene1") {
-            this.free = true;
+            Main.free = true;
         }
     };
     __egretProto__.onArrive = function (data) {

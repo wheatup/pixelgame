@@ -10,7 +10,6 @@ class Scenario extends Scene{
     public player: Player;
     public floatGroup: egret.gui.Group;
     public floaters: Array<any>;
-    public free: boolean = false;
     
     public cameraLimit: egret.Rectangle = new egret.Rectangle(0,0,0,0);
     

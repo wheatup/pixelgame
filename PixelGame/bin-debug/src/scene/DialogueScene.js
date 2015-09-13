@@ -35,10 +35,12 @@ var DialogueScene = (function (_super) {
         egret.Tween.get(this.ui["lbl_arrow"], { loop: true }).to({ y: this.ui["lbl_arrow"].y + 10 }, 500, egret.Ease.quadIn).to({ y: this.ui["lbl_arrow"].y }, 500, egret.Ease.quadOut);
     };
     __egretProto__.show = function () {
+        Main.free = false;
         egret.Tween.removeTweens(this.grp);
         egret.Tween.get(this.grp).to({ y: this.normalPosY }, this.showTime, egret.Ease.quadOut);
     };
     __egretProto__.hide = function () {
+        Main.free = true;
         egret.Tween.removeTweens(this.grp);
         egret.Tween.get(this.grp).to({ y: this.normalPosY + this.height }, this.showTime, egret.Ease.quadIn);
     };
