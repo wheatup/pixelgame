@@ -191,6 +191,21 @@
 				"isFolder":false,
 				"key":"me_anim_walkf_3",
 				"name":"me_anim_walkf_3"
+			},
+			{
+				"isFolder":false,
+				"key":"scene_trunk_0",
+				"name":"scene_trunk_0"
+			},
+			{
+				"isFolder":false,
+				"key":"scene_trunk_1",
+				"name":"scene_trunk_1"
+			},
+			{
+				"isFolder":false,
+				"key":"back",
+				"name":"back"
 			}]
 		}
 	},

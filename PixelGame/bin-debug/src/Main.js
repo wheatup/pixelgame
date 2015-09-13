@@ -4,6 +4,13 @@ var Main = (function (_super) {
         _super.call(this);
         Main.main = this;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        Main.bgScene = new BGScene();
+        Main.dialogueScene = new DialogueScene();
+        Main.warningScene = new WarningScene();
+        Main.mainMenuScene = new MainMenuScene();
+        Main.scenarioIntro = new ScenarioIntro();
+        Main.scenarioRoad = new ScenarioRoad();
+        Main.trunkScene = new TrunkScene();
     }
     var __egretProto__ = Main.prototype;
     __egretProto__.onAddToStage = function (event) {
@@ -88,6 +95,7 @@ var Main = (function (_super) {
         if (scene.added) {
             return;
         }
+        scene.removed = false;
         scene.added = true;
         if (immediate) {
             Main.layers[layer].addChild(scene);
@@ -102,7 +110,10 @@ var Main = (function (_super) {
             }, this);
         }
     };
-    Main.transit = function () {
+    Main.transit = function (delay) {
+        if (delay) {
+            Main.TRANSTION_TIME = delay;
+        }
         Main.main.curtain.transit();
     };
     /**
@@ -111,6 +122,7 @@ var Main = (function (_super) {
     Main.removeScene = function (scene) {
         if (scene.removed)
             return;
+        scene.added = false;
         scene.removed = true;
         for (var i = 0; i < Main.layers.length; i++) {
             if (Main.layers[i].contains(scene)) {
@@ -133,16 +145,14 @@ var Main = (function (_super) {
             Sound.playBGM("sound_dance");
         }
         //添加背景层
-        Main.addScene(Main.LAYER_BOTTOM, new BGScene(), true);
+        Main.addScene(Main.LAYER_BOTTOM, Main.bgScene, true);
         //添加警告层
-        var warningScene = new WarningScene();
-        Main.addScene(Main.LAYER_GAME, warningScene);
+        Main.addScene(Main.LAYER_GAME, Main.warningScene);
         //测试
-        //        Main.addScene(Main.LAYER_GAME, new ScenarioRoad());
+        //Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
         Main.transit();
         //添加对话层
-        var dialogueScene = new DialogueScene();
-        Main.addScene(Main.LAYER_GUI, dialogueScene, true);
+        Main.addScene(Main.LAYER_GUI, Main.dialogueScene, true);
     };
     Main.LAYER_BOTTOM = 0;
     Main.LAYER_GAME = 1;

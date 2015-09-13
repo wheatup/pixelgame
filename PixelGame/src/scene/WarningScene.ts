@@ -87,7 +87,7 @@ class WarningScene extends Scene{
             Sound.playBGM("sound_dance");
         }
 		this.removeEventListener(egret.TouchEvent.TOUCH_TAP,this.rush,this);
-		Main.addScene(Main.LAYER_GAME,new MainMenuScene());
+		Main.addScene(Main.LAYER_GAME, Main.mainMenuScene);
 		Main.removeScene(this);
         Main.transit();
 	}

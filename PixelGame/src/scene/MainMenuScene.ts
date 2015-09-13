@@ -124,7 +124,7 @@ class MainMenuScene extends Scene{
         Sound.stop("sound_dance");
         Sound.playSFX("sound_piano_break");
         Main.removeScene(this);
-        Main.addScene(Main.LAYER_GAME, new ScenarioIntro());
+        Main.addScene(Main.LAYER_GAME, Main.scenarioIntro);
         Main.transit();
 	}
 	

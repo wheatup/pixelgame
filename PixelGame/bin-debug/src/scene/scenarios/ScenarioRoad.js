@@ -11,8 +11,9 @@ var ScenarioRoad = (function (_super) {
         _super.call(this, "skins.scenario.ScenarioRoadSkin");
         this.tick = 0;
         this.forEngine = false;
+        this.forTrunk = false;
         this.engineTouchCount = 0;
-        this.terrain = new Terrain(this, "0,230 0,436 800,436 800,230", ["298,272 298,332 618,332 618,272"]);
+        this.terrain = new Terrain(this, "0,240 0,436 800,436 800,240", ["298,272 298,332 618,332 618,272"]);
     }
     var __egretProto__ = ScenarioRoad.prototype;
     __egretProto__.init = function () {
@@ -45,14 +46,23 @@ var ScenarioRoad = (function (_super) {
         //创建玩家
         this.createPlayer(450, 350, this.ui["grp_playground"]);
     };
+    __egretProto__.clearForFlag = function () {
+        this.forEngine = false;
+        this.forTrunk = false;
+    };
     __egretProto__.bindEvents = function () {
         this.box_scene.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchScene, this);
         this.box_engine.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEngine, this);
+        this.box_trunk.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchTrunk, this);
         WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
         WheatupEvent.bind(EventType.ARRIVE, this.onArrive, this);
     };
     __egretProto__.unbindEvents = function () {
+        this.box_scene.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchScene, this);
+        this.box_engine.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEngine, this);
+        this.box_trunk.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchTrunk, this);
         WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
+        WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
     };
     __egretProto__.start = function () {
         this.delay(2000);
@@ -65,7 +75,7 @@ var ScenarioRoad = (function (_super) {
             DialogueScene.interupt();
         }
         else if (this.free && !DialogueScene.showing) {
-            this.forEngine = false;
+            this.clearForFlag();
             var x = event.stageX;
             var y = event.stageY;
             if (this.terrain.isInPolygon(x, y)) {
@@ -84,6 +94,17 @@ var ScenarioRoad = (function (_super) {
         }
         event.stopPropagation();
     };
+    __egretProto__.touchTrunk = function (event) {
+        if (DialogueScene.showing) {
+            DialogueScene.interupt();
+        }
+        else if (this.free && !DialogueScene.showing) {
+            this.clearForFlag();
+            this.forTrunk = true;
+            this.player.onGridClick(600, 300);
+        }
+        event.stopPropagation();
+    };
     __egretProto__.onDialogueEnd = function (data) {
         if (data == "scene1") {
             this.free = true;
@@ -98,6 +119,10 @@ var ScenarioRoad = (function (_super) {
                 DialogueScene.showDialogue("engine2");
             }
             this.engineTouchCount++;
+        }
+        else if (this.forTrunk) {
+            Main.transit(1000);
+            Main.addScene(Main.LAYER_GAME, Main.trunkScene);
         }
     };
     __egretProto__.onRemove = function () {

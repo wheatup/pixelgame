@@ -27,6 +27,10 @@ declare module skins.scene{
 	}
 }
 declare module skins.scene{
+	class TrunkSkin extends egret.gui.Skin{
+	}
+}
+declare module skins.scene{
 	class WarningSkin extends egret.gui.Skin{
 	}
 }

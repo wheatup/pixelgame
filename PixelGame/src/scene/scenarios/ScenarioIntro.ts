@@ -42,7 +42,7 @@ class ScenarioIntro extends Scenario{
     public nextScene():void{
         Main.TRANSTION_TIME = 2000;
         Main.removeScene(this);
-        Main.addScene(Main.LAYER_GAME, new ScenarioRoad());
+        Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
         Main.transit();
     }
 	

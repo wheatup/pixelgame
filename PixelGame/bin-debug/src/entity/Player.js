@@ -23,26 +23,29 @@ var Player = (function (_super) {
     };
     __egretProto__.onActionChange = function () {
         this.scaleX = ((this.dir == Mob.DIR_UP_LEFT || this.dir == Mob.DIR_DOWN_LEFT) ? 1 : -1);
-        this.animIndex = 0;
+        var anim;
         switch (this.action) {
             case Mob.ACTION_WALK:
                 if (this.dir == Mob.DIR_DOWN_RIGHT || this.dir == Mob.DIR_DOWN_LEFT) {
-                    this.currentAnimation = this.animations[Mob.ANIM_WALK_FRONT];
+                    anim = this.animations[Mob.ANIM_WALK_FRONT];
                 }
                 else {
-                    this.currentAnimation = this.animations[Mob.ANIM_WALK_BACK];
+                    anim = this.animations[Mob.ANIM_WALK_BACK];
                 }
                 break;
             case Mob.ACTION_STAND:
                 if (this.dir == Mob.DIR_DOWN_RIGHT || this.dir == Mob.DIR_DOWN_LEFT) {
-                    this.currentAnimation = this.animations[Mob.ANIM_STAND_FRONT];
+                    anim = this.animations[Mob.ANIM_STAND_FRONT];
                 }
                 else {
-                    this.currentAnimation = this.animations[Mob.ANIM_STAND_BACK];
+                    anim = this.animations[Mob.ANIM_STAND_BACK];
                 }
                 break;
         }
-        this.currentAnimation.play();
+        if (this.currentAnimation != anim) {
+            this.currentAnimation = anim;
+            this.currentAnimation.play();
+        }
     };
     return Player;
 })(Mob);

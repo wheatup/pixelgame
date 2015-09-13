@@ -16,10 +16,11 @@ class ScenarioRoad extends Scenario{
     private box_trunk: egret.gui.UIAsset;
     
     private forEngine: boolean = false;
+    private forTrunk: boolean = false;
     
 	public constructor() {
         super("skins.scenario.ScenarioRoadSkin");
-        this.terrain = new Terrain(this, "0,230 0,436 800,436 800,230", ["298,272 298,332 618,332 618,272"]);
+        this.terrain = new Terrain(this, "0,240 0,436 800,436 800,240", ["298,272 298,332 618,332 618,272"]);
 	}
 	
 	public init():void{
@@ -56,15 +57,25 @@ class ScenarioRoad extends Scenario{
         this.createPlayer(450, 350, this.ui["grp_playground"]);
 	}
 	
+	private clearForFlag():void{
+        this.forEngine = false;
+        this.forTrunk = false;
+	}
+	
     private bindEvents():void{
         this.box_scene.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchScene, this);
         this.box_engine.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEngine, this);
+        this.box_trunk.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchTrunk, this);
         WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
         WheatupEvent.bind(EventType.ARRIVE, this.onArrive, this);
     }
         
     private unbindEvents():void{
+        this.box_scene.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchScene, this);
+        this.box_engine.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEngine, this);
+        this.box_trunk.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchTrunk, this);
         WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
+        WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
     }
 	
 	public start(): void{
@@ -75,12 +86,12 @@ class ScenarioRoad extends Scenario{
         }, this);
         
 	}
-    
+	
     private touchScene(event: egret.TouchEvent):void{
         if(DialogueScene.showing) {
             DialogueScene.interupt();
         }else if(this.free && !DialogueScene.showing){
-            this.forEngine = false;
+            this.clearForFlag();
             var x = event.stageX;
             var y = event.stageY;
             
@@ -102,6 +113,17 @@ class ScenarioRoad extends Scenario{
         event.stopPropagation();
     }
     
+    private touchTrunk(event: egret.TouchEvent):void{
+        if(DialogueScene.showing) {
+            DialogueScene.interupt();
+        }else if(this.free && !DialogueScene.showing){
+            this.clearForFlag();
+            this.forTrunk = true;
+            this.player.onGridClick(600, 300);
+        }
+        event.stopPropagation();
+    }
+    
     private onDialogueEnd(data: any): void{
         if(data == "scene1"){
             this.free = true;
@@ -116,6 +138,9 @@ class ScenarioRoad extends Scenario{
                 DialogueScene.showDialogue("engine2");
             }
             this.engineTouchCount++;
+        }else if(this.forTrunk){
+            Main.transit(1000);
+            Main.addScene(Main.LAYER_GAME, Main.trunkScene);
         }
     }
     

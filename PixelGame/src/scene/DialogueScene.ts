@@ -11,7 +11,7 @@ class DialogueScene extends Scene{
     private tickingText: boolean = false;
     private showTime: number = 500;
     private tickSpeed: number = 50;
-    private delayTime: number = 350;
+    private delayTime: number = 250;
     private isDelaying: boolean = false;
     private isAnimShowing: boolean = false;
     private isDone: boolean = false;

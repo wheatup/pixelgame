@@ -10,6 +10,8 @@ var EventType = (function () {
     EventType.DIALOGUE_END = "DIALOGUE_END";
     EventType.ANIMATION_DONE = "ANIMATION_DONE";
     EventType.ARRIVE = "ARRIVE";
+    EventType.GET_ITEM = "GET_ITEM";
+    EventType.LOST_ITEM = "LOST_ITEM";
     return EventType;
 })();
 EventType.prototype.__class__ = "EventType";
