@@ -36,10 +36,9 @@ var ScenarioIntro = (function (_super) {
         }
     };
     __egretProto__.nextScene = function () {
-        Main.TRANSTION_TIME = 2000;
+        Main.transit(3000);
         Main.removeScene(this);
         Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
-        Main.transit();
     };
     __egretProto__.start = function () {
         var _this = this;
