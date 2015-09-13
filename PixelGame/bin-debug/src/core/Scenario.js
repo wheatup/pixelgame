@@ -9,6 +9,7 @@ var Scenario = (function (_super) {
     function Scenario(skinName) {
         _super.call(this, skinName);
         this.free = false;
+        this.cameraLimit = new egret.Rectangle(0, 0, 0, 0);
         this.cameraPosition = new Point(0, 0);
         this.floaters = new Array();
     }

@@ -11,7 +11,7 @@ class ScenarioIntro extends Scenario{
     
 	public constructor() {
         super("skins.scenario.ScenarioIntroSkin");
-        this.terrain = new Terrain(this, "");
+        this.terrain = new Terrain(this, "",0,0);
 	}
 	
 	public init():void{

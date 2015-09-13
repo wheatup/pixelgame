@@ -77,8 +77,8 @@ class Mob extends egret.gui.UIAsset{
     * Handles the click event on the GridView. Finds the clicked on cell and toggles its walkable state.
     */
     public onGridClick(x:number, y:number): void {
-        var xpos: number = Math.floor(x / Settings.CELL_SIZE);
-        var ypos: number = Math.floor(y / Settings.CELL_SIZE);
+        var xpos: number = Math.floor((x) / Settings.CELL_SIZE);
+        var ypos: number = Math.floor((y) / Settings.CELL_SIZE);
         var endNp: NodePoint = this.scenario.terrain.grid.getNode(xpos,ypos);
         
         
@@ -119,10 +119,10 @@ class Mob extends egret.gui.UIAsset{
             this._path = astar.floydPath;
             this._index = 0;
             
-            if(this._path[this._index]) {
-                var targetX: number = this._path[this._index].x * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
-                var targetY: number = this._path[this._index].y * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
-            }
+//            if(this._path[this._index]) {
+//                var targetX: number = (this._path[this._index].x - this.scenario.offsetX) * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
+//                var targetY: number = (this._path[this._index].y- this.scenario.offsetY) * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
+//            }
             this.calcAnimation();
         }
     }
@@ -134,8 +134,8 @@ class Mob extends egret.gui.UIAsset{
     
     public calcMovement():void{
         if(this._path && this._path[this._index] && this._path.length != 0) {
-            var targetX: number = this._path[this._index].x * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
-            var targetY: number = this._path[this._index].y * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
+            var targetX: number = (this._path[this._index].x) * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
+            var targetY: number = (this._path[this._index].y) * Settings.CELL_SIZE + Settings.CELL_SIZE / 2;
             var dx: number = targetX - this.getX();
             var dy: number = targetY - this.getY();
             var dist: number = Math.sqrt(dx * dx + dy * dy);

@@ -26,10 +26,10 @@ class Grid {
         this._nodes = new Array();
         
         ////以列数作为X坐标循环
-        for(var i:number = 0; i < this._numCols; i++){
-            this._nodes[i] = [];
-            for(var j:number = 0; j < this._numRows; j++){
-                this._nodes[i][j] = new NodePoint(i, j);
+        for(var x:number = 0; x < this._numCols; x++){
+            this._nodes[x] = [];
+            for(var y:number = 0; y < this._numRows; y++){
+                this._nodes[x][y] = new NodePoint(x, y);
             }
         }
     }

@@ -19,6 +19,10 @@ var Dialogue = (function () {
         Dialogue.pushDialogue("engine1", "", "引擎已经故障，在修好之前想移动这个大家伙似乎不大可能。");
         Dialogue.pushDialogue("engine1", "费蓝德", "妈的，屋漏偏逢连夜雨。");
         Dialogue.pushDialogue("engine2", "费蓝德", "希望能在天黑之前修好它。");
+        Dialogue.pushDialogue("road_end1", "费蓝德", "路还很长，走回去估计得到明天才行。");
+        Dialogue.pushDialogue("road_end1", "费蓝德", "我还是先把车修好再说吧。");
+        Dialogue.pushDialogue("road_end2", "费蓝德", "来时的路，一望无际。");
+        Dialogue.pushDialogue("road_end2", "费蓝德", "太阳都快落山了。");
     };
     Dialogue.getDialogue = function (stream, renew) {
         if (renew === void 0) { renew = false; }

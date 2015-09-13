@@ -10,7 +10,7 @@ var ScenarioIntro = (function (_super) {
         _super.call(this, "skins.scenario.ScenarioIntroSkin");
         this.tick = 0;
         this.nextBumpTick = 0;
-        this.terrain = new Terrain(this, "");
+        this.terrain = new Terrain(this, "", 0, 0);
     }
     var __egretProto__ = ScenarioIntro.prototype;
     __egretProto__.init = function () {

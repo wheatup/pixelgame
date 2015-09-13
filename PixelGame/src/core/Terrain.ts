@@ -11,10 +11,10 @@ class Terrain {
     private polygon: Polygon;
     private holes: Polygon[];
     
-    public constructor(scenario: Scenario, polygons: string, holes?:string[]) {
+    public constructor(scenario: Scenario, polygons: string, width:number, height:number, holes?:string[]) {
         this.scenario = scenario;
         this.cellSize = Settings.CELL_SIZE;
-        this.grid = new Grid(800/Settings.CELL_SIZE,480/Settings.CELL_SIZE,Settings.CELL_SIZE);
+        this.grid = new Grid(width/Settings.CELL_SIZE,height/Settings.CELL_SIZE,Settings.CELL_SIZE);
         this.buildGrid(polygons,holes);
     }
     
@@ -31,7 +31,7 @@ class Terrain {
                 this.holes[i] = h;
             }
         }
-        
+
         for(var y: number = 0; y < this.grid.numRows; y++){
             for(var x: number = 0; x < this.grid.numCols; x++){
                 if(this.isInHoles(x * this.cellSize + 0.5 * this.cellSize, y * this.cellSize + 0.5 * this.cellSize)) {

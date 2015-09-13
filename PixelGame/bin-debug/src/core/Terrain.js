@@ -5,10 +5,10 @@
  *
  */
 var Terrain = (function () {
-    function Terrain(scenario, polygons, holes) {
+    function Terrain(scenario, polygons, width, height, holes) {
         this.scenario = scenario;
         this.cellSize = Settings.CELL_SIZE;
-        this.grid = new Grid(800 / Settings.CELL_SIZE, 480 / Settings.CELL_SIZE, Settings.CELL_SIZE);
+        this.grid = new Grid(width / Settings.CELL_SIZE, height / Settings.CELL_SIZE, Settings.CELL_SIZE);
         this.buildGrid(polygons, holes);
     }
     var __egretProto__ = Terrain.prototype;

@@ -16,10 +16,10 @@ var Grid = (function () {
         this._numRows = numRows;
         this._cellSize = cellSize;
         this._nodes = new Array();
-        for (var i = 0; i < this._numCols; i++) {
-            this._nodes[i] = [];
-            for (var j = 0; j < this._numRows; j++) {
-                this._nodes[i][j] = new NodePoint(i, j);
+        for (var x = 0; x < this._numCols; x++) {
+            this._nodes[x] = [];
+            for (var y = 0; y < this._numRows; y++) {
+                this._nodes[x][y] = new NodePoint(x, y);
             }
         }
     }
