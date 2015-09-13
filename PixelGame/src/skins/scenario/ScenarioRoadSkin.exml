@@ -25,6 +25,8 @@
 		</e:Group>
 	</e:Group>
 	<e:Group id="grp_touch" width="800" height="480" x="0" y="0">
-		<e:UIAsset id="img_play" width="800" height="480" x="0" y="0" source="blank"/>
+		<e:UIAsset id="box_scene" width="800" height="480" x="0" y="0" source="blank"/>
+		<e:UIAsset id="box_engine" source="blank" width="197" height="98" x="302" y="235"/>
+		<e:UIAsset id="box_trunk" source="blank" width="111" height="122" x="502" y="206"/>
 	</e:Group>
 </e:Skin>

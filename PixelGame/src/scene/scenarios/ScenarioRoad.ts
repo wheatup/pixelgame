@@ -11,6 +11,12 @@ class ScenarioRoad extends Scenario{
     private grp_touch: egret.gui.Group;
     private grp_particle: egret.gui.Group;
     
+    private box_scene: egret.gui.UIAsset;
+    private box_engine: egret.gui.UIAsset;
+    private box_trunk: egret.gui.UIAsset;
+    
+    private forEngine: boolean = false;
+    
 	public constructor() {
         super("skins.scenario.ScenarioRoadSkin");
         this.terrain = new Terrain(this, "0,230 0,436 800,436 800,230", ["298,272 298,332 618,332 618,272"]);
@@ -26,6 +32,11 @@ class ScenarioRoad extends Scenario{
         this.ui["img_car"].x += this.ui["img_car"].width * this.ui["img_car"].anchorX;
         this.ui["img_car"].y += this.ui["img_car"].height * this.ui["img_car"].anchorY;
         this.floaters.push(this.ui["img_car"]);
+        
+        //初始化判定区域
+        this.box_scene = this.ui["box_scene"];
+        this.box_engine = this.ui["box_engine"];
+        this.box_trunk = this.ui["box_trunk"];
         
         //添加粒子
         this.grp_particle = this.ui["grp_particle"];
@@ -46,12 +57,13 @@ class ScenarioRoad extends Scenario{
 	}
 	
     private bindEvents():void{
-        this.grp_touch.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touch, this);
+        this.box_scene.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchScene, this);
+        this.box_engine.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEngine, this);
         WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
+        WheatupEvent.bind(EventType.ARRIVE, this.onArrive, this);
     }
         
     private unbindEvents():void{
-        this.grp_touch.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touch, this);
         WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
     }
 	
@@ -59,32 +71,51 @@ class ScenarioRoad extends Scenario{
         this.delay(2000);
         
         this.addEvent(() => {
-            DialogueScene.getDialogue("scene1");
+            DialogueScene.showDialogue("scene1");
         }, this);
         
 	}
-	
-	
-    private touch(event: egret.TouchEvent):void{
+    
+    private touchScene(event: egret.TouchEvent):void{
         if(DialogueScene.showing) {
             DialogueScene.interupt();
-            return;
-        }
-        if(this.free){
+        }else if(this.free && !DialogueScene.showing){
+            this.forEngine = false;
             var x = event.stageX;
             var y = event.stageY;
-
+            
             if(this.terrain.isInPolygon(x, y)) {
                 this.player.onGridClick(x, y);
-            } else {
-
             }
         }
+        event.stopPropagation();
+    }
+    
+    private engineTouchCount: number = 0;
+    private touchEngine(event: egret.TouchEvent):void{
+        if(DialogueScene.showing) {
+            DialogueScene.interupt();
+        }else if(this.free && !DialogueScene.showing){
+            this.forEngine = true;
+            this.player.onGridClick(350, 350);
+        }
+        event.stopPropagation();
     }
     
     private onDialogueEnd(data: any): void{
         if(data == "scene1"){
             this.free = true;
+        }
+    }
+    
+    private onArrive(data: any):void{
+        if(this.forEngine){
+            if(this.engineTouchCount == 0) {
+                DialogueScene.showDialogue("engine1");
+            }else{
+                DialogueScene.showDialogue("engine2");
+            }
+            this.engineTouchCount++;
         }
     }
     

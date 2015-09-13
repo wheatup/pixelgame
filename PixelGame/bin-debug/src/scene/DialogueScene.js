@@ -12,6 +12,10 @@ var DialogueScene = (function (_super) {
         this.tickingText = false;
         this.showTime = 500;
         this.tickSpeed = 50;
+        this.delayTime = 350;
+        this.isDelaying = false;
+        this.isAnimShowing = false;
+        this.isDone = false;
         this.currentTextIndex = 0;
         this.currentText = "";
         DialogueScene.instance = this;
@@ -39,6 +43,7 @@ var DialogueScene = (function (_super) {
         egret.Tween.get(this.grp).to({ y: this.normalPosY + this.height }, this.showTime, egret.Ease.quadIn);
     };
     __egretProto__.showText = function (text) {
+        this.isAnimShowing = false;
         this.currentTextIndex = 0;
         this.currentText = text;
         this.tickingTimerVO = Timer.addTimer(this.tickSpeed, text.length, this.tickText, this);
@@ -54,23 +59,20 @@ var DialogueScene = (function (_super) {
         this.ui["lbl_text"].text = this.currentText.substr(0, this.currentTextIndex);
         this.tickingText = (this.currentTextIndex < this.currentText.length);
         if (!this.tickingText) {
-            DialogueScene.instance.showArrow();
-            this.tickingTimerVO = null;
+            this.completeDialogue();
         }
     };
     //点击后的反应
     __egretProto__.rush = function () {
+        if (this.isDelaying || this.isAnimShowing)
+            return;
         if (this.tickingText) {
-            Timer.removeTimer(this.tickingTimerVO);
-            this.tickingTimerVO = null;
-            this.ui["lbl_text"].text = this.currentText;
-            this.tickingText = false;
-            DialogueScene.instance.showArrow();
+            this.completeDialogue();
         }
-        else if (DialogueScene.hasNext) {
-            DialogueScene.getDialogue(DialogueScene.currentKey);
+        else if (this.isDone && DialogueScene.hasNext) {
+            DialogueScene.showDialogue(DialogueScene.currentKey, false);
         }
-        else {
+        else if (this.isDone) {
             DialogueScene.hideDialogue();
             WheatupEvent.call(EventType.DIALOGUE_END, DialogueScene.currentKey);
         }
@@ -95,6 +97,7 @@ var DialogueScene = (function (_super) {
             time = DialogueScene.instance.showTime;
         }
         DialogueScene.showing = true;
+        DialogueScene.instance.isAnimShowing = true;
         Timer.addTimer(time, 1, DialogueScene.instance.showText, DialogueScene.instance, text);
     };
     //对话框受到交互
@@ -106,12 +109,27 @@ var DialogueScene = (function (_super) {
         DialogueScene.instance.hide();
         DialogueScene.showing = false;
     };
-    //获取对话并显示
-    DialogueScene.getDialogue = function (key) {
+    //获取对话并显示 
+    DialogueScene.showDialogue = function (key, renew) {
+        if (renew === void 0) { renew = true; }
+        DialogueScene.instance.isDone = false;
         DialogueScene.currentKey = key;
-        var dias = Dialogue.getDialogue(key);
+        var dias = Dialogue.getDialogue(key, renew);
         DialogueScene.setDialogue(dias.name, dias.text);
         DialogueScene.hasNext = dias.stream;
+    };
+    __egretProto__.completeDialogue = function () {
+        var _this = this;
+        Timer.removeTimer(this.tickingTimerVO);
+        this.tickingTimerVO = null;
+        this.ui["lbl_text"].text = this.currentText;
+        this.tickingText = false;
+        this.isDelaying = true;
+        Timer.addTimer(this.delayTime, 1, function () {
+            _this.isDone = true;
+            DialogueScene.instance.showArrow();
+            _this.isDelaying = false;
+        }, this);
     };
     DialogueScene.showing = false;
     DialogueScene.currentKey = "";

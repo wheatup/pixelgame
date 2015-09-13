@@ -59,7 +59,7 @@ var ScenarioIntro = (function (_super) {
         this.delay(3000);
         //出现对话
         this.addEvent(function () {
-            DialogueScene.getDialogue("intro");
+            DialogueScene.showDialogue("intro");
         }, this);
     };
     __egretProto__.update = function () {

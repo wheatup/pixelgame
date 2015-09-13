@@ -154,6 +154,7 @@ var Mob = (function (_super) {
         }
         else {
             this.still(this.lastDir);
+            WheatupEvent.call(EventType.ARRIVE, { x: this.getX(), y: this.getY() });
         }
     };
     Mob.DIR_UP_LEFT = 0;

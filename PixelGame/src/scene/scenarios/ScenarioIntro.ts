@@ -67,7 +67,7 @@ class ScenarioIntro extends Scenario{
         
         //出现对话
         this.addEvent(() => {
-            DialogueScene.getDialogue("intro");
+            DialogueScene.showDialogue("intro");
         }, this);
 	}
 	

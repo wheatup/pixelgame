@@ -191,6 +191,7 @@ class Mob extends egret.gui.UIAsset{
             }
         }else{
             this.still(this.lastDir);
+            WheatupEvent.call(EventType.ARRIVE, { x: this.getX(), y: this.getY() });
         }
     }
 }

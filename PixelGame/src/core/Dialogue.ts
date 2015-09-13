@@ -20,10 +20,15 @@ class Dialogue {
         
         Dialogue.pushDialogue("scene1", "费蓝德", "该死！");
         Dialogue.pushDialogue("scene1", "费蓝德", "居然在这种时候……");
+        
+        Dialogue.pushDialogue("engine1", "", "引擎已经故障，在修好之前想移动这个大家伙似乎不大可能。");
+        Dialogue.pushDialogue("engine1", "费蓝德", "妈的，屋漏偏逢连夜雨。");
+        
+        Dialogue.pushDialogue("engine2", "费蓝德", "希望能在天黑之前修好它。");
     }
     
-    public static getDialogue(stream: string, next: boolean = false):DialogueVO{
-        if(Dialogue.indices[stream] == null || Dialogue.dialogueMap[stream] == undefined){
+    public static getDialogue(stream: string, renew: boolean = false):DialogueVO{
+        if(renew || Dialogue.indices[stream] == null || Dialogue.dialogueMap[stream] == undefined){
             Dialogue.indices[stream] = 0;
         }else{
             Dialogue.indices[stream] = (<number>Dialogue.indices[stream]) + 1;

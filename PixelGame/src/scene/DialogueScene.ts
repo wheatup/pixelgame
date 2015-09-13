@@ -11,6 +11,10 @@ class DialogueScene extends Scene{
     private tickingText: boolean = false;
     private showTime: number = 500;
     private tickSpeed: number = 50;
+    private delayTime: number = 350;
+    private isDelaying: boolean = false;
+    private isAnimShowing: boolean = false;
+    private isDone: boolean = false;
     
     private static currentKey: string = "";
     private static hasNext: boolean = false;
@@ -53,6 +57,7 @@ class DialogueScene extends Scene{
     private currentText: string = "";
     private tickingTimerVO: TimerVO;
     private showText(text: string): void{
+        this.isAnimShowing = false;
         this.currentTextIndex = 0;
         this.currentText = text;
         this.tickingTimerVO = Timer.addTimer(this.tickSpeed, text.length, this.tickText, this);
@@ -71,25 +76,24 @@ class DialogueScene extends Scene{
         this.ui["lbl_text"].text = this.currentText.substr(0, this.currentTextIndex);
         this.tickingText = (this.currentTextIndex < this.currentText.length);
         if(!this.tickingText){
-            DialogueScene.instance.showArrow();
-            this.tickingTimerVO = null;
+            this.completeDialogue();
         }
     }
     
     //点击后的反应
     private rush():void{
+        if(this.isDelaying || this.isAnimShowing)
+            return;
+        
         if(this.tickingText){
-            Timer.removeTimer(this.tickingTimerVO);
-            this.tickingTimerVO = null;
-            this.ui["lbl_text"].text = this.currentText;
-            this.tickingText = false;
-            DialogueScene.instance.showArrow();
-        }else if(DialogueScene.hasNext){
-            DialogueScene.getDialogue(DialogueScene.currentKey);
-        }else{
+            this.completeDialogue();
+        }else if(this.isDone && DialogueScene.hasNext){
+            DialogueScene.showDialogue(DialogueScene.currentKey, false);
+        }else if(this.isDone){
             DialogueScene.hideDialogue();
             WheatupEvent.call(EventType.DIALOGUE_END, DialogueScene.currentKey);
         }
+        
     }
     
     //显示对话
@@ -113,6 +117,7 @@ class DialogueScene extends Scene{
             time = DialogueScene.instance.showTime;
         }
         DialogueScene.showing = true;
+        DialogueScene.instance.isAnimShowing = true;
         Timer.addTimer(time, 1, DialogueScene.instance.showText, DialogueScene.instance, text);
     }
     
@@ -127,11 +132,25 @@ class DialogueScene extends Scene{
         DialogueScene.showing = false;
     }
     
-    //获取对话并显示
-    public static getDialogue(key: string): void{
+    //获取对话并显示 
+    public static showDialogue(key: string, renew:boolean = true): void{
+        DialogueScene.instance.isDone = false;
         DialogueScene.currentKey = key;
-        var dias: DialogueVO = Dialogue.getDialogue(key);
+        var dias: DialogueVO = Dialogue.getDialogue(key, renew);
         DialogueScene.setDialogue(dias.name, dias.text);
         DialogueScene.hasNext = dias.stream;
+    }
+    
+    public completeDialogue():void{
+        Timer.removeTimer(this.tickingTimerVO);
+        this.tickingTimerVO = null;
+        this.ui["lbl_text"].text = this.currentText;
+        this.tickingText = false;
+        this.isDelaying = true;
+        Timer.addTimer(this.delayTime, 1, () => {
+            this.isDone = true;
+            DialogueScene.instance.showArrow();
+            this.isDelaying = false;
+        }, this);
     }
 }

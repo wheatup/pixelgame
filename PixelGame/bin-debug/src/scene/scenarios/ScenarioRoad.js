@@ -10,6 +10,8 @@ var ScenarioRoad = (function (_super) {
     function ScenarioRoad() {
         _super.call(this, "skins.scenario.ScenarioRoadSkin");
         this.tick = 0;
+        this.forEngine = false;
+        this.engineTouchCount = 0;
         this.terrain = new Terrain(this, "0,230 0,436 800,436 800,230", ["298,272 298,332 618,332 618,272"]);
     }
     var __egretProto__ = ScenarioRoad.prototype;
@@ -23,6 +25,10 @@ var ScenarioRoad = (function (_super) {
         this.ui["img_car"].x += this.ui["img_car"].width * this.ui["img_car"].anchorX;
         this.ui["img_car"].y += this.ui["img_car"].height * this.ui["img_car"].anchorY;
         this.floaters.push(this.ui["img_car"]);
+        //初始化判定区域
+        this.box_scene = this.ui["box_scene"];
+        this.box_engine = this.ui["box_engine"];
+        this.box_trunk = this.ui["box_trunk"];
         //添加粒子
         this.grp_particle = this.ui["grp_particle"];
         this.grp_particle.anchorY = 5;
@@ -40,37 +46,58 @@ var ScenarioRoad = (function (_super) {
         this.createPlayer(450, 350, this.ui["grp_playground"]);
     };
     __egretProto__.bindEvents = function () {
-        this.grp_touch.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touch, this);
+        this.box_scene.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchScene, this);
+        this.box_engine.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEngine, this);
         WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
+        WheatupEvent.bind(EventType.ARRIVE, this.onArrive, this);
     };
     __egretProto__.unbindEvents = function () {
-        this.grp_touch.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touch, this);
         WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
     };
     __egretProto__.start = function () {
         this.delay(2000);
         this.addEvent(function () {
-            DialogueScene.getDialogue("scene1");
+            DialogueScene.showDialogue("scene1");
         }, this);
     };
-    __egretProto__.touch = function (event) {
+    __egretProto__.touchScene = function (event) {
         if (DialogueScene.showing) {
             DialogueScene.interupt();
-            return;
         }
-        if (this.free) {
+        else if (this.free && !DialogueScene.showing) {
+            this.forEngine = false;
             var x = event.stageX;
             var y = event.stageY;
             if (this.terrain.isInPolygon(x, y)) {
                 this.player.onGridClick(x, y);
             }
-            else {
-            }
         }
+        event.stopPropagation();
+    };
+    __egretProto__.touchEngine = function (event) {
+        if (DialogueScene.showing) {
+            DialogueScene.interupt();
+        }
+        else if (this.free && !DialogueScene.showing) {
+            this.forEngine = true;
+            this.player.onGridClick(350, 350);
+        }
+        event.stopPropagation();
     };
     __egretProto__.onDialogueEnd = function (data) {
         if (data == "scene1") {
             this.free = true;
+        }
+    };
+    __egretProto__.onArrive = function (data) {
+        if (this.forEngine) {
+            if (this.engineTouchCount == 0) {
+                DialogueScene.showDialogue("engine1");
+            }
+            else {
+                DialogueScene.showDialogue("engine2");
+            }
+            this.engineTouchCount++;
         }
     };
     __egretProto__.onRemove = function () {
