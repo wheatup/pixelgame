@@ -8,6 +8,9 @@ var MainMenuScene = (function (_super) {
     __extends(MainMenuScene, _super);
     function MainMenuScene() {
         _super.call(this, "skins.scene.MainMenuSkin");
+        this.titleOffsetY = 0;
+        this.menu1OffsetX = 0;
+        this.menu2OffsetX = 0;
         //标题闪烁
         this.offsetX = 0;
         this.offsetY = 0;
@@ -16,6 +19,7 @@ var MainMenuScene = (function (_super) {
     var __egretProto__ = MainMenuScene.prototype;
     //初始化
     __egretProto__.init = function () {
+        var _this = this;
         //初始化界面
         this.bg1 = this.ui["bg1"];
         this.bg2 = this.ui["bg2"];
@@ -25,6 +29,25 @@ var MainMenuScene = (function (_super) {
         this.grp_particle = this.ui["grp_particle"];
         this.img_title = this.ui["img_title"];
         this.img_start = this.ui["img_start"];
+        this.img_continue = this.ui["img_continue"];
+        Util.centerPivot(this.img_start);
+        Util.centerPivot(this.img_continue);
+        this.img_title.y -= 400;
+        this.img_start.x += 300;
+        this.img_continue.x += 300;
+        //增加延迟出现
+        this.delay(1500);
+        this.addEvent(function () {
+            egret.Tween.get(_this.img_title).to({ "y": _this.img_title.y + 400 }, 1200, egret.Ease.quadOut);
+        }, this);
+        this.delay(1000);
+        this.addEvent(function () {
+            egret.Tween.get(_this.img_start).to({ x: _this.img_start.x - 300 }, 1000, egret.Ease.quadOut);
+        }, this);
+        this.delay(200);
+        this.addEvent(function () {
+            egret.Tween.get(_this.img_continue).to({ x: _this.img_continue.x - 300 }, 1000, egret.Ease.quadOut);
+        }, this);
         //添加标题缓动
         var that = this;
         if (egret.MainContext.deviceType == egret.MainContext.DEVICE_MOBILE) {
@@ -112,6 +135,7 @@ var MainMenuScene = (function (_super) {
         Main.removeScene(this);
         Main.addScene(Main.LAYER_GAME, Main.scenarioIntro);
         Main.transit();
+        egret.Tween.get(this.img_start).to({ alpha: 0, scaleX: 2, scaleY: 2 }, 1000, egret.Ease.quadOut);
     };
     //移除事件，移除跟本页面相关的所有监听
     __egretProto__.onRemove = function () {

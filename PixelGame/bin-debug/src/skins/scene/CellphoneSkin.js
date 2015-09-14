@@ -45,7 +45,7 @@ var skins;
                 var t = new egret.gui.Group();
                 this.grp_entries = t;
                 this.__s(t, ["height", "width", "x", "y"], [203, 503, 0, 0]);
-                t.elementsContent = [this.img_msg_bg_i(), this.gsp_entry1_i(), this.gsp_entry2_i()];
+                t.elementsContent = [this.img_msg_bg_i()];
                 return t;
             };
             __egretProto__.grp_lock_i = function () {
@@ -62,20 +62,6 @@ var skins;
                 t.elementsContent = [this.img_msgbg_i(), this.lbl_name_i(), this.grp_entries_i()];
                 return t;
             };
-            __egretProto__.gsp_entry1_i = function () {
-                var t = new egret.gui.Group();
-                this.gsp_entry1 = t;
-                this.__s(t, ["height", "visible", "width", "x", "y"], [88, false, 503, 0, 15]);
-                t.elementsContent = [this.img_entry1_i(), this.lbl_entry1_i()];
-                return t;
-            };
-            __egretProto__.gsp_entry2_i = function () {
-                var t = new egret.gui.Group();
-                this.gsp_entry2 = t;
-                this.__s(t, ["height", "visible", "width", "x", "y"], [88, false, 503, 0, 115]);
-                t.elementsContent = [this.img_entry2_i(), this.lbl_entry2_i(), this.lbl_entry0_i()];
-                return t;
-            };
             __egretProto__.img_bar0_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.img_bar0 = t;
@@ -86,18 +72,6 @@ var skins;
                 var t = new egret.gui.UIAsset();
                 this.img_bar = t;
                 this.__s(t, ["height", "source", "width", "x", "y"], [84, "cellphone_lock_bar", 388, 206, 320]);
-                return t;
-            };
-            __egretProto__.img_entry1_i = function () {
-                var t = new egret.gui.UIAsset();
-                this.img_entry1 = t;
-                this.__s(t, ["height", "scale9Grid", "source", "width", "x", "y"], [84, egret.gui.getScale9Grid("32,16,16,24"), "cellphone_msg_other", 300, 0, 0]);
-                return t;
-            };
-            __egretProto__.img_entry2_i = function () {
-                var t = new egret.gui.UIAsset();
-                this.img_entry2 = t;
-                this.__s(t, ["height", "right", "scale9Grid", "source", "width", "y"], [84, 0, egret.gui.getScale9Grid("20,16,16,24"), "cellphone_msg_me", 300, 0]);
                 return t;
             };
             __egretProto__.img_lockbg0_i = function () {
@@ -148,24 +122,6 @@ var skins;
                 this.__s(t, ["bold", "size", "text", "textAlign", "width", "x", "y"], [true, 48, "12:34", "center", 362, 219, 101]);
                 return t;
             };
-            __egretProto__.lbl_entry0_i = function () {
-                var t = new egret.gui.Label();
-                this.lbl_entry0 = t;
-                this.__s(t, ["bold", "height", "size", "text", "textColor", "width", "x", "y"], [true, 55, 24, "标签", 0x383838, 347, 17, 111]);
-                return t;
-            };
-            __egretProto__.lbl_entry1_i = function () {
-                var t = new egret.gui.Label();
-                this.lbl_entry1 = t;
-                this.__s(t, ["bold", "height", "size", "text", "textColor", "width", "x", "y"], [true, 55, 24, "标签", 0x383838, 269, 17, 10]);
-                return t;
-            };
-            __egretProto__.lbl_entry2_i = function () {
-                var t = new egret.gui.Label();
-                this.lbl_entry2 = t;
-                this.__s(t, ["bold", "height", "size", "text", "textColor", "width", "x", "y"], [true, 55, 24, "标签", 0x383838, 269, 217, 10]);
-                return t;
-            };
             __egretProto__.lbl_name_i = function () {
                 var t = new egret.gui.Label();
                 this.lbl_name = t;
@@ -178,7 +134,7 @@ var skins;
                 this.__s(t, ["height", "source", "width", "x", "y"], [480, "black", 800, 0, 0]);
                 return t;
             };
-            CellphoneSkin._skinParts = ["bg0", "bg", "img_lockbg", "img_bar", "img_slider", "lbl_Time", "grp_lock", "img_lockbg0", "img_bar0", "img_slider1", "lbl_Time1", "grp_app", "img_msgbg", "lbl_name", "img_msg_bg", "img_entry1", "lbl_entry1", "gsp_entry1", "img_entry2", "lbl_entry2", "lbl_entry0", "gsp_entry2", "grp_entries", "grp_msg", "box_back"];
+            CellphoneSkin._skinParts = ["bg0", "bg", "img_lockbg", "img_bar", "img_slider", "lbl_Time", "grp_lock", "img_lockbg0", "img_bar0", "img_slider1", "lbl_Time1", "grp_app", "img_msgbg", "lbl_name", "img_msg_bg", "grp_entries", "grp_msg", "box_back"];
             return CellphoneSkin;
         })(egret.gui.Skin);
         scene.CellphoneSkin = CellphoneSkin;

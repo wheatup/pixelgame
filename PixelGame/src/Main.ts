@@ -1,10 +1,13 @@
 class Main extends egret.DisplayObjectContainer {
+    public static debugMode: boolean = false;
+    
     public static main: Main;
     public static LAYER_BOTTOM: number = 0;
     public static LAYER_GAME: number = 1;
-    public static LAYER_GUI: number = 2;
-    public static LAYER_TOP: number = 3;
-    public static LAYER_MASK: number = 4;
+    public static LAYER_DIALOGUE: number = 2;
+    public static LAYER_GUI: number = 3;
+    public static LAYER_TOP: number = 4;
+    public static LAYER_MASK: number = 5;
     public static tick: number = 0;
     public static free: boolean = false;
     
@@ -53,6 +56,8 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(Main.layers[Main.LAYER_BOTTOM]);
         Main.layers[Main.LAYER_GAME] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_GAME]);
+        Main.layers[Main.LAYER_DIALOGUE] = new egret.DisplayObjectContainer();
+        this.addChild(Main.layers[Main.LAYER_DIALOGUE]);
         Main.layers[Main.LAYER_GUI] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_GUI]);
         Main.layers[Main.LAYER_TOP] = new egret.DisplayObjectContainer();
@@ -187,15 +192,21 @@ class Main extends egret.DisplayObjectContainer {
         //添加背景层
         Main.addScene(Main.LAYER_BOTTOM,Main.bgScene,true);
         
-        //添加警告层
-        Main.addScene(Main.LAYER_GAME, Main.warningScene);
-        //测试
-        //Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
-        //Main.addScene(Main.LAYER_GAME, Main.cellphoneScene);
+        //进入游戏
+        if(Main.debugMode) {
+            Main.addScene(Main.LAYER_GAME,Main.scenarioRoad);
+        } else {
+            Main.addScene(Main.LAYER_GAME,Main.warningScene);
+        }
         Main.transit();
         
+        //创建GUI
+        Main.addScene(Main.LAYER_GUI, Main.uiScene);
+        
         //添加对话层
-        Main.addScene(Main.LAYER_GUI, Main.dialogueScene, true);
+        Main.addScene(Main.LAYER_DIALOGUE, Main.dialogueScene, true);
+        
+        
     }
 }
 

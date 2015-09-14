@@ -277,6 +277,41 @@
 				"isFolder":false,
 				"key":"icon_cellphone",
 				"name":"icon_cellphone"
+			},
+			{
+				"isFolder":false,
+				"key":"cellphone_new_0",
+				"name":"cellphone_new_0"
+			},
+			{
+				"isFolder":false,
+				"key":"item_flashlight",
+				"name":"item_flashlight"
+			},
+			{
+				"isFolder":false,
+				"key":"item_shovel",
+				"name":"item_shovel"
+			},
+			{
+				"isFolder":false,
+				"key":"scene2_bg_1",
+				"name":"scene2_bg_1"
+			},
+			{
+				"isFolder":false,
+				"key":"scene2_bg_2",
+				"name":"scene2_bg_2"
+			},
+			{
+				"isFolder":false,
+				"key":"scene2_bg_3",
+				"name":"scene2_bg_3"
+			},
+			{
+				"isFolder":false,
+				"key":"scene_trunk_flashlight",
+				"name":"scene_trunk_flashlight"
 			}]
 		}
 	},

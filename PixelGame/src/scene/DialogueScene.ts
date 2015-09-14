@@ -44,13 +44,11 @@ class DialogueScene extends Scene{
     }
     
     private show():void{
-        Main.free = false;
         egret.Tween.removeTweens(this.grp);
         egret.Tween.get(this.grp).to({y: this.normalPosY}, this.showTime, egret.Ease.quadOut);
     }
     
     private hide(): void{
-        Main.free = true;
         egret.Tween.removeTweens(this.grp);
         egret.Tween.get(this.grp).to({y: this.normalPosY + this.height}, this.showTime, egret.Ease.quadIn);
     }

@@ -1,0 +1,8 @@
+/**
+ *
+ * @author 
+ *
+ */
+class Message {
+	 
+}

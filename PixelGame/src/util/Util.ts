@@ -21,6 +21,13 @@ class Util {
     public static clip(value: number, min:number, max:number): number{
         return value < min ? min : (value > max ? max : value);
     }
+    
+    public static centerPivot(element: any): void{
+        element.anchorX = 0.5;
+        element.anchorY = 0.5;
+        element.x += Math.round(element.width / 2);
+        element.y += Math.round(element.height / 2);
+    }
 }
 
 interface DeviceOrientationEvent extends Event {

@@ -13,7 +13,12 @@ class MainMenuScene extends Scene{
     private bg2: egret.gui.UIAsset;
     private bg3: egret.gui.UIAsset;
     private img_start: egret.gui.UIAsset;
+    private img_continue: egret.gui.UIAsset;
     private static instance: MainMenuScene;
+    
+    public titleOffsetY: number = 0;
+    public menu1OffsetX: number = 0;
+    public menu2OffsetX: number = 0;
 	
 	public constructor(){
 		super("skins.scene.MainMenuSkin");
@@ -31,6 +36,32 @@ class MainMenuScene extends Scene{
         this.grp_particle = this.ui["grp_particle"];
         this.img_title = this.ui["img_title"];
         this.img_start = this.ui["img_start"];
+        this.img_continue = this.ui["img_continue"];
+        Util.centerPivot(this.img_start);
+        Util.centerPivot(this.img_continue);
+        
+        this.img_title.y -= 400;
+        this.img_start.x += 300;
+        this.img_continue.x += 300;
+        
+        //增加延迟出现
+        this.delay(1500);
+        this.addEvent(() => {
+            egret.Tween.get(this.img_title)
+            .to({y:this.img_title.y + 400}, 1200, egret.Ease.quadOut)
+        },this);
+        
+        this.delay(1000);
+        this.addEvent(() => {
+            egret.Tween.get(this.img_start)
+                .to({ x: this.img_start.x - 300 },1000,egret.Ease.quadOut);
+        },this);
+        
+        this.delay(200);
+        this.addEvent(() => {
+            egret.Tween.get(this.img_continue)
+                .to({ x: this.img_continue.x - 300 },1000,egret.Ease.quadOut);
+        },this);
 		
 		//添加标题缓动
 		var that = this;
@@ -126,6 +157,7 @@ class MainMenuScene extends Scene{
         Main.removeScene(this);
         Main.addScene(Main.LAYER_GAME, Main.scenarioIntro);
         Main.transit();
+        egret.Tween.get(this.img_start).to({ alpha: 0,scaleX: 2,scaleY: 2 },1000,egret.Ease.quadOut);
 	}
 	
 	//移除事件，移除跟本页面相关的所有监听

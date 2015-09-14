@@ -25,7 +25,7 @@ var skins;
             __egretProto__.img_message_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.img_message = t;
-                this.__s(t, ["height", "source", "width", "x", "y"], [96, "cellphone_new_1", 96, 704, 0]);
+                this.__s(t, ["height", "source", "visible", "width", "x", "y"], [96, "cellphone_new_0", false, 96, 704, 0]);
                 return t;
             };
             __egretProto__.grp_i = function () {

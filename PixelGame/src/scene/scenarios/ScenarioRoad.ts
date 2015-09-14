@@ -71,8 +71,6 @@ class ScenarioRoad extends Scenario{
         //创建玩家
         this.createPlayer(1250, 350, this.ui["grp_playground"]);
         
-        //创建GUI
-        Main.addScene(Main.LAYER_GUI, Main.uiScene);
         //this.drawGrid();
 	}
 	
@@ -183,7 +181,7 @@ class ScenarioRoad extends Scenario{
     public touchEnd1(event: egret.TouchEvent): void{
         if(DialogueScene.showing) {
             DialogueScene.interupt();
-        }else if(Main.free && !DialogueScene.showing){
+        }else if(Main.free){
             this.clearForFlag();
             this.forEnd1 = true;
             this.player.onGridClick(25, 300);
@@ -216,6 +214,21 @@ class ScenarioRoad extends Scenario{
     private onDialogueEnd(data: any): void{
         if(data == "scene1"){
             Main.free = true;
+            Timer.addTimer(3000,1,() => {
+                Main.cellphoneScene.addOneMessage(false,"你什么时候回来？");
+            },this);
+            
+            Timer.addTimer(8000,1,() => {
+                Main.cellphoneScene.addOneMessage(false,"饭菜都快凉了噢:3");
+            },this);
+            
+            Timer.addTimer(60000,1,() => {
+                Main.cellphoneScene.addOneMessage(false,"怎么了？短信也不回。");
+            },this);
+            
+            Timer.addTimer(120000,1,() => {
+                Main.cellphoneScene.addOneMessage(false,"你先忙吧。");
+            },this);
         }
     }
     
@@ -228,14 +241,14 @@ class ScenarioRoad extends Scenario{
             }
             this.engineTouchCount++;
         }else if(this.forTrunk){
-            Main.transit(1000);
+            Main.transit(500);
             Main.addScene(Main.LAYER_GAME, Main.trunkScene);
         }else if(this.forEnd1){
             DialogueScene.showDialogue("road_end1");
         }else if(this.forEnd2){
             DialogueScene.showDialogue("road_end2");
         }else if(this.forBush){
-            Main.transit(1000);
+            Main.transit(500);
             Main.removeScene(this);
         }
     }
