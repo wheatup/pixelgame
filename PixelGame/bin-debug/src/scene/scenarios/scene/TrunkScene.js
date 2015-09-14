@@ -49,7 +49,7 @@ var TrunkScene = (function (_super) {
         if (Data.shovel == 0) {
             Data.shovel = 1;
             this.bg.source = "scene_trunk_0";
-            WheatupEvent.call(EventType.GET_ITEM, "shovel");
+            Inventory.getItem(Item.shovel);
         }
     };
     return TrunkScene;

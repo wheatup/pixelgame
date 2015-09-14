@@ -312,6 +312,56 @@
 				"isFolder":false,
 				"key":"scene_trunk_flashlight",
 				"name":"scene_trunk_flashlight"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_standb_0a",
+				"name":"me_anim_standb_0a"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_standf_0a",
+				"name":"me_anim_standf_0a"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkb_0a",
+				"name":"me_anim_walkb_0a"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkb_1a",
+				"name":"me_anim_walkb_1a"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkb_2a",
+				"name":"me_anim_walkb_2a"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkb_3a",
+				"name":"me_anim_walkb_3a"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkf_0a",
+				"name":"me_anim_walkf_0a"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkf_1a",
+				"name":"me_anim_walkf_1a"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkf_2a",
+				"name":"me_anim_walkf_2a"
+			},
+			{
+				"isFolder":false,
+				"key":"me_anim_walkf_3a",
+				"name":"me_anim_walkf_3a"
 			}]
 		}
 	},

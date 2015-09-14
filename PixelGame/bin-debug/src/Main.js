@@ -28,10 +28,10 @@ var Main = (function (_super) {
         this.addChild(Main.layers[Main.LAYER_BOTTOM]);
         Main.layers[Main.LAYER_GAME] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_GAME]);
-        Main.layers[Main.LAYER_DIALOGUE] = new egret.DisplayObjectContainer();
-        this.addChild(Main.layers[Main.LAYER_DIALOGUE]);
         Main.layers[Main.LAYER_GUI] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_GUI]);
+        Main.layers[Main.LAYER_DIALOGUE] = new egret.DisplayObjectContainer();
+        this.addChild(Main.layers[Main.LAYER_DIALOGUE]);
         Main.layers[Main.LAYER_TOP] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_TOP]);
         Main.layers[Main.LAYER_MASK] = new egret.DisplayObjectContainer();
@@ -166,8 +166,8 @@ var Main = (function (_super) {
     Main.debugMode = false;
     Main.LAYER_BOTTOM = 0;
     Main.LAYER_GAME = 1;
-    Main.LAYER_DIALOGUE = 2;
-    Main.LAYER_GUI = 3;
+    Main.LAYER_GUI = 2;
+    Main.LAYER_DIALOGUE = 3;
     Main.LAYER_TOP = 4;
     Main.LAYER_MASK = 5;
     Main.tick = 0;

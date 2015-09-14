@@ -9,6 +9,7 @@ var Mob = (function (_super) {
         _super.call(this, asset);
         this.animSpeed = 10;
         this.moveSpeed = 7;
+        this.brightness = 1;
         this.lastDir = 0;
         this.width = width;
         this.height = height;
@@ -16,6 +17,13 @@ var Mob = (function (_super) {
         this.anchorY = 1;
         this.scenario = scenario;
         Main.main.addEventListener(egret.Event.ENTER_FRAME, this.update, this);
+        this.cover = new egret.gui.UIAsset();
+        this.cover.width = width;
+        this.cover.height = height;
+        this.cover.anchorX = 0.5;
+        this.cover.anchorY = 1;
+        this.cover.source = asset + "a";
+        this.setBrightness(this.brightness);
     }
     var __egretProto__ = Mob.prototype;
     __egretProto__.setPosition = function (x, y) {
@@ -23,6 +31,12 @@ var Mob = (function (_super) {
         this.pivotY = y;
         this.x = x;
         this.y = y;
+        this.cover.x = x;
+        this.cover.y = y;
+    };
+    __egretProto__.setBrightness = function (brightness) {
+        this.brightness = brightness;
+        this.cover.alpha = 1 - brightness;
     };
     __egretProto__.getX = function () {
         return this.pivotX;

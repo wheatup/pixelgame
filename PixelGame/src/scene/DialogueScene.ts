@@ -6,6 +6,7 @@
  */
 class DialogueScene extends Scene{
     private normalPosY: number = 280;
+    private bg: egret.gui.UIAsset;
     private grp: egret.gui.Group;
     public static showing: boolean = false;
     private tickingText: boolean = false;
@@ -27,28 +28,36 @@ class DialogueScene extends Scene{
     }
     
     public init():void{
-        this.touchChildren = false;
-        this.touchEnabled = false;
         this.grp = this.ui["grp"];
         this.grp.visible = false;
         this.grp.y = this.normalPosY + this.height;
+        this.bg = this.ui["img_bg"];
+        this.bg.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchMe,this);
+        this.bg.visible = false;
         this.ui["lbl_text"].text = "";
         this.ui["lbl_name"].text = "";
         (<egret.gui.Label>this.ui["lbl_text"]).fontFamily = "font_pixel";
         (<egret.gui.Label>this.ui["lbl_name"]).fontFamily = "font_pixel";
         this.ui["lbl_arrow"].alpha = 0.8;
         
+        
         egret.Tween.get(this.ui["lbl_arrow"], { loop: true })
             .to({ y: this.ui["lbl_arrow"].y + 10 }, 500, egret.Ease.quadIn)
             .to({ y: this.ui["lbl_arrow"].y}, 500, egret.Ease.quadOut);
     }
     
+    private touchMe(event: egret.TouchEvent): void{
+        DialogueScene.interupt();
+    }
+    
     private show():void{
+        this.bg.visible = true;
         egret.Tween.removeTweens(this.grp);
         egret.Tween.get(this.grp).to({y: this.normalPosY}, this.showTime, egret.Ease.quadOut);
     }
     
     private hide(): void{
+        this.bg.visible = false;
         egret.Tween.removeTweens(this.grp);
         egret.Tween.get(this.grp).to({y: this.normalPosY + this.height}, this.showTime, egret.Ease.quadIn);
     }
@@ -137,6 +146,15 @@ class DialogueScene extends Scene{
         DialogueScene.instance.isDone = false;
         DialogueScene.currentKey = key;
         var dias: DialogueVO = Dialogue.getDialogue(key, renew);
+        DialogueScene.setDialogue(dias.name, dias.text);
+        DialogueScene.hasNext = dias.stream;
+    }
+    
+    //获取道具描述
+    public static showItemDesc(item: Item): void{
+        DialogueScene.instance.isDone = false;
+        DialogueScene.currentKey = item.names[1];
+        var dias: DialogueVO = Dialogue.getDialogue(item.names[1], true);
         DialogueScene.setDialogue(dias.name, dias.text);
         DialogueScene.hasNext = dias.stream;
     }

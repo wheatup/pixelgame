@@ -20,9 +20,11 @@ var Player = (function (_super) {
     __egretProto__.update = function () {
         _super.prototype.update.call(this);
         this.currentAnimation.update();
+        this.cover.source = this.source + "a";
     };
     __egretProto__.onActionChange = function () {
         this.scaleX = ((this.dir == Mob.DIR_UP_LEFT || this.dir == Mob.DIR_DOWN_LEFT) ? 1 : -1);
+        this.cover.scaleX = this.scaleX;
         var anim;
         switch (this.action) {
             case Mob.ACTION_WALK:

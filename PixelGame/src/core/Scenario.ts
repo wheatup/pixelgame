@@ -22,6 +22,7 @@ class Scenario extends Scene{
     public createPlayer(x: number, y:number, grp:egret.gui.Group):void{
         this.player = new Player(this);
         grp.addElement(this.player);
+        grp.addElement(this.player.cover);
         this.player.setPosition(x, y);
     }
     

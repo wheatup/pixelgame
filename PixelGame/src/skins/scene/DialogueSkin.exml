@@ -12,5 +12,6 @@
 		<e:UIAsset id="lbl_arrow" width="24" height="16" source="ui_arrow_down" fillMode="scale" y="164" x="388"/>
 		<e:Label id="lbl_name" size="24" bold="true" text="姓名" textAlign="center" width="142" x="14" verticalAlign="bottom" y="16" textColor="0x242424" fontFamily="Arial"/>
 		<e:Label id="lbl_text" width="764" height="103" x="20" textAlign="left" verticalAlign="top" text="对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话对话" size="24" y="77" fontFamily="font_pixel" bold="true" textColor="0x242424"/>
-	</e:Group>
+	</e:Group>
+	<e:UIAsset id="img_bg" scale9Grid="12,12,56,56" width="800" fillMode="scale" height="480" x="0" y="0" source="blank"/>
 </e:Skin>

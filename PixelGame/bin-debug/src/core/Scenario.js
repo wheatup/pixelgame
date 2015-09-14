@@ -16,6 +16,7 @@ var Scenario = (function (_super) {
     __egretProto__.createPlayer = function (x, y, grp) {
         this.player = new Player(this);
         grp.addElement(this.player);
+        grp.addElement(this.player.cover);
         this.player.setPosition(x, y);
     };
     //绘制A星Grid(Debug用)

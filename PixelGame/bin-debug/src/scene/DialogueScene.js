@@ -22,11 +22,12 @@ var DialogueScene = (function (_super) {
     }
     var __egretProto__ = DialogueScene.prototype;
     __egretProto__.init = function () {
-        this.touchChildren = false;
-        this.touchEnabled = false;
         this.grp = this.ui["grp"];
         this.grp.visible = false;
         this.grp.y = this.normalPosY + this.height;
+        this.bg = this.ui["img_bg"];
+        this.bg.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchMe, this);
+        this.bg.visible = false;
         this.ui["lbl_text"].text = "";
         this.ui["lbl_name"].text = "";
         this.ui["lbl_text"].fontFamily = "font_pixel";
@@ -34,11 +35,16 @@ var DialogueScene = (function (_super) {
         this.ui["lbl_arrow"].alpha = 0.8;
         egret.Tween.get(this.ui["lbl_arrow"], { loop: true }).to({ y: this.ui["lbl_arrow"].y + 10 }, 500, egret.Ease.quadIn).to({ y: this.ui["lbl_arrow"].y }, 500, egret.Ease.quadOut);
     };
+    __egretProto__.touchMe = function (event) {
+        DialogueScene.interupt();
+    };
     __egretProto__.show = function () {
+        this.bg.visible = true;
         egret.Tween.removeTweens(this.grp);
         egret.Tween.get(this.grp).to({ y: this.normalPosY }, this.showTime, egret.Ease.quadOut);
     };
     __egretProto__.hide = function () {
+        this.bg.visible = false;
         egret.Tween.removeTweens(this.grp);
         egret.Tween.get(this.grp).to({ y: this.normalPosY + this.height }, this.showTime, egret.Ease.quadIn);
     };
@@ -115,6 +121,14 @@ var DialogueScene = (function (_super) {
         DialogueScene.instance.isDone = false;
         DialogueScene.currentKey = key;
         var dias = Dialogue.getDialogue(key, renew);
+        DialogueScene.setDialogue(dias.name, dias.text);
+        DialogueScene.hasNext = dias.stream;
+    };
+    //获取道具描述
+    DialogueScene.showItemDesc = function (item) {
+        DialogueScene.instance.isDone = false;
+        DialogueScene.currentKey = item.names[1];
+        var dias = Dialogue.getDialogue(item.names[1], true);
         DialogueScene.setDialogue(dias.name, dias.text);
         DialogueScene.hasNext = dias.stream;
     };

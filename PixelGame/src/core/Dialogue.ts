@@ -14,6 +14,10 @@ class Dialogue {
         Dialogue.dialogueMap = new Object();
         Dialogue.indices = new Object();
         
+        //道具描述
+        Dialogue.pushDialogue("shovel", "", "一把沾满泥土的铲子");
+        
+        //对话
         Dialogue.pushDialogue("intro", "费蓝德", "真没想到这件事就这么结束了。");
         Dialogue.pushDialogue("intro", "费蓝德", "真想赶紧回家。");
         Dialogue.pushDialogue("intro", "费蓝德", "？！");

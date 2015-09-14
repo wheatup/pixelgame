@@ -20,13 +20,17 @@ class Player extends Mob{
         this.currentAnimation = this.animations[Mob.ANIM_STAND_FRONT];
 	}
 	
+	
+	
 	public update():void{
         super.update();
         this.currentAnimation.update();
+        this.cover.source = this.source + "a";
 	}
 	
     public onActionChange():void{
         this.scaleX = ((this.dir == Mob.DIR_UP_LEFT || this.dir == Mob.DIR_DOWN_LEFT) ? 1 : -1);
+        this.cover.scaleX = this.scaleX;
         var anim: Animation;
         switch(this.action){
             case Mob.ACTION_WALK:
@@ -49,6 +53,5 @@ class Player extends Mob{
             this.currentAnimation = anim;
             this.currentAnimation.play();
         }
-        
     }
 }

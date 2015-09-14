@@ -92,6 +92,10 @@ var ScenarioRoad = (function (_super) {
     };
     __egretProto__.update = function () {
         this.calcCamera();
+        if (this.player.y != this.lastY) {
+            this.player.setBrightness(0.3 + (1 - (436 - this.player.y) / (436 - 240)) * 0.7);
+            this.lastY = this.player.y;
+        }
     };
     __egretProto__.calcCamera = function () {
         var targetX = Util.clip(this.player.getX() - 400, 0, this.cameraLimit.width);
@@ -112,10 +116,7 @@ var ScenarioRoad = (function (_super) {
         this.grp_touch.y = -this.cameraPosition.y;
     };
     __egretProto__.touchScene = function (event) {
-        if (DialogueScene.showing) {
-            DialogueScene.interupt();
-        }
-        else if (Main.free) {
+        if (Main.free) {
             this.clearForFlag();
             var x = event.localX;
             var y = event.localY;
@@ -126,20 +127,14 @@ var ScenarioRoad = (function (_super) {
         event.stopPropagation();
     };
     __egretProto__.touchEngine = function (event) {
-        if (DialogueScene.showing) {
-            DialogueScene.interupt();
-        }
-        else if (Main.free) {
+        if (Main.free) {
             this.forEngine = true;
             this.player.onGridClick(1150, 350);
         }
         event.stopPropagation();
     };
     __egretProto__.touchTrunk = function (event) {
-        if (DialogueScene.showing) {
-            DialogueScene.interupt();
-        }
-        else if (Main.free) {
+        if (Main.free) {
             this.clearForFlag();
             this.forTrunk = true;
             this.player.onGridClick(1400, 300);
@@ -147,10 +142,7 @@ var ScenarioRoad = (function (_super) {
         event.stopPropagation();
     };
     __egretProto__.touchEnd1 = function (event) {
-        if (DialogueScene.showing) {
-            DialogueScene.interupt();
-        }
-        else if (Main.free) {
+        if (Main.free) {
             this.clearForFlag();
             this.forEnd1 = true;
             this.player.onGridClick(25, 300);
@@ -158,10 +150,7 @@ var ScenarioRoad = (function (_super) {
         event.stopPropagation();
     };
     __egretProto__.touchEnd2 = function (event) {
-        if (DialogueScene.showing) {
-            DialogueScene.interupt();
-        }
-        else if (Main.free) {
+        if (Main.free) {
             this.clearForFlag();
             this.forEnd2 = true;
             this.player.onGridClick(1575, 300);
@@ -169,10 +158,7 @@ var ScenarioRoad = (function (_super) {
         event.stopPropagation();
     };
     __egretProto__.touchBush = function (event) {
-        if (DialogueScene.showing) {
-            DialogueScene.interupt();
-        }
-        else if (Main.free) {
+        if (Main.free) {
             this.clearForFlag();
             this.forBush = true;
             this.player.onGridClick(470, 230);

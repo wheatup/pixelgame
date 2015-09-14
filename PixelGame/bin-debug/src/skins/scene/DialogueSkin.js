@@ -8,7 +8,7 @@ var skins;
                 _super.call(this);
                 this.__s = egret.gui.setProperties;
                 this.__s(this, ["height", "width"], [480, 800]);
-                this.elementsContent = [this.grp_i()];
+                this.elementsContent = [this.grp_i(), this.img_bg_i()];
                 this.states = [
                     new egret.gui.State("normal", []),
                     new egret.gui.State("disabled", [])
@@ -22,6 +22,12 @@ var skins;
                 enumerable: true,
                 configurable: true
             });
+            __egretProto__.img_bg_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.img_bg = t;
+                this.__s(t, ["fillMode", "height", "scale9Grid", "source", "width", "x", "y"], ["scale", 480, egret.gui.getScale9Grid("12,12,56,56"), "blank", 800, 0, 0]);
+                return t;
+            };
             __egretProto__.img_name_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.img_name = t;
@@ -59,7 +65,7 @@ var skins;
                 t.elementsContent = [this.img_text_i(), this.img_name_i(), this.lbl_arrow_i(), this.lbl_name_i(), this.lbl_text_i()];
                 return t;
             };
-            DialogueSkin._skinParts = ["img_text", "img_name", "lbl_arrow", "lbl_name", "lbl_text", "grp"];
+            DialogueSkin._skinParts = ["img_text", "img_name", "lbl_arrow", "lbl_name", "lbl_text", "grp", "img_bg"];
             return DialogueSkin;
         })(egret.gui.Skin);
         scene.DialogueSkin = DialogueSkin;

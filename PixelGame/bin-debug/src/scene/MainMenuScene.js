@@ -38,7 +38,7 @@ var MainMenuScene = (function (_super) {
         //增加延迟出现
         this.delay(1500);
         this.addEvent(function () {
-            egret.Tween.get(_this.img_title).to({ "y": _this.img_title.y + 400 }, 1200, egret.Ease.quadOut);
+            egret.Tween.get(_this.img_title).to({ y: _this.img_title.y + 400 }, 1200, egret.Ease.quadOut);
         }, this);
         this.delay(1000);
         this.addEvent(function () {

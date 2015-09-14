@@ -4,8 +4,8 @@ class Main extends egret.DisplayObjectContainer {
     public static main: Main;
     public static LAYER_BOTTOM: number = 0;
     public static LAYER_GAME: number = 1;
-    public static LAYER_DIALOGUE: number = 2;
-    public static LAYER_GUI: number = 3;
+    public static LAYER_GUI: number = 2;
+    public static LAYER_DIALOGUE: number = 3;
     public static LAYER_TOP: number = 4;
     public static LAYER_MASK: number = 5;
     public static tick: number = 0;
@@ -56,10 +56,10 @@ class Main extends egret.DisplayObjectContainer {
         this.addChild(Main.layers[Main.LAYER_BOTTOM]);
         Main.layers[Main.LAYER_GAME] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_GAME]);
-        Main.layers[Main.LAYER_DIALOGUE] = new egret.DisplayObjectContainer();
-        this.addChild(Main.layers[Main.LAYER_DIALOGUE]);
         Main.layers[Main.LAYER_GUI] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_GUI]);
+        Main.layers[Main.LAYER_DIALOGUE] = new egret.DisplayObjectContainer();
+        this.addChild(Main.layers[Main.LAYER_DIALOGUE]);
         Main.layers[Main.LAYER_TOP] = new egret.DisplayObjectContainer();
         this.addChild(Main.layers[Main.LAYER_TOP]);
         Main.layers[Main.LAYER_MASK] = new egret.DisplayObjectContainer();
