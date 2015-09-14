@@ -9,6 +9,9 @@ var Scenario = (function (_super) {
     function Scenario(skinName) {
         _super.call(this, skinName);
         this.cameraLimit = new egret.Rectangle(0, 0, 0, 0);
+        this.hasPresetPosition = false;
+        this.presetPositionX = 0;
+        this.presetPositionY = 0;
         this.cameraPosition = new Point(0, 0);
         this.floaters = new Array();
     }
@@ -17,10 +20,13 @@ var Scenario = (function (_super) {
         this.player = new Player(this);
         grp.addElement(this.player);
         grp.addElement(this.player.cover);
-        this.player.setPosition(x, y);
-        Debug.log(this.player == null);
-        Debug.log(Main.scenarioBush.player == null);
-        Debug.log(Main.scenarioBush.player == this.player);
+        if (this.hasPresetPosition) {
+            this.player.setPosition(this.presetPositionX, this.presetPositionY);
+            this.hasPresetPosition = false;
+        }
+        else {
+            this.player.setPosition(x, y);
+        }
     };
     //绘制A星Grid(Debug用)
     __egretProto__.drawGrid = function () {
@@ -53,7 +59,14 @@ var Scenario = (function (_super) {
         return 0xcccccc;
     };
     __egretProto__.setPlayerPosition = function (x, y) {
-        this.player.setPosition(x, y);
+        if (this.player) {
+            this.player.setPosition(x, y);
+        }
+        else {
+            this.hasPresetPosition = true;
+            this.presetPositionX = x;
+            this.presetPositionY = y;
+        }
     };
     return Scenario;
 })(Scene);

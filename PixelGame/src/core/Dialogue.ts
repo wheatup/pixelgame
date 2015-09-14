@@ -35,6 +35,11 @@ class Dialogue {
         
         Dialogue.pushDialogue("road_end2", "费蓝德", "来时的路，一望无际。");
         Dialogue.pushDialogue("road_end2", "费蓝德", "太阳都快落山了。");
+        
+        //测试
+        
+        Dialogue.pushDialogue("test", "[作者]小白", "啊哦，游戏似乎只做到这里。");
+        Dialogue.pushDialogue("test", "[作者]小白", "正在拼命赶工中，请继续保持关注:P");
     }
     
     public static getDialogue(stream: string, renew: boolean = false):DialogueVO{

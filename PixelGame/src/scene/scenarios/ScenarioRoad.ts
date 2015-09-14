@@ -25,6 +25,8 @@ class ScenarioRoad extends Scenario{
     private forEnd2: boolean = false;
     private forBush: boolean = false;
     
+    public isFirst: boolean = true;
+    
 	public constructor() {
         super("skins.scenario.ScenarioRoadSkin");
         this.terrain = new Terrain(this,"0,240 0,436 1600,436 1600,240",1600,480,["1098,272 1098,332 1418,332 1418,272"]);
@@ -70,8 +72,6 @@ class ScenarioRoad extends Scenario{
         //创建玩家
         this.createPlayer(1250, 350, this.ui["grp_playground"]);
         
-        
-        this.bindEvents();
         //this.drawGrid();
 	}
 	
@@ -107,11 +107,17 @@ class ScenarioRoad extends Scenario{
     }
 	
 	public start(): void{
-        this.delay(2000);
-        
-        this.addEvent(() => {
-            DialogueScene.showDialogue("scene1");
-        }, this);
+        this.bindEvents();
+        if(this.isFirst) {
+            this.delay(2000);
+
+            this.addEvent(() => {
+                DialogueScene.showDialogue("scene1");
+            }, this);
+        }else{
+            Main.free = true;
+        }
+        this.isFirst = false;
 	}
 	
     private lastY: number;
@@ -209,18 +215,18 @@ class ScenarioRoad extends Scenario{
         if(data == "scene1"){
             Main.free = true;
             Timer.addTimer(3000,1,() => {
-                Main.cellphoneScene.addOneMessage(false,"你什么时候回来？");
+                Main.cellphoneScene.addOneMessage(false,"亲爱的，你什么时候回来？");
             },this);
             
             Timer.addTimer(8000,1,() => {
                 Main.cellphoneScene.addOneMessage(false,"饭菜都快凉了噢:3");
             },this);
             
-            Timer.addTimer(60000,1,() => {
+            Timer.addTimer(40000,1,() => {
                 Main.cellphoneScene.addOneMessage(false,"怎么了？短信也不回。");
             },this);
             
-            Timer.addTimer(120000,1,() => {
+            Timer.addTimer(60000,1,() => {
                 Main.cellphoneScene.addOneMessage(false,"你先忙吧。");
             },this);
         }

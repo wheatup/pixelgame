@@ -12,6 +12,9 @@ class Scenario extends Scene{
     public floaters: Array<any>;
     
     public cameraLimit: egret.Rectangle = new egret.Rectangle(0,0,0,0);
+    private hasPresetPosition: boolean = false;
+    private presetPositionX: number = 0;
+    private presetPositionY: number = 0;
     
     public constructor(skinName: string){
         super(skinName);
@@ -23,7 +26,12 @@ class Scenario extends Scene{
         this.player = new Player(this);
         grp.addElement(this.player);
         grp.addElement(this.player.cover);
-        this.player.setPosition(x, y);
+        if(this.hasPresetPosition) {
+            this.player.setPosition(this.presetPositionX, this.presetPositionY);
+            this.hasPresetPosition = false;
+        }else{
+            this.player.setPosition(x, y);
+        }
     }
     
     //绘制A星Grid(Debug用)
@@ -56,6 +64,12 @@ class Scenario extends Scene{
     }
     
     public setPlayerPosition(x: number, y:number):void{
-        this.player.setPosition(x, y);
+        if(this.player) {
+            this.player.setPosition(x, y);
+        }else{
+            this.hasPresetPosition = true;
+            this.presetPositionX = x;
+            this.presetPositionY = y;
+        }
     }
 }

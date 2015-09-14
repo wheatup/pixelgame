@@ -27,9 +27,8 @@ var ScenarioBush = (function (_super) {
         this.box_end1 = this.ui["box_end1"];
         this.box_end2 = this.ui["box_end2"];
         //创建玩家
-        this.createPlayer(0, 0, this.ui["grp_playground"]);
+        this.createPlayer(30, 448, this.ui["grp_playground"]);
         this.player.setBrightness(0.3);
-        this.bindEvents();
     };
     __egretProto__.clearForFlag = function () {
         this.forEnd1 = false;
@@ -50,6 +49,8 @@ var ScenarioBush = (function (_super) {
         WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
     };
     __egretProto__.start = function () {
+        Main.free = true;
+        this.bindEvents();
         this.delay(2000);
         //        this.addEvent(() => {
         //            DialogueScene.showDialogue("scene1");
@@ -67,8 +68,6 @@ var ScenarioBush = (function (_super) {
         this.ui["grp_bg3"].y = -(Math.round(this.cameraPosition.y * 2));
         this.ui["grp_bg2"].x = -this.cameraPosition.x;
         this.ui["grp_bg2"].y = -this.cameraPosition.y;
-        //        this.ui["grp_bg1"].x = -(Math.round(this.cameraPosition.x * 0.2));
-        //        this.ui["grp_bg1"].y = -(Math.round(this.cameraPosition.y * 0.2));
         this.ui["grp_playground"].x = -this.cameraPosition.x;
         this.ui["grp_playground"].y = -this.cameraPosition.y;
         this.grp_touch.x = -this.cameraPosition.x;
@@ -89,7 +88,7 @@ var ScenarioBush = (function (_super) {
         if (Main.free) {
             this.clearForFlag();
             this.forEnd1 = true;
-            this.player.onGridClick(25, 300);
+            this.player.onGridClick(event.localX + this.box_end1.x, event.localY + this.box_end1.y);
         }
         event.stopPropagation();
     };
@@ -97,7 +96,7 @@ var ScenarioBush = (function (_super) {
         if (Main.free) {
             this.clearForFlag();
             this.forEnd2 = true;
-            this.player.onGridClick(1575, 300);
+            this.player.onGridClick(event.localX + this.box_end2.x, event.localY + this.box_end2.y);
         }
         event.stopPropagation();
     };
@@ -107,8 +106,13 @@ var ScenarioBush = (function (_super) {
     };
     __egretProto__.onArrive = function (data) {
         if (this.forEnd1) {
+            Main.transit(500);
+            Main.removeScene(this);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
+            Main.scenarioRoad.setPlayerPosition(470, 240);
         }
         else if (this.forEnd2) {
+            DialogueScene.showDialogue("test");
         }
     };
     __egretProto__.onRemove = function () {

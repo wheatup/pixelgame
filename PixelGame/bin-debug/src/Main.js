@@ -154,7 +154,7 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_BOTTOM, Main.bgScene, true);
         //进入游戏
         if (Main.debugMode) {
-            Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioBush);
         }
         else {
             Main.addScene(Main.LAYER_GAME, Main.warningScene);
@@ -165,7 +165,7 @@ var Main = (function (_super) {
         //添加对话层
         Main.addScene(Main.LAYER_DIALOGUE, Main.dialogueScene, true);
     };
-    Main.debugMode = true;
+    Main.debugMode = false;
     Main.LAYER_BOTTOM = 0;
     Main.LAYER_GAME = 1;
     Main.LAYER_GUI = 2;

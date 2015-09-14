@@ -25,11 +25,7 @@ class CellphoneScene extends Scene{
         this.lbl_name.fontFamily = "font_pixel";
         this.box_back = this.ui["box_back"];
         this.ui["bg0"].alpha = 0.8;
-        this.rebuildMessages();
-        this.hasOpened = true;
-    }
-    
-    public start():void{
+        
         this.scrollView=new egret.ScrollView(this.grp_entries);
         this.grp_entries.alpha = 0;
         egret.Tween.removeTweens(this.grp_entries);
@@ -42,6 +38,28 @@ class CellphoneScene extends Scene{
         Main.main.addChild(this.scrollView);
         this.bindEvents();
         this.scrollView.scrollTop = this.grp_entries.height - 203;
+        
+        this.rebuildMessages();
+        this.hasOpened = true;
+    }
+    
+    public start():void{
+//        this.scrollView=new egret.ScrollView(this.grp_entries);
+//        this.grp_entries.alpha = 0;
+//        egret.Tween.removeTweens(this.grp_entries);
+//        egret.Tween.get(this.grp_entries).to({alpha:1}, Main.TRANSTION_TIME / 2);
+//        this.scrollView.verticalScrollPolicy='auto';
+//        this.scrollView.x = 140;
+//        this.scrollView.y = 120;
+//        this.scrollView.width = this.grp_entries.width;
+//        this.scrollView.height = 203;
+//        Main.main.addChild(this.scrollView);
+//        
+//        this.scrollView.scrollTop = this.grp_entries.height - 203;
+        
+        this.scrollView.visible = true;
+        egret.Tween.get(this.grp_entries).to({alpha:1}, Main.TRANSTION_TIME / 2);
+        this.bindEvents();
         this.isOpened = true;
     }
     
@@ -67,7 +85,8 @@ class CellphoneScene extends Scene{
     
     public onDestroy():void{
         this.unbindEvents();
-        Main.main.removeChild(this.scrollView);
+        //Main.main.removeChild(this.scrollView);
+        this.scrollView.visible = false;
     }
     
     private rebuildMessages():void{

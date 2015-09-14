@@ -38,9 +38,8 @@ class ScenarioBush extends Scenario{
         this.box_end2 = this.ui["box_end2"];
         
         //创建玩家
-        this.createPlayer(0, 0, this.ui["grp_playground"]);
+        this.createPlayer(30, 448, this.ui["grp_playground"]);
         this.player.setBrightness(0.3);
-        this.bindEvents();
 	}
 	
 	
@@ -66,6 +65,8 @@ class ScenarioBush extends Scenario{
     }
 	
 	public start(): void{
+        Main.free = true;
+        this.bindEvents();
         this.delay(2000);
         
 //        this.addEvent(() => {
@@ -88,8 +89,6 @@ class ScenarioBush extends Scenario{
         this.ui["grp_bg3"].y = -(Math.round(this.cameraPosition.y * 2));
         this.ui["grp_bg2"].x = -this.cameraPosition.x;
         this.ui["grp_bg2"].y = -this.cameraPosition.y;
-//        this.ui["grp_bg1"].x = -(Math.round(this.cameraPosition.x * 0.2));
-//        this.ui["grp_bg1"].y = -(Math.round(this.cameraPosition.y * 0.2));
         this.ui["grp_playground"].x = -this.cameraPosition.x;
         this.ui["grp_playground"].y = -this.cameraPosition.y;
         
@@ -114,7 +113,7 @@ class ScenarioBush extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forEnd1 = true;
-            this.player.onGridClick(25, 300);
+            this.player.onGridClick(event.localX + this.box_end1.x, event.localY + this.box_end1.y);
         }
         event.stopPropagation();
     }
@@ -123,7 +122,7 @@ class ScenarioBush extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forEnd2 = true;
-            this.player.onGridClick(1575, 300);
+            this.player.onGridClick(event.localX + this.box_end2.x, event.localY + this.box_end2.y);
         }
         event.stopPropagation();
     }
@@ -136,9 +135,12 @@ class ScenarioBush extends Scenario{
     
     private onArrive(data: any):void{
         if(this.forEnd1){
-            //DialogueScene.showDialogue("road_end1");
+            Main.transit(500);
+            Main.removeScene(this);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
+            Main.scenarioRoad.setPlayerPosition(470, 240);
         }else if(this.forEnd2){
-            //DialogueScene.showDialogue("road_end2");
+            DialogueScene.showDialogue("test");
         }
     }
     

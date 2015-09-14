@@ -20,10 +20,6 @@ var CellphoneScene = (function (_super) {
         this.lbl_name.fontFamily = "font_pixel";
         this.box_back = this.ui["box_back"];
         this.ui["bg0"].alpha = 0.8;
-        this.rebuildMessages();
-        this.hasOpened = true;
-    };
-    __egretProto__.start = function () {
         this.scrollView = new egret.ScrollView(this.grp_entries);
         this.grp_entries.alpha = 0;
         egret.Tween.removeTweens(this.grp_entries);
@@ -36,6 +32,25 @@ var CellphoneScene = (function (_super) {
         Main.main.addChild(this.scrollView);
         this.bindEvents();
         this.scrollView.scrollTop = this.grp_entries.height - 203;
+        this.rebuildMessages();
+        this.hasOpened = true;
+    };
+    __egretProto__.start = function () {
+        //        this.scrollView=new egret.ScrollView(this.grp_entries);
+        //        this.grp_entries.alpha = 0;
+        //        egret.Tween.removeTweens(this.grp_entries);
+        //        egret.Tween.get(this.grp_entries).to({alpha:1}, Main.TRANSTION_TIME / 2);
+        //        this.scrollView.verticalScrollPolicy='auto';
+        //        this.scrollView.x = 140;
+        //        this.scrollView.y = 120;
+        //        this.scrollView.width = this.grp_entries.width;
+        //        this.scrollView.height = 203;
+        //        Main.main.addChild(this.scrollView);
+        //        
+        //        this.scrollView.scrollTop = this.grp_entries.height - 203;
+        this.scrollView.visible = true;
+        egret.Tween.get(this.grp_entries).to({ alpha: 1 }, Main.TRANSTION_TIME / 2);
+        this.bindEvents();
         this.isOpened = true;
     };
     __egretProto__.bindEvents = function () {
@@ -55,7 +70,8 @@ var CellphoneScene = (function (_super) {
     };
     __egretProto__.onDestroy = function () {
         this.unbindEvents();
-        Main.main.removeChild(this.scrollView);
+        //Main.main.removeChild(this.scrollView);
+        this.scrollView.visible = false;
     };
     __egretProto__.rebuildMessages = function () {
         for (var j = 0; j < this.messages.length; j++) {
