@@ -10,6 +10,7 @@ var Main = (function (_super) {
         Main.mainMenuScene = new MainMenuScene();
         Main.scenarioIntro = new ScenarioIntro();
         Main.scenarioRoad = new ScenarioRoad();
+        Main.scenarioBush = new ScenarioBush();
         Main.trunkScene = new TrunkScene();
         Main.cellphoneScene = new CellphoneScene();
         Main.uiScene = new UIScene();
@@ -101,16 +102,17 @@ var Main = (function (_super) {
         }
         scene.removed = false;
         scene.added = true;
+        scene.visible = false;
+        Main.layers[layer].addChild(scene);
+        Main.main.addEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
         if (immediate) {
-            Main.layers[layer].addChild(scene);
+            scene.visible = true;
             scene.start();
-            Main.main.addEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
         }
         else {
             Timer.addTimer(Main.TRANSTION_TIME * 0.5, 1, function () {
-                Main.layers[layer].addChild(scene);
+                scene.visible = true;
                 scene.start();
-                Main.main.addEventListener(egret.Event.ENTER_FRAME, scene.update, scene);
             }, this);
         }
     };
@@ -163,7 +165,7 @@ var Main = (function (_super) {
         //添加对话层
         Main.addScene(Main.LAYER_DIALOGUE, Main.dialogueScene, true);
     };
-    Main.debugMode = false;
+    Main.debugMode = true;
     Main.LAYER_BOTTOM = 0;
     Main.LAYER_GAME = 1;
     Main.LAYER_GUI = 2;

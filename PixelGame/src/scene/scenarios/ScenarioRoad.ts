@@ -38,7 +38,6 @@ class ScenarioRoad extends Scenario{
         this.grp_game = this.ui["grp_game"];
         this.grp_game.touchChildren = false;
         this.grp_touch = this.ui["grp_touch"];
-        this.bindEvents();
         this.floatGroup = this.ui["grp_playground"];
         this.ui["img_car"].anchorX = 0.5;
         this.ui["img_car"].anchorY = 0.8;
@@ -71,8 +70,11 @@ class ScenarioRoad extends Scenario{
         //创建玩家
         this.createPlayer(1250, 350, this.ui["grp_playground"]);
         
+        
+        this.bindEvents();
         //this.drawGrid();
 	}
+	
 	
 	private clearForFlag():void{
         this.forEngine = false;
@@ -110,7 +112,6 @@ class ScenarioRoad extends Scenario{
         this.addEvent(() => {
             DialogueScene.showDialogue("scene1");
         }, this);
-        
 	}
 	
     private lastY: number;
@@ -243,6 +244,8 @@ class ScenarioRoad extends Scenario{
         }else if(this.forBush){
             Main.transit(500);
             Main.removeScene(this);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioBush);
+            Main.scenarioBush.setPlayerPosition(30, 448);
         }
     }
     

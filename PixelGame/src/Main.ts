@@ -1,5 +1,5 @@
 class Main extends egret.DisplayObjectContainer {
-    public static debugMode: boolean = false;
+    public static debugMode: boolean = true;
     
     public static main: Main;
     public static LAYER_BOTTOM: number = 0;
@@ -24,6 +24,7 @@ class Main extends egret.DisplayObjectContainer {
     public static mainMenuScene: MainMenuScene;
     public static scenarioIntro: ScenarioIntro;
     public static scenarioRoad: ScenarioRoad;
+    public static scenarioBush: ScenarioBush;
     public static trunkScene: TrunkScene;
     public static cellphoneScene: CellphoneScene;
     public static uiScene: UIScene;
@@ -38,6 +39,7 @@ class Main extends egret.DisplayObjectContainer {
         Main.mainMenuScene = new MainMenuScene();
         Main.scenarioIntro = new ScenarioIntro();
         Main.scenarioRoad = new ScenarioRoad();
+        Main.scenarioBush = new ScenarioBush();
         Main.trunkScene = new TrunkScene();
         Main.cellphoneScene = new CellphoneScene();
         Main.uiScene = new UIScene();
@@ -138,15 +140,16 @@ class Main extends egret.DisplayObjectContainer {
         }
         scene.removed = false;
         scene.added = true;
+        scene.visible = false;
+        Main.layers[layer].addChild(scene);
+        Main.main.addEventListener(egret.Event.ENTER_FRAME,scene.update,scene);
         if(immediate) {
-            Main.layers[layer].addChild(scene);
+            scene.visible = true;
             scene.start();
-            Main.main.addEventListener(egret.Event.ENTER_FRAME,scene.update,scene);
         } else {
             Timer.addTimer(Main.TRANSTION_TIME * 0.5,1,() => {
-                Main.layers[layer].addChild(scene);
+                scene.visible = true;
                 scene.start();
-                Main.main.addEventListener(egret.Event.ENTER_FRAME,scene.update,scene);
             },this);
         }
     }

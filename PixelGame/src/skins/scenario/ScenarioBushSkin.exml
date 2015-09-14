@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="800" height="480" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:Group id="grp_game" height="480" width="1600" y="0" x="0">
+		<e:Group id="grp_bg1" height="480" width="1600" x="0" y="0">
+			<e:UIAsset id="bg1_1" width="800" height="480" y="0" x="0" source="scene2_bg_1"/>
+		</e:Group>
+		<e:Group id="grp_bg2" width="1600" height="480" x="0" y="0">
+			<e:UIAsset id="bg2_1" width="880" height="480" y="0" x="0" source="scene2_bg_2"/>
+		</e:Group>
+		<e:Group id="grp_playground" width="1600" height="480" x="0" y="0">
+			<e:Group id="grp_particle" width="10" height="10" y="250" x="1160"/>
+		</e:Group>
+		<e:Group id="grp_bg3" width="1600" height="480" x="0" y="0">
+			<e:UIAsset id="bg3_1" width="960" height="480" y="0" x="0" source="scene2_bg_3"/>
+		</e:Group>
+	</e:Group>
+	<e:Group id="grp_touch" width="800" height="480" y="0" x="0">
+		<e:UIAsset id="box_scene" width="800" height="480" y="0" source="blank" x="0"/>
+		<e:UIAsset id="box_end1" width="50" height="107" x="0" source="blank" y="373"/>
+		<e:UIAsset id="box_end2" source="blank" width="50" height="169" x="830" y="173"/>
+	</e:Group>
+</e:Skin>

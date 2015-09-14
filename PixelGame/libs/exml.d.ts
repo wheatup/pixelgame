@@ -1,4 +1,8 @@
 declare module skins.scenario{
+	class ScenarioBushSkin extends egret.gui.Skin{
+	}
+}
+declare module skins.scenario{
 	class ScenarioIntroSkin extends egret.gui.Skin{
 	}
 }

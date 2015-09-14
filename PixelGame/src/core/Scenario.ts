@@ -54,4 +54,8 @@ class Scenario extends Scene{
         if(node == this.terrain.grid.endNode) return 0x0000ff;
         return 0xcccccc;
     }
+    
+    public setPlayerPosition(x: number, y:number):void{
+        this.player.setPosition(x, y);
+    }
 }

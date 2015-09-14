@@ -18,6 +18,9 @@ var Scenario = (function (_super) {
         grp.addElement(this.player);
         grp.addElement(this.player.cover);
         this.player.setPosition(x, y);
+        Debug.log(this.player == null);
+        Debug.log(Main.scenarioBush.player == null);
+        Debug.log(Main.scenarioBush.player == this.player);
     };
     //绘制A星Grid(Debug用)
     __egretProto__.drawGrid = function () {
@@ -48,6 +51,9 @@ var Scenario = (function (_super) {
         if (node == this.terrain.grid.endNode)
             return 0x0000ff;
         return 0xcccccc;
+    };
+    __egretProto__.setPlayerPosition = function (x, y) {
+        this.player.setPosition(x, y);
     };
     return Scenario;
 })(Scene);
