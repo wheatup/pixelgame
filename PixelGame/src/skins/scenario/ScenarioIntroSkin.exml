@@ -17,6 +17,8 @@
 		</e:Group>
 		<e:Group id="grp_playground" width="800" height="480" x="0" y="0">
 			<e:UIAsset id="img_car" width="320" height="160" source="game_car" y="200" x="300"/>
+			<e:Group id="grp_particle" width="20" height="20" x="460" y="320">
+			</e:Group>
 		</e:Group>
 		<e:Group id="grp_bg3" width="800" height="480" x="0" y="0">
 			<e:UIAsset id="bg3" width="800" height="480" x="0" y="0" source="scene1_bg_3"/>

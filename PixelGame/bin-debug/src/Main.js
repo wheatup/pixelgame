@@ -154,7 +154,7 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_BOTTOM, Main.bgScene, true);
         //进入游戏
         if (Main.debugMode) {
-            Main.addScene(Main.LAYER_GAME, Main.scenarioBush);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioIntro);
         }
         else {
             Main.addScene(Main.LAYER_GAME, Main.warningScene);

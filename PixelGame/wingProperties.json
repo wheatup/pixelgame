@@ -360,6 +360,11 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
+			},
+			{
+				"isFolder":false,
+				"key":"par_dust",
+				"name":"par_dust"
 			}]
 		}
 	},

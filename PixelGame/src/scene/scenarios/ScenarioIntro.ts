@@ -8,6 +8,8 @@ class ScenarioIntro extends Scenario{
     private tick: number = 0;
     
     private grp_touch: egret.gui.Group;
+    private grp_particle: egret.gui.Group;
+    private particle: particle.GravityParticleSystem;
     
 	public constructor() {
         super("skins.scenario.ScenarioIntroSkin");
@@ -16,7 +18,18 @@ class ScenarioIntro extends Scenario{
 	
 	public init():void{
         (<egret.gui.Group>this.ui["grp_game"]).touchChildren = false;
+        this.grp_particle = this.ui["grp_particle"];
         this.grp_touch = this.ui["grp_touch"];
+        
+        //添加粒子
+        this.grp_particle = this.ui["grp_particle"];
+        var texture = RES.getRes("par_dust");
+        var config = RES.getRes("par_dust_json");
+        this.particle = new particle.GravityParticleSystem(texture, config);
+        this.grp_particle.blendMode = egret.BlendMode.ADD;
+        this.grp_particle.addElement(<any>this.particle);
+        this.particle.start();
+        
         this.bindEvents();
 	}
 	
@@ -33,7 +46,8 @@ class ScenarioIntro extends Scenario{
     private onDialogueEnd(data: any): void{
         if(data == "intro"){
             Timer.addTimer(1000, 1, () => {
-                egret.Tween.get(this.ui["img_car"]).to({ x: 900 }, 4000, egret.Ease.quadIn);
+                egret.Tween.get(this.ui["img_car"]).to({ x: this.ui["img_car"].x + 500 }, 4000, egret.Ease.quadIn);
+                egret.Tween.get(this.grp_particle).to({ x: this.grp_particle.x + 500 }, 4000, egret.Ease.quadIn);
                 Timer.addTimer(4000, 1, this.nextScene, this);
             }, this);
         }
@@ -92,7 +106,8 @@ class ScenarioIntro extends Scenario{
         }
     }
     
-    public onRemove(): void{
+    public onDestroy(): void{
         this.unbindEvents();
+        this.grp_particle.removeElement(<any>this.particle);
     }
 }

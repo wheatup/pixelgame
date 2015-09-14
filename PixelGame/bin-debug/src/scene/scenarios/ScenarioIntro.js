@@ -15,7 +15,16 @@ var ScenarioIntro = (function (_super) {
     var __egretProto__ = ScenarioIntro.prototype;
     __egretProto__.init = function () {
         this.ui["grp_game"].touchChildren = false;
+        this.grp_particle = this.ui["grp_particle"];
         this.grp_touch = this.ui["grp_touch"];
+        //添加粒子
+        this.grp_particle = this.ui["grp_particle"];
+        var texture = RES.getRes("par_dust");
+        var config = RES.getRes("par_dust_json");
+        this.particle = new particle.GravityParticleSystem(texture, config);
+        this.grp_particle.blendMode = egret.BlendMode.ADD;
+        this.grp_particle.addElement(this.particle);
+        this.particle.start();
         this.bindEvents();
     };
     __egretProto__.bindEvents = function () {
@@ -30,7 +39,8 @@ var ScenarioIntro = (function (_super) {
         var _this = this;
         if (data == "intro") {
             Timer.addTimer(1000, 1, function () {
-                egret.Tween.get(_this.ui["img_car"]).to({ x: 900 }, 4000, egret.Ease.quadIn);
+                egret.Tween.get(_this.ui["img_car"]).to({ x: _this.ui["img_car"].x + 500 }, 4000, egret.Ease.quadIn);
+                egret.Tween.get(_this.grp_particle).to({ x: _this.grp_particle.x + 500 }, 4000, egret.Ease.quadIn);
                 Timer.addTimer(4000, 1, _this.nextScene, _this);
             }, this);
         }
@@ -81,8 +91,9 @@ var ScenarioIntro = (function (_super) {
             DialogueScene.interupt();
         }
     };
-    __egretProto__.onRemove = function () {
+    __egretProto__.onDestroy = function () {
         this.unbindEvents();
+        this.grp_particle.removeElement(this.particle);
     };
     return ScenarioIntro;
 })(Scenario);
