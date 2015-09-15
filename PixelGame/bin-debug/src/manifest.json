@@ -10,6 +10,7 @@
 	"entity/Item.ts",
 	"skins/scene/DialogueSkin.exml",
 	"util/Timer.ts",
+	"core/Message.ts",
 	"core/Sound.ts",
 	"scene/DialogueScene.ts",
 	"skins/scene/LoadingSkin.exml",

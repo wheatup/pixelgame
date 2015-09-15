@@ -243,6 +243,11 @@
 			},
 			{
 				"isFolder":false,
+				"key":"par_dust",
+				"name":"par_dust"
+			},
+			{
+				"isFolder":false,
 				"key":"par_steam",
 				"name":"par_steam"
 			},
@@ -360,11 +365,6 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
-			},
-			{
-				"isFolder":false,
-				"key":"par_dust",
-				"name":"par_dust"
 			}]
 		}
 	},

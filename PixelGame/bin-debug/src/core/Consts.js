@@ -12,6 +12,8 @@ var EventType = (function () {
     EventType.ARRIVE = "ARRIVE";
     EventType.GET_ITEM = "GET_ITEM";
     EventType.LOST_ITEM = "LOST_ITEM";
+    EventType.RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
+    EventType.SEND_MESSAGE = "SEND_MESSAGE";
     return EventType;
 })();
 EventType.prototype.__class__ = "EventType";

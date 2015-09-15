@@ -5,14 +5,20 @@
  *
  */
 class CellphoneScene extends Scene{
+    
+    
     public isOpened: boolean = false;
     
     private hasOpened: boolean = false;
     private grp_entries: egret.gui.Group;
     private lbl_name: egret.gui.Label;
     private box_back: egret.gui.UIAsset;
+    private box_input: egret.gui.UIAsset;
+    private box_send: egret.gui.UIAsset;
+    private lbl_input: egret.gui.Label;
     private messages: Array<MsgEntry> = [];
     private scrollView: egret.ScrollView;
+    
     
     public constructor(){
         super("skins.scene.CellphoneSkin");
@@ -23,7 +29,14 @@ class CellphoneScene extends Scene{
         this.lbl_name = this.ui["lbl_name"];
         this.lbl_name.text = "老婆";
         this.lbl_name.fontFamily = "font_pixel";
+        this.lbl_name.bold = true;
         this.box_back = this.ui["box_back"];
+        this.box_input = this.ui["box_input"];
+        this.box_send = this.ui["box_send"];
+        this.lbl_input = this.ui["lbl_input"];
+        this.lbl_input.text = "";
+        this.lbl_input.fontFamily = "font_pixel";
+        this.lbl_input.bold = true;
         this.ui["bg0"].alpha = 0.8;
         
         this.scrollView=new egret.ScrollView(this.grp_entries);
@@ -42,6 +55,8 @@ class CellphoneScene extends Scene{
         this.rebuildMessages();
         this.hasOpened = true;
     }
+    
+    
     
     public start():void{
 //        this.scrollView=new egret.ScrollView(this.grp_entries);
@@ -65,17 +80,56 @@ class CellphoneScene extends Scene{
     
     public bindEvents():void{
         this.box_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.leave, this);
-        
+        this.box_input.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchInput, this);
+        this.box_send.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchSend, this);
     }
     
     public unbindEvents():void{
         this.box_back.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.leave, this);
+        this.box_input.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchInput, this);
+        this.box_send.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchSend, this);
     }
     
-    private leave():void{
-        Main.transit(500);
-        Main.removeScene(this);
-        this.isOpened = false;
+    private leave(event: egret.TouchEvent):void{
+        if(Main.free) {
+            Main.transit(500);
+            Main.removeScene(this);
+            this.isOpened = false;
+        }
+        event.stopPropagation();
+    }
+    
+    private currentReplyIndex: number = 0;
+    private currentReplyMessage: Message;
+    private touchInput(event: egret.TouchEvent):void{
+        if(Main.free && !Message.hasReplied) {
+            switch(Message.lastReceiveMessage){
+                case "wife_ask_2": 
+                    this.switchReply("wife_rep_1");
+                    break;
+                case "wife_ask_4": 
+                    this.switchReply("wife_rep_2");
+                    break;
+            }
+        }
+        event.stopPropagation();
+    }
+    
+    private switchReply(key: string):void{
+        var replies: Array<Message> = Message.getReplies(key);
+        if(replies != null && replies.length > 0){
+            this.currentReplyMessage = replies[this.currentReplyIndex = ((this.currentReplyIndex + 1) % replies.length)];
+            this.lbl_input.text = this.currentReplyMessage.text;
+        }
+    }
+    
+    private touchSend(event: egret.TouchEvent):void{
+        if(Main.free && !Message.hasReplied && this.currentReplyMessage != null) {
+            this.lbl_input.text = "";
+            this.addOneMessage(this.currentReplyMessage);
+            this.currentReplyMessage = null;
+        }
+        event.stopPropagation();
     }
     
     public onRemove():void{
@@ -105,12 +159,23 @@ class CellphoneScene extends Scene{
         }
     }
     
-    public addOneMessage(isMe:boolean, message:string):void{
-        if(!isMe && !this.isOpened){
+    public addOneMessage(message: Message):void{
+        if(message == null) { 
+            Debug.log("Unknow message.");
+            return; 
+        }
+        
+        if(message.isMe){
+            WheatupEvent.call(EventType.SEND_MESSAGE,message.key);
+        }else{
+            WheatupEvent.call(EventType.RECEIVE_MESSAGE,message.key);
+        }
+        
+        if(!message.isMe && !this.isOpened){
             Main.uiScene.addMessage();
         }
         
-        var entry: MsgEntry = new MsgEntry(isMe, message);
+        var entry: MsgEntry = new MsgEntry(message);
         this.messages.push(entry);
         
         if(this.hasOpened){
@@ -129,44 +194,42 @@ class CellphoneScene extends Scene{
 }
 
 class MsgEntry extends egret.gui.Group{
-    public isMe: boolean = false;
-    public text: string = "";
+    public message: Message;
     public img_entry: egret.gui.UIAsset;
     public lbl_entry: egret.gui.Label;
     public entryHeight: number = 0;
     
-    public constructor(isMe: boolean, text:string){
+    public constructor(message){
         super();
-        this.isMe = isMe;
-        this.text = text;
+        this.message = message;
     }
     
     public addToMessage(group:egret.gui.Group): void{
-        var textLength: number = this.text.length;
+        var textLength: number = this.message.text.length;
         
         this.lbl_entry = new egret.gui.Label();
         this.lbl_entry.alpha = 0;
         this.lbl_entry.fontFamily = "font_pixel";
         this.lbl_entry.size = 24;
         this.lbl_entry.bold = true;
-        this.lbl_entry.textColor = this.isMe ? 0x446633 : 0x333333;
+        this.lbl_entry.textColor = this.message.isMe ? 0x446633 : 0x333333;
         this.lbl_entry.maxWidth = 270;
-        this.lbl_entry.text = this.text;
+        this.lbl_entry.text = this.message.text;
         this.lbl_entry.measure();
         var width: number = this.lbl_entry.measuredWidth;
         var height: number = this.lbl_entry.measuredHeight;
         
-        this.lbl_entry.x = this.isMe ? Math.max(470 - width, 17) : 17;
+        this.lbl_entry.x = this.message.isMe ? Math.max(470 - width, 17) : 17;
         this.lbl_entry.y = 12;
         
         
         this.img_entry = new egret.gui.UIAsset();
         this.img_entry.alpha = 0;
-        this.img_entry.source = this.isMe ? "cellphone_msg_me" : "cellphone_msg_other";
+        this.img_entry.source = this.message.isMe ? "cellphone_msg_me" : "cellphone_msg_other";
         this.img_entry.height = height + 36;
-        this.img_entry.scale9Grid = this.isMe ? new egret.Rectangle(20, 16, 16, 24) : new egret.Rectangle(32, 16, 16, 24);
+        this.img_entry.scale9Grid = this.message.isMe ? new egret.Rectangle(20, 16, 16, 24) : new egret.Rectangle(32, 16, 16, 24);
         this.img_entry.width = 40 + width;
-        this.img_entry.x = this.isMe ? Math.max(490 - this.img_entry.width) : 0;
+        this.img_entry.x = this.message.isMe ? Math.max(490 - this.img_entry.width) : 0;
         
         this.entryHeight = this.img_entry.height;
         

@@ -10,6 +10,7 @@ var game_file_list = [
 	"entity/Item.js",
 	"skins/scene/DialogueSkin.js",
 	"util/Timer.js",
+	"core/Message.js",
 	"core/Sound.js",
 	"scene/DialogueScene.js",
 	"skins/scene/LoadingSkin.js",

@@ -189,6 +189,9 @@ class Main extends egret.DisplayObjectContainer {
         //初始化对话
         Dialogue.init();
         
+        //初始化信息
+        Message.init();
+        
         if(egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
             Sound.playBGM("sound_dance");
         }
@@ -197,7 +200,7 @@ class Main extends egret.DisplayObjectContainer {
         
         //进入游戏
         if(Main.debugMode) {
-            Main.addScene(Main.LAYER_GAME,Main.scenarioIntro);
+            Main.addScene(Main.LAYER_GAME,Main.scenarioRoad);
         } else {
             Main.addScene(Main.LAYER_GAME,Main.warningScene);
         }

@@ -34,6 +34,18 @@ var skins;
                 this.__s(t, ["height", "source", "width", "x", "y"], [118, "blank", 118, 658, 178]);
                 return t;
             };
+            __egretProto__.box_input_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.box_input = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [69, "blank", 363, 148, 339]);
+                return t;
+            };
+            __egretProto__.box_send_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.box_send = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [69, "blank", 103, 532, 339]);
+                return t;
+            };
             __egretProto__.grp_app_i = function () {
                 var t = new egret.gui.Group();
                 this.grp_app = t;
@@ -59,7 +71,7 @@ var skins;
                 var t = new egret.gui.Group();
                 this.grp_msg = t;
                 this.__s(t, ["height", "width", "x", "y"], [480, 800, 0, 0]);
-                t.elementsContent = [this.img_msgbg_i(), this.lbl_name_i(), this.grp_entries_i()];
+                t.elementsContent = [this.img_msgbg_i(), this.lbl_name_i(), this.lbl_input_i(), this.grp_entries_i(), this.box_input_i(), this.box_send_i()];
                 return t;
             };
             __egretProto__.img_bar0_i = function () {
@@ -122,6 +134,12 @@ var skins;
                 this.__s(t, ["bold", "size", "text", "textAlign", "width", "x", "y"], [true, 48, "12:34", "center", 362, 219, 101]);
                 return t;
             };
+            __egretProto__.lbl_input_i = function () {
+                var t = new egret.gui.Label();
+                this.lbl_input = t;
+                this.__s(t, ["bold", "height", "size", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, 52, 24, "left", 0x383838, "middle", 349, 156, 348]);
+                return t;
+            };
             __egretProto__.lbl_name_i = function () {
                 var t = new egret.gui.Label();
                 this.lbl_name = t;
@@ -134,7 +152,7 @@ var skins;
                 this.__s(t, ["height", "source", "width", "x", "y"], [480, "black", 800, 0, 0]);
                 return t;
             };
-            CellphoneSkin._skinParts = ["bg0", "bg", "img_lockbg", "img_bar", "img_slider", "lbl_Time", "grp_lock", "img_lockbg0", "img_bar0", "img_slider1", "lbl_Time1", "grp_app", "img_msgbg", "lbl_name", "img_msg_bg", "grp_entries", "grp_msg", "box_back"];
+            CellphoneSkin._skinParts = ["bg0", "bg", "img_lockbg", "img_bar", "img_slider", "lbl_Time", "grp_lock", "img_lockbg0", "img_bar0", "img_slider1", "lbl_Time1", "grp_app", "img_msgbg", "lbl_name", "lbl_input", "img_msg_bg", "grp_entries", "box_input", "box_send", "grp_msg", "box_back"];
             return CellphoneSkin;
         })(egret.gui.Skin);
         scene.CellphoneSkin = CellphoneSkin;

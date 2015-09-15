@@ -215,20 +215,13 @@ class ScenarioRoad extends Scenario{
         if(data == "scene1"){
             Main.free = true;
             Timer.addTimer(3000,1,() => {
-                Main.cellphoneScene.addOneMessage(false,"亲爱的，你什么时候回来？");
+                Main.cellphoneScene.addOneMessage(Message.getMessage("wife_ask_1"));
             },this);
             
-            Timer.addTimer(8000,1,() => {
-                Main.cellphoneScene.addOneMessage(false,"饭菜都快凉了噢:3");
+            Timer.addTimer(6000,1,() => {
+                Main.cellphoneScene.addOneMessage(Message.getMessage("wife_ask_2"));
             },this);
             
-            Timer.addTimer(40000,1,() => {
-                Main.cellphoneScene.addOneMessage(false,"怎么了？短信也不回。");
-            },this);
-            
-            Timer.addTimer(60000,1,() => {
-                Main.cellphoneScene.addOneMessage(false,"你先忙吧。");
-            },this);
         }
     }
     

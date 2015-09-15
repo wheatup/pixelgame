@@ -23,9 +23,12 @@
 	<e:Group id="grp_msg" width="800" height="480" x="0" y="0">
 		<e:UIAsset id="img_msgbg" y="0" width="800" height="480" source="cellphone_panel_msg" x="0"/>
 		<e:Label id="lbl_name" textColor="0x383838" bold="true" width="494" size="24" verticalAlign="middle" textAlign="center" text="标签" y="76" x="145"/>
+		<e:Label id="lbl_input" bold="true" textColor="0x383838" width="349" size="24" x="156" y="348" verticalAlign="middle" textAlign="left" height="52"/>
 		<e:Group id="grp_entries" width="503" height="203" y="0" x="0">
 			<e:UIAsset id="img_msg_bg" width="503" height="203" x="0" y="0" source="blank"/>
 		</e:Group>
+		<e:UIAsset id="box_input" source="blank" width="363" height="69" x="148" y="339"/>
+		<e:UIAsset id="box_send" source="blank" width="103" height="69" x="532" y="339"/>
 	</e:Group>
 	<e:UIAsset id="box_back" width="118" height="118" source="blank" x="658" y="178"/>
 </e:Skin>
