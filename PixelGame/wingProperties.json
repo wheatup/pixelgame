@@ -293,6 +293,21 @@
 			},
 			{
 				"isFolder":false,
+				"key":"scene3_bg_1",
+				"name":"scene3_bg_1"
+			},
+			{
+				"isFolder":false,
+				"key":"scene3_bg_2",
+				"name":"scene3_bg_2"
+			},
+			{
+				"isFolder":false,
+				"key":"scene3_bg_3",
+				"name":"scene3_bg_3"
+			},
+			{
+				"isFolder":false,
 				"key":"scene_trunk_0",
 				"name":"scene_trunk_0"
 			},

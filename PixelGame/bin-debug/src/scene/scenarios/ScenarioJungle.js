@@ -1,22 +1,22 @@
 /**
  *
  * @author wheatup
- * 第二幕游戏场景
+ * 第三幕游戏场景
  * 丛林
  *
  */
-var ScenarioBush = (function (_super) {
-    __extends(ScenarioBush, _super);
-    function ScenarioBush() {
-        _super.call(this, "skins.scenario.ScenarioBushSkin");
+var ScenarioJungle = (function (_super) {
+    __extends(ScenarioJungle, _super);
+    function ScenarioJungle() {
+        _super.call(this, "skins.scenario.ScenarioJungleSkin");
         this.forEnd1 = false;
         this.forEnd2 = false;
-        this.terrain = new Terrain(this, "1,399 70,413 174,369 199,357 357,352 473,348 538,328 589,324 707,279 758,239 825,212 880,187 880,480 1,480", 880, 480);
+        this.terrain = new Terrain(this, "0,358 0,482 1288,484 1654,292 2141,356 2342,485 2394,485 2366,398 2261,316 2231,250 2113,244 2102,257 2078,254 2058,233 2032,238 2015,214 2001,216 1989,205 1953,245 1870,243 1856,258 1789,247 1750,236 1674,262 1616,227 1568,248 1426,280 1289,397 1121,430 820,439 710,347 641,377 498,368 377,322 365,293 317,320 257,316 233,301 192,315 125,353", 2400, 480);
         //设置摄影机
-        this.cameraLimit.width = 80;
+        this.cameraLimit.width = 1600;
         this.cameraPosition.x = 0;
     }
-    var __egretProto__ = ScenarioBush.prototype;
+    var __egretProto__ = ScenarioJungle.prototype;
     __egretProto__.init = function () {
         this.grp_game = this.ui["grp_game"];
         this.grp_game.touchChildren = false;
@@ -27,8 +27,8 @@ var ScenarioBush = (function (_super) {
         this.box_end1 = this.ui["box_end1"];
         this.box_end2 = this.ui["box_end2"];
         //创建玩家
-        this.createPlayer(30, 448, this.ui["grp_playground"]);
-        this.player.setBrightness(0.3);
+        this.createPlayer(16, 376, this.ui["grp_playground"]);
+        this.player.setBrightness(0.2);
     };
     __egretProto__.clearForFlag = function () {
         this.forEnd1 = false;
@@ -64,8 +64,8 @@ var ScenarioBush = (function (_super) {
         var targetY = Util.clip(this.player.getY() - 240, 0, this.cameraLimit.height);
         this.cameraPosition.x = this.cameraPosition.x + Math.round((targetX - this.cameraPosition.x) * 0.1);
         this.cameraPosition.y = this.cameraPosition.y + Math.round((targetY - this.cameraPosition.y) * 0.1);
-        this.ui["grp_bg3"].x = -(Math.round(this.cameraPosition.x * 2));
-        this.ui["grp_bg3"].y = -(Math.round(this.cameraPosition.y * 2));
+        this.ui["grp_bg3"].x = -(Math.round(this.cameraPosition.x * 1.5));
+        this.ui["grp_bg3"].y = -(Math.round(this.cameraPosition.y * 1.5));
         this.ui["grp_bg2"].x = -this.cameraPosition.x;
         this.ui["grp_bg2"].y = -this.cameraPosition.y;
         this.ui["grp_playground"].x = -this.cameraPosition.x;
@@ -108,20 +108,17 @@ var ScenarioBush = (function (_super) {
         if (this.forEnd1) {
             Main.transit(500);
             Main.removeScene(this);
-            Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
-            Main.scenarioRoad.setPlayerPosition(470, 240);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioBush);
+            Main.scenarioRoad.setPlayerPosition(876, 264);
         }
         else if (this.forEnd2) {
-            Main.transit(500);
-            Main.removeScene(this);
-            Main.addScene(Main.LAYER_GAME, Main.scenarioJungle);
-            Main.scenarioRoad.setPlayerPosition(16, 376);
+            DialogueScene.showDialogue("test");
         }
     };
     __egretProto__.onRemove = function () {
         this.unbindEvents();
     };
-    return ScenarioBush;
+    return ScenarioJungle;
 })(Scenario);
-ScenarioBush.prototype.__class__ = "ScenarioBush";
-//# sourceMappingURL=ScenarioBush.js.map
+ScenarioJungle.prototype.__class__ = "ScenarioJungle";
+//# sourceMappingURL=ScenarioJungle.js.map

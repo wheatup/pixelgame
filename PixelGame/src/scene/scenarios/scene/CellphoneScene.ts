@@ -27,7 +27,11 @@ class CellphoneScene extends Scene{
     public init():void{
         this.grp_entries = this.ui["grp_entries"];
         this.lbl_name = this.ui["lbl_name"];
-        this.lbl_name.text = "老婆";
+        if(Main.LANG == "CH") {
+            this.lbl_name.text = "老婆";
+        }else if(Main.LANG == "EN") {
+            this.lbl_name.text = "Honey";
+        }
         this.lbl_name.fontFamily = "font_pixel";
         this.lbl_name.bold = true;
         this.box_back = this.ui["box_back"];

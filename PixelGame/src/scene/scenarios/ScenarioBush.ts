@@ -140,7 +140,10 @@ class ScenarioBush extends Scenario{
             Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
             Main.scenarioRoad.setPlayerPosition(470, 240);
         }else if(this.forEnd2){
-            DialogueScene.showDialogue("test");
+            Main.transit(500);
+            Main.removeScene(this);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioJungle);
+            Main.scenarioRoad.setPlayerPosition(16, 376);
         }
     }
     
