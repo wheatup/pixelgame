@@ -10,6 +10,7 @@ class CellphoneScene extends Scene{
     public isOpened: boolean = false;
     
     private hasOpened: boolean = false;
+    private img_flash: egret.gui.UIAsset;
     private grp_entries: egret.gui.Group;
     private lbl_name: egret.gui.Label;
     private box_back: egret.gui.UIAsset;
@@ -38,6 +39,9 @@ class CellphoneScene extends Scene{
         this.box_input = this.ui["box_input"];
         this.box_send = this.ui["box_send"];
         this.lbl_input = this.ui["lbl_input"];
+        this.img_flash = this.ui["img_flash"];
+        this.img_flash.alpha = 0;
+        this.img_flash.visible = true;
         this.lbl_input.text = "";
         this.lbl_input.fontFamily = "font_pixel";
         this.lbl_input.bold = true;
@@ -60,26 +64,38 @@ class CellphoneScene extends Scene{
         this.hasOpened = true;
     }
     
+    private showingFlash: boolean = false;
+    private showFlash():void{
+        if(!this.showingFlash) {
+            egret.Tween.removeTweens(this.img_flash);
+            this.img_flash.alpha = 0;
+            egret.Tween.get(this.img_flash,{ loop: true }).to({ alpha: 1 },200).to({ alpha: 0 },200);
+            this.showingFlash = true;
+        }
+    }
     
+    private hideFlash():void{
+        egret.Tween.removeTweens(this.img_flash);
+        this.img_flash.alpha = 0;
+        this.showingFlash = false;
+    }
     
     public start():void{
-//        this.scrollView=new egret.ScrollView(this.grp_entries);
-//        this.grp_entries.alpha = 0;
-//        egret.Tween.removeTweens(this.grp_entries);
-//        egret.Tween.get(this.grp_entries).to({alpha:1}, Main.TRANSTION_TIME / 2);
-//        this.scrollView.verticalScrollPolicy='auto';
-//        this.scrollView.x = 140;
-//        this.scrollView.y = 120;
-//        this.scrollView.width = this.grp_entries.width;
-//        this.scrollView.height = 203;
-//        Main.main.addChild(this.scrollView);
-//        
-//        this.scrollView.scrollTop = this.grp_entries.height - 203;
-        
         this.scrollView.visible = true;
         egret.Tween.get(this.grp_entries).to({alpha:1}, Main.TRANSTION_TIME / 2);
         this.bindEvents();
         this.isOpened = true;
+        this.checkFlash();
+    }
+    
+    public checkFlash():void{
+        if(!this.isOpened) return;
+        var canReply: string[] = ["wife_ask_2", "wife_ask_4"];
+        if(!Message.hasReplied && canReply.indexOf(Message.lastReceiveMessage) >= 0){
+            this.showFlash();
+        }else{
+            this.hideFlash();
+        }
     }
     
     public bindEvents():void{
@@ -145,6 +161,7 @@ class CellphoneScene extends Scene{
         this.unbindEvents();
         //Main.main.removeChild(this.scrollView);
         this.scrollView.visible = false;
+        this.showingFlash = false;
     }
     
     private rebuildMessages():void{
@@ -193,6 +210,7 @@ class CellphoneScene extends Scene{
             this.grp_entries.height = 10 + h + entry.entryHeight;
             this.scrollView.scrollTop = this.grp_entries.height - 203;
             this.ui["img_msg_bg"].height = 10 + h + entry.entryHeight;
+            this.checkFlash();
         }
     }
 }

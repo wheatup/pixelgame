@@ -11,6 +11,7 @@ var CellphoneScene = (function (_super) {
         this.isOpened = false;
         this.hasOpened = false;
         this.messages = [];
+        this.showingFlash = false;
         this.currentReplyIndex = 0;
     }
     var __egretProto__ = CellphoneScene.prototype;
@@ -29,6 +30,9 @@ var CellphoneScene = (function (_super) {
         this.box_input = this.ui["box_input"];
         this.box_send = this.ui["box_send"];
         this.lbl_input = this.ui["lbl_input"];
+        this.img_flash = this.ui["img_flash"];
+        this.img_flash.alpha = 0;
+        this.img_flash.visible = true;
         this.lbl_input.text = "";
         this.lbl_input.fontFamily = "font_pixel";
         this.lbl_input.bold = true;
@@ -48,23 +52,36 @@ var CellphoneScene = (function (_super) {
         this.rebuildMessages();
         this.hasOpened = true;
     };
+    __egretProto__.showFlash = function () {
+        if (!this.showingFlash) {
+            egret.Tween.removeTweens(this.img_flash);
+            this.img_flash.alpha = 0;
+            egret.Tween.get(this.img_flash, { loop: true }).to({ alpha: 1 }, 200).to({ alpha: 0 }, 200);
+            this.showingFlash = true;
+        }
+    };
+    __egretProto__.hideFlash = function () {
+        egret.Tween.removeTweens(this.img_flash);
+        this.img_flash.alpha = 0;
+        this.showingFlash = false;
+    };
     __egretProto__.start = function () {
-        //        this.scrollView=new egret.ScrollView(this.grp_entries);
-        //        this.grp_entries.alpha = 0;
-        //        egret.Tween.removeTweens(this.grp_entries);
-        //        egret.Tween.get(this.grp_entries).to({alpha:1}, Main.TRANSTION_TIME / 2);
-        //        this.scrollView.verticalScrollPolicy='auto';
-        //        this.scrollView.x = 140;
-        //        this.scrollView.y = 120;
-        //        this.scrollView.width = this.grp_entries.width;
-        //        this.scrollView.height = 203;
-        //        Main.main.addChild(this.scrollView);
-        //        
-        //        this.scrollView.scrollTop = this.grp_entries.height - 203;
         this.scrollView.visible = true;
         egret.Tween.get(this.grp_entries).to({ alpha: 1 }, Main.TRANSTION_TIME / 2);
         this.bindEvents();
         this.isOpened = true;
+        this.checkFlash();
+    };
+    __egretProto__.checkFlash = function () {
+        if (!this.isOpened)
+            return;
+        var canReply = ["wife_ask_2", "wife_ask_4"];
+        if (!Message.hasReplied && canReply.indexOf(Message.lastReceiveMessage) >= 0) {
+            this.showFlash();
+        }
+        else {
+            this.hideFlash();
+        }
     };
     __egretProto__.bindEvents = function () {
         this.box_back.addEventListener(egret.TouchEvent.TOUCH_TAP, this.leave, this);
@@ -120,6 +137,7 @@ var CellphoneScene = (function (_super) {
         this.unbindEvents();
         //Main.main.removeChild(this.scrollView);
         this.scrollView.visible = false;
+        this.showingFlash = false;
     };
     __egretProto__.rebuildMessages = function () {
         for (var j = 0; j < this.messages.length; j++) {
@@ -161,6 +179,7 @@ var CellphoneScene = (function (_super) {
             this.grp_entries.height = 10 + h + entry.entryHeight;
             this.scrollView.scrollTop = this.grp_entries.height - 203;
             this.ui["img_msg_bg"].height = 10 + h + entry.entryHeight;
+            this.checkFlash();
         }
     };
     return CellphoneScene;
