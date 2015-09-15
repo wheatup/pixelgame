@@ -68,6 +68,11 @@
 			},
 			{
 				"isFolder":false,
+				"key":"cellphone_msg_flash",
+				"name":"cellphone_msg_flash"
+			},
+			{
+				"isFolder":false,
 				"key":"cellphone_msg_me",
 				"name":"cellphone_msg_me"
 			},
@@ -380,11 +385,6 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
-			},
-			{
-				"isFolder":false,
-				"key":"cellphone_msg_flash",
-				"name":"cellphone_msg_flash"
 			}]
 		}
 	},

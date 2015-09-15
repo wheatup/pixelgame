@@ -93,7 +93,7 @@ class ScenarioIntro extends Scenario{
         this.ui["grp_bg2"].x = Math.round(this.cameraPosition.x * 8) % 800;
         this.ui["grp_bg3"].x = Math.round(this.cameraPosition.x * 24) % 800;
         
-        if(this.tick == this.nextBumpTick){
+        if(this.tick >= this.nextBumpTick){
             this.ui["img_car"].y-=2;
             Timer.addTimer(100, 1, () => { this.ui["img_car"].y+=2; }, this);
             this.nextBumpTick += Math.round(Math.random() * 20 + 10);

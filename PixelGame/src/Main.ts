@@ -203,7 +203,7 @@ class Main extends egret.DisplayObjectContainer {
         
         //进入游戏
         if(Main.debugMode) {
-            Main.addScene(Main.LAYER_GAME,Main.scenarioRoad);
+            Main.addScene(Main.LAYER_GAME,Main.scenarioIntro);
         } else {
             Main.addScene(Main.LAYER_GAME,Main.warningScene);
         }
