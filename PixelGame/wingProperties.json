@@ -385,6 +385,11 @@
 				"isFolder":false,
 				"key":"white",
 				"name":"white"
+			},
+			{
+				"isFolder":false,
+				"key":"nightshade",
+				"name":"nightshade"
 			}]
 		}
 	},

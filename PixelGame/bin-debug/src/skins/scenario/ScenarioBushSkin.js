@@ -8,7 +8,7 @@ var skins;
                 _super.call(this);
                 this.__s = egret.gui.setProperties;
                 this.__s(this, ["height", "width"], [480, 800]);
-                this.elementsContent = [this.grp_game_i(), this.grp_touch_i()];
+                this.elementsContent = [this.grp_game_i(), this.grp_shade_i(), this.grp_touch_i()];
                 this.states = [
                     new egret.gui.State("normal", []),
                     new egret.gui.State("disabled", [])
@@ -93,11 +93,24 @@ var skins;
                 t.elementsContent = [this.grp_particle_i()];
                 return t;
             };
+            __egretProto__.grp_shade_i = function () {
+                var t = new egret.gui.Group();
+                this.grp_shade = t;
+                this.__s(t, ["height", "width", "x", "y"], [480, 800, 0, 0]);
+                t.elementsContent = [this.img_night_i()];
+                return t;
+            };
             __egretProto__.grp_touch_i = function () {
                 var t = new egret.gui.Group();
                 this.grp_touch = t;
                 this.__s(t, ["height", "width", "x", "y"], [480, 800, 0, 0]);
                 t.elementsContent = [this.box_scene_i(), this.box_end1_i(), this.box_end2_i()];
+                return t;
+            };
+            __egretProto__.img_night_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.img_night = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [480, "nightshade", 800, 0, 0]);
                 return t;
             };
             __egretProto__.bg1_1_i = function () {
@@ -106,7 +119,7 @@ var skins;
                 this.__s(t, ["height", "source", "width", "x", "y"], [480, "scene2_bg_1", 800, 0, 0]);
                 return t;
             };
-            ScenarioBushSkin._skinParts = ["bg1_1", "grp_bg1", "bg2_1", "grp_bg2", "grp_particle", "grp_playground", "bg3_1", "grp_bg3", "grp_game", "box_scene", "box_end1", "box_end2", "grp_touch"];
+            ScenarioBushSkin._skinParts = ["bg1_1", "grp_bg1", "bg2_1", "grp_bg2", "grp_particle", "grp_playground", "bg3_1", "grp_bg3", "grp_game", "img_night", "grp_shade", "box_scene", "box_end1", "box_end2", "grp_touch"];
             return ScenarioBushSkin;
         })(egret.gui.Skin);
         scenario.ScenarioBushSkin = ScenarioBushSkin;

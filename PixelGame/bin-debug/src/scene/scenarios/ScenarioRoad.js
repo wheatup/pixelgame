@@ -15,7 +15,6 @@ var ScenarioRoad = (function (_super) {
         this.forEnd1 = false;
         this.forEnd2 = false;
         this.forBush = false;
-        this.isFirst = true;
         this.engineTouchCount = 0;
         this.terrain = new Terrain(this, "0,240 0,436 1600,436 1600,240", 1600, 480, ["1098,272 1098,332 1418,332 1418,272"]);
         //设置摄影机
@@ -33,6 +32,11 @@ var ScenarioRoad = (function (_super) {
         this.ui["img_car"].x += this.ui["img_car"].width * this.ui["img_car"].anchorX;
         this.ui["img_car"].y += this.ui["img_car"].height * this.ui["img_car"].anchorY;
         this.floaters.push(this.ui["img_car"]);
+        //设置shade
+        this.img_night = this.ui["img_night"];
+        this.img_night.alpha = 0;
+        this.img_night.visible = true;
+        this.ui["grp_shade"].visible = true;
         //初始化判定区域
         this.box_scene = this.ui["box_scene"];
         this.box_engine = this.ui["box_engine"];
@@ -56,6 +60,9 @@ var ScenarioRoad = (function (_super) {
         //创建玩家
         this.createPlayer(1250, 350, this.ui["grp_playground"]);
         //this.drawGrid();
+    };
+    __egretProto__.setNight = function (value) {
+        this.img_night.alpha = value;
     };
     __egretProto__.clearForFlag = function () {
         this.forEngine = false;
@@ -85,8 +92,9 @@ var ScenarioRoad = (function (_super) {
         WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
     };
     __egretProto__.start = function () {
+        this.getConditions();
         this.bindEvents();
-        if (this.isFirst) {
+        if (!Data.getFlag(0 /* HasCarBusted */)) {
             this.delay(2000);
             this.addEvent(function () {
                 DialogueScene.showDialogue("scene1");
@@ -95,7 +103,12 @@ var ScenarioRoad = (function (_super) {
         else {
             Main.free = true;
         }
-        this.isFirst = false;
+        Data.setFlag(0 /* HasCarBusted */);
+    };
+    __egretProto__.getConditions = function () {
+        if (Data.getFlag(1 /* HasArrivedJungle */)) {
+            this.setNight(0.7);
+        }
     };
     __egretProto__.update = function () {
         this.calcCamera();

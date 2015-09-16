@@ -157,7 +157,8 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_BOTTOM, Main.bgScene, true);
         //进入游戏
         if (Main.debugMode) {
-            Main.addScene(Main.LAYER_GAME, Main.scenarioIntro);
+            Data.setFlag(1 /* HasArrivedJungle */);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
         }
         else {
             Main.addScene(Main.LAYER_GAME, Main.warningScene);

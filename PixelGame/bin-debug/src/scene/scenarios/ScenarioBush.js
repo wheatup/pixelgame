@@ -26,9 +26,16 @@ var ScenarioBush = (function (_super) {
         this.box_scene = this.ui["box_scene"];
         this.box_end1 = this.ui["box_end1"];
         this.box_end2 = this.ui["box_end2"];
+        //设置shade
+        this.ui["img_night"].alpha = 0;
+        this.ui["img_night"].visible = true;
+        this.ui["grp_shade"].visible = true;
         //创建玩家
         this.createPlayer(30, 448, this.ui["grp_playground"]);
         this.player.setBrightness(0.3);
+    };
+    __egretProto__.setNight = function (value) {
+        this.ui["img_night"].alpha = value;
     };
     __egretProto__.clearForFlag = function () {
         this.forEnd1 = false;
@@ -49,12 +56,18 @@ var ScenarioBush = (function (_super) {
         WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
     };
     __egretProto__.start = function () {
+        this.getConditions();
         Main.free = true;
         this.bindEvents();
         this.delay(2000);
         //        this.addEvent(() => {
         //            DialogueScene.showDialogue("scene1");
         //        }, this);
+    };
+    __egretProto__.getConditions = function () {
+        if (Data.getFlag(1 /* HasArrivedJungle */)) {
+            this.setNight(0.5);
+        }
     };
     __egretProto__.update = function () {
         this.calcCamera();

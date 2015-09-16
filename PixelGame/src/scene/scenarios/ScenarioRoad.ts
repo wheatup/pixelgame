@@ -12,6 +12,8 @@ class ScenarioRoad extends Scenario{
     private grp_touch: egret.gui.Group;
     private grp_particle: egret.gui.Group;
     
+    private img_night: egret.gui.UIAsset;
+    
     private box_scene: egret.gui.UIAsset;
     private box_engine: egret.gui.UIAsset;
     private box_trunk: egret.gui.UIAsset;
@@ -24,8 +26,6 @@ class ScenarioRoad extends Scenario{
     private forEnd1: boolean = false;
     private forEnd2: boolean = false;
     private forBush: boolean = false;
-    
-    public isFirst: boolean = true;
     
 	public constructor() {
         super("skins.scenario.ScenarioRoadSkin");
@@ -46,6 +46,12 @@ class ScenarioRoad extends Scenario{
         this.ui["img_car"].x += this.ui["img_car"].width * this.ui["img_car"].anchorX;
         this.ui["img_car"].y += this.ui["img_car"].height * this.ui["img_car"].anchorY;
         this.floaters.push(this.ui["img_car"]);
+        
+        //设置shade
+        this.img_night = this.ui["img_night"];
+        this.img_night.alpha = 0;
+        this.img_night.visible = true;
+        this.ui["grp_shade"].visible = true;
         
         //初始化判定区域
         this.box_scene = this.ui["box_scene"];
@@ -75,6 +81,9 @@ class ScenarioRoad extends Scenario{
         //this.drawGrid();
 	}
 	
+	public setNight(value:number): void{
+        this.img_night.alpha = value;
+	}
 	
 	private clearForFlag():void{
         this.forEngine = false;
@@ -107,8 +116,9 @@ class ScenarioRoad extends Scenario{
     }
 	
 	public start(): void{
+        this.getConditions();
         this.bindEvents();
-        if(this.isFirst) {
+        if(!Data.getFlag(Flag.HasCarBusted)) {
             this.delay(2000);
 
             this.addEvent(() => {
@@ -117,8 +127,15 @@ class ScenarioRoad extends Scenario{
         }else{
             Main.free = true;
         }
-        this.isFirst = false;
+        Data.setFlag(Flag.HasCarBusted);
 	}
+	
+    private getConditions(): void {
+        if(Data.getFlag(Flag.HasArrivedJungle)){
+            this.setNight(0.7);
+        }
+    }
+    
 	
     private lastY: number;
 	public update():void{

@@ -66,6 +66,7 @@ class ScenarioJungle extends Scenario{
     }
 	
 	public start(): void{
+        Data.setFlag(Flag.HasArrivedJungle);
         Main.free = true;
         this.bindEvents();
         this.delay(2000);

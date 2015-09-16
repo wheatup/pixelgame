@@ -37,10 +37,19 @@ class ScenarioBush extends Scenario{
         this.box_end1 = this.ui["box_end1"];
         this.box_end2 = this.ui["box_end2"];
         
+        //设置shade
+        this.ui["img_night"].alpha = 0;
+        this.ui["img_night"].visible = true;
+        this.ui["grp_shade"].visible = true;
+        
         //创建玩家
         this.createPlayer(30, 448, this.ui["grp_playground"]);
         this.player.setBrightness(0.3);
 	}
+	
+    public setNight(value:number): void{
+        this.ui["img_night"].alpha = value;
+    }
 	
 	
 	private clearForFlag():void{
@@ -65,6 +74,7 @@ class ScenarioBush extends Scenario{
     }
 	
 	public start(): void{
+        this.getConditions();
         Main.free = true;
         this.bindEvents();
         this.delay(2000);
@@ -73,6 +83,12 @@ class ScenarioBush extends Scenario{
 //            DialogueScene.showDialogue("scene1");
 //        }, this);
 	}
+	
+    private getConditions(): void {
+        if(Data.getFlag(Flag.HasArrivedJungle)){
+            this.setNight(0.5);
+        }
+    }
 	
     private lastY: number;
 	public update():void{

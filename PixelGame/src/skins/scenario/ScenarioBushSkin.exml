@@ -20,6 +20,9 @@
 			<e:UIAsset id="bg3_1" width="960" height="480" y="0" x="0" source="scene2_bg_3"/>
 		</e:Group>
 	</e:Group>
+	<e:Group id="grp_shade" width="800" height="480" x="0" y="0">
+		<e:UIAsset id="img_night" source="nightshade" y="0" width="800" height="480" x="0"/>
+	</e:Group>
 	<e:Group id="grp_touch" width="800" height="480" y="0" x="0">
 		<e:UIAsset id="box_scene" width="800" height="480" y="0" source="blank" x="0"/>
 		<e:UIAsset id="box_end1" width="50" height="107" x="0" source="blank" y="373"/>

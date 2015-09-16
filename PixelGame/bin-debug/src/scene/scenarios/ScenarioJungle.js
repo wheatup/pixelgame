@@ -49,6 +49,7 @@ var ScenarioJungle = (function (_super) {
         WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
     };
     __egretProto__.start = function () {
+        Data.setFlag(1 /* HasArrivedJungle */);
         Main.free = true;
         this.bindEvents();
         this.delay(2000);

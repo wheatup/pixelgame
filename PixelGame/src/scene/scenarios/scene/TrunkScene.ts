@@ -16,7 +16,7 @@ class TrunkScene extends Scene{
     public init():void{
         this.bg = this.ui["bg"];
         this.touchEnabled = false;
-        if(Data.shovel == 0){
+        if(!Data.getFlag(Flag.GotShovel)){
             this.bg.source = "scene_trunk_1";
         }else{
             this.bg.source = "scene_trunk_0";
@@ -55,8 +55,8 @@ class TrunkScene extends Scene{
     }
     
     public takeShovel():void{
-        if(Data.shovel == 0) {
-            Data.shovel = 1;
+        if(!Data.getFlag(Flag.GotShovel)) {
+            Data.setFlag(Flag.GotShovel);
             this.bg.source = "scene_trunk_0";
             Inventory.getItem(Item.shovel);
         }

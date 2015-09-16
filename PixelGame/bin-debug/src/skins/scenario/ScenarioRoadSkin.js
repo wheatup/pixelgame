@@ -8,7 +8,7 @@ var skins;
                 _super.call(this);
                 this.__s = egret.gui.setProperties;
                 this.__s(this, ["height", "width"], [480, 800]);
-                this.elementsContent = [this.grp_game_i(), this.grp_touch_i()];
+                this.elementsContent = [this.grp_game_i(), this.grp_shade_i(), this.grp_touch_i()];
                 this.states = [
                     new egret.gui.State("normal", []),
                     new egret.gui.State("disabled", [])
@@ -129,6 +129,13 @@ var skins;
                 t.elementsContent = [this.grp_particle_i(), this.img_car_i()];
                 return t;
             };
+            __egretProto__.grp_shade_i = function () {
+                var t = new egret.gui.Group();
+                this.grp_shade = t;
+                this.__s(t, ["height", "width", "x", "y"], [480, 800, 0, 0]);
+                t.elementsContent = [this.img_night_i()];
+                return t;
+            };
             __egretProto__.grp_touch_i = function () {
                 var t = new egret.gui.Group();
                 this.grp_touch = t;
@@ -142,13 +149,19 @@ var skins;
                 this.__s(t, ["height", "source", "width", "x", "y"], [160, "game_car", 320, 1100, 200]);
                 return t;
             };
+            __egretProto__.img_night_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.img_night = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [480, "nightshade", 800, 0, 0]);
+                return t;
+            };
             __egretProto__.bg1_1_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.bg1_1 = t;
                 this.__s(t, ["height", "source", "width", "x", "y"], [480, "scene1_bg_1", 800, 0, 0]);
                 return t;
             };
-            ScenarioRoadSkin._skinParts = ["bg1", "bg1_1", "grp_bg1", "bg2", "bg2_1", "grp_bg2", "grp_particle", "img_car", "grp_playground", "bg3", "bg3_1", "grp_bg3", "grp_game", "box_scene", "box_engine", "box_trunk", "box_end2", "box_end1", "box_bush", "grp_touch"];
+            ScenarioRoadSkin._skinParts = ["bg1", "bg1_1", "grp_bg1", "bg2", "bg2_1", "grp_bg2", "grp_particle", "img_car", "grp_playground", "bg3", "bg3_1", "grp_bg3", "grp_game", "img_night", "grp_shade", "box_scene", "box_engine", "box_trunk", "box_end2", "box_end1", "box_bush", "grp_touch"];
             return ScenarioRoadSkin;
         })(egret.gui.Skin);
         scenario.ScenarioRoadSkin = ScenarioRoadSkin;

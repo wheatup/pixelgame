@@ -13,7 +13,7 @@ var TrunkScene = (function (_super) {
     __egretProto__.init = function () {
         this.bg = this.ui["bg"];
         this.touchEnabled = false;
-        if (Data.shovel == 0) {
+        if (!Data.getFlag(2 /* GotShovel */)) {
             this.bg.source = "scene_trunk_1";
         }
         else {
@@ -46,8 +46,8 @@ var TrunkScene = (function (_super) {
         this.unbindEvents();
     };
     __egretProto__.takeShovel = function () {
-        if (Data.shovel == 0) {
-            Data.shovel = 1;
+        if (!Data.getFlag(2 /* GotShovel */)) {
+            Data.setFlag(2 /* GotShovel */);
             this.bg.source = "scene_trunk_0";
             Inventory.getItem(Item.shovel);
         }
