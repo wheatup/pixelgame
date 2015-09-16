@@ -7,9 +7,6 @@
 class Message {
     public static receivedMessages: Array<string>;
     public static sendedMessages: Array<string>;
-    public static lastReceiveMessage: string;
-    public static lastSendMessage: string;
-    public static hasReplied: boolean;
     
     public static messageMap: Object;
     public static replies: Object;
@@ -53,17 +50,15 @@ class Message {
     }
     
     private static onRecieveMessage(data: any): void{
-        Message.hasReplied = false;
         Message.receivedMessages.push(data);
-        Message.lastReceiveMessage = data;
-        
-        
+        Data.setFlag(Flag.HasReplied, false);
+        Data.setFlag(Flag.LastReceiveMessage, data);
     }
         
     private static onSendMessage(data: any): void{
-        Message.hasReplied = true;
         Message.sendedMessages.push(data);
-        Message.lastSendMessage = data;
+        Data.setFlag(Flag.HasReplied, true);
+        Data.setFlag(Flag.LastSendMessage, data);
         
         switch(data){
             case "wife_rep_1_0":
@@ -101,12 +96,6 @@ class Message {
         return Message.replies[key];
     }
     
-    public key: string;
-    public isMe: boolean;
-    public text: string;
-    public constructor(key: string, isMe: boolean, text: string){
-        this.key = key;
-        this.isMe = isMe;
-        this.text = text;
-    }
+
+    public constructor(public key: string, public isMe: boolean, public text: string){}
 }

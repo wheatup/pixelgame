@@ -91,6 +91,9 @@ var ScenarioRoad = (function (_super) {
         WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
         WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
     };
+    __egretProto__.onRemove = function () {
+        this.unbindEvents();
+    };
     __egretProto__.start = function () {
         this.getConditions();
         this.bindEvents();
@@ -108,6 +111,12 @@ var ScenarioRoad = (function (_super) {
     __egretProto__.getConditions = function () {
         if (Data.getFlag(1 /* HasArrivedJungle */)) {
             this.setNight(0.7);
+            this.ui["bg1"].source = "bg_star";
+            this.ui["bg1_1"].source = "bg_star";
+            if (this.particle) {
+                this.grp_particle.removeElement(this.particle);
+                this.particle = null;
+            }
         }
     };
     __egretProto__.update = function () {
@@ -130,8 +139,6 @@ var ScenarioRoad = (function (_super) {
         this.ui["grp_bg1"].y = -(Math.round(this.cameraPosition.y * 0.2));
         this.ui["grp_playground"].x = -this.cameraPosition.x;
         this.ui["grp_playground"].y = -this.cameraPosition.y;
-        //        this.grp_game.x = -this.cameraPosition.x;
-        //        this.grp_game.y = -this.cameraPosition.y;
         this.grp_touch.x = -this.cameraPosition.x;
         this.grp_touch.y = -this.cameraPosition.y;
     };
@@ -222,9 +229,6 @@ var ScenarioRoad = (function (_super) {
             Main.addScene(Main.LAYER_GAME, Main.scenarioBush);
             Main.scenarioBush.setPlayerPosition(30, 448);
         }
-    };
-    __egretProto__.onRemove = function () {
-        this.unbindEvents();
     };
     return ScenarioRoad;
 })(Scenario);

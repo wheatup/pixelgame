@@ -29,11 +29,9 @@ var Flag;
 (function (Flag) {
     Flag[Flag["HasCarBusted"] = 0] = "HasCarBusted";
     Flag[Flag["HasArrivedJungle"] = 1] = "HasArrivedJungle";
-    Flag[Flag["GotShovel"] = 2] = "GotShovel"; //是否获得过铲子，这将控制车厢内是否有铲子
+    Flag[Flag["GotShovel"] = 2] = "GotShovel";
+    Flag[Flag["LastSendMessage"] = 3] = "LastSendMessage";
+    Flag[Flag["LastReceiveMessage"] = 4] = "LastReceiveMessage";
+    Flag[Flag["HasReplied"] = 5] = "HasReplied"; //是否已回复过短信
 })(Flag || (Flag = {}));
-//class Flag{
-//    public static IsCarJustBusted = "IsCarJustBusted";        //车是否刚坏，这将控制是否出现道路的对话剧情
-//    public static HasArrivedJungle = "HasArrivedJungle";      //是否到达过丛林，这将控制是否天色已晚
-//    public static GotShovel = "GotShovel";                    //是否获得过铲子，这将控制车厢内是否有铲子
-//} 
 //# sourceMappingURL=Data.js.map

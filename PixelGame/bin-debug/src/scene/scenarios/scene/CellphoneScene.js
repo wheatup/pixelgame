@@ -76,7 +76,7 @@ var CellphoneScene = (function (_super) {
         if (!this.isOpened)
             return;
         var canReply = ["wife_ask_2", "wife_ask_4"];
-        if (!Message.hasReplied && canReply.indexOf(Message.lastReceiveMessage) >= 0) {
+        if (!Data.getFlag(5 /* HasReplied */) && canReply.indexOf(Data.getFlag(4 /* LastReceiveMessage */)) >= 0) {
             this.showFlash();
         }
         else {
@@ -102,8 +102,8 @@ var CellphoneScene = (function (_super) {
         event.stopPropagation();
     };
     __egretProto__.touchInput = function (event) {
-        if (Main.free && !Message.hasReplied) {
-            switch (Message.lastReceiveMessage) {
+        if (Main.free && !Data.getFlag(5 /* HasReplied */)) {
+            switch (Data.getFlag(4 /* LastReceiveMessage */)) {
                 case "wife_ask_2":
                     this.switchReply("wife_rep_1");
                     break;
@@ -122,7 +122,7 @@ var CellphoneScene = (function (_super) {
         }
     };
     __egretProto__.touchSend = function (event) {
-        if (Main.free && !Message.hasReplied && this.currentReplyMessage != null) {
+        if (Main.free && !Data.getFlag(5 /* HasReplied */) && this.currentReplyMessage != null) {
             this.lbl_input.text = "";
             this.addOneMessage(this.currentReplyMessage);
             this.currentReplyMessage = null;

@@ -22,7 +22,7 @@
 	</e:Group>
 	<e:Group id="grp_touch" width="800" height="480" y="0" x="0">
 		<e:UIAsset id="box_scene" width="2400" height="480" y="0" source="blank" x="0"/>
-		<e:UIAsset id="box_end1" width="50" height="107" x="0" source="blank" y="373"/>
-		<e:UIAsset id="box_end2" source="blank" width="50" height="100" x="2350" y="380"/>
+		<e:UIAsset id="box_end1" width="50" height="123" x="0" source="blank" y="321"/>
+		<e:UIAsset id="box_end2" source="blank" width="74" height="116" x="2326" y="364"/>
 	</e:Group>
 </e:Skin>

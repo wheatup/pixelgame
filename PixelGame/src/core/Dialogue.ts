@@ -95,11 +95,6 @@ class Dialogue {
 }
 
 class DialogueVO{
-    public name: string;
-    public text: string;
     public stream: boolean;
-    public constructor(name:string, text: string){
-        this.name = name;
-        this.text = text;
-    }
+    public constructor(public name:string, public text: string){}
 }

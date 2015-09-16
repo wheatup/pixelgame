@@ -91,7 +91,7 @@ class CellphoneScene extends Scene{
     public checkFlash():void{
         if(!this.isOpened) return;
         var canReply: string[] = ["wife_ask_2", "wife_ask_4"];
-        if(!Message.hasReplied && canReply.indexOf(Message.lastReceiveMessage) >= 0){
+        if(!Data.getFlag(Flag.HasReplied) && canReply.indexOf(Data.getFlag(Flag.LastReceiveMessage)) >= 0){
             this.showFlash();
         }else{
             this.hideFlash();
@@ -122,8 +122,8 @@ class CellphoneScene extends Scene{
     private currentReplyIndex: number = 0;
     private currentReplyMessage: Message;
     private touchInput(event: egret.TouchEvent):void{
-        if(Main.free && !Message.hasReplied) {
-            switch(Message.lastReceiveMessage){
+        if(Main.free && !Data.getFlag(Flag.HasReplied)) {
+            switch(Data.getFlag(Flag.LastReceiveMessage)){
                 case "wife_ask_2": 
                     this.switchReply("wife_rep_1");
                     break;
@@ -144,7 +144,7 @@ class CellphoneScene extends Scene{
     }
     
     private touchSend(event: egret.TouchEvent):void{
-        if(Main.free && !Message.hasReplied && this.currentReplyMessage != null) {
+        if(Main.free && !Data.getFlag(Flag.HasReplied) && this.currentReplyMessage != null) {
             this.lbl_input.text = "";
             this.addOneMessage(this.currentReplyMessage);
             this.currentReplyMessage = null;

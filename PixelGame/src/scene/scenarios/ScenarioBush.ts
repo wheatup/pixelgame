@@ -87,6 +87,7 @@ class ScenarioBush extends Scenario{
     private getConditions(): void {
         if(Data.getFlag(Flag.HasArrivedJungle)){
             this.setNight(0.5);
+            //this.ui["bg1"].source = "bg_star";
         }
     }
 	

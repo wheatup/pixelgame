@@ -37,13 +37,13 @@ var skins;
             __egretProto__.box_end1_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.box_end1 = t;
-                this.__s(t, ["height", "source", "width", "x", "y"], [107, "blank", 50, 0, 373]);
+                this.__s(t, ["height", "source", "width", "x", "y"], [123, "blank", 50, 0, 321]);
                 return t;
             };
             __egretProto__.box_end2_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.box_end2 = t;
-                this.__s(t, ["height", "source", "width", "x", "y"], [100, "blank", 50, 2350, 380]);
+                this.__s(t, ["height", "source", "width", "x", "y"], [116, "blank", 74, 2326, 364]);
                 return t;
             };
             __egretProto__.box_scene_i = function () {

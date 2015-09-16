@@ -390,6 +390,11 @@
 				"isFolder":false,
 				"key":"nightshade",
 				"name":"nightshade"
+			},
+			{
+				"isFolder":false,
+				"key":"bg_star",
+				"name":"bg_star"
 			}]
 		}
 	},

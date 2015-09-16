@@ -103,7 +103,7 @@ class ScenarioRoad extends Scenario{
         WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
         WheatupEvent.bind(EventType.ARRIVE, this.onArrive, this);
     }
-        
+    
     private unbindEvents():void{
         this.box_scene.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchScene, this);
         this.box_engine.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEngine, this);
@@ -113,6 +113,10 @@ class ScenarioRoad extends Scenario{
         this.box_bush.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchBush, this);
         WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
         WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
+    }
+    
+    public onRemove(): void{
+        this.unbindEvents();
     }
 	
 	public start(): void{
@@ -133,6 +137,12 @@ class ScenarioRoad extends Scenario{
     private getConditions(): void {
         if(Data.getFlag(Flag.HasArrivedJungle)){
             this.setNight(0.7);
+            this.ui["bg1"].source = "bg_star";
+            this.ui["bg1_1"].source = "bg_star";
+            if(this.particle) {
+                this.grp_particle.removeElement(<any>this.particle);
+                this.particle = null;
+            }
         }
     }
     
@@ -160,14 +170,8 @@ class ScenarioRoad extends Scenario{
         this.ui["grp_bg1"].y = -(Math.round(this.cameraPosition.y * 0.2));
         this.ui["grp_playground"].x = -this.cameraPosition.x;
         this.ui["grp_playground"].y = -this.cameraPosition.y;
-        
-        
-//        this.grp_game.x = -this.cameraPosition.x;
-//        this.grp_game.y = -this.cameraPosition.y;
         this.grp_touch.x = -this.cameraPosition.x;
         this.grp_touch.y = -this.cameraPosition.y;
-        
-        
 	}
 	
     private touchScene(event: egret.TouchEvent):void{
@@ -263,9 +267,5 @@ class ScenarioRoad extends Scenario{
             Main.addScene(Main.LAYER_GAME, Main.scenarioBush);
             Main.scenarioBush.setPlayerPosition(30, 448);
         }
-    }
-    
-    public onRemove(): void{
-        this.unbindEvents();
     }
 }

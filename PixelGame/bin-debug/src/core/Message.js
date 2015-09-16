@@ -42,14 +42,14 @@ var Message = (function () {
         WheatupEvent.bind(EventType.SEND_MESSAGE, Message.onSendMessage, Message);
     };
     Message.onRecieveMessage = function (data) {
-        Message.hasReplied = false;
         Message.receivedMessages.push(data);
-        Message.lastReceiveMessage = data;
+        Data.setFlag(5 /* HasReplied */, false);
+        Data.setFlag(4 /* LastReceiveMessage */, data);
     };
     Message.onSendMessage = function (data) {
-        Message.hasReplied = true;
         Message.sendedMessages.push(data);
-        Message.lastSendMessage = data;
+        Data.setFlag(5 /* HasReplied */, true);
+        Data.setFlag(3 /* LastSendMessage */, data);
         switch (data) {
             case "wife_rep_1_0":
                 Timer.addTimer(10000, 1, function () {
