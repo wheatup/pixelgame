@@ -8,8 +8,8 @@ class Player extends Mob{
     private animIndex: number = 0;
     private currentAnimation: Animation;
     
-	public constructor(scenario: Scenario) {
-        super("me_anim_standf_0", 80, 120, scenario);
+    public constructor(scenario: Scenario, size: number = 1) {
+        super("me_anim_standf_0", 80, 120, scenario, size);
         
         //添加动画
         this.animations[Mob.ANIM_STAND_FRONT] = new Animation("me_anim_standf",1,this,0);

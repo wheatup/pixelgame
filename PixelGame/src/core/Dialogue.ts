@@ -36,6 +36,9 @@ class Dialogue {
 
             Dialogue.pushDialogue("road_end2","费蓝德","来时的路，一望无际。");
             Dialogue.pushDialogue("road_end2","费蓝德","太阳都快落山了。");
+            
+            Dialogue.pushDialogue("closet","","一只大衣柜，足以容纳一个人。");
+            Dialogue.pushDialogue("trapdoor","","一个活板门，上了锁。");
         
             //测试
         

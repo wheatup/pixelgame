@@ -1,6 +1,6 @@
 class Main extends egret.DisplayObjectContainer {
     public static LANG: string = "CH";
-    public static debugMode: boolean = false;
+    public static debugMode: boolean = true;
     
     public static main: Main;
     public static LAYER_BOTTOM: number = 0;
@@ -27,9 +27,11 @@ class Main extends egret.DisplayObjectContainer {
     public static scenarioRoad: ScenarioRoad;
     public static scenarioBush: ScenarioBush;
     public static scenarioJungle: ScenarioJungle;
+    public static scenarioRoom: ScenarioRoom;
     public static trunkScene: TrunkScene;
     public static cellphoneScene: CellphoneScene;
     public static uiScene: UIScene;
+    
     
     public constructor() {
         super();
@@ -43,6 +45,7 @@ class Main extends egret.DisplayObjectContainer {
         Main.scenarioRoad = new ScenarioRoad();
         Main.scenarioBush = new ScenarioBush();
         Main.scenarioJungle = new ScenarioJungle();
+        Main.scenarioRoom = new ScenarioRoom();
         Main.trunkScene = new TrunkScene();
         Main.cellphoneScene = new CellphoneScene();
         Main.uiScene = new UIScene();
@@ -203,8 +206,8 @@ class Main extends egret.DisplayObjectContainer {
         
         //进入游戏
         if(Main.debugMode) {
-            Data.setFlag(Flag.HasArrivedJungle);
-            Main.addScene(Main.LAYER_GAME,Main.scenarioRoad);
+            Main.scenarioJungle.setPlayerPosition(2339, 459);
+            Main.addScene(Main.LAYER_GAME,Main.scenarioJungle);
         } else {
             Main.addScene(Main.LAYER_GAME,Main.warningScene);
         }

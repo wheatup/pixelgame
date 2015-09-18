@@ -5,8 +5,6 @@
  *
  */
 class CellphoneScene extends Scene{
-    
-    
     public isOpened: boolean = false;
     
     private hasOpened: boolean = false;

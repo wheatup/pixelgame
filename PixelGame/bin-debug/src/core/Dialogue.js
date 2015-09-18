@@ -27,6 +27,8 @@ var Dialogue = (function () {
             Dialogue.pushDialogue("road_end1", "费蓝德", "我还是先把车修好再说吧。");
             Dialogue.pushDialogue("road_end2", "费蓝德", "来时的路，一望无际。");
             Dialogue.pushDialogue("road_end2", "费蓝德", "太阳都快落山了。");
+            Dialogue.pushDialogue("closet", "", "一只大衣柜，足以容纳一个人。");
+            Dialogue.pushDialogue("trapdoor", "", "一个活板门，上了锁。");
             //测试
             Dialogue.pushDialogue("test", "[作者]小白", "啊哦，游戏似乎只做到这里。");
             Dialogue.pushDialogue("test", "[作者]小白", "正在拼命赶工中，请继续保持关注:P");

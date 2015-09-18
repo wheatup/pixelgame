@@ -110,10 +110,13 @@ var ScenarioJungle = (function (_super) {
             Main.transit(500);
             Main.removeScene(this);
             Main.addScene(Main.LAYER_GAME, Main.scenarioBush);
-            Main.scenarioRoad.setPlayerPosition(876, 264);
+            Main.scenarioBush.setPlayerPosition(876, 264);
         }
         else if (this.forEnd2) {
-            DialogueScene.showDialogue("test");
+            Main.transit(500);
+            Main.removeScene(this);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioRoom);
+            Main.scenarioRoom.setPlayerPosition(61, 417);
         }
     };
     __egretProto__.onRemove = function () {

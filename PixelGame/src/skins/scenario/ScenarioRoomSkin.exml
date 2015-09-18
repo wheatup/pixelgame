@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="800" height="480" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:Group id="grp_game" height="480" width="2400" y="0" x="0">
+		<e:Group id="grp_bg1" height="480" width="800" x="0" y="0">
+			<e:UIAsset id="img_bg" width="800" height="480" y="0" x="0" source="scene5"/>
+			<e:Group id="grp_particle" width="10" height="10" x="220" y="180"/>
+			<e:UIAsset id="img_candlelight" width="400" height="400" x="10" y="-20" source="scene_5_candlelight"/>
+		</e:Group>
+		<e:Group id="grp_playground" width="2400" height="480" x="0" y="0">
+		</e:Group>
+	</e:Group>
+	<e:Group id="grp_touch" width="800" height="480" y="0" x="0">
+		<e:UIAsset id="box_scene" width="800" height="480" y="0" source="blank" x="0"/>
+		<e:UIAsset id="box_door" width="74" height="341" x="0" source="blank" y="96"/>
+		<e:UIAsset id="box_closet" source="blank" width="218" height="300" x="370" y="38"/>
+		<e:UIAsset id="box_trapdoor" source="blank" width="148" height="104" x="609" y="294"/>
+		<e:UIAsset id="box_book" source="blank" width="75" height="31" x="239" y="218"/>
+	</e:Group>
+</e:Skin>

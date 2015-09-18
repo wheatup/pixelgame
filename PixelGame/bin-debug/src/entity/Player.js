@@ -5,8 +5,9 @@
  */
 var Player = (function (_super) {
     __extends(Player, _super);
-    function Player(scenario) {
-        _super.call(this, "me_anim_standf_0", 80, 120, scenario);
+    function Player(scenario, size) {
+        if (size === void 0) { size = 1; }
+        _super.call(this, "me_anim_standf_0", 80, 120, scenario, size);
         this.animations = [];
         this.animIndex = 0;
         //添加动画

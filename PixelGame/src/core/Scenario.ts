@@ -10,6 +10,7 @@ class Scenario extends Scene{
     public player: Player;
     public floatGroup: egret.gui.Group;
     public floaters: Array<any>;
+    public characterSize: number = 1;
     
     public cameraLimit: egret.Rectangle = new egret.Rectangle(0,0,0,0);
     private hasPresetPosition: boolean = false;
@@ -22,8 +23,8 @@ class Scenario extends Scene{
         this.floaters = new Array<any>();
     }
     
-    public createPlayer(x: number, y:number, grp:egret.gui.Group):void{
-        this.player = new Player(this);
+    public createPlayer(x: number, y:number, grp:egret.gui.Group, size: number = 1):void{
+        this.player = new Player(this, size);
         grp.addElement(this.player);
         grp.addElement(this.player.cover);
         if(this.hasPresetPosition) {

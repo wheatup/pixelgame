@@ -8,6 +8,7 @@ var Scenario = (function (_super) {
     __extends(Scenario, _super);
     function Scenario(skinName) {
         _super.call(this, skinName);
+        this.characterSize = 1;
         this.cameraLimit = new egret.Rectangle(0, 0, 0, 0);
         this.hasPresetPosition = false;
         this.presetPositionX = 0;
@@ -16,8 +17,9 @@ var Scenario = (function (_super) {
         this.floaters = new Array();
     }
     var __egretProto__ = Scenario.prototype;
-    __egretProto__.createPlayer = function (x, y, grp) {
-        this.player = new Player(this);
+    __egretProto__.createPlayer = function (x, y, grp, size) {
+        if (size === void 0) { size = 1; }
+        this.player = new Player(this, size);
         grp.addElement(this.player);
         grp.addElement(this.player.cover);
         if (this.hasPresetPosition) {

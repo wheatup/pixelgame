@@ -30,23 +30,25 @@ class Mob extends egret.gui.UIAsset{
     private scenario: Scenario;
     private lastDir: number = 0;
     
+    public size: number = 1;
     public dir: number;
     public action: number;
         
-    public constructor(asset: string, width: number, height: number, scenario: Scenario) {
+    public constructor(asset: string,width: number,height: number,scenario: Scenario,size: number = 1) {
         super(asset);
-        this.width = width;
-        this.height = height;
+        this.size = size;
+        this.width = width * this.size;
+        this.height = height * this.size;
         this.anchorX = 0.5;
-        this.anchorY = 1;
+        this.anchorY = 0.9;
         this.scenario = scenario;
         Main.main.addEventListener(egret.Event.ENTER_FRAME,this.update,this);
         
         this.cover = new egret.gui.UIAsset();
-        this.cover.width = width;
-        this.cover.height = height;
+        this.cover.width = width * this.size;
+        this.cover.height = height * this.size;
         this.cover.anchorX = 0.5;
-        this.cover.anchorY = 1;
+        this.cover.anchorY = 0.9;
         this.cover.source = asset + "a";
         
         this.setBrightness(this.brightness);

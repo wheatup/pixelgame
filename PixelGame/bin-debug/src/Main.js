@@ -12,6 +12,7 @@ var Main = (function (_super) {
         Main.scenarioRoad = new ScenarioRoad();
         Main.scenarioBush = new ScenarioBush();
         Main.scenarioJungle = new ScenarioJungle();
+        Main.scenarioRoom = new ScenarioRoom();
         Main.trunkScene = new TrunkScene();
         Main.cellphoneScene = new CellphoneScene();
         Main.uiScene = new UIScene();
@@ -157,8 +158,8 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_BOTTOM, Main.bgScene, true);
         //进入游戏
         if (Main.debugMode) {
-            Data.setFlag(1 /* HasArrivedJungle */);
-            Main.addScene(Main.LAYER_GAME, Main.scenarioRoad);
+            Main.scenarioJungle.setPlayerPosition(2339, 459);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioJungle);
         }
         else {
             Main.addScene(Main.LAYER_GAME, Main.warningScene);
@@ -170,7 +171,7 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_DIALOGUE, Main.dialogueScene, true);
     };
     Main.LANG = "CH";
-    Main.debugMode = false;
+    Main.debugMode = true;
     Main.LAYER_BOTTOM = 0;
     Main.LAYER_GAME = 1;
     Main.LAYER_GUI = 2;
