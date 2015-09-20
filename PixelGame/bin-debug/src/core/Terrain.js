@@ -5,16 +5,20 @@
  *
  */
 var Terrain = (function () {
-    function Terrain(scenario, polygons, width, height, holes) {
+    function Terrain(scenario, polygons, width, height, holes, offsetX, offsetY) {
+        if (offsetX === void 0) { offsetX = 0; }
+        if (offsetY === void 0) { offsetY = 0; }
         this.scenario = scenario;
         this.cellSize = Settings.CELL_SIZE;
         this.grid = new Grid(width / Settings.CELL_SIZE, height / Settings.CELL_SIZE, Settings.CELL_SIZE);
-        this.buildGrid(polygons, holes);
+        this.buildGrid(polygons, holes, offsetX, offsetY);
     }
     var __egretProto__ = Terrain.prototype;
     //通过多边形数据建立Grid
-    __egretProto__.buildGrid = function (polygons, holes) {
-        var p = new Polygon(polygons);
+    __egretProto__.buildGrid = function (polygons, holes, offsetX, offsetY) {
+        if (offsetX === void 0) { offsetX = 0; }
+        if (offsetY === void 0) { offsetY = 0; }
+        var p = new Polygon(polygons, offsetX, offsetY);
         this.polygon = p;
         this.holes = new Array();
         if (holes) {

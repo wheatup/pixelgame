@@ -13,6 +13,7 @@ var Main = (function (_super) {
         Main.scenarioBush = new ScenarioBush();
         Main.scenarioJungle = new ScenarioJungle();
         Main.scenarioRoom = new ScenarioRoom();
+        Main.scenarioCabin = new ScenarioCabin();
         Main.trunkScene = new TrunkScene();
         Main.cellphoneScene = new CellphoneScene();
         Main.uiScene = new UIScene();
@@ -171,7 +172,7 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_DIALOGUE, Main.dialogueScene, true);
     };
     Main.LANG = "CH";
-    Main.debugMode = true;
+    Main.debugMode = false;
     Main.LAYER_BOTTOM = 0;
     Main.LAYER_GAME = 1;
     Main.LAYER_GUI = 2;

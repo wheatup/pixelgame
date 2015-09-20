@@ -144,9 +144,8 @@ class ScenarioJungle extends Scenario{
         }else if(this.forEnd2){
             Main.transit(500);
             Main.removeScene(this);
-            Main.addScene(Main.LAYER_GAME, Main.scenarioRoom);
-            Main.scenarioRoom.setPlayerPosition(61, 417);
-            //DialogueScene.showDialogue("test");
+            Main.addScene(Main.LAYER_GAME, Main.scenarioCabin);
+            Main.scenarioCabin.setPlayerPosition(22, 235);
         }
     }
     

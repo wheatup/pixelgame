@@ -136,8 +136,8 @@ var ScenarioRoom = (function (_super) {
         if (this.forDoor) {
             Main.transit(500);
             Main.removeScene(this);
-            Main.addScene(Main.LAYER_GAME, Main.scenarioJungle);
-            Main.scenarioJungle.setPlayerPosition(2339, 459);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioCabin);
+            Main.scenarioJungle.setPlayerPosition(1803, 342);
         }
         else if (this.forCloset) {
             DialogueScene.showDialogue("closet");

@@ -1,6 +1,6 @@
 class Main extends egret.DisplayObjectContainer {
     public static LANG: string = "CH";
-    public static debugMode: boolean = true;
+    public static debugMode: boolean = false;
     
     public static main: Main;
     public static LAYER_BOTTOM: number = 0;
@@ -28,6 +28,7 @@ class Main extends egret.DisplayObjectContainer {
     public static scenarioBush: ScenarioBush;
     public static scenarioJungle: ScenarioJungle;
     public static scenarioRoom: ScenarioRoom;
+    public static scenarioCabin: ScenarioCabin;
     public static trunkScene: TrunkScene;
     public static cellphoneScene: CellphoneScene;
     public static uiScene: UIScene;
@@ -46,6 +47,7 @@ class Main extends egret.DisplayObjectContainer {
         Main.scenarioBush = new ScenarioBush();
         Main.scenarioJungle = new ScenarioJungle();
         Main.scenarioRoom = new ScenarioRoom();
+        Main.scenarioCabin = new ScenarioCabin();
         Main.trunkScene = new TrunkScene();
         Main.cellphoneScene = new CellphoneScene();
         Main.uiScene = new UIScene();

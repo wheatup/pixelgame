@@ -1,10 +1,15 @@
 {
 	"groups":[
 	{
-		"keys":"par_fire,par_fire_json,scene_5,scene_5_candlelight,bg_star,nightshade,scene3_bg_1,scene3_bg_2,scene3_bg_3,par_dust,par_dust_json,scene2_bg_1,scene2_bg_2,scene2_bg_3,item_flashlight,item_shovel,icon_cellphone,cellphone_new_0,cellphone_new_1,cellphone_new_2,cellphone_new_3,cellphone_new_4,cellphone_msg_me,cellphone_msg_other,cellphone_app_dial,cellphone_app_msg,cellphone_lock_bar,cellphone_lock_slider,cellphone_main,cellphone_panel_lock,cellphone_msg_flash,cellphone_panel_msg,back,scene_trunk_flashlight,scene_trunk_0,scene_trunk_1,me_anim_standb_0,me_anim_walkb_0,me_anim_walkb_1,me_anim_walkb_2,me_anim_walkb_3,me_anim_standf_0,me_anim_walkf_0,me_anim_walkf_1,me_anim_walkf_2,me_anim_walkf_3,me_anim_standb_0a,me_anim_walkb_0a,me_anim_walkb_1a,me_anim_walkb_2a,me_anim_walkb_3a,me_anim_standf_0a,me_anim_walkf_0a,me_anim_walkf_1a,me_anim_walkf_2a,me_anim_walkf_3a,par_steam,par_steam_json,char_temp,blank,ui_arrow_down,dialogue_box,game_car,scene1_bg_1,scene1_bg_2,scene1_bg_2a,scene1_bg_3,shroomgames,par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,title_start,title_continue_0,title_continue_1,sound_dance,sound_piano_break",
+		"keys":"scene4,par_fire,par_fire_json,scene_5,scene_5_candlelight,bg_star,nightshade,scene3_bg_1,scene3_bg_2,scene3_bg_3,par_dust,par_dust_json,scene2_bg_1,scene2_bg_2,scene2_bg_3,item_flashlight,item_shovel,icon_cellphone,cellphone_new_0,cellphone_new_1,cellphone_new_2,cellphone_new_3,cellphone_new_4,cellphone_msg_me,cellphone_msg_other,cellphone_app_dial,cellphone_app_msg,cellphone_lock_bar,cellphone_lock_slider,cellphone_main,cellphone_panel_lock,cellphone_msg_flash,cellphone_panel_msg,back,scene_trunk_flashlight,scene_trunk_0,scene_trunk_1,me_anim_standb_0,me_anim_walkb_0,me_anim_walkb_1,me_anim_walkb_2,me_anim_walkb_3,me_anim_standf_0,me_anim_walkf_0,me_anim_walkf_1,me_anim_walkf_2,me_anim_walkf_3,me_anim_standb_0a,me_anim_walkb_0a,me_anim_walkb_1a,me_anim_walkb_2a,me_anim_walkb_3a,me_anim_standf_0a,me_anim_walkf_0a,me_anim_walkf_1a,me_anim_walkf_2a,me_anim_walkf_3a,par_steam,par_steam_json,char_temp,blank,ui_arrow_down,dialogue_box,game_car,scene1_bg_1,scene1_bg_2,scene1_bg_2a,scene1_bg_3,shroomgames,par_title,par_title_json,white,ui_loading,title_title_1,title_title_2,title_bg1,title_bg2,title_bg3,title_start,title_continue_0,title_continue_1,sound_dance,sound_piano_break",
 		"name":"preload"
 	}],
 	"resources":[
+	{
+		"name":"scene4",
+		"type":"image",
+		"url":"assets/scenarios/scene4/scene4.png"
+	},
 	{
 		"name":"scene_5_candlelight",
 		"type":"image",

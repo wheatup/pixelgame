@@ -11,13 +11,13 @@ class Polygon {
 //	}
     
     //传入类似于"0,0 0,28 46,135 238,169 785,153 791,-7 664,-61 338,-75 199,-56"这样的参数
-	public constructor(points: string){
+    public constructor(points: string, offsetX: number = 0, offsetY:number = 0){
         this.points = new Array<Point>();
         var pointsRaw: string[] = points.split(" ");
         for(var i: number = 0;i < pointsRaw.length; i++){
             var pointRaw: string[] = pointsRaw[i].split(",");
-            var x: number = parseInt(pointRaw[0]);
-            var y: number = parseInt(pointRaw[1]);
+            var x: number = parseInt(pointRaw[0]) + offsetX;
+            var y: number = parseInt(pointRaw[1]) + offsetY;
             this.points[i] = new Point(x, y);
         }
 	}

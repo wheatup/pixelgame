@@ -115,8 +115,8 @@ var ScenarioJungle = (function (_super) {
         else if (this.forEnd2) {
             Main.transit(500);
             Main.removeScene(this);
-            Main.addScene(Main.LAYER_GAME, Main.scenarioRoom);
-            Main.scenarioRoom.setPlayerPosition(61, 417);
+            Main.addScene(Main.LAYER_GAME, Main.scenarioCabin);
+            Main.scenarioCabin.setPlayerPosition(22, 235);
         }
     };
     __egretProto__.onRemove = function () {

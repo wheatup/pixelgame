@@ -11,16 +11,16 @@ class Terrain {
     private polygon: Polygon;
     private holes: Polygon[];
     
-    public constructor(scenario: Scenario, polygons: string, width:number, height:number, holes?:string[]) {
+    public constructor(scenario: Scenario, polygons: string, width: number, height: number, holes?: string[], offsetX: number = 0, offsetY:number = 0) {
         this.scenario = scenario;
         this.cellSize = Settings.CELL_SIZE;
         this.grid = new Grid(width/Settings.CELL_SIZE,height/Settings.CELL_SIZE,Settings.CELL_SIZE);
-        this.buildGrid(polygons,holes);
+        this.buildGrid(polygons,holes,offsetX,offsetY);
     }
     
     //通过多边形数据建立Grid
-    public buildGrid(polygons: string, holes?:string[]): void{
-        var p: Polygon = new Polygon(polygons);
+    public buildGrid(polygons: string, holes?:string[], offsetX:number = 0, offsetY:number = 0): void{
+        var p: Polygon = new Polygon(polygons, offsetX, offsetY);
         this.polygon = p;
         
         this.holes = new Array<Polygon>();

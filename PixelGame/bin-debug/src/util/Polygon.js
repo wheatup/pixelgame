@@ -8,13 +8,15 @@ var Polygon = (function () {
     //        this.points = points;
     //	}
     //传入类似于"0,0 0,28 46,135 238,169 785,153 791,-7 664,-61 338,-75 199,-56"这样的参数
-    function Polygon(points) {
+    function Polygon(points, offsetX, offsetY) {
+        if (offsetX === void 0) { offsetX = 0; }
+        if (offsetY === void 0) { offsetY = 0; }
         this.points = new Array();
         var pointsRaw = points.split(" ");
         for (var i = 0; i < pointsRaw.length; i++) {
             var pointRaw = pointsRaw[i].split(",");
-            var x = parseInt(pointRaw[0]);
-            var y = parseInt(pointRaw[1]);
+            var x = parseInt(pointRaw[0]) + offsetX;
+            var y = parseInt(pointRaw[1]) + offsetY;
             this.points[i] = new Point(x, y);
         }
     }
