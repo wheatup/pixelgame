@@ -67,7 +67,8 @@ var Mob = (function (_super) {
     /**
     * Handles the click event on the GridView. Finds the clicked on cell and toggles its walkable state.
     */
-    __egretProto__.onGridClick = function (x, y) {
+    __egretProto__.onGridClick = function (x, y, group) {
+        Landmark.addLandMark(group, x, y);
         var xpos = Math.floor((x) / Settings.CELL_SIZE);
         var ypos = Math.floor((y) / Settings.CELL_SIZE);
         var endNp = this.scenario.terrain.grid.getNode(xpos, ypos);

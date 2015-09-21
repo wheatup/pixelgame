@@ -11,7 +11,7 @@ class WheatupEvent {
     /**
     * 绑定事件到指定信号
     */
-    public static bind(triggerName: string, target: Function, thisObject: any, replace: boolean = true): void {
+    public static bind(triggerName: string, target: Function, thisObject: any, replace: boolean = false): void {
         if (!WheatupEvent.arr) {
             WheatupEvent.arr = [];
         }

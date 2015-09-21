@@ -16,6 +16,7 @@ var game_file_list = [
 	"scene/DialogueScene.js",
 	"skins/scene/LoadingSkin.js",
 	"AssetAdapter.js",
+	"entity/Landmark.js",
 	"scene/BGScene.js",
 	"scene/LoadingScene.js",
 	"scene/MainMenuScene.js",

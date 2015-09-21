@@ -98,7 +98,7 @@ class ScenarioJungle extends Scenario{
 	
 	private deerJump():void{
         egret.Tween.get(this.img_deer).to({x:this.img_deer.x - 1600}, 500);
-        egret.Tween.get(this.img_deer).to({ y: this.img_deer.y - 100 },250,egret.Ease.quadIn).to({ y: this.img_deer.y },250,egret.Ease.quadOut);
+        egret.Tween.get(this.img_deer).to({ y: this.img_deer.y - 100 },500,egret.Ease.quadIn);
         Timer.addTimer(500,1,() => { this.img_deer.visible = false; },this);
 	}
 	
@@ -126,7 +126,7 @@ class ScenarioJungle extends Scenario{
             var y = event.localY;
                         
             if(this.terrain.isInPolygon(x, y)) {
-                this.player.onGridClick(x, y);
+                this.player.onGridClick(x, y, this.ui["grp_bg2"]);
             }
         }
         event.stopPropagation();
@@ -136,7 +136,7 @@ class ScenarioJungle extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forEnd1 = true;
-            this.player.onGridClick(event.localX + this.box_end1.x, event.localY + this.box_end1.y);
+            this.player.onGridClick(event.localX + this.box_end1.x, event.localY + this.box_end1.y, this.ui["grp_bg2"]);
         }
         event.stopPropagation();
     }
@@ -145,7 +145,7 @@ class ScenarioJungle extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forEnd2 = true;
-            this.player.onGridClick(event.localX + this.box_end2.x, event.localY + this.box_end2.y);
+            this.player.onGridClick(event.localX + this.box_end2.x, event.localY + this.box_end2.y, this.ui["grp_bg2"]);
         }
         event.stopPropagation();
     }

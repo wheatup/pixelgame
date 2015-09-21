@@ -93,7 +93,7 @@ var ScenarioRoom = (function (_super) {
             var x = event.localX;
             var y = event.localY;
             if (this.terrain.isInPolygon(x, y)) {
-                this.player.onGridClick(x, y);
+                this.player.onGridClick(x, y, this.ui["grp_bg1"]);
             }
         }
         event.stopPropagation();
@@ -102,7 +102,7 @@ var ScenarioRoom = (function (_super) {
         if (Main.free) {
             this.clearForFlag();
             this.forDoor = true;
-            this.player.onGridClick(61, 417);
+            this.player.onGridClick(61, 417, this.ui["grp_bg1"]);
         }
         event.stopPropagation();
     };
@@ -110,7 +110,7 @@ var ScenarioRoom = (function (_super) {
         if (Main.free) {
             this.clearForFlag();
             this.forCloset = true;
-            this.player.onGridClick(480, 346);
+            this.player.onGridClick(480, 346, this.ui["grp_bg1"]);
         }
         event.stopPropagation();
     };
@@ -118,7 +118,7 @@ var ScenarioRoom = (function (_super) {
         if (Main.free) {
             this.clearForFlag();
             this.forTrapdoor = true;
-            this.player.onGridClick(602, 364);
+            this.player.onGridClick(602, 364, this.ui["grp_bg1"]);
         }
         event.stopPropagation();
     };
@@ -126,7 +126,7 @@ var ScenarioRoom = (function (_super) {
         if (Main.free) {
             this.clearForFlag();
             this.forBook = true;
-            this.player.onGridClick(327, 355);
+            this.player.onGridClick(327, 355, this.ui["grp_bg1"]);
         }
         event.stopPropagation();
     };

@@ -120,7 +120,7 @@ class ScenarioBush extends Scenario{
             var y = event.localY;
                         
             if(this.terrain.isInPolygon(x, y)) {
-                this.player.onGridClick(x, y);
+                this.player.onGridClick(x, y, this.ui["grp_bg2"]);
             }
         }
         event.stopPropagation();
@@ -130,7 +130,7 @@ class ScenarioBush extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forEnd1 = true;
-            this.player.onGridClick(event.localX + this.box_end1.x, event.localY + this.box_end1.y);
+            this.player.onGridClick(event.localX + this.box_end1.x, event.localY + this.box_end1.y, this.ui["grp_bg2"]);
         }
         event.stopPropagation();
     }
@@ -139,7 +139,7 @@ class ScenarioBush extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forEnd2 = true;
-            this.player.onGridClick(event.localX + this.box_end2.x, event.localY + this.box_end2.y);
+            this.player.onGridClick(event.localX + this.box_end2.x, event.localY + this.box_end2.y, this.ui["grp_bg2"]);
         }
         event.stopPropagation();
     }

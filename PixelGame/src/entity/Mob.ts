@@ -102,7 +102,8 @@ class Mob extends egret.gui.UIAsset{
     /**
     * Handles the click event on the GridView. Finds the clicked on cell and toggles its walkable state.
     */
-    public onGridClick(x:number, y:number): void {
+    public onGridClick(x:number, y:number,group:egret.gui.Group): void {
+        Landmark.addLandMark(group,x,y);
         var xpos: number = Math.floor((x) / Settings.CELL_SIZE);
         var ypos: number = Math.floor((y) / Settings.CELL_SIZE);
         var endNp: NodePoint = this.scenario.terrain.grid.getNode(xpos,ypos);

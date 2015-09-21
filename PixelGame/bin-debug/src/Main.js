@@ -152,6 +152,8 @@ var Main = (function (_super) {
         Dialogue.init();
         //初始化信息
         Message.init();
+        //初始化地标
+        Landmark.init();
         if (egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
             Sound.playBGM("sound_dance");
         }

@@ -420,6 +420,11 @@
 				"isFolder":false,
 				"key":"scene3_deer",
 				"name":"scene3_deer"
+			},
+			{
+				"isFolder":false,
+				"key":"landmark",
+				"name":"landmark"
 			}]
 		}
 	},

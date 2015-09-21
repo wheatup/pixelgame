@@ -12,7 +12,7 @@ var WheatupEvent = (function () {
     * 绑定事件到指定信号
     */
     WheatupEvent.bind = function (triggerName, target, thisObject, replace) {
-        if (replace === void 0) { replace = true; }
+        if (replace === void 0) { replace = false; }
         if (!WheatupEvent.arr) {
             WheatupEvent.arr = [];
         }

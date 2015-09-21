@@ -181,7 +181,7 @@ class ScenarioRoad extends Scenario{
             var y = event.localY;
                         
             if(this.terrain.isInPolygon(x, y)) {
-                this.player.onGridClick(x, y);
+                this.player.onGridClick(x, y, this.ui["grp_bg2"]);
             }
         }
         event.stopPropagation();
@@ -191,7 +191,7 @@ class ScenarioRoad extends Scenario{
     private touchEngine(event: egret.TouchEvent):void{
         if(Main.free){
             this.forEngine = true;
-            this.player.onGridClick(1150, 350);
+            this.player.onGridClick(1150, 350, this.ui["grp_bg2"]);
         }
         event.stopPropagation();
     }
@@ -200,7 +200,7 @@ class ScenarioRoad extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forTrunk = true;
-            this.player.onGridClick(1400, 300);
+            this.player.onGridClick(1400, 300, this.ui["grp_bg2"]);
         }
         event.stopPropagation();
     }
@@ -209,7 +209,7 @@ class ScenarioRoad extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forEnd1 = true;
-            this.player.onGridClick(25, 300);
+            this.player.onGridClick(25, 300, this.ui["grp_bg2"]);
         }
         event.stopPropagation();
     }
@@ -218,7 +218,7 @@ class ScenarioRoad extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forEnd2 = true;
-            this.player.onGridClick(1575, 300);
+            this.player.onGridClick(1575, 300, this.ui["grp_bg2"]);
         }
         event.stopPropagation();
     }
@@ -227,7 +227,7 @@ class ScenarioRoad extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forBush = true;
-            this.player.onGridClick(470, 230);
+            this.player.onGridClick(470, 230, this.ui["grp_bg2"]);
         }
         event.stopPropagation();
     }

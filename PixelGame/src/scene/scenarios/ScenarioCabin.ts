@@ -107,7 +107,7 @@ class ScenarioCabin extends Scenario{
             var y = event.localY;
                         
             if(this.terrain.isInPolygon(x, y)) {
-                this.player.onGridClick(x, y);
+                this.player.onGridClick(x, y, this.ui["grp_bg1"]);
             }
         }
         event.stopPropagation();
@@ -117,7 +117,7 @@ class ScenarioCabin extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forDoor = true;
-            this.player.onGridClick(1803, 342);
+            this.player.onGridClick(1803, 342, this.ui["grp_bg1"]);
         }
         event.stopPropagation();
     }
@@ -126,7 +126,7 @@ class ScenarioCabin extends Scenario{
         if(Main.free){
             this.clearForFlag();
             this.forEnd = true;
-            this.player.onGridClick(22, 235);
+            this.player.onGridClick(22, 235, this.ui["grp_bg1"]);
         }
         event.stopPropagation();
     }
