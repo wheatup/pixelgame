@@ -13,6 +13,8 @@ class ScenarioJungle extends Scenario{
     private box_scene: egret.gui.UIAsset;
     private box_end1: egret.gui.UIAsset;
     private box_end2: egret.gui.UIAsset;
+    private trig_deer: egret.gui.UIAsset;
+    private img_deer: egret.gui.UIAsset;
     
     private forEnd1: boolean = false;
     private forEnd2: boolean = false;
@@ -32,6 +34,8 @@ class ScenarioJungle extends Scenario{
         this.grp_game.touchChildren = false;
         this.grp_touch = this.ui["grp_touch"];
         this.floatGroup = this.ui["grp_playground"];
+        this.trig_deer = this.ui["trig_deer"];
+        this.img_deer = this.ui["img_deer"];
         
         //初始化判定区域
         this.box_scene = this.ui["box_scene"];
@@ -79,6 +83,23 @@ class ScenarioJungle extends Scenario{
     private lastY: number;
 	public update():void{
         this.calcCamera();
+        this.detectDeer();
+	}
+	
+    private touchedDeer: boolean = false;
+	private detectDeer():void{
+	    if(!this.touchedDeer){
+            if(this.player.isInside(this.trig_deer)){
+                this.touchedDeer = true;
+                this.deerJump();
+            }
+	    }
+	}
+	
+	private deerJump():void{
+        egret.Tween.get(this.img_deer).to({x:this.img_deer.x - 1600}, 500);
+        egret.Tween.get(this.img_deer).to({ y: this.img_deer.y - 100 },250,egret.Ease.quadIn).to({ y: this.img_deer.y },250,egret.Ease.quadOut);
+        Timer.addTimer(500,1,() => { this.img_deer.visible = false; },this);
 	}
 	
 	private calcCamera():void{

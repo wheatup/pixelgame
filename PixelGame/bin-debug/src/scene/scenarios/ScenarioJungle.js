@@ -11,6 +11,7 @@ var ScenarioJungle = (function (_super) {
         _super.call(this, "skins.scenario.ScenarioJungleSkin");
         this.forEnd1 = false;
         this.forEnd2 = false;
+        this.touchedDeer = false;
         this.terrain = new Terrain(this, "0,358 0,482 1288,484 1654,292 2141,356 2342,485 2394,485 2366,398 2261,316 2231,250 2113,244 2102,257 2078,254 2058,233 2032,238 2015,214 2001,216 1989,205 1953,245 1870,243 1856,258 1789,247 1750,236 1674,262 1616,227 1568,248 1426,280 1289,397 1121,430 820,439 710,347 641,377 498,368 377,322 365,293 317,320 257,316 233,301 192,315 125,353", 2400, 480);
         //设置摄影机
         this.cameraLimit.width = 1600;
@@ -22,6 +23,8 @@ var ScenarioJungle = (function (_super) {
         this.grp_game.touchChildren = false;
         this.grp_touch = this.ui["grp_touch"];
         this.floatGroup = this.ui["grp_playground"];
+        this.trig_deer = this.ui["trig_deer"];
+        this.img_deer = this.ui["img_deer"];
         //初始化判定区域
         this.box_scene = this.ui["box_scene"];
         this.box_end1 = this.ui["box_end1"];
@@ -59,6 +62,23 @@ var ScenarioJungle = (function (_super) {
     };
     __egretProto__.update = function () {
         this.calcCamera();
+        this.detectDeer();
+    };
+    __egretProto__.detectDeer = function () {
+        if (!this.touchedDeer) {
+            if (this.player.isInside(this.trig_deer)) {
+                this.touchedDeer = true;
+                this.deerJump();
+            }
+        }
+    };
+    __egretProto__.deerJump = function () {
+        var _this = this;
+        egret.Tween.get(this.img_deer).to({ x: this.img_deer.x - 1600 }, 500);
+        egret.Tween.get(this.img_deer).to({ y: this.img_deer.y - 100 }, 250, egret.Ease.quadIn).to({ y: this.img_deer.y }, 250, egret.Ease.quadOut);
+        Timer.addTimer(500, 1, function () {
+            _this.img_deer.visible = false;
+        }, this);
     };
     __egretProto__.calcCamera = function () {
         var targetX = Util.clip(this.player.getX() - 400, 0, this.cameraLimit.width);

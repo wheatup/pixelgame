@@ -159,7 +159,7 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_BOTTOM, Main.bgScene, true);
         //进入游戏
         if (Main.debugMode) {
-            Main.scenarioJungle.setPlayerPosition(2339, 459);
+            Main.scenarioJungle.setPlayerPosition(1339, 459);
             Main.addScene(Main.LAYER_GAME, Main.scenarioJungle);
         }
         else {
@@ -172,7 +172,7 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_DIALOGUE, Main.dialogueScene, true);
     };
     Main.LANG = "CH";
-    Main.debugMode = false;
+    Main.debugMode = true;
     Main.LAYER_BOTTOM = 0;
     Main.LAYER_GAME = 1;
     Main.LAYER_GUI = 2;

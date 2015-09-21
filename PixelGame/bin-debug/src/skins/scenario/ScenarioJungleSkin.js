@@ -70,7 +70,7 @@ var skins;
                 var t = new egret.gui.Group();
                 this.grp_bg3 = t;
                 this.__s(t, ["height", "width", "x", "y"], [480, 3200, 0, 0]);
-                t.elementsContent = [this.bg3_1_i()];
+                t.elementsContent = [this.img_deer_i(), this.bg3_1_i()];
                 return t;
             };
             __egretProto__.grp_game_i = function () {
@@ -90,7 +90,7 @@ var skins;
                 var t = new egret.gui.Group();
                 this.grp_playground = t;
                 this.__s(t, ["height", "width", "x", "y"], [480, 2400, 0, 0]);
-                t.elementsContent = [this.grp_particle_i()];
+                t.elementsContent = [this.grp_particle_i(), this.trig_deer_i()];
                 return t;
             };
             __egretProto__.grp_touch_i = function () {
@@ -100,13 +100,25 @@ var skins;
                 t.elementsContent = [this.box_scene_i(), this.box_end1_i(), this.box_end2_i()];
                 return t;
             };
+            __egretProto__.img_deer_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.img_deer = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [480, "scene3_deer", 800, 3200, 100]);
+                return t;
+            };
             __egretProto__.bg1_1_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.bg1_1 = t;
                 this.__s(t, ["height", "source", "width", "x", "y"], [480, "scene3_bg_1", 1200, 0, 0]);
                 return t;
             };
-            ScenarioJungleSkin._skinParts = ["bg1_1", "grp_bg1", "bg2_1", "grp_bg2", "grp_particle", "grp_playground", "bg3_1", "grp_bg3", "grp_game", "box_scene", "box_end1", "box_end2", "grp_touch"];
+            __egretProto__.trig_deer_i = function () {
+                var t = new egret.gui.UIAsset();
+                this.trig_deer = t;
+                this.__s(t, ["height", "source", "width", "x", "y"], [480, "blank", 50, 2000, 0]);
+                return t;
+            };
+            ScenarioJungleSkin._skinParts = ["bg1_1", "grp_bg1", "bg2_1", "grp_bg2", "grp_particle", "trig_deer", "grp_playground", "img_deer", "bg3_1", "grp_bg3", "grp_game", "box_scene", "box_end1", "box_end2", "grp_touch"];
             return ScenarioJungleSkin;
         })(egret.gui.Skin);
         scenario.ScenarioJungleSkin = ScenarioJungleSkin;

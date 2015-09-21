@@ -1,6 +1,6 @@
 class Main extends egret.DisplayObjectContainer {
     public static LANG: string = "CH";
-    public static debugMode: boolean = false;
+    public static debugMode: boolean = true;
     
     public static main: Main;
     public static LAYER_BOTTOM: number = 0;
@@ -208,7 +208,7 @@ class Main extends egret.DisplayObjectContainer {
         
         //进入游戏
         if(Main.debugMode) {
-            Main.scenarioJungle.setPlayerPosition(2339, 459);
+            Main.scenarioJungle.setPlayerPosition(1339, 459);
             Main.addScene(Main.LAYER_GAME,Main.scenarioJungle);
         } else {
             Main.addScene(Main.LAYER_GAME,Main.warningScene);

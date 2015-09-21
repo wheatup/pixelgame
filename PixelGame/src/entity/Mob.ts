@@ -24,6 +24,7 @@ class Mob extends egret.gui.UIAsset{
     
     public cover: egret.gui.UIAsset;
     public brightness: number = 1;
+    public point: egret.Point;
     
     private _path: NodePoint[];
     private _index: number;
@@ -50,11 +51,14 @@ class Mob extends egret.gui.UIAsset{
         this.cover.anchorX = 0.5;
         this.cover.anchorY = 0.9;
         this.cover.source = asset + "a";
+        this.point = new egret.Point();
         
         this.setBrightness(this.brightness);
     }
     	
     public setPosition(x: number, y:number):void{
+        this.point.x = x;
+        this.point.y = y;
         this.pivotX = x;
         this.pivotY = y;
         this.x = x;
@@ -215,5 +219,10 @@ class Mob extends egret.gui.UIAsset{
             this.still(this.lastDir);
             WheatupEvent.call(EventType.ARRIVE, { x: this.getX(), y: this.getY() });
         }
+    }
+    
+    public isInside(container: any): boolean{
+        return this.pivotX >= container.x && this.pivotX <= container.x + container.width
+            && this.pivotY >= container.y && this.pivotY <= container.y + container.height;
     }
 }

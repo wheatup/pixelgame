@@ -18,28 +18,8 @@
 			"children":[
 			{
 				"isFolder":false,
-				"key":"black",
-				"name":"black"
-			},
-			{
-				"isFolder":false,
-				"key":"loading_bar",
-				"name":"loading_bar"
-			},
-			{
-				"isFolder":false,
-				"key":"loading_frame",
-				"name":"loading_frame"
-			},
-			{
-				"isFolder":false,
 				"key":"back",
 				"name":"back"
-			},
-			{
-				"isFolder":false,
-				"key":"bg_star",
-				"name":"bg_star"
 			},
 			{
 				"isFolder":false,
@@ -253,18 +233,8 @@
 			},
 			{
 				"isFolder":false,
-				"key":"nightshade",
-				"name":"nightshade"
-			},
-			{
-				"isFolder":false,
 				"key":"par_dust",
 				"name":"par_dust"
-			},
-			{
-				"isFolder":false,
-				"key":"par_fire",
-				"name":"par_fire"
 			},
 			{
 				"isFolder":false,
@@ -325,11 +295,6 @@
 				"isFolder":false,
 				"key":"scene3_bg_3",
 				"name":"scene3_bg_3"
-			},
-			{
-				"isFolder":false,
-				"key":"scene_5_candlelight",
-				"name":"scene_5_candlelight"
 			},
 			{
 				"isFolder":false,
@@ -408,6 +373,41 @@
 			},
 			{
 				"isFolder":false,
+				"key":"nightshade",
+				"name":"nightshade"
+			},
+			{
+				"isFolder":false,
+				"key":"bg_star",
+				"name":"bg_star"
+			},
+			{
+				"isFolder":false,
+				"key":"black",
+				"name":"black"
+			},
+			{
+				"isFolder":false,
+				"key":"loading_bar",
+				"name":"loading_bar"
+			},
+			{
+				"isFolder":false,
+				"key":"loading_frame",
+				"name":"loading_frame"
+			},
+			{
+				"isFolder":false,
+				"key":"par_fire",
+				"name":"par_fire"
+			},
+			{
+				"isFolder":false,
+				"key":"scene_5_candlelight",
+				"name":"scene_5_candlelight"
+			},
+			{
+				"isFolder":false,
 				"key":"scene5",
 				"name":"scene5"
 			},
@@ -415,6 +415,11 @@
 				"isFolder":false,
 				"key":"scene4",
 				"name":"scene4"
+			},
+			{
+				"isFolder":false,
+				"key":"scene3_deer",
+				"name":"scene3_deer"
 			}]
 		}
 	},

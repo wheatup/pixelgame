@@ -26,10 +26,13 @@ var Mob = (function (_super) {
         this.cover.anchorX = 0.5;
         this.cover.anchorY = 0.9;
         this.cover.source = asset + "a";
+        this.point = new egret.Point();
         this.setBrightness(this.brightness);
     }
     var __egretProto__ = Mob.prototype;
     __egretProto__.setPosition = function (x, y) {
+        this.point.x = x;
+        this.point.y = y;
         this.pivotX = x;
         this.pivotY = y;
         this.x = x;
@@ -173,6 +176,9 @@ var Mob = (function (_super) {
             this.still(this.lastDir);
             WheatupEvent.call(EventType.ARRIVE, { x: this.getX(), y: this.getY() });
         }
+    };
+    __egretProto__.isInside = function (container) {
+        return this.pivotX >= container.x && this.pivotX <= container.x + container.width && this.pivotY >= container.y && this.pivotY <= container.y + container.height;
     };
     Mob.DIR_UP_LEFT = 0;
     Mob.DIR_UP_RIGHT = 1;
