@@ -27,6 +27,10 @@ declare module skins.scene{
 	}
 }
 declare module skins.scene{
+	class BookSkin extends egret.gui.Skin{
+	}
+}
+declare module skins.scene{
 	class CellphoneSkin extends egret.gui.Skin{
 	}
 }

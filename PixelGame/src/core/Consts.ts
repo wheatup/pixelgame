@@ -16,3 +16,13 @@ class EventType {
 class Settings{
     public static CELL_SIZE: number = 20;
 }
+
+class Name{
+    public static Me: string = "费蓝德";
+    public static Wife: string = "山姆";
+    
+    public static Guy: string = "达尔";
+    public static GuyWife: string = "芬妮";
+    public static GuyDaughter: string = "简";
+    public static GuySon: string = "提米";
+}

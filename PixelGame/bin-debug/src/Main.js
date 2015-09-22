@@ -17,6 +17,7 @@ var Main = (function (_super) {
         Main.trunkScene = new TrunkScene();
         Main.cellphoneScene = new CellphoneScene();
         Main.uiScene = new UIScene();
+        Main.bookScene = new BookScene();
     }
     var __egretProto__ = Main.prototype;
     __egretProto__.onAddToStage = function (event) {
@@ -24,6 +25,12 @@ var Main = (function (_super) {
         new Timer(this);
         //初始化音频播放器
         Sound.init();
+        //初始化对话
+        Dialogue.init();
+        //初始化信息
+        Message.init();
+        //初始化地标
+        Landmark.init();
         //初始化素材解析器
         egret.Injector.mapClass("egret.gui.IAssetAdapter", AssetAdapter);
         //初始化所有显示层
@@ -148,12 +155,6 @@ var Main = (function (_super) {
     };
     //游戏开始
     __egretProto__.start = function () {
-        //初始化对话
-        Dialogue.init();
-        //初始化信息
-        Message.init();
-        //初始化地标
-        Landmark.init();
         if (egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
             Sound.playBGM("sound_dance");
         }
@@ -161,8 +162,8 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_BOTTOM, Main.bgScene, true);
         //进入游戏
         if (Main.debugMode) {
-            Main.scenarioJungle.setPlayerPosition(1339, 459);
-            Main.addScene(Main.LAYER_GAME, Main.scenarioJungle);
+            Main.free = true;
+            Main.addScene(Main.LAYER_GAME, Main.scenarioRoom);
         }
         else {
             Main.addScene(Main.LAYER_GAME, Main.warningScene);
@@ -174,7 +175,7 @@ var Main = (function (_super) {
         Main.addScene(Main.LAYER_DIALOGUE, Main.dialogueScene, true);
     };
     Main.LANG = "CH";
-    Main.debugMode = true;
+    Main.debugMode = false;
     Main.LAYER_BOTTOM = 0;
     Main.LAYER_GAME = 1;
     Main.LAYER_GUI = 2;

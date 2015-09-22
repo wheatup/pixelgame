@@ -17,33 +17,18 @@ class Message {
         Message.receivedMessages = new Array<string>();
         Message.sendedMessages = new Array<string>();
         
-        if(Main.LANG == "CH") {
-            Message.pushMessage("wife_ask_1","亲爱的，你什么时候回来？");
-            Message.pushMessage("wife_ask_2","饭菜都快凉了哦:3");
+        Message.pushMessage("wife_ask_1","亲爱的，你什么时候回来？");
+        Message.pushMessage("wife_ask_2","饭菜都快凉了哦:3");
 
-            Message.pushReplies("wife_rep_1",["我今晚可能晚点回家。","我今晚不回家了。"])
+        Message.pushReplies("wife_rep_1",["我今晚可能晚点回家。","我今晚不回家了。"])
 
-            Message.pushMessage("wife_ask_3","好吧，我等你。");
-            Message.pushMessage("wife_ask_4","为什么？加班吗？");
+        Message.pushMessage("wife_ask_3","好吧，我等你。");
+        Message.pushMessage("wife_ask_4","怎么啦？加班吗？");
 
-            Message.pushReplies("wife_rep_2",["对，加班，你一个人在家注意照顾自己。","不是，别的事，总之今晚不回来了。"])
-            Message.pushMessage("wife_ask_5","好吧，不要太辛苦了。");
-            Message.pushMessage("wife_ask_6","哦，呵呵。");
-            Message.pushMessage("wife_ask_7","我知道了。");
-        }else if(Main.LANG == "EN"){
-            Message.pushMessage("wife_ask_1","Sweetie, when could you come home?");
-            Message.pushMessage("wife_ask_2","The dishes is about to freeze :3");
-            
-            Message.pushReplies("wife_rep_1",["I might come home a bit later.","I will not comming home today."])
-                
-            Message.pushMessage("wife_ask_3","Alright, waiting for ya.");
-            Message.pushMessage("wife_ask_4","Why? Overtime?");
-            
-            Message.pushReplies("wife_rep_2",["Yeah, overtime, you keep cool stay at home.","No, some other thing. Any way I won't come home today.'"])
-            Message.pushMessage("wife_ask_5","Okay, take your time.");
-            Message.pushMessage("wife_ask_6","Yeah, right.");
-            Message.pushMessage("wife_ask_7","Sure.");
-        }
+        Message.pushReplies("wife_rep_2",["对，加班，你一个人在家注意照顾自己。","不是，别的事，总之今晚不回来了。"])
+        Message.pushMessage("wife_ask_5","好吧，不要太辛苦了。");
+        Message.pushMessage("wife_ask_6","哦。");
+        Message.pushMessage("wife_ask_7","我知道了。");
         
         WheatupEvent.bind(EventType.RECEIVE_MESSAGE,Message.onRecieveMessage,Message);
         WheatupEvent.bind(EventType.SEND_MESSAGE,Message.onSendMessage,Message);

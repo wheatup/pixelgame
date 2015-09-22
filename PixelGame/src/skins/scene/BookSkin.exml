@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="800" height="480" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:UIAsset id="bg" height="480" width="800" x="0" y="0" source="scene5_book"/>
+	<e:Label id="lbl_text2" text="标签" x="452" y="57" size="24" width="280" textAlign="left" textColor="0x000000"/>
+	<e:Label id="lbl_text1" textColor="0x000000" text="标签" textAlign="left" width="280" size="24" x="112" y="57"/>
+	<e:UIAsset id="img_light" width="400" height="400" x="-200" y="-200" source="scene_5_candlelight"/>
+	<e:UIAsset id="box_back" width="72" height="100" source="back" y="370" x="364"/>
+	<e:UIAsset id="img_prev" width="40" height="68" x="44" y="370" source="scene5_book_arrow"/>
+	<e:UIAsset id="img_next" source="scene5_book_arrow" width="40" height="68" x="704" y="370"/>
+</e:Skin>

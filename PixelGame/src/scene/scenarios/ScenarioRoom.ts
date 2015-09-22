@@ -177,7 +177,8 @@ class ScenarioRoom extends Scenario{
         }else if(this.forTrapdoor){
             DialogueScene.showDialogue("trapdoor");            
         }else if(this.forBook){
-            DialogueScene.showDialogue("test");
+            Main.transit(500);
+            Main.addScene(Main.LAYER_GAME, Main.bookScene);
         }
     }
 }

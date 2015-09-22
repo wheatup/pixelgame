@@ -1,6 +1,6 @@
 class Main extends egret.DisplayObjectContainer {
     public static LANG: string = "CH";
-    public static debugMode: boolean = true;
+    public static debugMode: boolean = false;
     
     public static main: Main;
     public static LAYER_BOTTOM: number = 0;
@@ -32,6 +32,7 @@ class Main extends egret.DisplayObjectContainer {
     public static trunkScene: TrunkScene;
     public static cellphoneScene: CellphoneScene;
     public static uiScene: UIScene;
+    public static bookScene: BookScene;
     
     
     public constructor() {
@@ -51,6 +52,7 @@ class Main extends egret.DisplayObjectContainer {
         Main.trunkScene = new TrunkScene();
         Main.cellphoneScene = new CellphoneScene();
         Main.uiScene = new UIScene();
+        Main.bookScene = new BookScene();
     }
     
     private onAddToStage(event:egret.Event) {
@@ -58,6 +60,12 @@ class Main extends egret.DisplayObjectContainer {
         new Timer(this);
         //初始化音频播放器
         Sound.init();
+        //初始化对话
+        Dialogue.init();
+        //初始化信息
+        Message.init();
+        //初始化地标
+        Landmark.init();
         //初始化素材解析器
         egret.Injector.mapClass("egret.gui.IAssetAdapter", AssetAdapter);
         //初始化所有显示层
@@ -194,15 +202,6 @@ class Main extends egret.DisplayObjectContainer {
     
     //游戏开始
     private start():void {
-        //初始化对话
-        Dialogue.init();
-        
-        //初始化信息
-        Message.init();
-        
-        //初始化地标
-        Landmark.init();
-        
         if(egret.MainContext.deviceType != egret.MainContext.DEVICE_MOBILE) {
             Sound.playBGM("sound_dance");
         }
@@ -211,8 +210,8 @@ class Main extends egret.DisplayObjectContainer {
         
         //进入游戏
         if(Main.debugMode) {
-            Main.scenarioJungle.setPlayerPosition(1339, 459);
-            Main.addScene(Main.LAYER_GAME,Main.scenarioJungle);
+            Main.free = true;
+            Main.addScene(Main.LAYER_GAME,Main.scenarioRoom);
         } else {
             Main.addScene(Main.LAYER_GAME,Main.warningScene);
         }
