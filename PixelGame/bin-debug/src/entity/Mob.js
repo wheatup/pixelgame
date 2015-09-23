@@ -30,6 +30,14 @@ var Mob = (function (_super) {
         this.setBrightness(this.brightness);
     }
     var __egretProto__ = Mob.prototype;
+    __egretProto__.hide = function () {
+        this.visible = false;
+        this.cover.visible = false;
+    };
+    __egretProto__.show = function () {
+        this.visible = true;
+        this.cover.visible = true;
+    };
     __egretProto__.setPosition = function (x, y) {
         this.point.x = x;
         this.point.y = y;

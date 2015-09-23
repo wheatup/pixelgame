@@ -22,6 +22,8 @@ class ScenarioRoom extends Scenario{
     private forCloset: boolean = false;
     private forTrapdoor: boolean = false;
     private forBook: boolean = false;
+    private touchedCloset: boolean = false;
+    private hided: boolean = false;
     
 	public constructor() {
         super("skins.scenario.ScenarioRoomSkin");
@@ -80,6 +82,7 @@ class ScenarioRoom extends Scenario{
         this.box_book.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchBook, this);
         WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
         WheatupEvent.bind(EventType.ARRIVE, this.onArrive, this);
+        WheatupEvent.bind(EventType.SELECT_CHOICE, this.onSelectChoice, this);
     }
     
     private unbindEvents():void{
@@ -90,6 +93,7 @@ class ScenarioRoom extends Scenario{
         this.box_book.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchBook, this);
         WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
         WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
+        WheatupEvent.unbind(EventType.SELECT_CHOICE, this.onSelectChoice);
     }
     
     public onRemove(): void{
@@ -140,6 +144,8 @@ class ScenarioRoom extends Scenario{
             this.clearForFlag();
             this.forCloset = true;
             this.player.onGridClick(480, 346, this.ui["grp_bg1"]);
+        }else if(this.hided){
+            Main.uiScene.showChoice("ComeOutOfCloset");
         }
         event.stopPropagation();
     }
@@ -163,7 +169,39 @@ class ScenarioRoom extends Scenario{
     }
     
     private onDialogueEnd(data: any): void{
-        
+        if(data == "closet" && !this.touchedCloset) {
+            this.touchedCloset = true;
+            Main.uiScene.showChoice("HideInCloset");
+        }
+    }
+    
+    public onSelectChoice(data: any):void{
+        if(data.choice == null) return;
+        if(data.choice.key == "HideInCloset"){
+            if(data.select == 1){
+                this.hideInCloset();
+            }
+        }else if(data.choice.key == "ComeOutOfCloset"){
+            if(data.select == 1){
+                this.comeOutOfCloset();
+            }
+        }
+    }
+    
+    private hideInCloset(): void{
+        if(!this.hided) {
+            this.hided = true;
+            this.player.hide();
+            Main.free = false;
+        }
+    }
+    
+    private comeOutOfCloset(): void{
+        if(this.hided) {
+            this.hided = false;
+            this.player.show();
+            Main.free = true;
+        }
     }
     
     private onArrive(data: any):void{
@@ -173,7 +211,11 @@ class ScenarioRoom extends Scenario{
             Main.addScene(Main.LAYER_GAME, Main.scenarioCabin);
             Main.scenarioJungle.setPlayerPosition(1803, 342);
         }else if(this.forCloset){
-            DialogueScene.showDialogue("closet");
+            if(!this.touchedCloset) {
+                DialogueScene.showDialogue("closet");
+            } else if(!this.hided) {
+                Main.uiScene.showChoice("HideInCloset");
+            }
         }else if(this.forTrapdoor){
             DialogueScene.showDialogue("trapdoor");            
         }else if(this.forBook){

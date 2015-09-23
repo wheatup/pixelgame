@@ -242,7 +242,6 @@ class ScenarioRoad extends Scenario{
             Timer.addTimer(6000,1,() => {
                 Main.cellphoneScene.addOneMessage(Message.getMessage("wife_ask_2"));
             },this);
-            
         }
     }
     

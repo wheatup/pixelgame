@@ -14,6 +14,8 @@ var ScenarioRoom = (function (_super) {
         this.forCloset = false;
         this.forTrapdoor = false;
         this.forBook = false;
+        this.touchedCloset = false;
+        this.hided = false;
         this.terrain = new Terrain(this, "2,437 81,379 106,361 303,365 337,336 604,336 623,400 802,399 802,479 2,479", 800, 480);
     }
     var __egretProto__ = ScenarioRoom.prototype;
@@ -62,6 +64,7 @@ var ScenarioRoom = (function (_super) {
         this.box_book.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchBook, this);
         WheatupEvent.bind(EventType.DIALOGUE_END, this.onDialogueEnd, this);
         WheatupEvent.bind(EventType.ARRIVE, this.onArrive, this);
+        WheatupEvent.bind(EventType.SELECT_CHOICE, this.onSelectChoice, this);
     };
     __egretProto__.unbindEvents = function () {
         this.box_scene.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchScene, this);
@@ -71,6 +74,7 @@ var ScenarioRoom = (function (_super) {
         this.box_book.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.touchBook, this);
         WheatupEvent.unbind(EventType.DIALOGUE_END, this.onDialogueEnd);
         WheatupEvent.unbind(EventType.ARRIVE, this.onArrive);
+        WheatupEvent.unbind(EventType.SELECT_CHOICE, this.onSelectChoice);
     };
     __egretProto__.onRemove = function () {
         this.unbindEvents();
@@ -112,6 +116,9 @@ var ScenarioRoom = (function (_super) {
             this.forCloset = true;
             this.player.onGridClick(480, 346, this.ui["grp_bg1"]);
         }
+        else if (this.hided) {
+            Main.uiScene.showChoice("ComeOutOfCloset");
+        }
         event.stopPropagation();
     };
     __egretProto__.touchTrapdoor = function (event) {
@@ -131,6 +138,38 @@ var ScenarioRoom = (function (_super) {
         event.stopPropagation();
     };
     __egretProto__.onDialogueEnd = function (data) {
+        if (data == "closet" && !this.touchedCloset) {
+            this.touchedCloset = true;
+            Main.uiScene.showChoice("HideInCloset");
+        }
+    };
+    __egretProto__.onSelectChoice = function (data) {
+        if (data.choice == null)
+            return;
+        if (data.choice.key == "HideInCloset") {
+            if (data.select == 1) {
+                this.hideInCloset();
+            }
+        }
+        else if (data.choice.key == "ComeOutOfCloset") {
+            if (data.select == 1) {
+                this.comeOutOfCloset();
+            }
+        }
+    };
+    __egretProto__.hideInCloset = function () {
+        if (!this.hided) {
+            this.hided = true;
+            this.player.hide();
+            Main.free = false;
+        }
+    };
+    __egretProto__.comeOutOfCloset = function () {
+        if (this.hided) {
+            this.hided = false;
+            this.player.show();
+            Main.free = true;
+        }
     };
     __egretProto__.onArrive = function (data) {
         if (this.forDoor) {
@@ -140,7 +179,12 @@ var ScenarioRoom = (function (_super) {
             Main.scenarioJungle.setPlayerPosition(1803, 342);
         }
         else if (this.forCloset) {
-            DialogueScene.showDialogue("closet");
+            if (!this.touchedCloset) {
+                DialogueScene.showDialogue("closet");
+            }
+            else if (!this.hided) {
+                Main.uiScene.showChoice("HideInCloset");
+            }
         }
         else if (this.forTrapdoor) {
             DialogueScene.showDialogue("trapdoor");

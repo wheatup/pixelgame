@@ -20,8 +20,6 @@ class Player extends Mob{
         this.currentAnimation = this.animations[Mob.ANIM_STAND_FRONT];
 	}
 	
-	
-	
 	public update():void{
         super.update();
         this.currentAnimation.update();

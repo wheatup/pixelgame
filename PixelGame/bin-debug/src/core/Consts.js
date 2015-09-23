@@ -14,6 +14,8 @@ var EventType = (function () {
     EventType.LOST_ITEM = "LOST_ITEM";
     EventType.RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
     EventType.SEND_MESSAGE = "SEND_MESSAGE";
+    EventType.SHOW_CHOICE = "SHOW_CHOICE";
+    EventType.SELECT_CHOICE = "SELECT_CHOICE";
     return EventType;
 })();
 EventType.prototype.__class__ = "EventType";

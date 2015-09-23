@@ -46,7 +46,7 @@ class BookScene extends Scene{
         this.lbl_text1 = this.ui["lbl_text1"];
         this.lbl_text1.fontFamily = "font_pixel";
         this.lbl_text1.bold = true;
-        this.lbl_text1.skewX = 4;
+        this.lbl_text1.skewX = 5;
         
         this.lbl_text2 = this.ui["lbl_text2"];
         this.lbl_text2.fontFamily = "font_pixel";

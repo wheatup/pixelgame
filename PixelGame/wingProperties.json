@@ -343,6 +343,16 @@
 			},
 			{
 				"isFolder":false,
+				"key":"scene5_book",
+				"name":"scene5_book"
+			},
+			{
+				"isFolder":false,
+				"key":"scene5_book_arrow",
+				"name":"scene5_book_arrow"
+			},
+			{
+				"isFolder":false,
 				"key":"scene_5_candlelight",
 				"name":"scene_5_candlelight"
 			},
@@ -425,16 +435,6 @@
 				"isFolder":false,
 				"key":"scene5",
 				"name":"scene5"
-			},
-			{
-				"isFolder":false,
-				"key":"scene5_book",
-				"name":"scene5_book"
-			},
-			{
-				"isFolder":false,
-				"key":"scene5_book_arrow",
-				"name":"scene5_book_arrow"
 			}]
 		}
 	},

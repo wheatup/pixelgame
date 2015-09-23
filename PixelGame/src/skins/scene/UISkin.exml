@@ -9,4 +9,11 @@
 	<e:Group id="grp" height="480" width="800" x="0" y="0">
 		<e:UIAsset id="img_message" width="96" height="96" y="0" x="704" source="cellphone_new_0" visible="false"/>
 	</e:Group>
+	<e:Group id="grp_choice" width="800" height="480" x="0" y="0">
+		<e:UIAsset id="img_choice_bg0" width="800" height="480" x="0" y="0" source="blank"/>
+		<e:UIAsset id="img_choice_bg" width="800" height="160" source="black" x="0" y="160"/>
+		<e:Label id="lbl_question" text="标签" size="36" bold="true" width="800" textAlign="center" x="0" y="190"/>
+		<e:Label id="lbl_choice1" text="标签" textAlign="center" bold="true" x="0" size="24" y="260" width="400"/>
+		<e:Label id="lbl_choice2" text="标签" textAlign="center" bold="true" x="400" size="24" y="260" width="400"/>
+	</e:Group>
 </e:Skin>

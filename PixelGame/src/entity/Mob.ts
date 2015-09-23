@@ -55,6 +55,16 @@ class Mob extends egret.gui.UIAsset{
         
         this.setBrightness(this.brightness);
     }
+    
+    public hide():void{
+        this.visible = false;
+        this.cover.visible = false;
+    }
+    
+    public show():void{
+        this.visible = true;
+        this.cover.visible = true;
+    }
     	
     public setPosition(x: number, y:number):void{
         this.point.x = x;

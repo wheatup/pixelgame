@@ -31,6 +31,8 @@ var Main = (function (_super) {
         Message.init();
         //初始化地标
         Landmark.init();
+        //初始化选择分支
+        Choice.init();
         //初始化素材解析器
         egret.Injector.mapClass("egret.gui.IAssetAdapter", AssetAdapter);
         //初始化所有显示层

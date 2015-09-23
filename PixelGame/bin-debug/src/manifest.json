@@ -16,6 +16,7 @@
 	"scene/DialogueScene.ts",
 	"skins/scene/LoadingSkin.exml",
 	"AssetAdapter.ts",
+	"core/Choice.ts",
 	"entity/Landmark.ts",
 	"scene/BGScene.ts",
 	"scene/LoadingScene.ts",

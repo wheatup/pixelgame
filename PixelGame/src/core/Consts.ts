@@ -11,6 +11,8 @@ class EventType {
     public static LOST_ITEM: string = "LOST_ITEM";
     public static RECEIVE_MESSAGE: string = "RECEIVE_MESSAGE";
     public static SEND_MESSAGE: string = "SEND_MESSAGE";
+    public static SHOW_CHOICE: string = "SHOW_CHOICE";
+    public static SELECT_CHOICE: string = "SELECT_CHOICE";
 }
 
 class Settings{
